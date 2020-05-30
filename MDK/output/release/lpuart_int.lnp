@@ -1,0 +1,18 @@
+--cpu Cortex-M0+
+".\output\release\startup_hc32l17x.o"
+".\output\release\interrupts_hc32l17x.o"
+".\output\release\system_hc32l17x.o"
+".\output\release\main.o"
+".\output\release\adc.o"
+".\output\release\ddl.o"
+".\output\release\flash.o"
+".\output\release\gpio.o"
+".\output\release\lpm.o"
+".\output\release\lpuart.o"
+".\output\release\reset.o"
+".\output\release\rtc.o"
+".\output\release\sysctrl.o"
+--library_type=microlib --strict --scatter ".\output\release\lpuart_int.sct"
+--keep=*Handler --summary_stderr --info summarysizes --map --load_addr_map_info --symbols
+--info sizes --info totals
+--list ".\output\release\lpuart_int.map" -o .\output\release\lpuart_int.axf
