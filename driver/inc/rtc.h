@@ -80,66 +80,66 @@ extern "C"
 
 /**
  ******************************************************************************
- ** \brief rtcå‘¨æœŸä¸­æ–­çš„æ—¶é—´é—´éš”                       RTC_CR0  PRDS
+ ** \brief rtcÖÜÆÚÖĞ¶ÏµÄÊ±¼ä¼ä¸ô                       RTC_CR0  PRDS
  *****************************************************************************/
 typedef enum
 {
-    RtcNone   = 0u, //æ— å‘¨æœŸä¸­æ–­
-    Rtc05S    = 1u, //0.5Sä¸­æ–­
-    Rtc1S     = 2u, //1ç§’
-    Rtc1Min   = 3u, //1åˆ†é’Ÿ
-    Rtc1H     = 4u, //1å°æ—¶
-    Rtc1Day   = 5u, //1å¤©
-    Rtc1Mon   = 6u  //1æœˆ
+    RtcNone   = 0u, //ÎŞÖÜÆÚÖĞ¶Ï
+    Rtc05S    = 1u, //0.5SÖĞ¶Ï
+    Rtc1S     = 2u, //1Ãë
+    Rtc1Min   = 3u, //1·ÖÖÓ
+    Rtc1H     = 4u, //1Ğ¡Ê±
+    Rtc1Day   = 5u, //1Ìì
+    Rtc1Mon   = 6u  //1ÔÂ
 }en_rtc_prds_t;
 
 /**
  ******************************************************************************
- ** \brief rtc 12håˆ¶æˆ–24håˆ¶æ–¹å¼é€‰æ‹©                   RTC_CR0  AMPM
+ ** \brief rtc 12hÖÆ»ò24hÖÆ·½Ê½Ñ¡Ôñ                   RTC_CR0  AMPM
  *****************************************************************************/
 typedef enum
 {
-    RtcAm = 0u,     //12å°æ—¶åˆ¶
-    RtcPm = 1u      //24å°æ—¶åˆ¶
+    RtcAm = 0u,     //12Ğ¡Ê±ÖÆ
+    RtcPm = 1u      //24Ğ¡Ê±ÖÆ
 }en_rtc_ampm_t;
 
 /**
  ******************************************************************************
- ** \brief æ™®é€šç²¾åº¦ä¸é«˜ç²¾åº¦1Hzè¾“å‡º                   RTC_CR0  HZ1SEL
+ ** \brief ÆÕÍ¨¾«¶ÈÓë¸ß¾«¶È1HzÊä³ö                   RTC_CR0  HZ1SEL
  *****************************************************************************/
 typedef enum
 {
-    RtcHz1selGeneralPricision = 0u,    //æ™®é€šç²¾åº¦1Hzè¾“å‡º
-    RtcHz1selHighPricision = 1u        //é«˜ç²¾åº¦1Hzè¾“å‡º
+    RtcHz1selGeneralPricision = 0u,    //ÆÕÍ¨¾«¶È1HzÊä³ö
+    RtcHz1selHighPricision = 1u        //¸ß¾«¶È1HzÊä³ö
 }en_rtc_hz1sel_t;
 
 /**
  ******************************************************************************
- ** \brief å‘¨æœŸä¸­æ–­é€‰æ‹©                             RTC_CR0  PRDSEL
+ ** \brief ÖÜÆÚÖĞ¶ÏÑ¡Ôñ                             RTC_CR0  PRDSEL
  *****************************************************************************/
 typedef enum
 {
-    RtcPrds = 0u,   //ä½¿ç”¨PRDSæ‰€è®¾å®šçš„å‘¨æœŸä¸­æ–­äº‹ä»¶é—´éš”
-    RtcPrdx = 1u    //ä½¿ç”¨PRDXæ‰€è®¾å®šçš„å‘¨æœŸä¸­æ–­äº‹ä»¶é—´éš”
+    RtcPrds = 0u,   //Ê¹ÓÃPRDSËùÉè¶¨µÄÖÜÆÚÖĞ¶ÏÊÂ¼ş¼ä¸ô
+    RtcPrdx = 1u    //Ê¹ÓÃPRDXËùÉè¶¨µÄÖÜÆÚÖĞ¶ÏÊÂ¼ş¼ä¸ô
 }en_rtc_prdsel_t;
 
 /**
  ******************************************************************************
- ** \brief rtcçš„æ—¶é’Ÿé€‰æ‹©                           RTC_CR1  CKSEL
+ ** \brief rtcµÄÊ±ÖÓÑ¡Ôñ                           RTC_CR1  CKSEL
  *****************************************************************************/
 typedef enum 
 {
-    RtcClkXtl      = 0u, //å¤–éƒ¨ä½é€Ÿæ—¶é’ŸXTL  32.768k    
-    RtcClkRcl      = 2u, //å†…éƒ¨ä½é€Ÿæ—¶é’ŸRCL  32k   
-    RtcClkXth128   = 4u, //å¤–éƒ¨æ™¶æŒ¯4M       XTH/128
-    RtcClkXth256   = 5u, //å¤–éƒ¨æ™¶æŒ¯8M       XTH/256
-    RtcClkXth512   = 6u, //å¤–éƒ¨æ™¶æŒ¯16M      XTH/512
-    RtcClkXth1024  = 7u  //å¤–éƒ¨æ™¶æŒ¯32M      XTH/1024
+    RtcClkXtl      = 0u, //Íâ²¿µÍËÙÊ±ÖÓXTL  32.768k    
+    RtcClkRcl      = 2u, //ÄÚ²¿µÍËÙÊ±ÖÓRCL  32k   
+    RtcClkXth128   = 4u, //Íâ²¿¾§Õñ4M       XTH/128
+    RtcClkXth256   = 5u, //Íâ²¿¾§Õñ8M       XTH/256
+    RtcClkXth512   = 6u, //Íâ²¿¾§Õñ16M      XTH/512
+    RtcClkXth1024  = 7u  //Íâ²¿¾§Õñ32M      XTH/1024
 }en_rtc_cksel_t;
 
 /**
  ******************************************************************************
- ** \brief æ—¶é’Ÿè¯¯å·®è¡¥å¿ä½¿èƒ½æˆ–ç¦æ­¢                      RTC_COMPEN  EN
+ ** \brief Ê±ÖÓÎó²î²¹³¥Ê¹ÄÜ»ò½ûÖ¹                      RTC_COMPEN  EN
  *****************************************************************************/
 typedef enum
 {
@@ -149,7 +149,7 @@ typedef enum
 
 /**
  ******************************************************************************
-** \brief é…ç½®PRDä¸­æ–­ä½¿èƒ½åŠå…¶å‘¨æœŸç±»å‹                      
+** \brief ÅäÖÃPRDÖĞ¶ÏÊ¹ÄÜ¼°ÆäÖÜÆÚÀàĞÍ                      
  *****************************************************************************/
 typedef struct
 {
@@ -160,89 +160,90 @@ typedef struct
 
 /**
  ******************************************************************************
- ** \brief é—¹é’Ÿæºé…ç½®
+ ** \brief ÄÖÖÓÔ´ÅäÖÃ
  *****************************************************************************/
 typedef struct
 {
-    uint8_t  RtcAlarmSec;    //é—¹é’Ÿç§’é’Ÿ
-    uint8_t  RtcAlarmMinute; //é—¹é’Ÿåˆ†é’Ÿ
-    uint8_t  RtcAlarmHour;   //é—¹é’Ÿå°æ—¶
-    uint8_t  RtcAlarmWeek;   //é—¹é’Ÿå‘¨
+    uint8_t  RtcAlarmSec;    //ÄÖÖÓÃëÖÓ
+    uint8_t  RtcAlarmMinute; //ÄÖÖÓ·ÖÖÓ
+    uint8_t  RtcAlarmHour;   //ÄÖÖÓĞ¡Ê±
+    uint8_t  RtcAlarmWeek;   //ÄÖÖÓÖÜ
 }stc_rtc_alarmtime_t;
 
 /**
  ******************************************************************************
- ** \brief æ—¶é—´
+ ** \brief Ê±¼ä
  *****************************************************************************/
 /**
  ******************************************************************************
- ** \brief rtcæ—¶é’Ÿå¹´ã€æœˆã€æ—¥ã€æ—¶ã€åˆ†ã€ç§’è¯»å†™ç»“æ„
+ ** \brief rtcÊ±ÖÓÄê¡¢ÔÂ¡¢ÈÕ¡¢Ê±¡¢·Ö¡¢Ãë¶ÁĞ´½á¹¹
  *****************************************************************************/
 typedef struct stc_rtc_time
 {
-    uint8_t  u8Second;      //æ—¶é—´ï¼šç§’    
-    uint8_t  u8Minute;      //æ—¶é—´ï¼šåˆ†
-    uint8_t  u8Hour;        //æ—¶é—´ï¼šæ—¶
-    uint8_t  u8DayOfWeek;   //æ—¶é—´ï¼šå‘¨
-    uint8_t  u8Day;         //æ—¶é—´ï¼šæ—¥    
-    uint8_t  u8Month;       //æ—¶é—´ï¼šæœˆ
-    uint8_t  u8Year;        //æ—¶é—´ï¼šå¹´
+    uint8_t  u8Second;      //Ê±¼ä£ºÃë    
+    uint8_t  u8Minute;      //Ê±¼ä£º·Ö
+    uint8_t  u8Hour;        //Ê±¼ä£ºÊ±
+    uint8_t  u8DayOfWeek;   //Ê±¼ä£ºÖÜ
+    uint8_t  u8Day;         //Ê±¼ä£ºÈÕ    
+    uint8_t  u8Month;       //Ê±¼ä£ºÔÂ
+    uint8_t  u8Year;        //Ê±¼ä£ºÄê
 } stc_rtc_time_t;
 
 /**
  ******************************************************************************
- ** \brief åˆå§‹åŒ–RTCçš„ç»“æ„ä½“
+ ** \brief ³õÊ¼»¯RTCµÄ½á¹¹Ìå
  *****************************************************************************/
 typedef struct
 {
-    en_rtc_ampm_t         rtcAmpm;      //å°æ—¶çš„æ—¶åˆ¶
-    stc_rtc_cyccfg_t      rtcPrdsel;    //ç¡®å®šPRDSæˆ–è€…PRDXæ‰€è®¾å®šçš„å‘¨æœŸä¸­æ–­æ—¶é—´é—´éš”ç±»å‹
-    en_rtc_cksel_t        rtcClksrc;    //å®æ—¶æ—¶é’Ÿçš„æ—¶é’Ÿæº
-    en_rtc_compen_t       rtcCompen;    //æ—¶é’Ÿè¯¯å·®è¡¥å¿ä½¿èƒ½ä¸ç¦æ­¢
-    uint16_t              rtcCompValue; //ä½¿èƒ½è¡¥å¿çš„æƒ…å†µä¸‹ï¼Œè¡¥å¿å€¼å–å€¼èŒƒå›´ä¸º:0-255
-    stc_rtc_time_t        rtcTime;      //è¦å†™å…¥æ—¶é—´å¯„å­˜å™¨çš„æ—¶é—´
+    en_rtc_ampm_t         rtcAmpm;      //Ğ¡Ê±µÄÊ±ÖÆ
+    stc_rtc_cyccfg_t      rtcPrdsel;    //È·¶¨PRDS»òÕßPRDXËùÉè¶¨µÄÖÜÆÚÖĞ¶ÏÊ±¼ä¼ä¸ôÀàĞÍ
+    en_rtc_cksel_t        rtcClksrc;    //ÊµÊ±Ê±ÖÓµÄÊ±ÖÓÔ´
+    en_rtc_compen_t       rtcCompen;    //Ê±ÖÓÎó²î²¹³¥Ê¹ÄÜÓë½ûÖ¹
+    uint16_t              rtcCompValue; //Ê¹ÄÜ²¹³¥µÄÇé¿öÏÂ£¬²¹³¥ÖµÈ¡Öµ·¶Î§Îª:0-255
+    stc_rtc_time_t        rtcTime;      //ÒªĞ´ÈëÊ±¼ä¼Ä´æÆ÷µÄÊ±¼ä
 }stc_rtc_initstruct_t;
 
 /******************************************************************************
   Global function prototypes (definition in C source)
 *******************************************************************************/
-//RTCè®¡æ•°å™¨çš„ä½¿èƒ½æˆ–åœæ­¢
+//RTC¼ÆÊıÆ÷µÄÊ¹ÄÜ»òÍ£Ö¹
 extern void Rtc_Cmd(boolean_t NewState);
-//RTCè®¡æ•°å™¨å¯åŠ¨ç­‰å¾…å‡½æ•°
+//RTC¼ÆÊıÆ÷Æô¶¯µÈ´ıº¯Êı
 extern void Rtc_StartWait(void);
-//RTCçš„1Hzè¾“å‡ºçš„ä½¿èƒ½æˆ–åœæ­¢
+//RTCµÄ1HzÊä³öµÄÊ¹ÄÜ»òÍ£Ö¹
 extern void Rtc_Hz1Cmd(en_rtc_hz1sel_t pricision, boolean_t NewState);
-//è®¾ç½®å‘¨æœŸä¸­æ–­çš„ç±»å‹(PRDSEL)åŠå…¶æ‰€é€‰ç±»å‹çš„æ—¶é—´(PRDSæˆ–PRDX)
+//ÉèÖÃÖÜÆÚÖĞ¶ÏµÄÀàĞÍ(PRDSEL)¼°ÆäËùÑ¡ÀàĞÍµÄÊ±¼ä(PRDS»òPRDX)
 extern en_result_t Rtc_SetCyc(stc_rtc_cyccfg_t* pstCyc);
-//RTCé—¹é’Ÿä¸­æ–­çš„ä½¿èƒ½æˆ–åœæ­¢
+//RTCÄÖÖÓÖĞ¶ÏµÄÊ¹ÄÜ»òÍ£Ö¹
 extern void Rtc_AlmIeCmd(boolean_t NewState);
-//RTCé—¹é’Ÿçš„ä½¿èƒ½æˆ–åœæ­¢
+//RTCÄÖÖÓµÄÊ¹ÄÜ»òÍ£Ö¹
 extern void Rtc_AlmEnCmd(boolean_t NewState);
-//è·å–RTCé—¹é’Ÿä¸­æ–­çŠ¶æ€ä½
+//»ñÈ¡RTCÄÖÖÓÖĞ¶Ï×´Ì¬Î»
 extern boolean_t Rtc_GetAlmfItStatus(void);
-//æ¸…é™¤RTCé—¹é’Ÿä¸­æ–­çŠ¶æ€ä½
+//Çå³ıRTCÄÖÖÓÖĞ¶Ï×´Ì¬Î»
 extern void Rtc_ClearAlmfItStatus(void);
-//æ¸…é™¤RTCå‘¨æœŸä¸­æ–­çŠ¶æ€ä½
+//Çå³ıRTCÖÜÆÚÖĞ¶Ï×´Ì¬Î»
 extern void Rtc_ClearPrdfItStatus(void);
-//è·å–RTCå‘¨æœŸä¸­æ–­çŠ¶æ€ä½
+//»ñÈ¡RTCÖÜÆÚÖĞ¶Ï×´Ì¬Î»
 extern boolean_t Rtc_GetPridItStatus(void);
-//é…ç½®RTCçš„è¯¯å·®è¡¥å¿å¯„å­˜å™¨
+//ÅäÖÃRTCµÄÎó²î²¹³¥¼Ä´æÆ÷
 extern en_result_t Rtc_CompCfg(uint16_t CompVlue, en_rtc_compen_t NewStatus);
-//RTCæ ¹æ®æ—¥æœŸè®¡ç®—å‘¨æ•°
+//RTC¸ù¾İÈÕÆÚ¼ÆËãÖÜÊı
 extern en_result_t Check_BCD_Format(uint8_t u8data,uint8_t u8limit_min, uint8_t u8limit_max);
-//RTCè·å–æ—¶é—´å‡½æ•°
+//RTC»ñÈ¡Ê±¼äº¯Êı
 extern en_result_t Rtc_ReadDateTime(stc_rtc_time_t* time);
-//å‘RTCæ—¶é—´å¯„å­˜å™¨å†™å…¥æ—¶é—´
+//ÏòRTCÊ±¼ä¼Ä´æÆ÷Ğ´ÈëÊ±¼ä
 extern en_result_t Rtc_SetTime(stc_rtc_time_t* time);
-//RTCé—¹é’Ÿä¸­æ–­æ—¶é—´è·å–
+//RTCÄÖÖÓÖĞ¶ÏÊ±¼ä»ñÈ¡
 extern void Rtc_GetAlarmTime(stc_rtc_alarmtime_t* pstcAlarmTime);
-//RTCé—¹é’Ÿè®¾ç½®
+//RTCÄÖÖÓÉèÖÃ
 extern en_result_t Rtc_SetAlarmTime(stc_rtc_alarmtime_t* pstcAlarmTime);
-//åˆå§‹åŒ–RTC
+//³õÊ¼»¯RTC
 extern void Rtc_Init(stc_rtc_initstruct_t* Rtc_InitStruct);
 #endif /* __RTC_H__ */
 /******************************************************************************
  * EOF (not truncated)
  *****************************************************************************/    
+
 
 

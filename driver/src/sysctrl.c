@@ -114,7 +114,7 @@ extern uint32_t SystemCoreClock;
 
 /**
  *******************************************************************************
- ** \brief SYSCTRL0\SYSCTRL1å¯„å­˜å™¨æ“ä½œè§£é”
+ ** \brief SYSCTRL0\SYSCTRL1¼Ä´æÆ÷²Ù×÷½âËø
  **
  ** \retval None
  ******************************************************************************/
@@ -126,11 +126,11 @@ static void _SysctrlUnlock(void)
 
 /**
  *******************************************************************************
- ** \brief ç³»ç»Ÿæ—¶é’Ÿæºä½¿èƒ½
- ** \param [in]  enSource   ç›®æ ‡æ—¶é’Ÿæº
- ** \param [in]  bFlag      ä½¿èƒ½1-å¼€/0-å…³
- ** \retval      Ok         è®¾å®šæˆåŠŸ
- **             å…¶ä»–        è®¾å®šå¤±è´¥
+ ** \brief ÏµÍ³Ê±ÖÓÔ´Ê¹ÄÜ
+ ** \param [in]  enSource   Ä¿±êÊ±ÖÓÔ´
+ ** \param [in]  bFlag      Ê¹ÄÜ1-¿ª/0-¹Ø
+ ** \retval      Ok         Éè¶¨³É¹¦
+ **             ÆäËû        Éè¶¨Ê§°Ü
  ******************************************************************************/
 en_result_t Sysctrl_ClkSourceEnable(en_sysctrl_clk_source_t enSource, boolean_t bFlag)
 {
@@ -193,11 +193,11 @@ en_result_t Sysctrl_ClkSourceEnable(en_sysctrl_clk_source_t enSource, boolean_t 
 
 /**
  *******************************************************************************
- ** \brief å¤–éƒ¨é«˜é€Ÿæ™¶æŒ¯é©±åŠ¨é…ç½®
- ** \param [in]  enFreq     å¤–éƒ¨é«˜é€Ÿæ™¶æŒ¯é¢‘ç‡èŒƒå›´é€‰æ‹©
- ** \param [in]  enDriver   å¤–éƒ¨é«˜é€Ÿæ™¶æŒ¯é©±åŠ¨èƒ½åŠ›é€‰æ‹©
- ** \retval      Ok         è®¾å®šæˆåŠŸ
- **             å…¶ä»–        è®¾å®šå¤±è´¥
+ ** \brief Íâ²¿¸ßËÙ¾§ÕñÇı¶¯ÅäÖÃ
+ ** \param [in]  enFreq     Íâ²¿¸ßËÙ¾§ÕñÆµÂÊ·¶Î§Ñ¡Ôñ
+ ** \param [in]  enDriver   Íâ²¿¸ßËÙ¾§ÕñÇı¶¯ÄÜÁ¦Ñ¡Ôñ
+ ** \retval      Ok         Éè¶¨³É¹¦
+ **             ÆäËû        Éè¶¨Ê§°Ü
  ******************************************************************************/
 en_result_t Sysctrl_XTHDriverCfg(en_sysctrl_xtal_driver_t enDriver)
 {
@@ -210,11 +210,11 @@ en_result_t Sysctrl_XTHDriverCfg(en_sysctrl_xtal_driver_t enDriver)
 
 /**
  *******************************************************************************
- ** \brief å¤–éƒ¨ä½é€Ÿæ™¶æŒ¯é©±åŠ¨é…ç½®
- ** \param [in]  enFreq     å¤–éƒ¨ä½é€Ÿæ™¶æŒ¯é¢‘ç‡èŒƒå›´é€‰æ‹©
- ** \param [in]  enDriver   å¤–éƒ¨ä½é€Ÿæ™¶æŒ¯é©±åŠ¨èƒ½åŠ›é€‰æ‹©
- ** \retval      Ok         è®¾å®šæˆåŠŸ
- **             å…¶ä»–        è®¾å®šå¤±è´¥
+ ** \brief Íâ²¿µÍËÙ¾§ÕñÇı¶¯ÅäÖÃ
+ ** \param [in]  enFreq     Íâ²¿µÍËÙ¾§ÕñÆµÂÊ·¶Î§Ñ¡Ôñ
+ ** \param [in]  enDriver   Íâ²¿µÍËÙ¾§ÕñÇı¶¯ÄÜÁ¦Ñ¡Ôñ
+ ** \retval      Ok         Éè¶¨³É¹¦
+ **             ÆäËû        Éè¶¨Ê§°Ü
  ******************************************************************************/
 en_result_t Sysctrl_XTLDriverCfg(en_sysctrl_xtl_amp_t enAmp, en_sysctrl_xtal_driver_t enDriver)
 {
@@ -228,10 +228,10 @@ en_result_t Sysctrl_XTLDriverCfg(en_sysctrl_xtl_amp_t enAmp, en_sysctrl_xtal_dri
 
 /**
  *******************************************************************************
- ** \brief å¤–éƒ¨é«˜é€Ÿæ—¶é’Ÿç¨³å®šå‘¨æœŸé…ç½®
- ** \param [in]  enCycle     å¤–éƒ¨é«˜é€Ÿæ—¶é’Ÿç¨³å®šå‘¨æœŸè®¾ç½®
- ** \retval      Ok         è®¾å®šæˆåŠŸ
- **             å…¶ä»–        è®¾å®šå¤±è´¥
+ ** \brief Íâ²¿¸ßËÙÊ±ÖÓÎÈ¶¨ÖÜÆÚÅäÖÃ
+ ** \param [in]  enCycle     Íâ²¿¸ßËÙÊ±ÖÓÎÈ¶¨ÖÜÆÚÉèÖÃ
+ ** \retval      Ok         Éè¶¨³É¹¦
+ **             ÆäËû        Éè¶¨Ê§°Ü
  ******************************************************************************/
 en_result_t Sysctrl_SetXTHStableTime(en_sysctrl_xth_cycle_t enCycle)
 {
@@ -242,10 +242,10 @@ en_result_t Sysctrl_SetXTHStableTime(en_sysctrl_xth_cycle_t enCycle)
 
 /**
  *******************************************************************************
- ** \brief å†…éƒ¨ä½é€Ÿæ—¶é’Ÿç¨³å®šå‘¨æœŸé…ç½®
- ** \param [in]  enCycle     å†…éƒ¨ä½é€Ÿæ—¶é’Ÿç¨³å®šå‘¨æœŸè®¾ç½®
- ** \retval      Ok         è®¾å®šæˆåŠŸ
- **             å…¶ä»–        è®¾å®šå¤±è´¥
+ ** \brief ÄÚ²¿µÍËÙÊ±ÖÓÎÈ¶¨ÖÜÆÚÅäÖÃ
+ ** \param [in]  enCycle     ÄÚ²¿µÍËÙÊ±ÖÓÎÈ¶¨ÖÜÆÚÉèÖÃ
+ ** \retval      Ok         Éè¶¨³É¹¦
+ **             ÆäËû        Éè¶¨Ê§°Ü
  ******************************************************************************/
 en_result_t Sysctrl_SetRCLStableTime(en_sysctrl_rcl_cycle_t enCycle)
 {
@@ -256,10 +256,10 @@ en_result_t Sysctrl_SetRCLStableTime(en_sysctrl_rcl_cycle_t enCycle)
 
 /**
  *******************************************************************************
- ** \brief å¤–éƒ¨ä½é€Ÿæ—¶é’Ÿç¨³å®šå‘¨æœŸé…ç½®
- ** \param [in]  enCycle     å¤–éƒ¨ä½é€Ÿæ—¶é’Ÿç¨³å®šå‘¨æœŸè®¾ç½®
- ** \retval      Ok         è®¾å®šæˆåŠŸ
- **             å…¶ä»–        è®¾å®šå¤±è´¥
+ ** \brief Íâ²¿µÍËÙÊ±ÖÓÎÈ¶¨ÖÜÆÚÅäÖÃ
+ ** \param [in]  enCycle     Íâ²¿µÍËÙÊ±ÖÓÎÈ¶¨ÖÜÆÚÉèÖÃ
+ ** \retval      Ok         Éè¶¨³É¹¦
+ **             ÆäËû        Éè¶¨Ê§°Ü
  ******************************************************************************/
 en_result_t Sysctrl_SetXTLStableTime(en_sysctrl_xtl_cycle_t enCycle)
 {
@@ -270,10 +270,10 @@ en_result_t Sysctrl_SetXTLStableTime(en_sysctrl_xtl_cycle_t enCycle)
 
 /**
  *******************************************************************************
- ** \brief PLLç¨³å®šå‘¨æœŸé…ç½®
- ** \param [in]  enCycle    PLLç¨³å®šå‘¨æœŸè®¾ç½®
- ** \retval      Ok         è®¾å®šæˆåŠŸ
- **             å…¶ä»–        è®¾å®šå¤±è´¥
+ ** \brief PLLÎÈ¶¨ÖÜÆÚÅäÖÃ
+ ** \param [in]  enCycle    PLLÎÈ¶¨ÖÜÆÚÉèÖÃ
+ ** \retval      Ok         Éè¶¨³É¹¦
+ **             ÆäËû        Éè¶¨Ê§°Ü
  ******************************************************************************/
 en_result_t Sysctrl_SetPLLStableTime(en_sysctrl_pll_cycle_t enCycle)
 {
@@ -284,12 +284,12 @@ en_result_t Sysctrl_SetPLLStableTime(en_sysctrl_pll_cycle_t enCycle)
 
 /**
  *******************************************************************************
- ** \brief æ—¶é’Ÿæºåˆ‡æ¢ï¼Œè¯¥å‡½æ•°æ‰§è¡Œåä¼šå¼€å¯æ–°æ—¶é’Ÿæº
- ** \note  é€‰æ‹©æ—¶é’Ÿæºä¹‹å‰ï¼Œéœ€æ ¹æ®éœ€è¦é…ç½®ç›®æ ‡æ—¶é’Ÿæºçš„é¢‘ç‡/é©±åŠ¨å‚æ•°/ä½¿èƒ½æ—¶é’Ÿæºç­‰
- ** \param [in]  enSource   æ–°æ—¶é’Ÿæº
+ ** \brief Ê±ÖÓÔ´ÇĞ»»£¬¸Ãº¯ÊıÖ´ĞĞºó»á¿ªÆôĞÂÊ±ÖÓÔ´
+ ** \note  Ñ¡ÔñÊ±ÖÓÔ´Ö®Ç°£¬Ğè¸ù¾İĞèÒªÅäÖÃÄ¿±êÊ±ÖÓÔ´µÄÆµÂÊ/Çı¶¯²ÎÊı/Ê¹ÄÜÊ±ÖÓÔ´µÈ
+ ** \param [in]  enSource   ĞÂÊ±ÖÓÔ´
  **
- ** \retval      Ok         è®¾å®šæˆåŠŸ
- **              å…¶ä»–       è®¾å®šå¤±è´¥
+ ** \retval      Ok         Éè¶¨³É¹¦
+ **              ÆäËû       Éè¶¨Ê§°Ü
  ******************************************************************************/
 en_result_t Sysctrl_SysClkSwitch(en_sysctrl_clk_source_t enSource)
 {
@@ -300,7 +300,7 @@ en_result_t Sysctrl_SysClkSwitch(en_sysctrl_clk_source_t enSource)
     _SysctrlUnlock();
     M0P_SYSCTRL->SYSCTRL0_f.CLKSW = ClkNew;
 
-    //æ›´æ–°Coreæ—¶é’Ÿï¼ˆHCLKï¼‰
+    //¸üĞÂCoreÊ±ÖÓ£¨HCLK£©
     SystemCoreClockUpdate();
 
     return enRet;
@@ -308,8 +308,8 @@ en_result_t Sysctrl_SysClkSwitch(en_sysctrl_clk_source_t enSource)
 
 /**
  *******************************************************************************
- ** \brief   è·å¾—ç³»ç»Ÿæ—¶é’Ÿï¼ˆHCLKï¼‰é¢‘ç‡å€¼
- ** \retval  uint32_t         HCLKé¢‘ç‡å€¼
+ ** \brief   »ñµÃÏµÍ³Ê±ÖÓ£¨HCLK£©ÆµÂÊÖµ
+ ** \retval  uint32_t         HCLKÆµÂÊÖµ
  **
  ******************************************************************************/
 uint32_t Sysctrl_GetHClkFreq(void)
@@ -325,7 +325,7 @@ uint32_t Sysctrl_GetHClkFreq(void)
     u16Trim[1] = RCH_CR_TRIM_8M_VAL;
     u16Trim[0] = RCL_CR_TRIM_38400_VAL;
 
-    //è·å–å½“å‰ç³»ç»Ÿæ—¶é’Ÿ
+    //»ñÈ¡µ±Ç°ÏµÍ³Ê±ÖÓ
     enSrc = (en_sysctrl_clk_source_t)(M0P_SYSCTRL->SYSCTRL0_f.CLKSW);
 
     switch (enSrc)
@@ -418,8 +418,8 @@ uint32_t Sysctrl_GetHClkFreq(void)
 
 /**
  *******************************************************************************
- ** \brief è·å¾—å¤–è®¾æ—¶é’Ÿï¼ˆPCLKï¼‰é¢‘ç‡å€¼
- ** \retval uint32_t   PCLKé¢‘ç‡å€¼(Hz)
+ ** \brief »ñµÃÍâÉèÊ±ÖÓ£¨PCLK£©ÆµÂÊÖµ
+ ** \retval uint32_t   PCLKÆµÂÊÖµ(Hz)
  **
  ******************************************************************************/
 uint32_t Sysctrl_GetPClkFreq(void)
@@ -435,16 +435,16 @@ uint32_t Sysctrl_GetPClkFreq(void)
 
 /**
  *******************************************************************************
- ** \brief æ—¶é’Ÿåˆå§‹åŒ–å‡½æ•°
- ** \param [in]  pstcCfg    åˆå§‹åŒ–é…ç½®å‚æ•°
- ** \retval      Ok         è®¾å®šæˆåŠŸ
- **             å…¶ä»–        è®¾å®šå¤±è´¥
+ ** \brief Ê±ÖÓ³õÊ¼»¯º¯Êı
+ ** \param [in]  pstcCfg    ³õÊ¼»¯ÅäÖÃ²ÎÊı
+ ** \retval      Ok         Éè¶¨³É¹¦
+ **             ÆäËû        Éè¶¨Ê§°Ü
  ******************************************************************************/
 en_result_t Sysctrl_ClkInit(stc_sysctrl_clk_cfg_t *pstcCfg)
 {
     en_result_t enRet = Ok;
 
-    //ç³»ç»Ÿæ—¶é’Ÿå‚æ•°é…ç½®
+    //ÏµÍ³Ê±ÖÓ²ÎÊıÅäÖÃ
     switch(pstcCfg->enClkSrc)
     {
         case SysctrlClkRCH:
@@ -469,13 +469,13 @@ en_result_t Sysctrl_ClkInit(stc_sysctrl_clk_cfg_t *pstcCfg)
             break;
     }
 
-    //æ—¶é’Ÿæºä½¿èƒ½
+    //Ê±ÖÓÔ´Ê¹ÄÜ
     Sysctrl_ClkSourceEnable(pstcCfg->enClkSrc, TRUE);
 
-    //æ—¶é’Ÿæºåˆ‡æ¢
+    //Ê±ÖÓÔ´ÇĞ»»
     Sysctrl_SysClkSwitch(pstcCfg->enClkSrc);
 
-    //æ—¶é’Ÿåˆ†é¢‘è®¾ç½®
+    //Ê±ÖÓ·ÖÆµÉèÖÃ
     Sysctrl_SetHCLKDiv(pstcCfg->enHClkDiv);
     Sysctrl_SetPCLKDiv(pstcCfg->enPClkDiv);
 
@@ -484,31 +484,31 @@ en_result_t Sysctrl_ClkInit(stc_sysctrl_clk_cfg_t *pstcCfg)
 
 /**
  *******************************************************************************
- ** \brief æ—¶é’Ÿå»åˆå§‹åŒ–å‡½æ•°
+ ** \brief Ê±ÖÓÈ¥³õÊ¼»¯º¯Êı
  ** \param [in]
- ** \retval      Ok         è®¾å®šæˆåŠŸ
- **             å…¶ä»–        è®¾å®šå¤±è´¥
+ ** \retval      Ok         Éè¶¨³É¹¦
+ **             ÆäËû        Éè¶¨Ê§°Ü
  ******************************************************************************/
 en_result_t Sysctrl_ClkDeInit(void)
 {
     en_result_t enRet = Ok;
 
-    //é…ç½®RCHä¸ºå†…éƒ¨4Hz
+    //ÅäÖÃRCHÎªÄÚ²¿4Hz
     Sysctrl_SetRCHTrim(SysctrlRchFreq4MHz);
 
-    //æ—¶é’Ÿæºä½¿èƒ½
+    //Ê±ÖÓÔ´Ê¹ÄÜ
     Sysctrl_ClkSourceEnable(SysctrlClkRCH, TRUE);
 
-    //æ—¶é’Ÿæºåˆ‡æ¢
+    //Ê±ÖÓÔ´ÇĞ»»
     Sysctrl_SysClkSwitch(SysctrlClkRCH);
 
-    //å…¶å®ƒæ—¶é’Ÿæºä½¿èƒ½å…³é—­
+    //ÆäËüÊ±ÖÓÔ´Ê¹ÄÜ¹Ø±Õ
     Sysctrl_ClkSourceEnable(SysctrlClkXTH, FALSE);
     Sysctrl_ClkSourceEnable(SysctrlClkRCL, FALSE);
     Sysctrl_ClkSourceEnable(SysctrlClkXTL, FALSE);
     Sysctrl_ClkSourceEnable(SysctrlClkPLL, FALSE);
 
-    //æ—¶é’Ÿåˆ†é¢‘è®¾ç½®
+    //Ê±ÖÓ·ÖÆµÉèÖÃ
     Sysctrl_SetHCLKDiv(SysctrlHclkDiv1);
     Sysctrl_SetPCLKDiv(SysctrlPclkDiv1);
 
@@ -517,14 +517,14 @@ en_result_t Sysctrl_ClkDeInit(void)
 
 /**
  *******************************************************************************
- ** \brief å†…éƒ¨é«˜é€Ÿæ—¶é’Ÿé¢‘ç‡TRIMå€¼åŠ è½½
- ** \param [in]  enRCHFreq  è®¾å®šçš„RCHç›®æ ‡é¢‘ç‡å€¼
- ** \retval      Ok         è®¾å®šæˆåŠŸ
- **             å…¶ä»–        è®¾å®šå¤±è´¥æˆ–æ—¶é’Ÿæœªç¨³å®š
+ ** \brief ÄÚ²¿¸ßËÙÊ±ÖÓÆµÂÊTRIMÖµ¼ÓÔØ
+ ** \param [in]  enRCHFreq  Éè¶¨µÄRCHÄ¿±êÆµÂÊÖµ
+ ** \retval      Ok         Éè¶¨³É¹¦
+ **             ÆäËû        Éè¶¨Ê§°Ü»òÊ±ÖÓÎ´ÎÈ¶¨
  ******************************************************************************/
 en_result_t Sysctrl_SetRCHTrim(en_sysctrl_rch_freq_t enRCHFreq)
 {
-    //åŠ è½½RCH Trimå€¼
+    //¼ÓÔØRCH TrimÖµ
     M0P_SYSCTRL->RCH_CR_f.TRIM = *(RC_TRIM_BASE_ADDR + enRCHFreq);
 
     return Ok;
@@ -532,10 +532,10 @@ en_result_t Sysctrl_SetRCHTrim(en_sysctrl_rch_freq_t enRCHFreq)
 
 /**
  *******************************************************************************
- ** \brief å¤–éƒ¨é«˜é€Ÿæ—¶é’Ÿé¢‘ç‡èŒƒå›´è®¾å®š
- ** \param [in]  enXTHFreq  è®¾å®šçš„é¢‘ç‡å€¼
- ** \retval      Ok         è®¾å®šæˆåŠŸ
- **              å…¶ä»–       è®¾å®šå¤±è´¥æˆ–æ—¶é’Ÿæœªç¨³å®š
+ ** \brief Íâ²¿¸ßËÙÊ±ÖÓÆµÂÊ·¶Î§Éè¶¨
+ ** \param [in]  enXTHFreq  Éè¶¨µÄÆµÂÊÖµ
+ ** \retval      Ok         Éè¶¨³É¹¦
+ **              ÆäËû       Éè¶¨Ê§°Ü»òÊ±ÖÓÎ´ÎÈ¶¨
  ******************************************************************************/
 en_result_t Sysctrl_SetXTHFreq(en_sysctrl_xth_freq_t enXTHFreq)
 {
@@ -548,10 +548,10 @@ en_result_t Sysctrl_SetXTHFreq(en_sysctrl_xth_freq_t enXTHFreq)
 
 /**
  *******************************************************************************
- ** \brief PLLæ—¶é’Ÿé…ç½®
- ** \param [in]  pstcPLLCfg PLLé…ç½®ç»“æ„ä½“æŒ‡é’ˆ
- ** \retval      Ok         è®¾å®šæˆåŠŸ
- **              å…¶ä»–       è®¾å®šå¤±è´¥æˆ–å‚æ•°å€¼ä¸åŒ¹é…
+ ** \brief PLLÊ±ÖÓÅäÖÃ
+ ** \param [in]  pstcPLLCfg PLLÅäÖÃ½á¹¹ÌåÖ¸Õë
+ ** \retval      Ok         Éè¶¨³É¹¦
+ **              ÆäËû       Éè¶¨Ê§°Ü»ò²ÎÊıÖµ²»Æ¥Åä
  ******************************************************************************/
 en_result_t Sysctrl_SetPLLFreq(stc_sysctrl_pll_cfg_t *pstcPLLCfg)
 {
@@ -563,8 +563,8 @@ en_result_t Sysctrl_SetPLLFreq(stc_sysctrl_pll_cfg_t *pstcPLLCfg)
     u16Trim[2] = RCH_CR_TRIM_16M_VAL;
     u16Trim[1] = RCH_CR_TRIM_8M_VAL;
 
-    ////PLLæœ€é«˜æ—¶é’Ÿä¸èƒ½è¶…è¿‡48MHz
-    //RCHä½œä¸ºPLLè¾“å…¥
+    ////PLL×î¸ßÊ±ÖÓ²»ÄÜ³¬¹ı48MHz
+    //RCH×÷ÎªPLLÊäÈë
     if (SysctrlPllRch == pstcPLLCfg->enPllClkSrc)
     {
         if( ((u16Trim[4] == M0P_SYSCTRL->RCH_CR_f.TRIM) && (pstcPLLCfg->enPllMul > 2)) ||
@@ -575,7 +575,7 @@ en_result_t Sysctrl_SetPLLFreq(stc_sysctrl_pll_cfg_t *pstcPLLCfg)
             return ErrorInvalidMode;
         }
     }
-    else    //XTHä½œä¸ºPLLè¾“å…¥
+    else    //XTH×÷ÎªPLLÊäÈë
     {
         if ((SYSTEM_XTH * pstcPLLCfg->enPllMul) > 48*1000*1000)
         {
@@ -593,10 +593,10 @@ en_result_t Sysctrl_SetPLLFreq(stc_sysctrl_pll_cfg_t *pstcPLLCfg)
 
 /**
  *******************************************************************************
- ** \brief å†…éƒ¨ä½é€Ÿæ—¶é’Ÿé¢‘ç‡TRIMå€¼åŠ è½½
- ** \param [in]  enRCLFreq  è®¾å®šçš„RCLç›®æ ‡é¢‘ç‡å€¼
- ** \retval      Ok         è®¾å®šæˆåŠŸ
- **             å…¶ä»–        è®¾å®šå¤±è´¥
+ ** \brief ÄÚ²¿µÍËÙÊ±ÖÓÆµÂÊTRIMÖµ¼ÓÔØ
+ ** \param [in]  enRCLFreq  Éè¶¨µÄRCLÄ¿±êÆµÂÊÖµ
+ ** \retval      Ok         Éè¶¨³É¹¦
+ **             ÆäËû        Éè¶¨Ê§°Ü
  ******************************************************************************/
 en_result_t Sysctrl_SetRCLTrim(en_sysctrl_rcl_freq_t enRCLFreq)
 {
@@ -607,10 +607,10 @@ en_result_t Sysctrl_SetRCLTrim(en_sysctrl_rcl_freq_t enRCLFreq)
 
 /**
  *******************************************************************************
- ** \brief ç³»ç»Ÿæ—¶é’Ÿï¼ˆHCLKï¼‰åˆ†é¢‘è®¾å®š
- ** \param [in]  enHCLKDiv  åˆ†é¢‘è®¾å®šå€¼
- ** \retval      Ok         è®¾å®šæˆåŠŸ
- **             å…¶ä»–        è®¾å®šå¤±è´¥
+ ** \brief ÏµÍ³Ê±ÖÓ£¨HCLK£©·ÖÆµÉè¶¨
+ ** \param [in]  enHCLKDiv  ·ÖÆµÉè¶¨Öµ
+ ** \retval      Ok         Éè¶¨³É¹¦
+ **             ÆäËû        Éè¶¨Ê§°Ü
  ******************************************************************************/
 en_result_t Sysctrl_SetHCLKDiv(en_sysctrl_hclk_div_t enHCLKDiv)
 {
@@ -622,10 +622,10 @@ en_result_t Sysctrl_SetHCLKDiv(en_sysctrl_hclk_div_t enHCLKDiv)
 
 /**
  *******************************************************************************
- ** \brief å¤–è®¾æ—¶é’Ÿï¼ˆPCLKï¼‰åˆ†é¢‘è®¾å®š
- ** \param [in]  enPCLKDiv  åˆ†é¢‘è®¾å®šå€¼
- ** \retval      Ok         è®¾å®šæˆåŠŸ
- **             å…¶ä»–        è®¾å®šå¤±è´¥
+ ** \brief ÍâÉèÊ±ÖÓ£¨PCLK£©·ÖÆµÉè¶¨
+ ** \param [in]  enPCLKDiv  ·ÖÆµÉè¶¨Öµ
+ ** \retval      Ok         Éè¶¨³É¹¦
+ **             ÆäËû        Éè¶¨Ê§°Ü
  ******************************************************************************/
 en_result_t Sysctrl_SetPCLKDiv(en_sysctrl_pclk_div_t enPCLKDiv)
 {
@@ -640,11 +640,11 @@ static volatile boolean_t bDacPeriBac = FALSE;
 
 /**
  *******************************************************************************
- ** \brief è®¾ç½®å¤–è®¾æ—¶é’Ÿé—¨æ§å¼€å…³
- ** \param [in]  enPeripheral   ç›®æ ‡å¤–è®¾
- ** \param [in]  bFlag          ä½¿èƒ½å¼€å…³
- ** \retval      Ok             è®¾å®šæˆåŠŸ
- **             å…¶ä»–            è®¾å®šå¤±è´¥
+ ** \brief ÉèÖÃÍâÉèÊ±ÖÓÃÅ¿Ø¿ª¹Ø
+ ** \param [in]  enPeripheral   Ä¿±êÍâÉè
+ ** \param [in]  bFlag          Ê¹ÄÜ¿ª¹Ø
+ ** \retval      Ok             Éè¶¨³É¹¦
+ **             ÆäËû            Éè¶¨Ê§°Ü
  ******************************************************************************/
 en_result_t Sysctrl_SetPeripheralGate(en_sysctrl_peripheral_gate_t enPeripheral, boolean_t bFlag)
 {
@@ -672,10 +672,10 @@ en_result_t Sysctrl_SetPeripheralGate(en_sysctrl_peripheral_gate_t enPeripheral,
 
 /**
  *******************************************************************************
- ** \brief è·å¾—å¤–è®¾æ—¶é’Ÿé—¨æ§å¼€å…³çŠ¶æ€
- ** \param [in]  enPeripheral   ç›®æ ‡å¤–è®¾
- ** \retval      TRUE           å¼€
- **              FALSE          å…³
+ ** \brief »ñµÃÍâÉèÊ±ÖÓÃÅ¿Ø¿ª¹Ø×´Ì¬
+ ** \param [in]  enPeripheral   Ä¿±êÍâÉè
+ ** \retval      TRUE           ¿ª
+ **              FALSE          ¹Ø
  ******************************************************************************/
 boolean_t Sysctrl_GetPeripheralGate(en_sysctrl_peripheral_gate_t enPeripheral)
 {
@@ -701,11 +701,11 @@ boolean_t Sysctrl_GetPeripheralGate(en_sysctrl_peripheral_gate_t enPeripheral)
 
 /**
  *******************************************************************************
- ** \brief ç³»ç»ŸåŠŸèƒ½è®¾å®š
- ** \param [in]  enFunc     ç³»ç»ŸåŠŸèƒ½æšä¸¾ç±»å‹
- ** \param [in]  bFlag      1-å¼€/0-å…³
- ** \retval      Ok         è®¾å®šæˆåŠŸ
- **             å…¶ä»–        è®¾å®šå¤±è´¥
+ ** \brief ÏµÍ³¹¦ÄÜÉè¶¨
+ ** \param [in]  enFunc     ÏµÍ³¹¦ÄÜÃ¶¾ÙÀàĞÍ
+ ** \param [in]  bFlag      1-¿ª/0-¹Ø
+ ** \retval      Ok         Éè¶¨³É¹¦
+ **             ÆäËû        Éè¶¨Ê§°Ü
  ******************************************************************************/
 en_result_t Sysctrl_SetFunc(en_sysctrl_func_t enFunc, boolean_t bFlag)
 {
@@ -717,10 +717,10 @@ en_result_t Sysctrl_SetFunc(en_sysctrl_func_t enFunc, boolean_t bFlag)
 
 /**
  *******************************************************************************
- ** \brief è®¾å®šRTCæ ¡å‡†æ—¶é’Ÿé¢‘ç‡
- ** \param [in]  enRtcAdj   æ ¡å‡†é¢‘ç‡å€¼
- ** \retval      Ok         è®¾å®šæˆåŠŸ
- **             å…¶ä»–        è®¾å®šå¤±è´¥
+ ** \brief Éè¶¨RTCĞ£×¼Ê±ÖÓÆµÂÊ
+ ** \param [in]  enRtcAdj   Ğ£×¼ÆµÂÊÖµ
+ ** \retval      Ok         Éè¶¨³É¹¦
+ **             ÆäËû        Éè¶¨Ê§°Ü
  ******************************************************************************/
 en_result_t Sysctrl_SetRTCAdjustClkFreq(en_sysctrl_rtc_adjust_t enRtcAdj)
 {
@@ -735,3 +735,4 @@ en_result_t Sysctrl_SetRTCAdjustClkFreq(en_sysctrl_rtc_adjust_t enRtcAdj)
 /*******************************************************************************
  * EOF (not truncated)
  ******************************************************************************/
+

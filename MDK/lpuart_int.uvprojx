@@ -336,7 +336,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\..\mcu\common;.\..\driver\inc;.\..\source</IncludePath>
+              <IncludePath>.\..\mcu\common;.\..\driver\inc;.\..\source;.\..\com;.\..\dri;.\..\mod;.\..\mod_timer</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -455,6 +455,16 @@
               <FileType>1</FileType>
               <FilePath>..\driver\src\sysctrl.c</FilePath>
             </File>
+            <File>
+              <FileName>lptim.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\driver\src\lptim.c</FilePath>
+            </File>
+            <File>
+              <FileName>bt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\driver\src\bt.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -464,6 +474,116 @@
               <FileName>readme.txt</FileName>
               <FileType>5</FileType>
               <FilePath>..\readme.txt</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>com</GroupName>
+          <Files>
+            <File>
+              <FileName>com_atoi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\com\com_atoi.c</FilePath>
+            </File>
+            <File>
+              <FileName>com_bit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\com\com_bit.c</FilePath>
+            </File>
+            <File>
+              <FileName>com_buf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\com\com_buf.c</FilePath>
+            </File>
+            <File>
+              <FileName>com_char.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\com\com_char.c</FilePath>
+            </File>
+            <File>
+              <FileName>com_delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\com\com_delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>com_list.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\com\com_list.c</FilePath>
+            </File>
+            <File>
+              <FileName>com_mac.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\com\com_mac.c</FilePath>
+            </File>
+            <File>
+              <FileName>com_memory.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\com\com_memory.c</FilePath>
+            </File>
+            <File>
+              <FileName>com_queue.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\com\com_queue.c</FilePath>
+            </File>
+            <File>
+              <FileName>com_queue_val_len.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\com\com_queue_val_len.c</FilePath>
+            </File>
+            <File>
+              <FileName>com_sqList.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\com\com_sqList.c</FilePath>
+            </File>
+            <File>
+              <FileName>com_str.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\com\com_str.c</FilePath>
+            </File>
+            <File>
+              <FileName>com_var.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\com\com_var.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>dri</GroupName>
+          <Files>
+            <File>
+              <FileName>dri.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\dri\dri.c</FilePath>
+            </File>
+            <File>
+              <FileName>dri_clk.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\dri\dri_clk.c</FilePath>
+            </File>
+            <File>
+              <FileName>dri_timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\dri\dri_timer.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>mod</GroupName>
+          <Files>
+            <File>
+              <FileName>mod.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod\mod.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>mod_timer</GroupName>
+          <Files>
+            <File>
+              <FileName>timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_timer\timer.c</FilePath>
             </File>
           </Files>
         </Group>

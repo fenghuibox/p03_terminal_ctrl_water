@@ -84,11 +84,11 @@
  *****************************************************************************/
 /**
  * \brief
- *          è·å–ADCä¸­æ–­çŠ¶æ€
+ *          »ñÈ¡ADCÖĞ¶Ï×´Ì¬
  *
- * \param   [in]  enAdcIrq  ADCä¸­æ–­ç±»å‹ @ref en_adc_irq_type_t
+ * \param   [in]  enAdcIrq  ADCÖĞ¶ÏÀàĞÍ @ref en_adc_irq_type_t
  *
- * \retval  ä¸­æ–­æ ‡å¿—
+ * \retval  ÖĞ¶Ï±êÖ¾
  */
 boolean_t Adc_GetIrqStatus(en_adc_irq_type_t enAdcIrq)
 {
@@ -104,9 +104,9 @@ boolean_t Adc_GetIrqStatus(en_adc_irq_type_t enAdcIrq)
 
 /**
  * \brief
- *          è·å–ADCä¸­æ–­çŠ¶æ€
+ *          »ñÈ¡ADCÖĞ¶Ï×´Ì¬
  *
- * \param   [in]  enAdcIrq  ADCä¸­æ–­ç±»å‹ @ref en_adc_irq_type_t
+ * \param   [in]  enAdcIrq  ADCÖĞ¶ÏÀàĞÍ @ref en_adc_irq_type_t
  *
  * \retval  Null
  */
@@ -117,11 +117,11 @@ void Adc_ClrIrqStatus(en_adc_irq_type_t enAdcIrq)
 
 /**
  * \brief
- *          ADCä¸­æ–­ä½¿èƒ½
+ *          ADCÖĞ¶ÏÊ¹ÄÜ
  *
- * \param   æ— 
+ * \param   ÎŞ
  *
- * \retval  æ— 
+ * \retval  ÎŞ
  */
 void Adc_EnableIrq(void)
 {
@@ -130,11 +130,11 @@ void Adc_EnableIrq(void)
 
 /**
  * \brief
- *          ADCä¸­æ–­ç¦æ­¢
+ *          ADCÖĞ¶Ï½ûÖ¹
  *
- * \param   æ— 
+ * \param   ÎŞ
  *
- * \retval  æ— 
+ * \retval  ÎŞ
  */
 void Adc_DisableIrq(void)
 {
@@ -143,12 +143,12 @@ void Adc_DisableIrq(void)
 
 /**
  * \brief
- *          ADCåˆå§‹åŒ–
+ *          ADC³õÊ¼»¯
  *
- * \param   [in]  pstcAdcCfg  ADCé…ç½®æŒ‡é’ˆ
+ * \param   [in]  pstcAdcCfg  ADCÅäÖÃÖ¸Õë
  *
- * \retval  en_result_t  Ok:  é…ç½®æˆåŠŸ
- * \retval  en_result_t  ErrorInvalidParameter: æ— æ•ˆå‚æ•°
+ * \retval  en_result_t  Ok:  ÅäÖÃ³É¹¦
+ * \retval  en_result_t  ErrorInvalidParameter: ÎŞĞ§²ÎÊı
  */
 en_result_t Adc_Init(stc_adc_cfg_t* pstcAdcCfg)
 {
@@ -157,7 +157,7 @@ en_result_t Adc_Init(stc_adc_cfg_t* pstcAdcCfg)
         return ErrorInvalidParameter;
     }
 
-    M0P_ADC->CR0 = 0x1u;    ///< ADC ä½¿èƒ½
+    M0P_ADC->CR0 = 0x1u;    ///< ADC Ê¹ÄÜ
     delay10us(2);
 
     M0P_ADC->CR0 |= (uint32_t)pstcAdcCfg->enAdcClkDiv       |
@@ -175,9 +175,9 @@ en_result_t Adc_Init(stc_adc_cfg_t* pstcAdcCfg)
 
 /**
  * \brief
- *          ADCå•æ¬¡è½¬æ¢å¤–éƒ¨ä¸­æ–­è§¦å‘æºé…ç½®
+ *          ADCµ¥´Î×ª»»Íâ²¿ÖĞ¶Ï´¥·¢Ô´ÅäÖÃ
  *
- * \param   [in]  enAdcTrigSel  è§¦å‘æº
+ * \param   [in]  enAdcTrigSel  ´¥·¢Ô´
  *
  * \retval  en_result_t  Null
  */
@@ -196,9 +196,9 @@ void Adc_SglExtTrigCfg(en_adc_trig_sel_t enAdcTrigSel, boolean_t bValue)
 
 /**
  * \brief
- *          ADCé¡ºåºæ‰«æè½¬æ¢å¤–éƒ¨ä¸­æ–­è§¦å‘æºé…ç½®
+ *          ADCË³ĞòÉ¨Ãè×ª»»Íâ²¿ÖĞ¶Ï´¥·¢Ô´ÅäÖÃ
  *
- * \param   [in]  enAdcTrigSel  è§¦å‘æº
+ * \param   [in]  enAdcTrigSel  ´¥·¢Ô´
  * \param   [in]  TRUE or FALSE
  *
  * \retval  en_result_t  Null
@@ -218,9 +218,9 @@ void Adc_SqrExtTrigCfg(en_adc_trig_sel_t enAdcTrigSel, boolean_t bValue)
 
 /**
  * \brief
- *          ADCæ’é˜Ÿæ‰«æè½¬æ¢å¤–éƒ¨ä¸­æ–­è§¦å‘æºé…ç½®
+ *          ADC²å¶ÓÉ¨Ãè×ª»»Íâ²¿ÖĞ¶Ï´¥·¢Ô´ÅäÖÃ
  *
- * \param   [in]  enAdcTrigSel  è§¦å‘æº
+ * \param   [in]  enAdcTrigSel  ´¥·¢Ô´
  * \param   [in]  TRUE or FALSE
  *
  * \retval  en_result_t  Null
@@ -241,11 +241,11 @@ void Adc_JqrExtTrigCfg(en_adc_trig_sel_t enAdcTrigSel, boolean_t bValue)
 
 /**
  * \brief
- *          ADC å•æ¬¡è½¬æ¢å¼€å§‹
+ *          ADC µ¥´Î×ª»»¿ªÊ¼
  *
- * \param   æ— 
+ * \param   ÎŞ
  *
- * \retval  æ— 
+ * \retval  ÎŞ
  */
 
 void Adc_SGL_Start(void)
@@ -255,11 +255,11 @@ void Adc_SGL_Start(void)
 
 /**
  * \brief
- *          ADC å•æ¬¡è½¬æ¢åœæ­¢
+ *          ADC µ¥´Î×ª»»Í£Ö¹
  *
- * \param   æ— 
+ * \param   ÎŞ
  *
- * \retval  æ— 
+ * \retval  ÎŞ
  */
 void Adc_SGL_Stop(void)
 {
@@ -268,11 +268,11 @@ void Adc_SGL_Stop(void)
 
 /**
  * \brief
- *          ADC å•æ¬¡è½¬æ¢ä¸€ç›´è½¬æ¢å¼€å§‹
+ *          ADC µ¥´Î×ª»»Ò»Ö±×ª»»¿ªÊ¼
  *
- * \param   æ— 
+ * \param   ÎŞ
  *
- * \retval  æ— 
+ * \retval  ÎŞ
  */
 
 void Adc_SGL_Always_Start(void)
@@ -282,11 +282,11 @@ void Adc_SGL_Always_Start(void)
 
 /**
  * \brief
- *          ADC å•æ¬¡è½¬æ¢ä¸€ç›´è½¬æ¢åœæ­¢
+ *          ADC µ¥´Î×ª»»Ò»Ö±×ª»»Í£Ö¹
  *
- * \param   æ— 
+ * \param   ÎŞ
  *
- * \retval  æ— 
+ * \retval  ÎŞ
  */
 
 void Adc_SGL_Always_Stop(void)
@@ -296,11 +296,11 @@ void Adc_SGL_Always_Stop(void)
 
 /**
  * \brief
- *          ADC é¡ºåºæ‰«æè½¬æ¢å¼€å§‹
+ *          ADC Ë³ĞòÉ¨Ãè×ª»»¿ªÊ¼
  *
- * \param   æ— 
+ * \param   ÎŞ
  *
- * \retval  æ— 
+ * \retval  ÎŞ
  */
 
 void Adc_SQR_Start(void)
@@ -310,11 +310,11 @@ void Adc_SQR_Start(void)
 
 /**
  * \brief
- *          ADC é¡ºåºæ‰«æè½¬æ¢åœæ­¢
+ *          ADC Ë³ĞòÉ¨Ãè×ª»»Í£Ö¹
  *
- * \param   æ— 
+ * \param   ÎŞ
  *
- * \retval  æ— 
+ * \retval  ÎŞ
  */
 void Adc_SQR_Stop(void)
 {
@@ -322,11 +322,11 @@ void Adc_SQR_Stop(void)
 }
 /**
  * \brief
- *          ADC æ’é˜Ÿæ‰«æè½¬æ¢å¼€å§‹
+ *          ADC ²å¶ÓÉ¨Ãè×ª»»¿ªÊ¼
  *
- * \param   æ— 
+ * \param   ÎŞ
  *
- * \retval  æ— 
+ * \retval  ÎŞ
  */
 
 void Adc_JQR_Start(void)
@@ -336,11 +336,11 @@ void Adc_JQR_Start(void)
 
 /**
  * \brief
- *          ADC æ’é˜Ÿæ‰«æè½¬æ¢åœæ­¢
+ *          ADC ²å¶ÓÉ¨Ãè×ª»»Í£Ö¹
  *
- * \param   æ— 
+ * \param   ÎŞ
  *
- * \retval  æ— 
+ * \retval  ÎŞ
  */
 void Adc_JQR_Stop(void)
 {
@@ -349,11 +349,11 @@ void Adc_JQR_Stop(void)
 
 /**
  * \brief
- *          ADCä½¿èƒ½
+ *          ADCÊ¹ÄÜ
  *
- * \param   æ— 
+ * \param   ÎŞ
  *
- * \retval  æ— 
+ * \retval  ÎŞ
  */
 void Adc_Enable(void)
 {
@@ -362,11 +362,11 @@ void Adc_Enable(void)
 
 /**
  * \brief
- *          ADCé™¤èƒ½
+ *          ADC³ıÄÜ
  *
- * \param   æ— 
+ * \param   ÎŞ
  *
- * \retval  æ— 
+ * \retval  ÎŞ
  */
 void Adc_Disable(void)
 {
@@ -375,13 +375,13 @@ void Adc_Disable(void)
 
 /**
  * \brief
- *          é…ç½®é¡ºåºæ‰«æè½¬æ¢æ¨¡å¼
+ *          ÅäÖÃË³ĞòÉ¨Ãè×ª»»Ä£Ê½
  *
- * \param   [in]  pstcAdcCfg   ADCé…ç½®æŒ‡é’ˆ
- * \param   [in]  pstcAdcNormCfg  è¿ç»­è½¬æ¢æ¨¡å¼é…ç½®æŒ‡é’ˆ
+ * \param   [in]  pstcAdcCfg   ADCÅäÖÃÖ¸Õë
+ * \param   [in]  pstcAdcNormCfg  Á¬Ğø×ª»»Ä£Ê½ÅäÖÃÖ¸Õë
  *
- * \retval  en_result_t  Ok:  é…ç½®æˆåŠŸ
- * \retval  en_result_t  ErrorInvalidParameter: æ— æ•ˆå‚æ•°
+ * \retval  en_result_t  Ok:  ÅäÖÃ³É¹¦
+ * \retval  en_result_t  ErrorInvalidParameter: ÎŞĞ§²ÎÊı
  */
 en_result_t Adc_SqrModeCfg(stc_adc_sqr_cfg_t* pstcAdcSqrCfg)
 {
@@ -390,7 +390,7 @@ en_result_t Adc_SqrModeCfg(stc_adc_sqr_cfg_t* pstcAdcSqrCfg)
         return ErrorInvalidParameter;
     }
 
-    M0P_ADC->CR1_f.RACCCLR = 0; //ADCè½¬æ¢ç»“æœç´¯åŠ å¯„å­˜å™¨ï¼ˆADC_ResultAccï¼‰æ¸…é›¶
+    M0P_ADC->CR1_f.RACCCLR = 0; //ADC×ª»»½á¹ûÀÛ¼Ó¼Ä´æÆ÷£¨ADC_ResultAcc£©ÇåÁã
     M0P_ADC->CR1_f.RACCEN  = pstcAdcSqrCfg->enResultAcc;
     M0P_ADC->CR1_f.DMASQR  = pstcAdcSqrCfg->bSqrDmaTrig;
 
@@ -401,13 +401,13 @@ en_result_t Adc_SqrModeCfg(stc_adc_sqr_cfg_t* pstcAdcSqrCfg)
 
 /**
  * \brief
- *          é…ç½®æ’é˜Ÿæ‰«æè½¬æ¢æ¨¡å¼
+ *          ÅäÖÃ²å¶ÓÉ¨Ãè×ª»»Ä£Ê½
  *
- * \param   [in]  pstcAdcCfg   ADCé…ç½®æŒ‡é’ˆ
- * \param   [in]  pstcAdcNormCfg  æ‰«æè½¬æ¢æ¨¡å¼é…ç½®æŒ‡é’ˆ
+ * \param   [in]  pstcAdcCfg   ADCÅäÖÃÖ¸Õë
+ * \param   [in]  pstcAdcNormCfg  É¨Ãè×ª»»Ä£Ê½ÅäÖÃÖ¸Õë
  *
- * \retval  en_result_t  Ok:  é…ç½®æˆåŠŸ
- * \retval  en_result_t  ErrorInvalidParameter: æ— æ•ˆå‚æ•°
+ * \retval  en_result_t  Ok:  ÅäÖÃ³É¹¦
+ * \retval  en_result_t  ErrorInvalidParameter: ÎŞĞ§²ÎÊı
  */
 en_result_t Adc_JqrModeCfg(stc_adc_jqr_cfg_t* pstcAdcJqrCfg)
 {
@@ -425,12 +425,12 @@ en_result_t Adc_JqrModeCfg(stc_adc_jqr_cfg_t* pstcAdcJqrCfg)
 
 /**
  * \brief
- *          é…ç½®å•æ¬¡è½¬æ¢é€šé“
+ *          ÅäÖÃµ¥´Î×ª»»Í¨µÀ
  *
- * \param   [in]enstcAdcSampCh è½¬æ¢é€šé“
+ * \param   [in]enstcAdcSampCh ×ª»»Í¨µÀ
  *
- * \retval  en_result_t  Ok:  æˆåŠŸ
- * \retval  en_result_t  ErrorInvalidParameter: æ— æ•ˆå‚æ•°
+ * \retval  en_result_t  Ok:  ³É¹¦
+ * \retval  en_result_t  ErrorInvalidParameter: ÎŞĞ§²ÎÊı
  */
 en_result_t Adc_CfgSglChannel( en_adc_samp_ch_sel_t enstcAdcSampCh)
 {
@@ -441,13 +441,13 @@ en_result_t Adc_CfgSglChannel( en_adc_samp_ch_sel_t enstcAdcSampCh)
 
 /**
  * \brief
- *          é…ç½®é¡ºåºæ‰«æè½¬æ¢é€šé“
+ *          ÅäÖÃË³ĞòÉ¨Ãè×ª»»Í¨µÀ
  *
- * \param   [in]enstcAdcSqrChMux é¡ºåºæ‰«æè½¬æ¢é€šé“é¡ºåº
- * \param   [in]enstcAdcSampCh   è½¬æ¢é€šé“
+ * \param   [in]enstcAdcSqrChMux Ë³ĞòÉ¨Ãè×ª»»Í¨µÀË³Ğò
+ * \param   [in]enstcAdcSampCh   ×ª»»Í¨µÀ
  *
- * \retval  en_result_t  Ok:  æˆåŠŸ
- * \retval  en_result_t  ErrorInvalidParameter: æ— æ•ˆå‚æ•°
+ * \retval  en_result_t  Ok:  ³É¹¦
+ * \retval  en_result_t  ErrorInvalidParameter: ÎŞĞ§²ÎÊı
  */
 en_result_t Adc_CfgSqrChannel(en_adc_sqr_chmux_t enstcAdcSqrChMux, en_adc_samp_ch_sel_t enstcAdcSampCh)
 {
@@ -513,13 +513,13 @@ en_result_t Adc_CfgSqrChannel(en_adc_sqr_chmux_t enstcAdcSqrChMux, en_adc_samp_c
 }
 /**
  * \brief
- *          é…ç½®æ’é˜Ÿæ‰«æè½¬æ¢é€šé“
+ *          ÅäÖÃ²å¶ÓÉ¨Ãè×ª»»Í¨µÀ
  *
- * \param   [in]enstcAdcSqrChMux æ’é˜Ÿæ‰«æè½¬æ¢é€šé“é¡ºåº
- * \param   [in]enstcAdcSampCh   è½¬æ¢é€šé“
+ * \param   [in]enstcAdcSqrChMux ²å¶ÓÉ¨Ãè×ª»»Í¨µÀË³Ğò
+ * \param   [in]enstcAdcSampCh   ×ª»»Í¨µÀ
  *
- * \retval  en_result_t  Ok:  æˆåŠŸ
- * \retval  en_result_t  ErrorInvalidParameter: æ— æ•ˆå‚æ•°
+ * \retval  en_result_t  Ok:  ³É¹¦
+ * \retval  en_result_t  ErrorInvalidParameter: ÎŞĞ§²ÎÊı
  */
 en_result_t Adc_CfgJqrChannel(en_adc_jqr_chmux_t enstcAdcJqrChMux, en_adc_samp_ch_sel_t enstcAdcSampCh)
 {
@@ -549,10 +549,10 @@ en_result_t Adc_CfgJqrChannel(en_adc_jqr_chmux_t enstcAdcJqrChMux, en_adc_samp_c
 
 /**
  * \brief
- *          è·å–é‡‡æ ·å€¼
+ *          »ñÈ¡²ÉÑùÖµ
  *
  *
- * \retval  en_result_t  é‡‡æ ·å€¼
+ * \retval  en_result_t  ²ÉÑùÖµ
  */
 uint32_t Adc_GetSglResult(void)
 {
@@ -561,11 +561,11 @@ uint32_t Adc_GetSglResult(void)
 
 /**
  * \brief
- *          è·å–é‡‡æ ·å€¼
+ *          »ñÈ¡²ÉÑùÖµ
  *
- * \param   [in] enstcAdcSqrChMux  é¡ºåºæ‰«æé€šé“åºå· @ref en_adc_sqr_chmux_t
+ * \param   [in] enstcAdcSqrChMux  Ë³ĞòÉ¨ÃèÍ¨µÀĞòºÅ @ref en_adc_sqr_chmux_t
  *
- * \retval  en_result_t  é‡‡æ ·å€¼
+ * \retval  en_result_t  ²ÉÑùÖµ
  */
 uint32_t Adc_GetSqrResult(en_adc_sqr_chmux_t enstcAdcSqrChMux)
 {
@@ -577,11 +577,11 @@ uint32_t Adc_GetSqrResult(en_adc_sqr_chmux_t enstcAdcSqrChMux)
 
 /**
  * \brief
- *          è·å–æ’é˜Ÿæ‰«æé‡‡æ ·å€¼
+ *          »ñÈ¡²å¶ÓÉ¨Ãè²ÉÑùÖµ
  *
- * \param   [in] enstcAdcJqrChMux  æ’é˜Ÿæ‰«æé€šé“åºå·@ref en_adc_jqr_chmux_t
+ * \param   [in] enstcAdcJqrChMux  ²å¶ÓÉ¨ÃèÍ¨µÀĞòºÅ@ref en_adc_jqr_chmux_t
  *
- * \retval  en_result_t  é‡‡æ ·å€¼
+ * \retval  en_result_t  ²ÉÑùÖµ
  */
 uint32_t Adc_GetJqrResult(en_adc_jqr_chmux_t enstcAdcJqrChMux)
 {
@@ -593,10 +593,10 @@ uint32_t Adc_GetJqrResult(en_adc_jqr_chmux_t enstcAdcJqrChMux)
 
 /**
  * \brief
- *          è·å–ç´¯åŠ é‡‡æ ·å€¼
+ *          »ñÈ¡ÀÛ¼Ó²ÉÑùÖµ
  *
  *
- * \retval  en_result_t  ç´¯åŠ é‡‡æ ·ç»“æœ
+ * \retval  en_result_t  ÀÛ¼Ó²ÉÑù½á¹û
  */
 uint32_t Adc_GetAccResult(void)
 {
@@ -606,11 +606,11 @@ uint32_t Adc_GetAccResult(void)
 
 /**
  * \brief
- *          æ¸…é›¶ç´¯åŠ é‡‡æ ·å€¼
+ *          ÇåÁãÀÛ¼Ó²ÉÑùÖµ
  *
- * \param   æ— 
+ * \param   ÎŞ
  *
- * \retval  æ— 
+ * \retval  ÎŞ
  */
 void Adc_ClrAccResult(void)
 {
@@ -619,11 +619,11 @@ void Adc_ClrAccResult(void)
 
 /**
  * \brief
- *          ADCæ¯”è¾ƒä½¿èƒ½(æ¯”è¾ƒä¸­æ–­)
+ *          ADC±È½ÏÊ¹ÄÜ(±È½ÏÖĞ¶Ï)
  *
- * \param   [in]  pstcAdcIrqCfg  ADCæ¯”è¾ƒé…ç½® @ref stc_adc_threshold_cfg_t
+ * \param   [in]  pstcAdcIrqCfg  ADC±È½ÏÅäÖÃ @ref stc_adc_threshold_cfg_t
  *
- * \retval  æ— 
+ * \retval  ÎŞ
  */
 
 void Adc_ThresholdCfg(stc_adc_threshold_cfg_t* pstcAdcThrCfg)
@@ -646,4 +646,5 @@ void Adc_ThresholdCfg(stc_adc_threshold_cfg_t* pstcAdcThrCfg)
 /******************************************************************************
  * EOF (not truncated)
  ******************************************************************************/
+
 

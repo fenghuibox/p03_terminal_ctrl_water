@@ -78,7 +78,7 @@ extern "C"
  ******************************************************************************/
 /**
  *******************************************************************************
- ** \brief GPIO PORTç±»å‹å®šä¹‰
+ ** \brief GPIO PORTÀàĞÍ¶¨Òå
  ******************************************************************************/
 typedef enum en_gpio_port
 {
@@ -92,7 +92,7 @@ typedef enum en_gpio_port
 
 /**
  *******************************************************************************
- ** \brief GPIO PINç±»å‹å®šä¹‰
+ ** \brief GPIO PINÀàĞÍ¶¨Òå
  ******************************************************************************/
 typedef enum en_gpio_pin
 {
@@ -116,19 +116,19 @@ typedef enum en_gpio_pin
 
 /**
  *******************************************************************************
- ** \brief GPIO ç«¯å£å¤ç”¨åŠŸèƒ½(AF-Alternate function)ç±»å‹å®šä¹‰
- ** \note  å…·ä½“åŠŸèƒ½åŠå«ä¹‰è¯·å‚è€ƒç”¨æˆ·æ‰‹å†ŒGPIOå¤ç”¨è¡¨æˆ–ä¸‹è¡¨
+ ** \brief GPIO ¶Ë¿Ú¸´ÓÃ¹¦ÄÜ(AF-Alternate function)ÀàĞÍ¶¨Òå
+ ** \note  ¾ßÌå¹¦ÄÜ¼°º¬ÒåÇë²Î¿¼ÓÃ»§ÊÖ²áGPIO¸´ÓÃ±í»òÏÂ±í
  ******************************************************************************/
 typedef enum en_gpio_af
 {
-    GpioAf0  = 0u,      ///< GPIOåŠŸèƒ½
-    GpioAf1  = 1u,      ///< GPIO AF1:å¤ç”¨åŠŸèƒ½1
-    GpioAf2  = 2u,      ///< GPIO AF2:å¤ç”¨åŠŸèƒ½2
-    GpioAf3  = 3u,      ///< GPIO AF3:å¤ç”¨åŠŸèƒ½3
-    GpioAf4  = 4u,      ///< GPIO AF4:å¤ç”¨åŠŸèƒ½4
-    GpioAf5  = 5u,      ///< GPIO AF5:å¤ç”¨åŠŸèƒ½5
-    GpioAf6  = 6u,      ///< GPIO AF6:å¤ç”¨åŠŸèƒ½6
-    GpioAf7  = 7u,      ///< GPIO AF7:å¤ç”¨åŠŸèƒ½7
+    GpioAf0  = 0u,      ///< GPIO¹¦ÄÜ
+    GpioAf1  = 1u,      ///< GPIO AF1:¸´ÓÃ¹¦ÄÜ1
+    GpioAf2  = 2u,      ///< GPIO AF2:¸´ÓÃ¹¦ÄÜ2
+    GpioAf3  = 3u,      ///< GPIO AF3:¸´ÓÃ¹¦ÄÜ3
+    GpioAf4  = 4u,      ///< GPIO AF4:¸´ÓÃ¹¦ÄÜ4
+    GpioAf5  = 5u,      ///< GPIO AF5:¸´ÓÃ¹¦ÄÜ5
+    GpioAf6  = 6u,      ///< GPIO AF6:¸´ÓÃ¹¦ÄÜ6
+    GpioAf7  = 7u,      ///< GPIO AF7:¸´ÓÃ¹¦ÄÜ7
 }en_gpio_af_t;
 
 ///*||======||=============||=============||=============||=============||=============||=============||=============||*///
@@ -151,7 +151,7 @@ typedef enum en_gpio_af
 ///*||PA14  ||UART1_TXD    ||UART0_TXD    ||TIM3_CH2A    ||LVD_OUT      ||RCH_OUT      ||RCL_OUT      ||PLL_OUT      ||*///
 ///*||PA15  ||SPI0_CS      ||UART1_RXD    ||LPUART1_RTS  ||TIM0_ETR     ||TIM0_CHA     ||TIM3_CH1A    ||             ||*///
 ///*||PB00  ||PCA_CH2      ||TIM3_CH1B    ||LPUART0_TXD  ||TIM5_CHB     ||RCH_OUT      ||RCL_OUT      ||PLL_OUT      ||*///
-///*||PB01  ||PCA_CH3      ||PCLK_OUT     ||TIM3_CH2B    ||TIM6_CHB     ||LPUART0_RTS  ||VC2_OUT      ||TCLK_OUTã€€   ||*///
+///*||PB01  ||PCA_CH3      ||PCLK_OUT     ||TIM3_CH2B    ||TIM6_CHB     ||LPUART0_RTS  ||VC2_OUT      ||TCLK_OUT¡¡   ||*///
 ///*||PB02  ||LPTIM_TOG    ||PCA_ECI      ||LPUART1_TXD  ||TIM4_CHA     ||TIM1_BK      ||TIM0_BK      ||TIM2_BK      ||*///
 ///*||PB03  ||SPI0_SCK     ||TIM0_CHB     ||TIM1_GATE    ||TIM3_CH0A    ||LPTIM_GATE   ||XTL_OUT      ||XTH_OUT      ||*///
 ///*||PB04  ||SPI0_MISO    ||PCA_CH0      ||TIM2_BK      ||UART0_CTS    ||TIM2_GATE    ||TIM3_CH0B    ||LPTIM_ETR    ||*///
@@ -229,98 +229,98 @@ typedef enum en_gpio_af
 
 /**
  *******************************************************************************
- ** \brief GPIOè¾“å…¥è¾“å‡ºé…ç½®æ•°æ®ç±»å‹å®šä¹‰
+ ** \brief GPIOÊäÈëÊä³öÅäÖÃÊı¾İÀàĞÍ¶¨Òå
  ******************************************************************************/
 typedef enum en_gpio_dir
 {
-    GpioDirOut = 0u,                ///< GPIO è¾“å‡º
-    GpioDirIn  = 1u,                ///< GPIO è¾“å…¥
+    GpioDirOut = 0u,                ///< GPIO Êä³ö
+    GpioDirIn  = 1u,                ///< GPIO ÊäÈë
 }en_gpio_dir_t;
 
 /**
  *******************************************************************************
- ** \brief GPIOç«¯å£ä¸Šæ‹‰é…ç½®æ•°æ®ç±»å‹å®šä¹‰
+ ** \brief GPIO¶Ë¿ÚÉÏÀ­ÅäÖÃÊı¾İÀàĞÍ¶¨Òå
  ******************************************************************************/
 typedef enum en_gpio_pu
 {
-    GpioPuDisable = 0u,                ///< GPIOæ— ä¸Šæ‹‰
-    GpioPuEnable  = 1u,                ///< GPIOä¸Šæ‹‰
+    GpioPuDisable = 0u,                ///< GPIOÎŞÉÏÀ­
+    GpioPuEnable  = 1u,                ///< GPIOÉÏÀ­
 }en_gpio_pu_t;
 
 /**
  *******************************************************************************
- ** \brief GPIOç«¯å£ä¸‹æ‹‰é…ç½®æ•°æ®ç±»å‹å®šä¹‰
+ ** \brief GPIO¶Ë¿ÚÏÂÀ­ÅäÖÃÊı¾İÀàĞÍ¶¨Òå
  ******************************************************************************/
 typedef enum en_gpio_pd
 {
-    GpioPdDisable = 0u,                ///< GPIOæ— ä¸‹æ‹‰
-    GpioPdEnable  = 1u,                ///< GPIOä¸‹æ‹‰
+    GpioPdDisable = 0u,                ///< GPIOÎŞÏÂÀ­
+    GpioPdEnable  = 1u,                ///< GPIOÏÂÀ­
 }en_gpio_pd_t;
 /**
  *******************************************************************************
- ** \brief GPIOç«¯å£è¾“å‡ºé©±åŠ¨èƒ½åŠ›é…ç½®æ•°æ®ç±»å‹å®šä¹‰
+ ** \brief GPIO¶Ë¿ÚÊä³öÇı¶¯ÄÜÁ¦ÅäÖÃÊı¾İÀàĞÍ¶¨Òå
  ******************************************************************************/
 typedef enum en_gpio_drv
 {
-    GpioDrvH = 0u,                  ///< GPIOé«˜é©±åŠ¨èƒ½åŠ›
-    GpioDrvL = 1u,                  ///< GPIOä½é©±åŠ¨èƒ½åŠ›
+    GpioDrvH = 0u,                  ///< GPIO¸ßÇı¶¯ÄÜÁ¦
+    GpioDrvL = 1u,                  ///< GPIOµÍÇı¶¯ÄÜÁ¦
 }en_gpio_drv_t;
 
 /**
  *******************************************************************************
- ** \brief GPIOç«¯å£å¼€æ¼è¾“å‡ºæ§åˆ¶æ•°æ®ç±»å‹å®šä¹‰
+ ** \brief GPIO¶Ë¿Ú¿ªÂ©Êä³ö¿ØÖÆÊı¾İÀàĞÍ¶¨Òå
  ******************************************************************************/
 typedef enum en_gpio_od
 {
-    GpioOdDisable = 0u,             ///< GPIOå¼€æ¼è¾“å‡ºå…³é—­
-    GpioOdEnable  = 1u,             ///< GPIOå¼€æ¼è¾“å‡ºä½¿èƒ½
+    GpioOdDisable = 0u,             ///< GPIO¿ªÂ©Êä³ö¹Ø±Õ
+    GpioOdEnable  = 1u,             ///< GPIO¿ªÂ©Êä³öÊ¹ÄÜ
 }en_gpio_od_t;
 
 /**
  *******************************************************************************
- ** \brief GPIOç«¯å£è¾“å…¥/è¾“å‡ºå€¼å¯„å­˜å™¨æ€»çº¿æ§åˆ¶æ¨¡å¼é€‰æ‹©
+ ** \brief GPIO¶Ë¿ÚÊäÈë/Êä³öÖµ¼Ä´æÆ÷×ÜÏß¿ØÖÆÄ£Ê½Ñ¡Ôñ
  ******************************************************************************/
 typedef enum en_gpio_ctrl_mode
 {
-    GpioFastIO = 0u,             ///< FAST IO æ€»çº¿æ§åˆ¶æ¨¡å¼
-    GpioAHB  = 1u,               ///< AHB æ€»çº¿æ§åˆ¶æ¨¡å¼
+    GpioFastIO = 0u,             ///< FAST IO ×ÜÏß¿ØÖÆÄ£Ê½
+    GpioAHB  = 1u,               ///< AHB ×ÜÏß¿ØÖÆÄ£Ê½
 }en_gpio_ctrl_mode_t;
 
 /**
  *******************************************************************************
- ** \brief GPIOä¸­æ–­è§¦å‘æ–¹å¼ç±»å‹å®šä¹‰
+ ** \brief GPIOÖĞ¶Ï´¥·¢·½Ê½ÀàĞÍ¶¨Òå
  ******************************************************************************/
 typedef enum en_gpio_irqtype
 {
-    GpioIrqHigh     = 0u,           ///< GPIOé«˜ç”µå¹³è§¦å‘
-    GpioIrqLow      = 1u,           ///< GPIOä½ç”µå¹³è§¦å‘
-    GpioIrqRising   = 2u,           ///< GPIOä¸Šå‡æ²¿è§¦å‘
-    GpioIrqFalling  = 3u,           ///< GPIOä¸‹é™æ²¿è§¦å‘
+    GpioIrqHigh     = 0u,           ///< GPIO¸ßµçÆ½´¥·¢
+    GpioIrqLow      = 1u,           ///< GPIOµÍµçÆ½´¥·¢
+    GpioIrqRising   = 2u,           ///< GPIOÉÏÉıÑØ´¥·¢
+    GpioIrqFalling  = 3u,           ///< GPIOÏÂ½µÑØ´¥·¢
 }en_gpio_irqtype_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO è¾…åŠ©åŠŸèƒ½ï¼ˆSF-Secondary Functionï¼‰ç«¯å£ä¸­æ–­æ¨¡å¼ç±»å‹å®šä¹‰
+ ** \brief GPIO ¸¨Öú¹¦ÄÜ£¨SF-Secondary Function£©¶Ë¿ÚÖĞ¶ÏÄ£Ê½ÀàĞÍ¶¨Òå
  ******************************************************************************/
 typedef enum en_gpio_sf_irqmode
 {
-    GpioSfIrqDpslpMode  = 1u,        ///< Deep Sleepæ¨¡å¼
-    GpioSfIrqActSlpMode = 0u,        ///< Active/Sleepæ¨¡å¼
+    GpioSfIrqDpslpMode  = 1u,        ///< Deep SleepÄ£Ê½
+    GpioSfIrqActSlpMode = 0u,        ///< Active/SleepÄ£Ê½
 }en_gpio_sf_irqmode_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO è¾…åŠ©åŠŸèƒ½ï¼ˆSF-Secondary Functionï¼‰HCLKè¾“å‡ºé—¨æ§ç±»å‹å®šä¹‰
+ ** \brief GPIO ¸¨Öú¹¦ÄÜ£¨SF-Secondary Function£©HCLKÊä³öÃÅ¿ØÀàĞÍ¶¨Òå
  ******************************************************************************/
 typedef enum en_gpio_sf_hclkout_g
 {
-    GpioSfHclkOutDisable = 0u,       ///< HCLKè¾“å‡ºé—¨æ§å…³é—­
-    GpioSfHclkOutEnable  = 1u,       ///< HCLKè¾“å‡ºé—¨æ§ä½¿èƒ½
+    GpioSfHclkOutDisable = 0u,       ///< HCLKÊä³öÃÅ¿Ø¹Ø±Õ
+    GpioSfHclkOutEnable  = 1u,       ///< HCLKÊä³öÃÅ¿ØÊ¹ÄÜ
 }en_gpio_sf_hclkout_g_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO è¾…åŠ©åŠŸèƒ½ï¼ˆSF-Secondary Functionï¼‰HCLKè¾“å‡ºåˆ†é¢‘é€‰æ‹©ç±»å‹å®šä¹‰
+ ** \brief GPIO ¸¨Öú¹¦ÄÜ£¨SF-Secondary Function£©HCLKÊä³ö·ÖÆµÑ¡ÔñÀàĞÍ¶¨Òå
  ******************************************************************************/
 typedef enum en_gpio_sf_hclkout_div
 {
@@ -331,17 +331,17 @@ typedef enum en_gpio_sf_hclkout_div
 }en_gpio_sf_hclkout_div_t;
 /**
  *******************************************************************************
- ** \brief GPIO è¾…åŠ©åŠŸèƒ½ï¼ˆSF-Secondary Functionï¼‰PCLKè¾“å‡ºé—¨æ§ç±»å‹å®šä¹‰
+ ** \brief GPIO ¸¨Öú¹¦ÄÜ£¨SF-Secondary Function£©PCLKÊä³öÃÅ¿ØÀàĞÍ¶¨Òå
  ******************************************************************************/
 typedef enum en_gpio_sf_pclkout_g
 {
-    GpioSfPclkOutDisable = 0u,       ///< PCLKè¾“å‡ºé—¨æ§å…³é—­
-    GpioSfPclkOutEnable  = 1u,       ///< PCLKè¾“å‡ºé—¨æ§ä½¿èƒ½
+    GpioSfPclkOutDisable = 0u,       ///< PCLKÊä³öÃÅ¿Ø¹Ø±Õ
+    GpioSfPclkOutEnable  = 1u,       ///< PCLKÊä³öÃÅ¿ØÊ¹ÄÜ
 }en_gpio_sf_pclkout_g_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO è¾…åŠ©åŠŸèƒ½ï¼ˆSF-Secondary Functionï¼‰PCLKè¾“å‡ºåˆ†é¢‘é€‰æ‹©ç±»å‹å®šä¹‰
+ ** \brief GPIO ¸¨Öú¹¦ÄÜ£¨SF-Secondary Function£©PCLKÊä³ö·ÖÆµÑ¡ÔñÀàĞÍ¶¨Òå
  ******************************************************************************/
 typedef enum en_gpio_sf_pclkout_div
 {
@@ -353,17 +353,17 @@ typedef enum en_gpio_sf_pclkout_div
 
 /**
  *******************************************************************************
- ** \brief GPIO è¾…åŠ©åŠŸèƒ½ï¼ˆSF-Secondary Functionï¼‰IRè¾“å‡ºææ€§é€‰æ‹©ç±»å‹å®šä¹‰
+ ** \brief GPIO ¸¨Öú¹¦ÄÜ£¨SF-Secondary Function£©IRÊä³ö¼«ĞÔÑ¡ÔñÀàĞÍ¶¨Òå
  ******************************************************************************/
 typedef enum en_gpio_sf_irpol
 {
-    GpioSfIrP = 0u,                  ///< IRæ­£å‘è¾“å‡º
-    GpioSfIrN = 1u,                  ///< IRåå‘è¾“å‡º
+    GpioSfIrP = 0u,                  ///< IRÕıÏòÊä³ö
+    GpioSfIrN = 1u,                  ///< IR·´ÏòÊä³ö
 }en_gpio_sf_irpol_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO è¾…åŠ©åŠŸèƒ½ï¼ˆSF-Secondary Functionï¼‰SSNé€šé“ç±»å‹å®šä¹‰
+ ** \brief GPIO ¸¨Öú¹¦ÄÜ£¨SF-Secondary Function£©SSNÍ¨µÀÀàĞÍ¶¨Òå
  ******************************************************************************/
 typedef enum en_gpio_sf_ssnspi
 {
@@ -373,11 +373,11 @@ typedef enum en_gpio_sf_ssnspi
 
 /**
  *******************************************************************************
- ** \brief GPIO è¾…åŠ©åŠŸèƒ½ï¼ˆSF-Secondary Functionï¼‰SSNä¸å¤–éƒ¨æ—¶é’Ÿè¾“å…¥ä¿¡å·æºé€‰æ‹©ç±»å‹å®šä¹‰
+ ** \brief GPIO ¸¨Öú¹¦ÄÜ£¨SF-Secondary Function£©SSNÓëÍâ²¿Ê±ÖÓÊäÈëĞÅºÅÔ´Ñ¡ÔñÀàĞÍ¶¨Òå
  ******************************************************************************/
 typedef enum en_gpio_sf_ssn_extclk
 {
-    GpioSfSsnExtClkH    = 0u,        ///< é«˜ç”µå¹³
+    GpioSfSsnExtClkH    = 0u,        ///< ¸ßµçÆ½
     GpioSfSsnExtClkPA03 = 1u,        ///< PA03
     GpioSfSsnExtClkPA04 = 2u,        ///< PA04
     GpioSfSsnExtClkPA06 = 3u,        ///< PA06
@@ -397,101 +397,101 @@ typedef enum en_gpio_sf_ssn_extclk
 
 /**
  *******************************************************************************
- ** \brief GPIO è¾…åŠ©åŠŸèƒ½ï¼ˆSF-Secondary Functionï¼‰å®šæ—¶å™¨äº’è”åŠŸèƒ½é€‰æ‹©ç±»å‹å®šä¹‰
- ** \note  å…·ä½“åŠŸèƒ½åŠå«ä¹‰è¯·å‚è€ƒç”¨æˆ·æ‰‹å†ŒGPIOè¾…åŠ©å¯„å­˜å™¨æè¿°
+ ** \brief GPIO ¸¨Öú¹¦ÄÜ£¨SF-Secondary Function£©¶¨Ê±Æ÷»¥Áª¹¦ÄÜÑ¡ÔñÀàĞÍ¶¨Òå
+ ** \note  ¾ßÌå¹¦ÄÜ¼°º¬ÒåÇë²Î¿¼ÓÃ»§ÊÖ²áGPIO¸¨Öú¼Ä´æÆ÷ÃèÊö
  ******************************************************************************/
 typedef enum en_gpio_sf
 {
-    GpioSf0 = 0u,       ///< SF0:PX_SELçš„é…ç½®åŠŸèƒ½
-    GpioSf1 = 1u,       ///< SF1:è¾…åŠ©åŠŸèƒ½1
-    GpioSf2 = 2u,       ///< SF2:è¾…åŠ©åŠŸèƒ½2
-    GpioSf3 = 3u,       ///< SF3:è¾…åŠ©åŠŸèƒ½3
-    GpioSf4 = 4u,       ///< SF4:è¾…åŠ©åŠŸèƒ½4
-    GpioSf5 = 5u,       ///< SF5:è¾…åŠ©åŠŸèƒ½5
-    GpioSf6 = 6u,       ///< SF6:è¾…åŠ©åŠŸèƒ½6
-    GpioSf7 = 7u,       ///< SF7:è¾…åŠ©åŠŸèƒ½7
+    GpioSf0 = 0u,       ///< SF0:PX_SELµÄÅäÖÃ¹¦ÄÜ
+    GpioSf1 = 1u,       ///< SF1:¸¨Öú¹¦ÄÜ1
+    GpioSf2 = 2u,       ///< SF2:¸¨Öú¹¦ÄÜ2
+    GpioSf3 = 3u,       ///< SF3:¸¨Öú¹¦ÄÜ3
+    GpioSf4 = 4u,       ///< SF4:¸¨Öú¹¦ÄÜ4
+    GpioSf5 = 5u,       ///< SF5:¸¨Öú¹¦ÄÜ5
+    GpioSf6 = 6u,       ///< SF6:¸¨Öú¹¦ÄÜ6
+    GpioSf7 = 7u,       ///< SF7:¸¨Öú¹¦ÄÜ7
 }en_gpio_sf_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO è¾…åŠ©åŠŸèƒ½ï¼ˆSF-Secondary Functionï¼‰å®šæ—¶å™¨é—¨æ§ç±»å‹é€‰æ‹©æ•°æ®ç±»å‹å®šä¹‰
+ ** \brief GPIO ¸¨Öú¹¦ÄÜ£¨SF-Secondary Function£©¶¨Ê±Æ÷ÃÅ¿ØÀàĞÍÑ¡ÔñÊı¾İÀàĞÍ¶¨Òå
  ******************************************************************************/
 typedef enum en_gpio_sf_tim_g
 {
-    GpioSfTim0G   = 0u,                   ///<Tim0å®šæ—¶å™¨GATEè¾“å…¥é€‰æ‹©
-    GpioSfTim1G   = 3u,                   ///<Tim1å®šæ—¶å™¨GATEè¾“å…¥é€‰æ‹©
-    GpioSfTim2G   = 6u,                   ///<Tim2å®šæ—¶å™¨GATEè¾“å…¥é€‰æ‹©
-    GpioSfTim3G   = 9u,                   ///<Tim3å®šæ—¶å™¨GATEè¾“å…¥é€‰æ‹©
-    GpioSfLpTim0G = 12u,                  ///<LPTim0å®šæ—¶å™¨GATEè¾“å…¥é€‰æ‹©
-    GpioSfLpTim1G = 38u,                  ///<LPTim1å®šæ—¶å™¨GATEè¾“å…¥é€‰æ‹©
+    GpioSfTim0G   = 0u,                   ///<Tim0¶¨Ê±Æ÷GATEÊäÈëÑ¡Ôñ
+    GpioSfTim1G   = 3u,                   ///<Tim1¶¨Ê±Æ÷GATEÊäÈëÑ¡Ôñ
+    GpioSfTim2G   = 6u,                   ///<Tim2¶¨Ê±Æ÷GATEÊäÈëÑ¡Ôñ
+    GpioSfTim3G   = 9u,                   ///<Tim3¶¨Ê±Æ÷GATEÊäÈëÑ¡Ôñ
+    GpioSfLpTim0G = 12u,                  ///<LPTim0¶¨Ê±Æ÷GATEÊäÈëÑ¡Ôñ
+    GpioSfLpTim1G = 38u,                  ///<LPTim1¶¨Ê±Æ÷GATEÊäÈëÑ¡Ôñ
 }en_gpio_sf_tim_g_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO è¾…åŠ©åŠŸèƒ½ï¼ˆSF-Secondary Functionï¼‰å®šæ—¶å™¨ETRç±»å‹é€‰æ‹©æ•°æ®ç±»å‹å®šä¹‰
+ ** \brief GPIO ¸¨Öú¹¦ÄÜ£¨SF-Secondary Function£©¶¨Ê±Æ÷ETRÀàĞÍÑ¡ÔñÊı¾İÀàĞÍ¶¨Òå
  ******************************************************************************/
 typedef enum en_gpio_sf_tim_e
 {
-    GpioSfTim0E   = 0u,                   ///<Tim0å®šæ—¶å™¨ETRè¾“å…¥é€‰æ‹©
-    GpioSfTim1E   = 3u,                   ///<Tim1å®šæ—¶å™¨ETRè¾“å…¥é€‰æ‹©
-    GpioSfTim2E   = 6u,                   ///<Tim2å®šæ—¶å™¨ETRè¾“å…¥é€‰æ‹©
-    GpioSfTim3E   = 9u,                   ///<Tim3å®šæ—¶å™¨ETRè¾“å…¥é€‰æ‹©
-    GpioSfLpTim0E = 12u,                  ///<LPTim0å®šæ—¶å™¨ETRè¾“å…¥é€‰æ‹©
-    GpioSfLpTim1E = 41u,                  ///<LPTim1å®šæ—¶å™¨ETRè¾“å…¥é€‰æ‹©
+    GpioSfTim0E   = 0u,                   ///<Tim0¶¨Ê±Æ÷ETRÊäÈëÑ¡Ôñ
+    GpioSfTim1E   = 3u,                   ///<Tim1¶¨Ê±Æ÷ETRÊäÈëÑ¡Ôñ
+    GpioSfTim2E   = 6u,                   ///<Tim2¶¨Ê±Æ÷ETRÊäÈëÑ¡Ôñ
+    GpioSfTim3E   = 9u,                   ///<Tim3¶¨Ê±Æ÷ETRÊäÈëÑ¡Ôñ
+    GpioSfLpTim0E = 12u,                  ///<LPTim0¶¨Ê±Æ÷ETRÊäÈëÑ¡Ôñ
+    GpioSfLpTim1E = 41u,                  ///<LPTim1¶¨Ê±Æ÷ETRÊäÈëÑ¡Ôñ
 }en_gpio_sf_tim_e_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO è¾…åŠ©åŠŸèƒ½ï¼ˆSF-Secondary Functionï¼‰å®šæ—¶å™¨æ•è·è¾“å…¥ç±»å‹é€‰æ‹©æ•°æ®ç±»å‹å®šä¹‰
+ ** \brief GPIO ¸¨Öú¹¦ÄÜ£¨SF-Secondary Function£©¶¨Ê±Æ÷²¶»ñÊäÈëÀàĞÍÑ¡ÔñÊı¾İÀàĞÍ¶¨Òå
  ******************************************************************************/
 typedef enum en_gpio_sf_tim_c
 {
-    GpioSfTim0CA = 0u,                   ///<Tim0å®šæ—¶å™¨CHAè¾“å…¥é€‰æ‹©
-    GpioSfTim1CA = 3u,                   ///<Tim1å®šæ—¶å™¨CHAè¾“å…¥é€‰æ‹©
-    GpioSfTim2CA = 6u,                   ///<Tim2å®šæ—¶å™¨CHAè¾“å…¥é€‰æ‹©
-    GpioSfTim3CA = 9u,                   ///<Tim3å®šæ—¶å™¨CH0Aè¾“å…¥é€‰æ‹©
-    GpioSfTim3CB = 12u,                  ///<Tim3å®šæ—¶å™¨CH0Bè¾“å…¥é€‰æ‹©
+    GpioSfTim0CA = 0u,                   ///<Tim0¶¨Ê±Æ÷CHAÊäÈëÑ¡Ôñ
+    GpioSfTim1CA = 3u,                   ///<Tim1¶¨Ê±Æ÷CHAÊäÈëÑ¡Ôñ
+    GpioSfTim2CA = 6u,                   ///<Tim2¶¨Ê±Æ÷CHAÊäÈëÑ¡Ôñ
+    GpioSfTim3CA = 9u,                   ///<Tim3¶¨Ê±Æ÷CH0AÊäÈëÑ¡Ôñ
+    GpioSfTim3CB = 12u,                  ///<Tim3¶¨Ê±Æ÷CH0BÊäÈëÑ¡Ôñ
 }en_gpio_sf_tim_c_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO è¾…åŠ©åŠŸèƒ½ï¼ˆSF-Secondary Functionï¼‰PCAæ•è·é€‰æ‹©æ•°æ®ç±»å‹å®šä¹‰
+ ** \brief GPIO ¸¨Öú¹¦ÄÜ£¨SF-Secondary Function£©PCA²¶»ñÑ¡ÔñÊı¾İÀàĞÍ¶¨Òå
  ******************************************************************************/
 typedef enum en_gpio_sf_pca
 {
-    GpioSfPcaCH0 = 0u,                   ///<PCA_CH0æ•è·å£è¾“å…¥é€‰æ‹©
-    GpioSfPcaECI = 3u,                   ///<PCA ECIæ—¶é’Ÿè¾“å…¥é€‰æ‹©
+    GpioSfPcaCH0 = 0u,                   ///<PCA_CH0²¶»ñ¿ÚÊäÈëÑ¡Ôñ
+    GpioSfPcaECI = 3u,                   ///<PCA ECIÊ±ÖÓÊäÈëÑ¡Ôñ
 }en_gpio_sf_pca_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO è¾…åŠ©åŠŸèƒ½ï¼ˆSF-Secondary Functionï¼‰PCNTè„‰å†²è¾“å…¥é€‰æ‹©æ•°æ®ç±»å‹å®šä¹‰
+ ** \brief GPIO ¸¨Öú¹¦ÄÜ£¨SF-Secondary Function£©PCNTÂö³åÊäÈëÑ¡ÔñÊı¾İÀàĞÍ¶¨Òå
  ******************************************************************************/
 typedef enum en_gpio_sf_pcnt
 {
-    GpioSfPcntS0 = 0u,                   ///<PCNT_S0è¾“å…¥é€‰æ‹©
-    GpioSfPcntS1 = 3u,                   ///<PCNT_S1è¾“å…¥é€‰æ‹©
+    GpioSfPcntS0 = 0u,                   ///<PCNT_S0ÊäÈëÑ¡Ôñ
+    GpioSfPcntS1 = 3u,                   ///<PCNT_S1ÊäÈëÑ¡Ôñ
 }en_gpio_sf_pcnt_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO ç«¯å£é…ç½®ç»“æ„ä½“å®šä¹‰
+ ** \brief GPIO ¶Ë¿ÚÅäÖÃ½á¹¹Ìå¶¨Òå
  ******************************************************************************/
 typedef struct
 {
-    boolean_t           bOutputVal;      ///< é»˜è®¤ç«¯å£è¾“å‡ºç”µå¹³
-    en_gpio_dir_t       enDir;           ///< ç«¯å£æ–¹å‘é…ç½®
-    en_gpio_drv_t       enDrv;           ///< ç«¯å£é©±åŠ¨èƒ½åŠ›é…ç½®
-    en_gpio_pu_t        enPu;            ///< ç«¯å£ä¸Šæ‹‰é…ç½®
-    en_gpio_pd_t        enPd;            ///< ç«¯å£ä¸‹æ‹‰é…ç½®
-    en_gpio_od_t        enOD;            ///< ç«¯å£å¼€æ¼è¾“å‡ºé…ç½®
-    en_gpio_ctrl_mode_t enCtrlMode;      ///< ç«¯å£è¾“å…¥/è¾“å‡ºå€¼å¯„å­˜å™¨æ€»çº¿æ§åˆ¶æ¨¡å¼é…ç½®
+    boolean_t           bOutputVal;      ///< Ä¬ÈÏ¶Ë¿ÚÊä³öµçÆ½
+    en_gpio_dir_t       enDir;           ///< ¶Ë¿Ú·½ÏòÅäÖÃ
+    en_gpio_drv_t       enDrv;           ///< ¶Ë¿ÚÇı¶¯ÄÜÁ¦ÅäÖÃ
+    en_gpio_pu_t        enPu;            ///< ¶Ë¿ÚÉÏÀ­ÅäÖÃ
+    en_gpio_pd_t        enPd;            ///< ¶Ë¿ÚÏÂÀ­ÅäÖÃ
+    en_gpio_od_t        enOD;            ///< ¶Ë¿Ú¿ªÂ©Êä³öÅäÖÃ
+    en_gpio_ctrl_mode_t enCtrlMode;      ///< ¶Ë¿ÚÊäÈë/Êä³öÖµ¼Ä´æÆ÷×ÜÏß¿ØÖÆÄ£Ê½ÅäÖÃ
 }stc_gpio_cfg_t;
 
 /*******************************************************************************
- * Global definitionsâ€”â€”(GPIO å¤ç”¨åŠŸèƒ½å®å®šä¹‰)
+ * Global definitions¡ª¡ª(GPIO ¸´ÓÃ¹¦ÄÜºê¶¨Òå)
  ******************************************************************************/
-///< GPIO å¤ç”¨åŠŸèƒ½å®å®šä¹‰
+///< GPIO ¸´ÓÃ¹¦ÄÜºê¶¨Òå
 ///< GpioAf1
 #define PA00_UART1_CTS    (GpioPortA<<16u|GpioPin0 <<8u|GpioAf1)
 #define PA01_UART1_RTS    (GpioPortA<<16u|GpioPin1 <<8u|GpioAf1)
@@ -1156,63 +1156,65 @@ typedef uint32_t GpioPinMux;
 /******************************************************************************
   Global function prototypes (definition in C source)
 *******************************************************************************/
- ///< GPIO IOåˆå§‹åŒ–/å»åˆå§‹åŒ–
+ ///< GPIO IO³õÊ¼»¯/È¥³õÊ¼»¯
 en_result_t Gpio_Init(en_gpio_port_t enPort, en_gpio_pin_t enPin, stc_gpio_cfg_t *pstcGpioCfg);
 
-///< GPIO è·å–ç«¯å£è¾“å…¥ç”µå¹³
+///< GPIO »ñÈ¡¶Ë¿ÚÊäÈëµçÆ½
 boolean_t   Gpio_GetInputIO(en_gpio_port_t enPort, en_gpio_pin_t enPin);
 uint16_t    Gpio_GetInputData(en_gpio_port_t enPort);
 
-///< GPIO è®¾ç½®ç«¯å£è¾“å‡º
-///< GPIO ç«¯å£è¾“å‡ºç”µå¹³é…ç½®åŠè·å–
+///< GPIO ÉèÖÃ¶Ë¿ÚÊä³ö
+///< GPIO ¶Ë¿ÚÊä³öµçÆ½ÅäÖÃ¼°»ñÈ¡
 en_result_t Gpio_WriteOutputIO(en_gpio_port_t enPort, en_gpio_pin_t enPin, boolean_t bVal);
 boolean_t   Gpio_ReadOutputIO(en_gpio_port_t enPort, en_gpio_pin_t enPin);
-///< GPIO ç«¯å£/å¼•è„šè¾“å‡ºç”µå¹³ç½®ä½
+///< GPIO ¶Ë¿Ú/Òı½ÅÊä³öµçÆ½ÖÃÎ»
 en_result_t Gpio_SetPort(en_gpio_port_t enPort, uint16_t u16ValMsk);
 en_result_t Gpio_SetIO(en_gpio_port_t enPort, en_gpio_pin_t enPin);
-///< GPIO ç«¯å£/å¼•è„šè¾“å‡ºç”µå¹³æ¸…é›¶
+///< GPIO ¶Ë¿Ú/Òı½ÅÊä³öµçÆ½ÇåÁã
 en_result_t Gpio_ClrPort(en_gpio_port_t enPort, uint16_t u16ValMsk);
 en_result_t Gpio_ClrIO(en_gpio_port_t enPort, en_gpio_pin_t enPin);
-///< GPIO ç«¯å£è¾“å‡ºç”µå¹³ç½®ä½ä¸æ¸…é›¶è®¾ç½®
+
+
+///< GPIO ¶Ë¿ÚÊä³öµçÆ½ÖÃÎ»ÓëÇåÁãÉèÖÃ
 en_result_t Gpio_SetClrPort(en_gpio_port_t enPort, uint32_t u32ValMsk);
 
-///< GPIO è®¾ç½®ç«¯å£ä¸ºæ¨¡æ‹ŸåŠŸèƒ½
+///< GPIO ÉèÖÃ¶Ë¿ÚÎªÄ£Äâ¹¦ÄÜ
 en_result_t Gpio_SetAnalogMode(en_gpio_port_t enPort, en_gpio_pin_t enPin);
 
-///< GPIO è®¾ç½®ç«¯å£ä¸ºç«¯å£å¤ç”¨åŠŸèƒ½
+///< GPIO ÉèÖÃ¶Ë¿ÚÎª¶Ë¿Ú¸´ÓÃ¹¦ÄÜ
 en_result_t Gpio_SetAfMode(en_gpio_port_t enPort, en_gpio_pin_t enPin, en_gpio_af_t enAf);
 void Gpio_SetAfMode_Lite(GpioPinMux PinMux);
 
-///< GPIO ç«¯å£ä¸­æ–­æ§åˆ¶åŠŸèƒ½ä½¿èƒ½/å…³é—­
+///< GPIO ¶Ë¿ÚÖĞ¶Ï¿ØÖÆ¹¦ÄÜÊ¹ÄÜ/¹Ø±Õ
 en_result_t Gpio_EnableIrq(en_gpio_port_t enPort, en_gpio_pin_t enPin, en_gpio_irqtype_t enType);
 en_result_t Gpio_DisableIrq(en_gpio_port_t enPort, en_gpio_pin_t enPin, en_gpio_irqtype_t enType);
-///< GPIO ä¸­æ–­çŠ¶æ€è·å–
+///< GPIO ÖĞ¶Ï×´Ì¬»ñÈ¡
 boolean_t   Gpio_GetIrqStatus(en_gpio_port_t enPort, en_gpio_pin_t enPin);
-///< GPIO ä¸­æ–­æ ‡å¿—æ¸…é™¤
+///< GPIO ÖĞ¶Ï±êÖ¾Çå³ı
 en_result_t Gpio_ClearIrq(en_gpio_port_t enPort, en_gpio_pin_t enPin);
 
-///< GPIO ç«¯å£è¾…åŠ©åŠŸèƒ½é…ç½®
-///< GPIO ä¸­æ–­æ¨¡å¼é…ç½®
+///< GPIO ¶Ë¿Ú¸¨Öú¹¦ÄÜÅäÖÃ
+///< GPIO ÖĞ¶ÏÄ£Ê½ÅäÖÃ
 en_result_t Gpio_SfIrqModeCfg(en_gpio_sf_irqmode_t enIrqMode);
-///< GPIO IRè¾“å‡ºææ€§é…ç½®
+///< GPIO IRÊä³ö¼«ĞÔÅäÖÃ
 en_result_t Gpio_SfIrPolCfg(en_gpio_sf_irpol_t enIrPolMode);
-///< GPIO HCLKè¾“å‡ºé…ç½®
+///< GPIO HCLKÊä³öÅäÖÃ
 en_result_t Gpio_SfHClkOutputCfg(en_gpio_sf_hclkout_g_t enGate, en_gpio_sf_hclkout_div_t enDiv);
-///< GPIO PCLKè¾“å‡ºé…ç½®
+///< GPIO PCLKÊä³öÅäÖÃ
 en_result_t Gpio_SfPClkOutputCfg(en_gpio_sf_pclkout_g_t enGate, en_gpio_sf_pclkout_div_t enDiv);
-///< GPIO å¤–éƒ¨æ—¶é’Ÿè¾“å…¥é…ç½®
+///< GPIO Íâ²¿Ê±ÖÓÊäÈëÅäÖÃ
 en_result_t Gpio_SfExtClkCfg(en_gpio_sf_ssn_extclk_t enExtClk);
-///< GPIO SPI SSNè¾“å…¥é…ç½®
+///< GPIO SPI SSNÊäÈëÅäÖÃ
 en_result_t Gpio_SfSsnCfg(en_gpio_sf_ssnspi_t enSpi, en_gpio_sf_ssn_extclk_t enSsn);
-///< GPIO Timer é—¨æ§è¾“å…¥é…ç½®
+///< GPIO Timer ÃÅ¿ØÊäÈëÅäÖÃ
 en_result_t Gpio_SfTimGCfg(en_gpio_sf_tim_g_t enTimG, en_gpio_sf_t enSf);
-///< GPIO Timer ETRé€‰æ‹©é…ç½®
+///< GPIO Timer ETRÑ¡ÔñÅäÖÃ
 en_result_t Gpio_SfTimECfg(en_gpio_sf_tim_e_t enTimE, en_gpio_sf_t enSf);
-///< GPIO Timer æ•è·è¾“å…¥é…ç½®
+///< GPIO Timer ²¶»ñÊäÈëÅäÖÃ
 en_result_t Gpio_SfTimCCfg(en_gpio_sf_tim_c_t enTimC, en_gpio_sf_t enSf);
-///< GPIO PCAæ•è·é€‰æ‹©é…ç½®
+///< GPIO PCA²¶»ñÑ¡ÔñÅäÖÃ
 en_result_t Gpio_SfPcaCfg(en_gpio_sf_pca_t enPca, en_gpio_sf_t enSf);
-///< GPIO PCNTæ•è·é€‰æ‹©é…ç½®
+///< GPIO PCNT²¶»ñÑ¡ÔñÅäÖÃ
 en_result_t Gpio_SfPcntCfg(en_gpio_sf_pcnt_t enPcnt, en_gpio_sf_t enSf);
 
 //@} // GpioGroup
@@ -1225,3 +1227,4 @@ en_result_t Gpio_SfPcntCfg(en_gpio_sf_pcnt_t enPcnt, en_gpio_sf_t enSf);
 /******************************************************************************
  * EOF (not truncated)
  ******************************************************************************/
+

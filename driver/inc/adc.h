@@ -76,14 +76,14 @@ extern "C"
 /******************************************************************************
  * Global definitions
  ******************************************************************************/
-#define ADC_SCAN_CH0_EN     (0x1u)           /*!< SCANæ¨¡å¼ä½¿ç”¨ADC CH0 */
-#define ADC_SCAN_CH1_EN     (0x1u<<1)        /*!< SCANæ¨¡å¼ä½¿ç”¨ADC CH1 */
-#define ADC_SCAN_CH2_EN     (0x1u<<2)        /*!< SCANæ¨¡å¼ä½¿ç”¨ADC CH2 */
-#define ADC_SCAN_CH3_EN     (0x1u<<3)        /*!< SCANæ¨¡å¼ä½¿ç”¨ADC CH3 */
-#define ADC_SCAN_CH4_EN     (0x1u<<4)        /*!< SCANæ¨¡å¼ä½¿ç”¨ADC CH4 */
-#define ADC_SCAN_CH5_EN     (0x1u<<5)        /*!< SCANæ¨¡å¼ä½¿ç”¨ADC CH5 */
-#define ADC_SCAN_CH6_EN     (0x1u<<6)        /*!< SCANæ¨¡å¼ä½¿ç”¨ADC CH6 */
-#define ADC_SCAN_CH7_EN     (0x1u<<7)        /*!< SCANæ¨¡å¼ä½¿ç”¨ADC CH7 */
+#define ADC_SCAN_CH0_EN     (0x1u)           /*!< SCANÄ£Ê½Ê¹ÓÃADC CH0 */
+#define ADC_SCAN_CH1_EN     (0x1u<<1)        /*!< SCANÄ£Ê½Ê¹ÓÃADC CH1 */
+#define ADC_SCAN_CH2_EN     (0x1u<<2)        /*!< SCANÄ£Ê½Ê¹ÓÃADC CH2 */
+#define ADC_SCAN_CH3_EN     (0x1u<<3)        /*!< SCANÄ£Ê½Ê¹ÓÃADC CH3 */
+#define ADC_SCAN_CH4_EN     (0x1u<<4)        /*!< SCANÄ£Ê½Ê¹ÓÃADC CH4 */
+#define ADC_SCAN_CH5_EN     (0x1u<<5)        /*!< SCANÄ£Ê½Ê¹ÓÃADC CH5 */
+#define ADC_SCAN_CH6_EN     (0x1u<<6)        /*!< SCANÄ£Ê½Ê¹ÓÃADC CH6 */
+#define ADC_SCAN_CH7_EN     (0x1u<<7)        /*!< SCANÄ£Ê½Ê¹ÓÃADC CH7 */
 
 
 /******************************************************************************
@@ -92,17 +92,17 @@ extern "C"
 
  /**
  ******************************************************************************
- ** \brief ADCè½¬æ¢æ¨¡å¼
+ ** \brief ADC×ª»»Ä£Ê½
  *****************************************************************************/
 typedef enum en_adc_mode
 {
-    AdcSglMode  = 0u,           /*!< å•è¾“å…¥é€šé“å•æ¬¡è½¬æ¢æ¨¡å¼ */
-    AdcScanMode = 1u,           /*!< å¤šè¾“å…¥é€šé“é¡ºåº/æ’é˜Ÿæ‰«æè½¬æ¢æ¨¡å¼*/   
+    AdcSglMode  = 0u,           /*!< µ¥ÊäÈëÍ¨µÀµ¥´Î×ª»»Ä£Ê½ */
+    AdcScanMode = 1u,           /*!< ¶àÊäÈëÍ¨µÀË³Ðò/²å¶ÓÉ¨Ãè×ª»»Ä£Ê½*/   
 }en_adc_mode_t;
 
 /**
  ******************************************************************************
- ** \brief ADCæ—¶é’Ÿåˆ†é¢‘é€‰æ‹©
+ ** \brief ADCÊ±ÖÓ·ÖÆµÑ¡Ôñ
  *****************************************************************************/
 typedef enum en_adc_clk_sel
 {
@@ -114,177 +114,177 @@ typedef enum en_adc_clk_sel
 
 /**
  ******************************************************************************
- ** \brief ADCå‚è€ƒç”µåŽ‹
+ ** \brief ADC²Î¿¼µçÑ¹
  *****************************************************************************/
 typedef enum en_adc_ref_vol_sel
 {
-    AdcMskRefVolSelInBgr1p5 = 0u<<9,        /*!<å†…éƒ¨å‚è€ƒç”µåŽ‹1.5V(SPS<=200kHz)*/
-    AdcMskRefVolSelInBgr2p5 = 1u<<9,        /*!<å†…éƒ¨å‚è€ƒç”µåŽ‹2.5V(avdd>3V,SPS<=200kHz)*/
-    AdcMskRefVolSelExtern1  = 2u<<9,        /*!<å¤–éƒ¨è¾“å…¥(max avdd)   PB01*/
+    AdcMskRefVolSelInBgr1p5 = 0u<<9,        /*!<ÄÚ²¿²Î¿¼µçÑ¹1.5V(SPS<=200kHz)*/
+    AdcMskRefVolSelInBgr2p5 = 1u<<9,        /*!<ÄÚ²¿²Î¿¼µçÑ¹2.5V(avdd>3V,SPS<=200kHz)*/
+    AdcMskRefVolSelExtern1  = 2u<<9,        /*!<Íâ²¿ÊäÈë(max avdd)   PB01*/
     AdcMskRefVolSelAVDD     = 3u<<9,        /*!<AVDD*/
 }en_adc_ref_vol_sel_t;
 
 /**
  ******************************************************************************
- ** \brief ADCè½¬æ¢é€šé“é€‰æ‹©
+ ** \brief ADC×ª»»Í¨µÀÑ¡Ôñ
  *****************************************************************************/
 typedef enum en_adc_samp_ch_sel
 {
-    AdcExInputCH0    =  0u,        /*!<ä½¿ç”¨PA00*/
-    AdcExInputCH1    =  1u,        /*!<ä½¿ç”¨PA01*/
-    AdcExInputCH2    =  2u,        /*!<ä½¿ç”¨PA02*/
-    AdcExInputCH3    =  3u,        /*!<ä½¿ç”¨PA03*/
-    AdcExInputCH4    =  4u,        /*!<ä½¿ç”¨PA04*/
-    AdcExInputCH5    =  5u,        /*!<ä½¿ç”¨PA05*/
-    AdcExInputCH6    =  6u,        /*!<ä½¿ç”¨PA06*/
-    AdcExInputCH7    =  7u,        /*!<ä½¿ç”¨PA07*/
-    AdcExInputCH8    =  8u,        /*!<ä½¿ç”¨PB00*/
-    AdcExInputCH9    =  9u,        /*!<ä½¿ç”¨PB01*/
-    AdcExInputCH10   =  10u,       /*!<ä½¿ç”¨PC00*/
-    AdcExInputCH11   =  11u,       /*!<ä½¿ç”¨PC01*/
-    AdcExInputCH12   =  12u,       /*!<ä½¿ç”¨PC02*/
-    AdcExInputCH13   =  13u,       /*!<ä½¿ç”¨PC03*/
-    AdcExInputCH14   =  14u,       /*!<ä½¿ç”¨PC04*/
-    AdcExInputCH15   =  15u,       /*!<ä½¿ç”¨PC05*/
-    AdcExInputCH16   =  16u,       /*!<ä½¿ç”¨PB02*/
-    AdcExInputCH17   =  17u,       /*!<ä½¿ç”¨PB10*/
-    AdcExInputCH18   =  18u,       /*!<ä½¿ç”¨PB11*/
-    AdcExInputCH19   =  19u,       /*!<ä½¿ç”¨PB12*/
-    AdcExInputCH20   =  20u,       /*!<ä½¿ç”¨PB13*/
-    AdcExInputCH21   =  21u,       /*!<ä½¿ç”¨PB14*/
-    AdcExInputCH22   =  22u,       /*!<ä½¿ç”¨PB15*/
-    AdcExInputCH23   =  23u,       /*!<ä½¿ç”¨PE15*/
-    AdcExInputCH24   =  24u,       /*!<ä½¿ç”¨PE14*/
-    AdcExInputCH25   =  25u,       /*!<ä½¿ç”¨PE13*/
+    AdcExInputCH0    =  0u,        /*!<Ê¹ÓÃPA00*/
+    AdcExInputCH1    =  1u,        /*!<Ê¹ÓÃPA01*/
+    AdcExInputCH2    =  2u,        /*!<Ê¹ÓÃPA02*/
+    AdcExInputCH3    =  3u,        /*!<Ê¹ÓÃPA03*/
+    AdcExInputCH4    =  4u,        /*!<Ê¹ÓÃPA04*/
+    AdcExInputCH5    =  5u,        /*!<Ê¹ÓÃPA05*/
+    AdcExInputCH6    =  6u,        /*!<Ê¹ÓÃPA06*/
+    AdcExInputCH7    =  7u,        /*!<Ê¹ÓÃPA07*/
+    AdcExInputCH8    =  8u,        /*!<Ê¹ÓÃPB00*/
+    AdcExInputCH9    =  9u,        /*!<Ê¹ÓÃPB01*/
+    AdcExInputCH10   =  10u,       /*!<Ê¹ÓÃPC00*/
+    AdcExInputCH11   =  11u,       /*!<Ê¹ÓÃPC01*/
+    AdcExInputCH12   =  12u,       /*!<Ê¹ÓÃPC02*/
+    AdcExInputCH13   =  13u,       /*!<Ê¹ÓÃPC03*/
+    AdcExInputCH14   =  14u,       /*!<Ê¹ÓÃPC04*/
+    AdcExInputCH15   =  15u,       /*!<Ê¹ÓÃPC05*/
+    AdcExInputCH16   =  16u,       /*!<Ê¹ÓÃPB02*/
+    AdcExInputCH17   =  17u,       /*!<Ê¹ÓÃPB10*/
+    AdcExInputCH18   =  18u,       /*!<Ê¹ÓÃPB11*/
+    AdcExInputCH19   =  19u,       /*!<Ê¹ÓÃPB12*/
+    AdcExInputCH20   =  20u,       /*!<Ê¹ÓÃPB13*/
+    AdcExInputCH21   =  21u,       /*!<Ê¹ÓÃPB14*/
+    AdcExInputCH22   =  22u,       /*!<Ê¹ÓÃPB15*/
+    AdcExInputCH23   =  23u,       /*!<Ê¹ÓÃPE15*/
+    AdcExInputCH24   =  24u,       /*!<Ê¹ÓÃPE14*/
+    AdcExInputCH25   =  25u,       /*!<Ê¹ÓÃPE13*/
 
-    AdcDacInput      =  26u,       /*!<ä½¿ç”¨DACè¾“å‡º(å¿…é¡»ä½¿ç”¨è¾“å…¥å¢žç›Š)*/                    
-    AdcAVccdiv3Input =  27u,       /*!<ä½¿ç”¨1/3 AVCC(å¿…é¡»ä½¿ç”¨è¾“å…¥å¢žç›Š)*/
-    AdcAiTsInput     =  28u,       /*!<ä½¿ç”¨å†…ç½®æ¸©åº¦ä¼ æ„Ÿå™¨BGR_TS(å¿…é¡»ä½¿ç”¨è¾“å…¥å¢žç›Š)*/
-    AdcVref1_2Input  =  29u,       /*!<ä½¿ç”¨å†…éƒ¨åŸºå‡†1.2V(å¿…é¡»ä½¿ç”¨è¾“å…¥å¢žç›Š)*/
+    AdcDacInput      =  26u,       /*!<Ê¹ÓÃDACÊä³ö(±ØÐëÊ¹ÓÃÊäÈëÔöÒæ)*/                    
+    AdcAVccdiv3Input =  27u,       /*!<Ê¹ÓÃ1/3 AVCC(±ØÐëÊ¹ÓÃÊäÈëÔöÒæ)*/
+    AdcAiTsInput     =  28u,       /*!<Ê¹ÓÃÄÚÖÃÎÂ¶È´«¸ÐÆ÷BGR_TS(±ØÐëÊ¹ÓÃÊäÈëÔöÒæ)*/
+    AdcVref1_2Input  =  29u,       /*!<Ê¹ÓÃÄÚ²¿»ù×¼1.2V(±ØÐëÊ¹ÓÃÊäÈëÔöÒæ)*/
 
 }en_adc_samp_ch_sel_t;
 
  /**
  ******************************************************************************
- ** \brief ADCè¾“å…¥ä¿¡å·æ”¾å¤§å™¨æŽ§åˆ¶
+ ** \brief ADCÊäÈëÐÅºÅ·Å´óÆ÷¿ØÖÆ
  *****************************************************************************/
 typedef enum en_adc_op_buf
 {
-    AdcMskBufEnable  = 1u<<11,          /*!< æ‰“å¼€æ”¾å¤§å™¨BUF */
-    AdcMskBufDisable = 0u,              /*!< å…³é—­æ”¾å¤§å™¨BUF */  
+    AdcMskBufEnable  = 1u<<11,          /*!< ´ò¿ª·Å´óÆ÷BUF */
+    AdcMskBufDisable = 0u,              /*!< ¹Ø±Õ·Å´óÆ÷BUF */  
 } en_adc_op_buf_t;
 
 /**
  ******************************************************************************
- ** \brief ADCé‡‡æ ·å‘¨æœŸé€‰æ‹©
+ ** \brief ADC²ÉÑùÖÜÆÚÑ¡Ôñ
  *****************************************************************************/
 typedef enum en_adc_samp_cycle_sel
 {
-    AdcMskSampCycle4Clk  =  0u<<12,        /*!<4ä¸ªé‡‡æ ·æ—¶é’Ÿ*/
-    AdcMskSampCycle6Clk  =  1u<<12,        /*!<6ä¸ªé‡‡æ ·æ—¶é’Ÿ*/
-    AdcMskSampCycle8Clk  =  2u<<12,        /*!<8ä¸ªé‡‡æ ·æ—¶é’Ÿ*/
-    AdcMskSampCycle12Clk =  3u<<12,        /*!<12ä¸ªé‡‡æ ·æ—¶é’Ÿ*/
+    AdcMskSampCycle4Clk  =  0u<<12,        /*!<4¸ö²ÉÑùÊ±ÖÓ*/
+    AdcMskSampCycle6Clk  =  1u<<12,        /*!<6¸ö²ÉÑùÊ±ÖÓ*/
+    AdcMskSampCycle8Clk  =  2u<<12,        /*!<8¸ö²ÉÑùÊ±ÖÓ*/
+    AdcMskSampCycle12Clk =  3u<<12,        /*!<12¸ö²ÉÑùÊ±ÖÓ*/
 
 }en_adc_samp_cycle_sel_t;
 
  /**
  ******************************************************************************
- ** \brief ADCå†…éƒ¨å‚è€ƒç”µåŽ‹ä½¿èƒ½æŽ§åˆ¶
+ ** \brief ADCÄÚ²¿²Î¿¼µçÑ¹Ê¹ÄÜ¿ØÖÆ
  *****************************************************************************/
 typedef enum en_adc_in_ref
 {
-    AdcMskInRefEnable  = 1u<<14,          /*!< å†…éƒ¨å‚è€ƒç”µåŽ‹ä½¿èƒ½ */
-    AdcMskInRefDisable = 0u,              /*!< å†…éƒ¨å‚è€ƒç”µåŽ‹å…³é—­ */  
+    AdcMskInRefEnable  = 1u<<14,          /*!< ÄÚ²¿²Î¿¼µçÑ¹Ê¹ÄÜ */
+    AdcMskInRefDisable = 0u,              /*!< ÄÚ²¿²Î¿¼µçÑ¹¹Ø±Õ */  
 }en_adc_in_ref_t;
 
 /**
  ******************************************************************************
- ** \brief ADCå‘¨è¾¹æ¨¡å—åå°„æºé€‰æ‹©
+ ** \brief ADCÖÜ±ßÄ£¿é·´ÉäÔ´Ñ¡Ôñ
  *****************************************************************************/
 typedef enum en_adc_trig_sel
 {
-    AdcMskTrigTimer0     =  1u<<0,         /*!<é€‰æ‹©timer0ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigTimer1     =  1u<<1,         /*!<é€‰æ‹©timer1ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigTimer2     =  1u<<2,         /*!<é€‰æ‹©timer2ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigTimer3     =  1u<<3,         /*!<é€‰æ‹©timer3ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigTimer4     =  1u<<4,         /*!<é€‰æ‹©timer4ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigTimer5     =  1u<<5,         /*!<é€‰æ‹©timer5ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigTimer6     =  1u<<6,         /*!<é€‰æ‹©timer6ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigUart0      =  1u<<7,         /*!<é€‰æ‹©uart0ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigUart1      =  1u<<8,         /*!<é€‰æ‹©uart1ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigLpuart0    =  1u<<9,         /*!<é€‰æ‹©lpuart0ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigLpuart1    =  1u<<10,        /*!<é€‰æ‹©lpuart1ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigVC0        =  1u<<11,        /*!<é€‰æ‹©VC0ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigVC1        =  1u<<12,        /*!<é€‰æ‹©VC1ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigRTC        =  1u<<13,        /*!<é€‰æ‹©RTCä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigPCA        =  1u<<14,        /*!<é€‰æ‹©PCAä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigSPI0       =  1u<<15,        /*!<é€‰æ‹©SPI0ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigSPI1       =  1u<<16,        /*!<é€‰æ‹©SPI1ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigDMA        =  1u<<17,        /*!<é€‰æ‹©DMAä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigPA03       =  1u<<18,        /*!<é€‰æ‹©PA03ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigPB03       =  1u<<19,        /*!<é€‰æ‹©PB03ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigPC03       =  1u<<20,        /*!<é€‰æ‹©PC03ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigPD03       =  1u<<21,        /*!<é€‰æ‹©PD03ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigPA07       =  1u<<22,        /*!<é€‰æ‹©PA07ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigPB07       =  1u<<23,        /*!<é€‰æ‹©PB07ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigPC07       =  1u<<24,        /*!<é€‰æ‹©PC07ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigPD07       =  1u<<25,        /*!<é€‰æ‹©PD07ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigPA11       =  1u<<26,        /*!<é€‰æ‹©PA11ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigPB11       =  1u<<27,        /*!<é€‰æ‹©PB11ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigPC11       =  1u<<28,        /*!<é€‰æ‹©PC11ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigPA15       =  1u<<29,        /*!<é€‰æ‹©PA15ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigPB15       =  1u<<30,        /*!<é€‰æ‹©PB15ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
-    AdcMskTrigPC15       =  1u<<31,        /*!<é€‰æ‹©PC15ä¸­æ–­æºï¼Œè‡ªåŠ¨è§¦å‘ADCé‡‡æ ·*/
+    AdcMskTrigTimer0     =  1u<<0,         /*!<Ñ¡Ôñtimer0ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigTimer1     =  1u<<1,         /*!<Ñ¡Ôñtimer1ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigTimer2     =  1u<<2,         /*!<Ñ¡Ôñtimer2ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigTimer3     =  1u<<3,         /*!<Ñ¡Ôñtimer3ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigTimer4     =  1u<<4,         /*!<Ñ¡Ôñtimer4ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigTimer5     =  1u<<5,         /*!<Ñ¡Ôñtimer5ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigTimer6     =  1u<<6,         /*!<Ñ¡Ôñtimer6ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigUart0      =  1u<<7,         /*!<Ñ¡Ôñuart0ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigUart1      =  1u<<8,         /*!<Ñ¡Ôñuart1ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigLpuart0    =  1u<<9,         /*!<Ñ¡Ôñlpuart0ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigLpuart1    =  1u<<10,        /*!<Ñ¡Ôñlpuart1ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigVC0        =  1u<<11,        /*!<Ñ¡ÔñVC0ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigVC1        =  1u<<12,        /*!<Ñ¡ÔñVC1ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigRTC        =  1u<<13,        /*!<Ñ¡ÔñRTCÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigPCA        =  1u<<14,        /*!<Ñ¡ÔñPCAÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigSPI0       =  1u<<15,        /*!<Ñ¡ÔñSPI0ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigSPI1       =  1u<<16,        /*!<Ñ¡ÔñSPI1ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigDMA        =  1u<<17,        /*!<Ñ¡ÔñDMAÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigPA03       =  1u<<18,        /*!<Ñ¡ÔñPA03ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigPB03       =  1u<<19,        /*!<Ñ¡ÔñPB03ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigPC03       =  1u<<20,        /*!<Ñ¡ÔñPC03ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigPD03       =  1u<<21,        /*!<Ñ¡ÔñPD03ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigPA07       =  1u<<22,        /*!<Ñ¡ÔñPA07ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigPB07       =  1u<<23,        /*!<Ñ¡ÔñPB07ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigPC07       =  1u<<24,        /*!<Ñ¡ÔñPC07ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigPD07       =  1u<<25,        /*!<Ñ¡ÔñPD07ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigPA11       =  1u<<26,        /*!<Ñ¡ÔñPA11ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigPB11       =  1u<<27,        /*!<Ñ¡ÔñPB11ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigPC11       =  1u<<28,        /*!<Ñ¡ÔñPC11ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigPA15       =  1u<<29,        /*!<Ñ¡ÔñPA15ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigPB15       =  1u<<30,        /*!<Ñ¡ÔñPB15ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
+    AdcMskTrigPC15       =  1u<<31,        /*!<Ñ¡ÔñPC15ÖÐ¶ÏÔ´£¬×Ô¶¯´¥·¢ADC²ÉÑù*/
 }en_adc_trig_sel_t;
 
 /**
  ******************************************************************************
- ** \brief ADCå¤–éƒ¨è§¦å‘æºå¯„å­˜å™¨é€‰æ‹©
+ ** \brief ADCÍâ²¿´¥·¢Ô´¼Ä´æÆ÷Ñ¡Ôñ
  *****************************************************************************/
 typedef enum en_adc_ext_trig_sel
 {
-    AdcExtTrig0     =  0u,         /*!<å•æ¬¡åŠé¡ºåºæ‰«æè½¬æ¢ å¤–éƒ¨è§¦å‘æºé€‰æ‹©å¯„å­˜å™¨*/
-    AdcExtTrig1     =  1u,         /*!<æ’é˜Ÿæ‰«æè½¬æ¢ å¤–éƒ¨è§¦å‘æºé€‰æ‹©å¯„å­˜å™¨*/
+    AdcExtTrig0     =  0u,         /*!<µ¥´Î¼°Ë³ÐòÉ¨Ãè×ª»» Íâ²¿´¥·¢Ô´Ñ¡Ôñ¼Ä´æÆ÷*/
+    AdcExtTrig1     =  1u,         /*!<²å¶ÓÉ¨Ãè×ª»» Íâ²¿´¥·¢Ô´Ñ¡Ôñ¼Ä´æÆ÷*/
 }en_adc_ext_trig_sel_t;
 
 /**
  ******************************************************************************
- ** \brief ADCé¡ºåºè½¬æ¢é€šé“
+ ** \brief ADCË³Ðò×ª»»Í¨µÀ
  *****************************************************************************/
 typedef enum en_adc_sqr_chmux
 {
-    AdcSQRCH0MUX     =  0u,         /*!<é¡ºåºæ‰«ææ¨¡å¼è½¬æ¢é€šé“0*/
-    AdcSQRCH1MUX     =  1u,         /*!<é¡ºåºæ‰«ææ¨¡å¼è½¬æ¢é€šé“1*/
-    AdcSQRCH2MUX     =  2u,         /*!<é¡ºåºæ‰«ææ¨¡å¼è½¬æ¢é€šé“2*/
-    AdcSQRCH3MUX     =  3u,         /*!<é¡ºåºæ‰«ææ¨¡å¼è½¬æ¢é€šé“3*/
-    AdcSQRCH4MUX     =  4u,         /*!<é¡ºåºæ‰«ææ¨¡å¼è½¬æ¢é€šé“4*/
-    AdcSQRCH5MUX     =  5u,         /*!<é¡ºåºæ‰«ææ¨¡å¼è½¬æ¢é€šé“5*/
-    AdcSQRCH6MUX     =  6u,         /*!<é¡ºåºæ‰«ææ¨¡å¼è½¬æ¢é€šé“6*/
-    AdcSQRCH7MUX     =  7u,         /*!<é¡ºåºæ‰«ææ¨¡å¼è½¬æ¢é€šé“7*/
-    AdcSQRCH8MUX     =  8u,         /*!<é¡ºåºæ‰«ææ¨¡å¼è½¬æ¢é€šé“8*/
-    AdcSQRCH9MUX     =  9u,         /*!<é¡ºåºæ‰«ææ¨¡å¼è½¬æ¢é€šé“9*/
-    AdcSQRCH10MUX    =  10u,        /*!<é¡ºåºæ‰«ææ¨¡å¼è½¬æ¢é€šé“10*/
-    AdcSQRCH11MUX    =  11u,        /*!<é¡ºåºæ‰«ææ¨¡å¼è½¬æ¢é€šé“11*/
-    AdcSQRCH12MUX    =  12u,        /*!<é¡ºåºæ‰«ææ¨¡å¼è½¬æ¢é€šé“12*/
-    AdcSQRCH13MUX    =  13u,        /*!<é¡ºåºæ‰«ææ¨¡å¼è½¬æ¢é€šé“13*/
-    AdcSQRCH14MUX    =  14u,        /*!<é¡ºåºæ‰«ææ¨¡å¼è½¬æ¢é€šé“14*/
-    AdcSQRCH15MUX    =  15u,        /*!<é¡ºåºæ‰«ææ¨¡å¼è½¬æ¢é€šé“15*/
+    AdcSQRCH0MUX     =  0u,         /*!<Ë³ÐòÉ¨ÃèÄ£Ê½×ª»»Í¨µÀ0*/
+    AdcSQRCH1MUX     =  1u,         /*!<Ë³ÐòÉ¨ÃèÄ£Ê½×ª»»Í¨µÀ1*/
+    AdcSQRCH2MUX     =  2u,         /*!<Ë³ÐòÉ¨ÃèÄ£Ê½×ª»»Í¨µÀ2*/
+    AdcSQRCH3MUX     =  3u,         /*!<Ë³ÐòÉ¨ÃèÄ£Ê½×ª»»Í¨µÀ3*/
+    AdcSQRCH4MUX     =  4u,         /*!<Ë³ÐòÉ¨ÃèÄ£Ê½×ª»»Í¨µÀ4*/
+    AdcSQRCH5MUX     =  5u,         /*!<Ë³ÐòÉ¨ÃèÄ£Ê½×ª»»Í¨µÀ5*/
+    AdcSQRCH6MUX     =  6u,         /*!<Ë³ÐòÉ¨ÃèÄ£Ê½×ª»»Í¨µÀ6*/
+    AdcSQRCH7MUX     =  7u,         /*!<Ë³ÐòÉ¨ÃèÄ£Ê½×ª»»Í¨µÀ7*/
+    AdcSQRCH8MUX     =  8u,         /*!<Ë³ÐòÉ¨ÃèÄ£Ê½×ª»»Í¨µÀ8*/
+    AdcSQRCH9MUX     =  9u,         /*!<Ë³ÐòÉ¨ÃèÄ£Ê½×ª»»Í¨µÀ9*/
+    AdcSQRCH10MUX    =  10u,        /*!<Ë³ÐòÉ¨ÃèÄ£Ê½×ª»»Í¨µÀ10*/
+    AdcSQRCH11MUX    =  11u,        /*!<Ë³ÐòÉ¨ÃèÄ£Ê½×ª»»Í¨µÀ11*/
+    AdcSQRCH12MUX    =  12u,        /*!<Ë³ÐòÉ¨ÃèÄ£Ê½×ª»»Í¨µÀ12*/
+    AdcSQRCH13MUX    =  13u,        /*!<Ë³ÐòÉ¨ÃèÄ£Ê½×ª»»Í¨µÀ13*/
+    AdcSQRCH14MUX    =  14u,        /*!<Ë³ÐòÉ¨ÃèÄ£Ê½×ª»»Í¨µÀ14*/
+    AdcSQRCH15MUX    =  15u,        /*!<Ë³ÐòÉ¨ÃèÄ£Ê½×ª»»Í¨µÀ15*/
 }en_adc_sqr_chmux_t;
 
 /**
  ******************************************************************************
- ** \brief ADCæ’é˜Ÿè½¬æ¢é€šé“
+ ** \brief ADC²å¶Ó×ª»»Í¨µÀ
  *****************************************************************************/
 typedef enum en_adc_jqr_chmux
 {
-    AdcJQRCH0MUX     =  0u,         /*!<è½¬æ¢é€šé“0*/
-    AdcJQRCH1MUX     =  1u,         /*!<è½¬æ¢é€šé“1*/
-    AdcJQRCH2MUX     =  2u,         /*!<è½¬æ¢é€šé“2*/
-    AdcJQRCH3MUX     =  3u,         /*!<è½¬æ¢é€šé“3*/
+    AdcJQRCH0MUX     =  0u,         /*!<×ª»»Í¨µÀ0*/
+    AdcJQRCH1MUX     =  1u,         /*!<×ª»»Í¨µÀ1*/
+    AdcJQRCH2MUX     =  2u,         /*!<×ª»»Í¨µÀ2*/
+    AdcJQRCH3MUX     =  3u,         /*!<×ª»»Í¨µÀ3*/
 }en_adc_jqr_chmux_t;
 /**
  ******************************************************************************
- ** \brief ADCç»“æžœå¯¹é½æ–¹å¼
+ ** \brief ADC½á¹û¶ÔÆë·½Ê½
  *****************************************************************************/
 typedef enum en_adc_align
 {
@@ -294,7 +294,7 @@ typedef enum en_adc_align
 
 /**
  ******************************************************************************
- ** \brief ADCè½¬æ¢ç»“æžœè‡ªåŠ¨ç´¯åŠ åŠŸèƒ½
+ ** \brief ADC×ª»»½á¹û×Ô¶¯ÀÛ¼Ó¹¦ÄÜ
  *****************************************************************************/
 typedef enum en_adc_result_acc
 {
@@ -304,16 +304,16 @@ typedef enum en_adc_result_acc
 
 /**
  ******************************************************************************
- ** \brief ADCä¸­æ–­ç±»åž‹å®šä¹‰
+ ** \brief ADCÖÐ¶ÏÀàÐÍ¶¨Òå
  *****************************************************************************/
 typedef enum en_adc_irq_type
 {
-    AdcMskIrqJqr =  1u<<5,        /*!<ADCæ’é˜Ÿæ‰«æè½¬æ¢å®Œæˆ*/
-    AdcMskIrqSqr =  1u<<4,        /*!<ADCé¡ºåºæ‰«æè½¬æ¢å®Œæˆ*/
-    AdcMskIrqReg =  1u<<3,        /*!<ADCè½¬æ¢ç»“æžœæ¯”è¾ƒåŒºé—´å†…*/
-    AdcMskIrqHt  =  1u<<2,        /*!<ADCè½¬æ¢ç»“æžœé«˜äºŽHT*/
-    AdcMskIrqLt  =  1u<<1,        /*!<ADCè½¬æ¢ç»“æžœä½ŽäºŽLT*/
-    AdcMskIrqSgl =  1u<<0,        /*!<ADCå•æ¬¡è½¬æ¢å®Œæˆ*/
+    AdcMskIrqJqr =  1u<<5,        /*!<ADC²å¶ÓÉ¨Ãè×ª»»Íê³É*/
+    AdcMskIrqSqr =  1u<<4,        /*!<ADCË³ÐòÉ¨Ãè×ª»»Íê³É*/
+    AdcMskIrqReg =  1u<<3,        /*!<ADC×ª»»½á¹û±È½ÏÇø¼äÄÚ*/
+    AdcMskIrqHt  =  1u<<2,        /*!<ADC×ª»»½á¹û¸ßÓÚHT*/
+    AdcMskIrqLt  =  1u<<1,        /*!<ADC×ª»»½á¹ûµÍÓÚLT*/
+    AdcMskIrqSgl =  1u<<0,        /*!<ADCµ¥´Î×ª»»Íê³É*/
 
 }en_adc_irq_type_t;
 
@@ -324,58 +324,58 @@ typedef enum en_adc_irq_type
 
 /**
  ******************************************************************************
- ** \brief  ADCåˆå§‹åŒ–é…ç½®ç»“æž„ä½“
+ ** \brief  ADC³õÊ¼»¯ÅäÖÃ½á¹¹Ìå
  *****************************************************************************/
 typedef struct stc_adc_cfg
 {
-    en_adc_mode_t           enAdcMode;                  /*! ADCè½¬æ¢æ¨¡å¼*/
+    en_adc_mode_t           enAdcMode;                  /*! ADC×ª»»Ä£Ê½*/
     
-    en_adc_clk_div_t        enAdcClkDiv;                /*! ADCæ—¶é’Ÿé€‰æ‹©*/
-    en_adc_samp_cycle_sel_t enAdcSampCycleSel;          /*! ADCé‡‡æ ·å‘¨æœŸé€‰æ‹©*/
-    en_adc_ref_vol_sel_t    enAdcRefVolSel;             /*! ADCå‚è€ƒç”µåŽ‹é€‰æ‹©*/
-    en_adc_op_buf_t         enAdcOpBuf;                 /*! ADCè¾“å…¥ä¿¡å·æ”¾å¤§å™¨æŽ§åˆ¶ä½¿èƒ½*/
-    en_adc_in_ref_t         enInRef;                    /*! ADCå†…éƒ¨å‚è€ƒç”µåŽ‹ä½¿èƒ½*/
+    en_adc_clk_div_t        enAdcClkDiv;                /*! ADCÊ±ÖÓÑ¡Ôñ*/
+    en_adc_samp_cycle_sel_t enAdcSampCycleSel;          /*! ADC²ÉÑùÖÜÆÚÑ¡Ôñ*/
+    en_adc_ref_vol_sel_t    enAdcRefVolSel;             /*! ADC²Î¿¼µçÑ¹Ñ¡Ôñ*/
+    en_adc_op_buf_t         enAdcOpBuf;                 /*! ADCÊäÈëÐÅºÅ·Å´óÆ÷¿ØÖÆÊ¹ÄÜ*/
+    en_adc_in_ref_t         enInRef;                    /*! ADCÄÚ²¿²Î¿¼µçÑ¹Ê¹ÄÜ*/
     
-    en_adc_align_t          enAdcAlign;                 /*! ADCè½¬æ¢ç»“æžœå¯¹é½æŽ§åˆ¶*/
+    en_adc_align_t          enAdcAlign;                 /*! ADC×ª»»½á¹û¶ÔÆë¿ØÖÆ*/
 }stc_adc_cfg_t;
 
 
 /**
  ******************************************************************************
- ** \brief  ADCé¡ºåºæ‰«ææ¨¡å¼é…ç½®ç»“æž„ä½“
+ ** \brief  ADCË³ÐòÉ¨ÃèÄ£Ê½ÅäÖÃ½á¹¹Ìå
  *****************************************************************************/
 typedef struct stc_adc_sqr_cfg
 {
-    uint8_t                 u8SqrCnt;                   /*! ADCé¡ºåºæ‰«æè½¬æ¢æ¬¡æ•°*/
-    en_adc_result_acc_t     enResultAcc;                /*! ADCè½¬æ¢ç»“æžœè‡ªåŠ¨ç´¯åŠ åŠŸèƒ½*/
-    boolean_t               bSqrDmaTrig;                /*! ADCé¡ºåºæ‰«æè½¬æ¢å®ŒæˆDMAè§¦å‘ä½¿èƒ½*/
+    uint8_t                 u8SqrCnt;                   /*! ADCË³ÐòÉ¨Ãè×ª»»´ÎÊý*/
+    en_adc_result_acc_t     enResultAcc;                /*! ADC×ª»»½á¹û×Ô¶¯ÀÛ¼Ó¹¦ÄÜ*/
+    boolean_t               bSqrDmaTrig;                /*! ADCË³ÐòÉ¨Ãè×ª»»Íê³ÉDMA´¥·¢Ê¹ÄÜ*/
 }stc_adc_sqr_cfg_t;
 
 /**
  ******************************************************************************
- ** \brief  ADCæ’é˜Ÿæ‰«ææ¨¡å¼é…ç½®ç»“æž„ä½“
+ ** \brief  ADC²å¶ÓÉ¨ÃèÄ£Ê½ÅäÖÃ½á¹¹Ìå
  *****************************************************************************/
 typedef struct stc_adc_jqr_cfg
 {
-    uint8_t                 u8JqrCnt;                   /*! ADCé¡ºåºæ‰«æè½¬æ¢æ¬¡æ•°*/
-    boolean_t               bJqrDmaTrig;                /*! ADCæ’é˜Ÿæ‰«æè½¬æ¢å®ŒæˆDMAè§¦å‘ä½¿èƒ½*/    
+    uint8_t                 u8JqrCnt;                   /*! ADCË³ÐòÉ¨Ãè×ª»»´ÎÊý*/
+    boolean_t               bJqrDmaTrig;                /*! ADC²å¶ÓÉ¨Ãè×ª»»Íê³ÉDMA´¥·¢Ê¹ÄÜ*/    
 }stc_adc_jqr_cfg_t;
 
 
 /**
  ******************************************************************************
- ** \brief  ADCæ¯”è¾ƒåŠŸèƒ½é…ç½®ç»“æž„ä½“
+ ** \brief  ADC±È½Ï¹¦ÄÜÅäÖÃ½á¹¹Ìå
  *****************************************************************************/
 typedef struct stc_adc_threshold_cfg
 {
-    boolean_t bAdcRegCmp ;                  /*!ADCåŒºé—´ä½¿èƒ½*/ 
-    boolean_t bAdcHtCmp ;                   /*!ADCä¸Šè¶…å‡ºåŒºé—´ä½¿èƒ½*/ 
-    boolean_t bAdcLtCmp ;                   /*!ADCä¸‹è¶…å‡ºåŒºé—´ä½¿èƒ½*/
+    boolean_t bAdcRegCmp ;                  /*!ADCÇø¼äÊ¹ÄÜ*/ 
+    boolean_t bAdcHtCmp ;                   /*!ADCÉÏ³¬³öÇø¼äÊ¹ÄÜ*/ 
+    boolean_t bAdcLtCmp ;                   /*!ADCÏÂ³¬³öÇø¼äÊ¹ÄÜ*/
     
-    uint32_t u32AdcHighThd;                 /*!ADCæ¯”è¾ƒä¸Šé˜ˆå€¼*/
-    uint32_t u32AdcLowThd;                  /*!ADCæ¯”è¾ƒä¸‹é˜ˆå€¼*/ 
+    uint32_t u32AdcHighThd;                 /*!ADC±È½ÏÉÏãÐÖµ*/
+    uint32_t u32AdcLowThd;                  /*!ADC±È½ÏÏÂãÐÖµ*/ 
     
-    en_adc_samp_ch_sel_t    enSampChSel;    /*!ADCé‡‡æ ·é€šé“é€‰æ‹©*/
+    en_adc_samp_ch_sel_t    enSampChSel;    /*!ADC²ÉÑùÍ¨µÀÑ¡Ôñ*/
     
 }stc_adc_threshold_cfg_t;
 
@@ -387,76 +387,76 @@ typedef struct stc_adc_threshold_cfg
 /******************************************************************************
  * Global function prototypes (definition in C source)
  ******************************************************************************/
-//ADC åˆå§‹åŒ–
+//ADC ³õÊ¼»¯
 en_result_t Adc_Init(stc_adc_cfg_t* pstcAdcCfg);
 
-//ADC ä¸­æ–­ä½¿èƒ½
+//ADC ÖÐ¶ÏÊ¹ÄÜ
 void Adc_EnableIrq(void);
-//ADC ä¸­æ–­ç¦æ­¢
+//ADC ÖÐ¶Ï½ûÖ¹
 void Adc_DisableIrq(void);
 
-//ADC ä¸­æ–­/é‡‡æ ·å®ŒæˆçŠ¶æ€èŽ·å–
+//ADC ÖÐ¶Ï/²ÉÑùÍê³É×´Ì¬»ñÈ¡
 boolean_t Adc_GetIrqStatus(en_adc_irq_type_t enAdcIrq);
-//ADC ä¸­æ–­/é‡‡æ ·å®ŒæˆçŠ¶æ€æ¸…é™¤
+//ADC ÖÐ¶Ï/²ÉÑùÍê³É×´Ì¬Çå³ý
 void Adc_ClrIrqStatus(en_adc_irq_type_t enAdcIrq);
 
-//ADC ä½¿èƒ½
+//ADC Ê¹ÄÜ
 void Adc_Enable(void);
-//ADC ç¦æ­¢
+//ADC ½ûÖ¹
 void Adc_Disable(void);
 
-//ADC é¡ºåºæ‰«ææ¨¡å¼é…ç½®
+//ADC Ë³ÐòÉ¨ÃèÄ£Ê½ÅäÖÃ
 en_result_t Adc_SqrModeCfg(stc_adc_sqr_cfg_t* pstcAdcSqrCfg);
-//ADC æ’é˜Ÿæ‰«ææ¨¡å¼é…ç½®
+//ADC ²å¶ÓÉ¨ÃèÄ£Ê½ÅäÖÃ
 en_result_t Adc_JqrModeCfg(stc_adc_jqr_cfg_t* pstcAdcJqrCfg);
 
-//ADC Sgl å•æ¬¡è½¬æ¢æ¨¡å¼é€šé“é€‰æ‹©é…ç½® 
+//ADC Sgl µ¥´Î×ª»»Ä£Ê½Í¨µÀÑ¡ÔñÅäÖÃ 
 en_result_t Adc_CfgSglChannel( en_adc_samp_ch_sel_t enstcAdcSampCh);
-//ADC SQR é¡ºåºæ‰«æè½¬æ¢æ¨¡å¼é€šé“é€‰æ‹©é…ç½® 
+//ADC SQR Ë³ÐòÉ¨Ãè×ª»»Ä£Ê½Í¨µÀÑ¡ÔñÅäÖÃ 
 en_result_t Adc_CfgSqrChannel(en_adc_sqr_chmux_t enstcAdcSqrChMux, en_adc_samp_ch_sel_t enstcAdcSampCh);
-//ADC JQR æ’é˜Ÿæ‰«æè½¬æ¢æ¨¡å¼é€šé“é€‰æ‹©é…ç½® 
+//ADC JQR ²å¶ÓÉ¨Ãè×ª»»Ä£Ê½Í¨µÀÑ¡ÔñÅäÖÃ 
 en_result_t Adc_CfgJqrChannel(en_adc_jqr_chmux_t enstcAdcJqrChMux, en_adc_samp_ch_sel_t enstcAdcSampCh);
 
-///<ADC å•æ¬¡è½¬æ¢å¤–éƒ¨è§¦å‘æºé…ç½®
+///<ADC µ¥´Î×ª»»Íâ²¿´¥·¢Ô´ÅäÖÃ
 void Adc_SglExtTrigCfg(en_adc_trig_sel_t enAdcTrigSel, boolean_t bValue);
-///<ADC é¡ºåºæ‰«æè½¬æ¢å¤–éƒ¨è§¦å‘æºé…ç½®
+///<ADC Ë³ÐòÉ¨Ãè×ª»»Íâ²¿´¥·¢Ô´ÅäÖÃ
 void Adc_SqrExtTrigCfg(en_adc_trig_sel_t enAdcTrigSel, boolean_t bValue);
-///<ADC æ’é˜Ÿæ‰«æè½¬æ¢å¤–éƒ¨è§¦å‘æºé…ç½®
+///<ADC ²å¶ÓÉ¨Ãè×ª»»Íâ²¿´¥·¢Ô´ÅäÖÃ
 void Adc_JqrExtTrigCfg(en_adc_trig_sel_t enAdcTrigSel, boolean_t bValue);
 
-//ADC é˜ˆå€¼æ¯”è¾ƒåŠŸèƒ½é…ç½®
+//ADC ãÐÖµ±È½Ï¹¦ÄÜÅäÖÃ
 void Adc_ThresholdCfg(stc_adc_threshold_cfg_t* pstcAdcThrCfg);
 
-//ADC å•æ¬¡è½¬æ¢æ¨¡å¼å¯åŠ¨
+//ADC µ¥´Î×ª»»Ä£Ê½Æô¶¯
 void Adc_SGL_Start(void);
-//ADC å•æ¬¡è½¬æ¢æ¨¡å¼åœæ­¢
+//ADC µ¥´Î×ª»»Ä£Ê½Í£Ö¹
 void Adc_SGL_Stop(void);
 
-//ADC å•æ¬¡è½¬æ¢æ¨¡å¼ä¸€ç›´è½¬æ¢æ¨¡å¼å¯åŠ¨
+//ADC µ¥´Î×ª»»Ä£Ê½Ò»Ö±×ª»»Ä£Ê½Æô¶¯
 void Adc_SGL_Always_Start(void);
-//ADC å•æ¬¡è½¬æ¢æ¨¡å¼ä¸€ç›´è½¬æ¢æ¨¡å¼åœæ­¢
+//ADC µ¥´Î×ª»»Ä£Ê½Ò»Ö±×ª»»Ä£Ê½Í£Ö¹
 void Adc_SGL_Always_Stop(void);
 
-//ADC é¡ºåºæ‰«æè½¬æ¢æ¨¡å¼å¯åŠ¨
+//ADC Ë³ÐòÉ¨Ãè×ª»»Ä£Ê½Æô¶¯
 void Adc_SQR_Start(void);
-//ADC é¡ºåºæ‰«æè½¬æ¢æ¨¡å¼åœæ­¢
+//ADC Ë³ÐòÉ¨Ãè×ª»»Ä£Ê½Í£Ö¹
 void Adc_SQR_Stop(void);
 
-//ADC æ’é˜Ÿæ‰«æè½¬æ¢æ¨¡å¼å¯åŠ¨
+//ADC ²å¶ÓÉ¨Ãè×ª»»Ä£Ê½Æô¶¯
 void Adc_JQR_Start(void);
-//ADC æ’é˜Ÿæ‰«æè½¬æ¢æ¨¡å¼åœæ­¢
+//ADC ²å¶ÓÉ¨Ãè×ª»»Ä£Ê½Í£Ö¹
 void Adc_JQR_Stop(void);
 
-//èŽ·å–å•æ¬¡è½¬æ¢é‡‡æ ·å€¼
+//»ñÈ¡µ¥´Î×ª»»²ÉÑùÖµ
 uint32_t Adc_GetSglResult(void);
-//èŽ·å–é¡ºåºæ‰«æé‡‡æ ·å€¼
+//»ñÈ¡Ë³ÐòÉ¨Ãè²ÉÑùÖµ
 uint32_t Adc_GetSqrResult(en_adc_sqr_chmux_t enstcAdcSqrChMux);
-//èŽ·å–æ’é˜Ÿæ‰«æé‡‡æ ·å€¼
+//»ñÈ¡²å¶ÓÉ¨Ãè²ÉÑùÖµ
 uint32_t Adc_GetJqrResult(en_adc_jqr_chmux_t enstcAdcJqrChMux);
 
-//èŽ·å–ç´¯åŠ é‡‡æ ·å€¼
+//»ñÈ¡ÀÛ¼Ó²ÉÑùÖµ
 uint32_t Adc_GetAccResult(void);
-//clear ADC ç´¯åŠ å¯„å­˜å™¨ç»“æžœæ¸…é™¤
+//clear ADC ÀÛ¼Ó¼Ä´æÆ÷½á¹ûÇå³ý
 void Adc_ClrAccResult(void);
 
 //@}
@@ -468,3 +468,4 @@ void Adc_ClrAccResult(void);
 /******************************************************************************/
 /* EOF (not truncated)                                                        */
 /******************************************************************************/
+

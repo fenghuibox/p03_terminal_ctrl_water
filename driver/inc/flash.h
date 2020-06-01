@@ -42,7 +42,7 @@
 /******************************************************************************/
 /** \file flash.h
  **
- ** FLASH æ•°æ®ç»“æ„åŠAPIå£°æ˜.
+ ** FLASH Êı¾İ½á¹¹¼°APIÉùÃ÷.
  **
  ** - 2017-05-02 LuX V1.0
  **
@@ -75,29 +75,29 @@ extern "C"
  ******************************************************************************/
 /**
  ******************************************************************************
-  ** \brief Flashä¸­æ–­ç±»å‹é‡å®šä¹‰
+  ** \brief FlashÖĞ¶ÏÀàĞÍÖØ¶¨Òå
  *****************************************************************************/
 typedef enum en_flash_int_type
 {
-    FlashPCInt    = 0x01u,          ///<æ“¦å†™PCåœ°å€æŠ¥è­¦ä¸­æ–­
-    FlashSlockInt = 0x02u,          ///<æ“¦å†™ä¿æŠ¤æŠ¥è­¦ä¸­æ–­
+    FlashPCInt    = 0x01u,          ///<²ÁĞ´PCµØÖ·±¨¾¯ÖĞ¶Ï
+    FlashSlockInt = 0x02u,          ///<²ÁĞ´±£»¤±¨¾¯ÖĞ¶Ï
 } en_flash_int_type_t;
 
 
 /**
  ******************************************************************************
-  ** \brief Flashè¯»ç­‰å¾…å‘¨æœŸç±»å‹é‡å®šä¹‰
+  ** \brief Flash¶ÁµÈ´ıÖÜÆÚÀàĞÍÖØ¶¨Òå
  *****************************************************************************/
 typedef enum en_flash_waitcycle
 {
-    FlashWaitCycle0 = 0u,       ///< è¯»ç­‰å¾…å‘¨æœŸè®¾ç½®ä¸º0-å³è¯»å‘¨æœŸä¸º1ï¼ˆå½“HCLKå°äºç­‰äº24MHzæ—¶ï¼‰
-    FlashWaitCycle1 = 1u,       ///< è¯»ç­‰å¾…å‘¨æœŸè®¾ç½®ä¸º1-å³è¯»å‘¨æœŸä¸º2ï¼ˆå½“HCLKå¤§äº24MHzæ—¶å¿…é¡»è‡³å°‘ä¸º1ï¼‰
-    FlashWaitCycle2 = 2u,       ///< è¯»ç­‰å¾…å‘¨æœŸè®¾ç½®ä¸º2-å³è¯»å‘¨æœŸä¸º3ï¼ˆå½“HCKå¤§äº48MHzæ—¶å¿…é¡»è‡³å°‘ä¸º2ï¼‰
+    FlashWaitCycle0 = 0u,       ///< ¶ÁµÈ´ıÖÜÆÚÉèÖÃÎª0-¼´¶ÁÖÜÆÚÎª1£¨µ±HCLKĞ¡ÓÚµÈÓÚ24MHzÊ±£©
+    FlashWaitCycle1 = 1u,       ///< ¶ÁµÈ´ıÖÜÆÚÉèÖÃÎª1-¼´¶ÁÖÜÆÚÎª2£¨µ±HCLK´óÓÚ24MHzÊ±±ØĞëÖÁÉÙÎª1£©
+    FlashWaitCycle2 = 2u,       ///< ¶ÁµÈ´ıÖÜÆÚÉèÖÃÎª2-¼´¶ÁÖÜÆÚÎª3£¨µ±HCK´óÓÚ48MHzÊ±±ØĞëÖÁÉÙÎª2£©
 } en_flash_waitcycle_t;
 
 /**
  ******************************************************************************
-  ** \brief Flashæ“¦å†™ä¿æŠ¤èŒƒå›´é‡å®šä¹‰
+  ** \brief Flash²ÁĞ´±£»¤·¶Î§ÖØ¶¨Òå
  *****************************************************************************/
 typedef enum en_flash_lock
 {
@@ -125,34 +125,34 @@ typedef enum en_flash_lock
 /******************************************************************************
  * Global function prototypes (definition in C source)                        
  ******************************************************************************/
-///<Flash åˆå§‹åŒ–é…ç½®(ä¸­æ–­å‡½æ•°ã€ç¼–ç¨‹æ—¶é—´å‚æ•°åŠä¼‘çœ æ¨¡å¼é…ç½®ï¼‰
+///<Flash ³õÊ¼»¯ÅäÖÃ(ÖĞ¶Ïº¯Êı¡¢±à³ÌÊ±¼ä²ÎÊı¼°ĞİÃßÄ£Ê½ÅäÖÃ£©
 en_result_t Flash_Init(uint8_t u8FreqCfg, boolean_t bDpstbEn);
 
-///<Flash é¡µ/å…¨ç‰‡æ“¦é™¤
+///<Flash Ò³/È«Æ¬²Á³ı
 en_result_t Flash_SectorErase(uint32_t u32SectorAddr);
 en_result_t Flash_ChipErase(void);
 
-///<Flash å­—èŠ‚/åŠå­—/å­—å†™
+///<Flash ×Ö½Ú/°ë×Ö/×ÖĞ´
 en_result_t Flash_WriteByte(uint32_t u32Addr, uint8_t u8Data);
 en_result_t Flash_WriteHalfWord(uint32_t u32Addr, uint16_t u16Data);
 en_result_t Flash_WriteWord(uint32_t u32Addr, uint32_t u32Data);
 
-///<Flash ç¼–ç¨‹ä¿æŠ¤åŠ é”/è§£é”
+///<Flash ±à³Ì±£»¤¼ÓËø/½âËø
 void Flash_LockAll(void);
 void Flash_UnlockAll(void);
 en_result_t Flash_LockSet(en_flash_lock_t enLock, uint32_t u32LockValue);
 
 
-///<Flash è¯»ç­‰å¾…å‘¨æœŸè®¾å®š
+///<Flash ¶ÁµÈ´ıÖÜÆÚÉè¶¨
 en_result_t Flash_WaitCycle(en_flash_waitcycle_t enWaitCycle);
 
-///<ä¸­æ–­ç›¸å…³å‡½æ•°
-///<ä¸­æ–­ä½¿èƒ½/ç¦æ­¢
+///<ÖĞ¶ÏÏà¹Øº¯Êı
+///<ÖĞ¶ÏÊ¹ÄÜ/½ûÖ¹
 en_result_t Flash_EnableIrq(en_flash_int_type_t enFlashIntType);
 en_result_t Flash_DisableIrq(en_flash_int_type_t enFlashIntType);
-///<ä¸­æ–­æ ‡å¿—è·å–
+///<ÖĞ¶Ï±êÖ¾»ñÈ¡
 boolean_t Flash_GetIntFlag(en_flash_int_type_t enFlashIntType);
-///<ä¸­æ–­æ ‡å¿—æ¸…é™¤
+///<ÖĞ¶Ï±êÖ¾Çå³ı
 en_result_t Flash_ClearIntFlag(en_flash_int_type_t enFlashIntType);
 
 //@} // FlashGroup
@@ -165,3 +165,4 @@ en_result_t Flash_ClearIntFlag(en_flash_int_type_t enFlashIntType);
 /******************************************************************************/
 /* EOF (not truncated)                                                        */
 /******************************************************************************/
+

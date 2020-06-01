@@ -84,10 +84,10 @@
 
 /**
 ******************************************************************************
-    ** \brief  å®šæ—¶å™¨LPTIMxä¸­æ–­ä½¿èƒ½æ§åˆ¶
-    ** @param  Lptimx    : LPTIM0 æˆ–LPTIM1
-    ** @param  NewStatus : TRUE æˆ– FALSE
-    ** \retval æ— 
+    ** \brief  ¶¨Ê±Æ÷LPTIMxÖĞ¶ÏÊ¹ÄÜ¿ØÖÆ
+    ** @param  Lptimx    : LPTIM0 »òLPTIM1
+    ** @param  NewStatus : TRUE »ò FALSE
+    ** \retval ÎŞ
     **
 ******************************************************************************/
 void Lptim_ConfIt(M0P_LPTIMER_TypeDef* Lptimx, boolean_t NewStatus)
@@ -97,10 +97,10 @@ void Lptim_ConfIt(M0P_LPTIMER_TypeDef* Lptimx, boolean_t NewStatus)
 
 /**
 ******************************************************************************
-    ** \brief  å®šæ—¶å™¨LPTIMxçš„å¯åŠ¨/åœæ­¢æ§åˆ¶
-    ** @param  Lptimx    : LPTIM0 æˆ–LPTIM1
-    ** @param  NewStatus : TRUE æˆ– FALSE
-    ** \retval æ— 
+    ** \brief  ¶¨Ê±Æ÷LPTIMxµÄÆô¶¯/Í£Ö¹¿ØÖÆ
+    ** @param  Lptimx    : LPTIM0 »òLPTIM1
+    ** @param  NewStatus : TRUE »ò FALSE
+    ** \retval ÎŞ
     **
 ******************************************************************************/
 void Lptim_Cmd(M0P_LPTIMER_TypeDef* Lptimx, boolean_t NewStatus)
@@ -110,9 +110,9 @@ void Lptim_Cmd(M0P_LPTIMER_TypeDef* Lptimx, boolean_t NewStatus)
 
 /**
 ******************************************************************************
-    ** \brief  å®šæ—¶å™¨LPTIMxçš„ä¸­æ–­æ ‡å¿—ä½è·å–
-    ** @param  Lptimx    : LPTIM0 æˆ–LPTIM1
-    ** \retval TRUE æˆ– FALSE
+    ** \brief  ¶¨Ê±Æ÷LPTIMxµÄÖĞ¶Ï±êÖ¾Î»»ñÈ¡
+    ** @param  Lptimx    : LPTIM0 »òLPTIM1
+    ** \retval TRUE »ò FALSE
     **
 ******************************************************************************/
 boolean_t Lptim_GetItStatus(M0P_LPTIMER_TypeDef* Lptimx)
@@ -122,9 +122,9 @@ boolean_t Lptim_GetItStatus(M0P_LPTIMER_TypeDef* Lptimx)
 
 /**
 ******************************************************************************
-    ** \brief  å®šæ—¶å™¨LPTIMxçš„ä¸­æ–­æ ‡å¿—ä½æ¸…é™¤
-    ** @param  Lptimx    : LPTIM0 æˆ–LPTIM1
-    ** \retval æ— 
+    ** \brief  ¶¨Ê±Æ÷LPTIMxµÄÖĞ¶Ï±êÖ¾Î»Çå³ı
+    ** @param  Lptimx    : LPTIM0 »òLPTIM1
+    ** \retval ÎŞ
     **
 ******************************************************************************/
 void Lptim_ClrItStatus(M0P_LPTIMER_TypeDef* Lptimx)
@@ -134,10 +134,10 @@ void Lptim_ClrItStatus(M0P_LPTIMER_TypeDef* Lptimx)
 
 /**
 ******************************************************************************
-    ** \brief  å®šæ—¶å™¨LPTIMxçš„åˆå§‹åŒ–é…ç½®
-    ** @param  Lptimx    : LPTIM0 æˆ–LPTIM1
-    ** @param  InitStruct : åˆå§‹åŒ–LPTIMxçš„ç»“æ„ä½“
-    ** \retval en_result_tç±»å‹æ•°æ®
+    ** \brief  ¶¨Ê±Æ÷LPTIMxµÄ³õÊ¼»¯ÅäÖÃ
+    ** @param  Lptimx    : LPTIM0 »òLPTIM1
+    ** @param  InitStruct : ³õÊ¼»¯LPTIMxµÄ½á¹¹Ìå
+    ** \retval en_result_tÀàĞÍÊı¾İ
     **
 ******************************************************************************/
 en_result_t Lptim_Init(M0P_LPTIMER_TypeDef* Lptimx, stc_lptim_cfg_t* InitStruct)
@@ -169,3 +169,4 @@ en_result_t Lptim_Init(M0P_LPTIMER_TypeDef* Lptimx, stc_lptim_cfg_t* InitStruct)
 /******************************************************************************
  * EOF (not truncated)
  ******************************************************************************/
+

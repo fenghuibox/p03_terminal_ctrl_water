@@ -72,12 +72,12 @@
 
 /**
  ******************************************************************************
- ** \brief  LPUARTé€šä¿¡ä¸­æ–­ä½¿èƒ½å‡½æ•°è®¾ç½®
+ ** \brief  LPUARTÍ¨ÐÅÖÐ¶ÏÊ¹ÄÜº¯ÊýÉèÖÃ
  **
- ** \param [in] LPUARTxé€šé“å·ï¼ŒenIrqSelå‘é€oræŽ¥æ”¶ä¸­æ–­ä½¿èƒ½
+ ** \param [in] LPUARTxÍ¨µÀºÅ£¬enIrqSel·¢ËÍor½ÓÊÕÖÐ¶ÏÊ¹ÄÜ
  **
- ** \retval OKé…ç½®æˆåŠŸ
- **\retval ErrorInvalidParameteré…ç½®å¤±è´¥
+ ** \retval OKÅäÖÃ³É¹¦
+ **\retval ErrorInvalidParameterÅäÖÃÊ§°Ü
  ******************************************************************************/
 en_result_t LPUart_EnableIrq(M0P_LPUART_TypeDef* LPUARTx, en_lpuart_irq_sel_t enIrqSel)
 {
@@ -88,12 +88,12 @@ en_result_t LPUart_EnableIrq(M0P_LPUART_TypeDef* LPUARTx, en_lpuart_irq_sel_t en
 }
 /**
  ******************************************************************************
- ** \brief  LPUARTé€šä¿¡ä¸­æ–­ç¦æ­¢å‡½æ•°è®¾ç½®
+ ** \brief  LPUARTÍ¨ÐÅÖÐ¶Ï½ûÖ¹º¯ÊýÉèÖÃ
  **
- ** \param [in] LPUARTxé€šé“å·ï¼ŒenIrqSelå‘é€oræŽ¥æ”¶ä¸­æ–­ç¦æ­¢
+ ** \param [in] LPUARTxÍ¨µÀºÅ£¬enIrqSel·¢ËÍor½ÓÊÕÖÐ¶Ï½ûÖ¹
  **
- ** \retval OKé…ç½®æˆåŠŸ
- **\retval ErrorInvalidParameteré…ç½®å¤±è´¥
+ ** \retval OKÅäÖÃ³É¹¦
+ **\retval ErrorInvalidParameterÅäÖÃÊ§°Ü
  ******************************************************************************/
 en_result_t LPUart_DisableIrq(M0P_LPUART_TypeDef* LPUARTx, en_lpuart_irq_sel_t enIrqSel)
 {
@@ -104,12 +104,12 @@ en_result_t LPUart_DisableIrq(M0P_LPUART_TypeDef* LPUARTx, en_lpuart_irq_sel_t e
 }
 /**
  ******************************************************************************
- ** \brief lpuarté€šä¿¡æ—¶é’Ÿæºé€‰æ‹©
+ ** \brief lpuartÍ¨ÐÅÊ±ÖÓÔ´Ñ¡Ôñ
  **
- ** \param [in] LPUARTxé€šé“å·ï¼ŒenClk æ—¶é’Ÿæºé€‰é¡¹
+ ** \param [in] LPUARTxÍ¨µÀºÅ£¬enClk Ê±ÖÓÔ´Ñ¡Ïî
  **
- ** \retval Ok è®¾ç½®æˆåŠŸ
- **\retval ErrorInvalidParameterè®¾ç½®å¤±è´¥
+ ** \retval Ok ÉèÖÃ³É¹¦
+ **\retval ErrorInvalidParameterÉèÖÃÊ§°Ü
  ******************************************************************************/
 en_result_t LPUart_SelSclk(M0P_LPUART_TypeDef* LPUARTx, en_lpuart_sclksel_t enSclk)
 { 
@@ -122,12 +122,12 @@ en_result_t LPUart_SelSclk(M0P_LPUART_TypeDef* LPUARTx, en_lpuart_sclksel_t enSc
 
 /**
  ******************************************************************************
- ** \brief  LPUARTé€šé“å¤šä¸»æœºæ¨¡å¼é…ç½®
+ ** \brief  LPUARTÍ¨µÀ¶àÖ÷»úÄ£Ê½ÅäÖÃ
  **
- ** \param [in] LPUARTxé€šé“å·ï¼ŒstcMultiCfgå¤šä¸»æœºæ¨¡å¼ç»“æž„
+ ** \param [in] LPUARTxÍ¨µÀºÅ£¬stcMultiCfg¶àÖ÷»úÄ£Ê½½á¹¹
  **
- ** \retval OKé…ç½®æˆåŠŸ
- **\retval ErrorInvalidParameteré…ç½®å¤±è´¥
+ ** \retval OKÅäÖÃ³É¹¦
+ **\retval ErrorInvalidParameterÅäÖÃÊ§°Ü
  ******************************************************************************/
 en_result_t LPUart_SetMultiMode(M0P_LPUART_TypeDef* LPUARTx, stc_lpuart_multimode_t* pstcMultiCfg)
 {
@@ -148,9 +148,9 @@ en_result_t LPUart_SetMultiMode(M0P_LPUART_TypeDef* LPUARTx, stc_lpuart_multimod
 
 /**
  ******************************************************************************
- ** \brief  LPUARTå•çº¿åŠåŒå·¥æ¨¡å¼ä½¿èƒ½
+ ** \brief  LPUARTµ¥Ïß°ëË«¹¤Ä£Ê½Ê¹ÄÜ
  **
- ** \param [in] LPUARTx é€šé“å·
+ ** \param [in] LPUARTx Í¨µÀºÅ
  **
  ** \retval Null
  ******************************************************************************/
@@ -162,9 +162,9 @@ void LPUart_HdModeEnable(M0P_LPUART_TypeDef* LPUARTx)
 
 /**
  ******************************************************************************
- ** \brief  LPUARTå•çº¿åŠåŒå·¥æ¨¡å¼å…³é—­
+ ** \brief  LPUARTµ¥Ïß°ëË«¹¤Ä£Ê½¹Ø±Õ
  **
- ** \param [in] LPUARTx é€šé“å·
+ ** \param [in] LPUARTx Í¨µÀºÅ
  **
  ** \retval Null
  ******************************************************************************/
@@ -175,10 +175,10 @@ void LPUart_HdModeDisable(M0P_LPUART_TypeDef* LPUARTx)
 
 /**
  ******************************************************************************
- ** \brief  LPUARTé€šé“å¤šæœºæ¨¡å¼å‘é€æ•°æ®/åœ°å€å¸§é…ç½®TB8
+ ** \brief  LPUARTÍ¨µÀ¶à»úÄ£Ê½·¢ËÍÊý¾Ý/µØÖ·Ö¡ÅäÖÃTB8
  **
- ** \param [in] LPUARTx é€šé“å·
- ** \param [in] TRUE-TB8ä¸ºåœ°å€å¸§æ ‡å¿—ï¼›FALSE-TB8ä¸ºæ•°æ®å¸§æ ‡å¿—ï¼›
+ ** \param [in] LPUARTx Í¨µÀºÅ
+ ** \param [in] TRUE-TB8ÎªµØÖ·Ö¡±êÖ¾£»FALSE-TB8ÎªÊý¾ÝÖ¡±êÖ¾£»
  **
  ** \retval Null
  ******************************************************************************/
@@ -190,12 +190,12 @@ void LPUart_SetTb8(M0P_LPUART_TypeDef* LPUARTx, boolean_t bTB8Value)
 
 /**
  ******************************************************************************
- ** \brief èŽ·å–RB8æ•°å€¼
+ ** \brief »ñÈ¡RB8ÊýÖµ
  **
- ** \param [in] LPUARTx é€šé“å·
+ ** \param [in] LPUARTx Í¨µÀºÅ
  **
  ** \retval RB8
- **\retval ErrorInvalidParameteré…ç½®å¤±è´¥
+ **\retval ErrorInvalidParameterÅäÖÃÊ§°Ü
  ******************************************************************************/
 boolean_t LPUart_GetRb8(M0P_LPUART_TypeDef* LPUARTx)
 {
@@ -203,12 +203,12 @@ boolean_t LPUart_GetRb8(M0P_LPUART_TypeDef* LPUARTx)
 }
 /**
  ******************************************************************************
- ** \brief  LPUARTé€šé“å¤šä¸»æœºæ¨¡å¼ä»Žæœºåœ°å€é…ç½®å‡½æ•°
+ ** \brief  LPUARTÍ¨µÀ¶àÖ÷»úÄ£Ê½´Ó»úµØÖ·ÅäÖÃº¯Êý
  **
- ** \param [in] LPUARTx é€šé“å·ï¼Œaddråœ°å€
+ ** \param [in] LPUARTx Í¨µÀºÅ£¬addrµØÖ·
  **
- ** \retval OKé…ç½®æˆåŠŸ
- **\retval ErrorInvalidParameteré…ç½®å¤±è´¥
+ ** \retval OKÅäÖÃ³É¹¦
+ **\retval ErrorInvalidParameterÅäÖÃÊ§°Ü
  ******************************************************************************/
 en_result_t LPUart_SetSaddr(M0P_LPUART_TypeDef* LPUARTx,uint8_t u8Addr)
 {
@@ -219,12 +219,12 @@ en_result_t LPUart_SetSaddr(M0P_LPUART_TypeDef* LPUARTx,uint8_t u8Addr)
 
 /**
  ******************************************************************************
- ** \brief  LPUARTé€šé“å‘é€æˆ–æŽ¥æ”¶ç­‰åŠŸèƒ½ä½¿èƒ½è®¾ç½®
+ ** \brief  LPUARTÍ¨µÀ·¢ËÍ»ò½ÓÊÕµÈ¹¦ÄÜÊ¹ÄÜÉèÖÃ
  **
- ** \param [in] u8Idxé€šé“å·ï¼ŒenFuncåŠŸèƒ½
+ ** \param [in] u8IdxÍ¨µÀºÅ£¬enFunc¹¦ÄÜ
  **
- ** \retval OKé…ç½®æˆåŠŸ
- **\retval ErrorInvalidParameteré…ç½®å¤±è´¥
+ ** \retval OKÅäÖÃ³É¹¦
+ **\retval ErrorInvalidParameterÅäÖÃÊ§°Ü
  ******************************************************************************/
 en_result_t LPUart_EnableFunc(M0P_LPUART_TypeDef* LPUARTx, en_lpuart_func_t enFunc)
 {
@@ -235,12 +235,12 @@ en_result_t LPUart_EnableFunc(M0P_LPUART_TypeDef* LPUARTx, en_lpuart_func_t enFu
 
 /**
  ******************************************************************************
- ** \brief  LPUARTé€šé“å‘é€æˆ–æŽ¥æ”¶ç­‰åŠŸèƒ½ç¦æ­¢è®¾ç½®
+ ** \brief  LPUARTÍ¨µÀ·¢ËÍ»ò½ÓÊÕµÈ¹¦ÄÜ½ûÖ¹ÉèÖÃ
  **
- ** \param [in] u8Idxé€šé“å·ï¼ŒenFuncåŠŸèƒ½
+ ** \param [in] u8IdxÍ¨µÀºÅ£¬enFunc¹¦ÄÜ
  **
- ** \retval OKé…ç½®æˆåŠŸ
- **\retval ErrorInvalidParameteré…ç½®å¤±è´¥
+ ** \retval OKÅäÖÃ³É¹¦
+ **\retval ErrorInvalidParameterÅäÖÃÊ§°Ü
  ******************************************************************************/
 en_result_t LPUart_DisableFunc(M0P_LPUART_TypeDef* LPUARTx, en_lpuart_func_t enFunc)
 {
@@ -251,11 +251,11 @@ en_result_t LPUart_DisableFunc(M0P_LPUART_TypeDef* LPUARTx, en_lpuart_func_t enF
 
 /**
  ******************************************************************************
- ** \brief  LPUARTé€šé“é€šä¿¡çŠ¶æ€èŽ·å–
+ ** \brief  LPUARTÍ¨µÀÍ¨ÐÅ×´Ì¬»ñÈ¡
  **
- ** \param [in] u8Idxé€šé“å·
+ ** \param [in] u8IdxÍ¨µÀºÅ
  **
- ** \retval çŠ¶æ€å€¼
+ ** \retval ×´Ì¬Öµ
  ******************************************************************************/
 uint8_t LPUart_GetIsr(M0P_LPUART_TypeDef* LPUARTx)
 {
@@ -264,12 +264,12 @@ uint8_t LPUart_GetIsr(M0P_LPUART_TypeDef* LPUARTx)
 
 /**
  ******************************************************************************
- ** \brief  LPUARTé€šé“é€šä¿¡çŠ¶æ€èŽ·å–
+ ** \brief  LPUARTÍ¨µÀÍ¨ÐÅ×´Ì¬»ñÈ¡
  **
- ** \param [in] u8Idxé€šé“å·ï¼ŒenStatusèŽ·å–å“ªä¸ªçŠ¶æ€
+ ** \param [in] u8IdxÍ¨µÀºÅ£¬enStatus»ñÈ¡ÄÄ¸ö×´Ì¬
  **
- ** \retval çŠ¶æ€å€¼
- **\retval ErrorInvalidParameterèŽ·å–å¤±è´¥
+ ** \retval ×´Ì¬Öµ
+ **\retval ErrorInvalidParameter»ñÈ¡Ê§°Ü
  ******************************************************************************/
 boolean_t LPUart_GetStatus(M0P_LPUART_TypeDef* LPUARTx,en_lpuart_status_t enStatus)
 {
@@ -284,9 +284,9 @@ boolean_t LPUart_GetStatus(M0P_LPUART_TypeDef* LPUARTx,en_lpuart_status_t enStat
 
 /**
  ******************************************************************************
- ** \brief  LPUARTé€šé“é€šä¿¡çŠ¶æ€å…¨éƒ¨æ¸…é™¤
+ ** \brief  LPUARTÍ¨µÀÍ¨ÐÅ×´Ì¬È«²¿Çå³ý
  **
- ** \param [in] u8Idxé€šé“å·
+ ** \param [in] u8IdxÍ¨µÀºÅ
  **
  ** \retval OK
  ******************************************************************************/
@@ -298,12 +298,12 @@ en_result_t LPUart_ClrIsr(M0P_LPUART_TypeDef* LPUARTx)
 
 /**
  ******************************************************************************
- ** \brief  LPUARTé€šé“é€šä¿¡çŠ¶æ€æ¸…é™¤
+ ** \brief  LPUARTÍ¨µÀÍ¨ÐÅ×´Ì¬Çå³ý
  **
- ** \param [in] u8Idxé€šé“å·ï¼ŒenStatusæ¸…é™¤å“ªä¸ªçŠ¶æ€
+ ** \param [in] u8IdxÍ¨µÀºÅ£¬enStatusÇå³ýÄÄ¸ö×´Ì¬
  **
- ** \retval çŠ¶æ€å€¼
- **\retval ErrorInvalidParameteræ¸…é™¤å¤±è´¥
+ ** \retval ×´Ì¬Öµ
+ **\retval ErrorInvalidParameterÇå³ýÊ§°Ü
  ******************************************************************************/
 en_result_t LPUart_ClrStatus(M0P_LPUART_TypeDef* LPUARTx,en_lpuart_status_t enStatus)
 {
@@ -316,12 +316,12 @@ en_result_t LPUart_ClrStatus(M0P_LPUART_TypeDef* LPUARTx,en_lpuart_status_t enSt
 
 /**
  ******************************************************************************
- ** \brief  LPUARTé€šé“å‘é€æ•°æ®å‡½æ•°,æŸ¥è¯¢æ–¹å¼è°ƒç”¨æ­¤å‡½æ•°ï¼Œä¸­æ–­æ–¹å¼å‘é€ä¸é€‚ç”¨
+ ** \brief  LPUARTÍ¨µÀ·¢ËÍÊý¾Ýº¯Êý,²éÑ¯·½Ê½µ÷ÓÃ´Ëº¯Êý£¬ÖÐ¶Ï·½Ê½·¢ËÍ²»ÊÊÓÃ
  **
- ** \param [in] u8Idxé€šé“å·ï¼ŒDataå‘é€æ•°æ®
+ ** \param [in] u8IdxÍ¨µÀºÅ£¬Data·¢ËÍÊý¾Ý
  **
- ** \retval Okå‘é€æˆåŠŸ
- **\retval ErrorInvalidParameterå‘é€å¤±è´¥
+ ** \retval Ok·¢ËÍ³É¹¦
+ **\retval ErrorInvalidParameter·¢ËÍÊ§°Ü
  ******************************************************************************/
 en_result_t LPUart_SendData(M0P_LPUART_TypeDef* LPUARTx, uint8_t u8Data)
 {
@@ -336,12 +336,12 @@ en_result_t LPUart_SendData(M0P_LPUART_TypeDef* LPUARTx, uint8_t u8Data)
 
 /**
  ******************************************************************************
- ** \brief  LPUARTé€šé“å‘é€æ•°æ®å‡½æ•°,ä¸­æ–­æ–¹å¼è°ƒç”¨æ­¤å‡½æ•°
+ ** \brief  LPUARTÍ¨µÀ·¢ËÍÊý¾Ýº¯Êý,ÖÐ¶Ï·½Ê½µ÷ÓÃ´Ëº¯Êý
  **
- ** \param [in] u8Idxé€šé“å·ï¼ŒDataå‘é€æ•°æ®
+ ** \param [in] u8IdxÍ¨µÀºÅ£¬Data·¢ËÍÊý¾Ý
  **
- ** \retval Okå‘é€æˆåŠŸ
- **\retval ErrorInvalidParameterå‘é€å¤±è´¥
+ ** \retval Ok·¢ËÍ³É¹¦
+ **\retval ErrorInvalidParameter·¢ËÍÊ§°Ü
  ******************************************************************************/
 en_result_t LPUart_SendDataIt(M0P_LPUART_TypeDef* LPUARTx, uint8_t u8Data)
 {
@@ -352,12 +352,12 @@ en_result_t LPUart_SendDataIt(M0P_LPUART_TypeDef* LPUARTx, uint8_t u8Data)
 
 /**
  ******************************************************************************
- ** \brief  LPUARTé€šé“æŽ¥æ”¶æ•°æ®å‡½æ•°
+ ** \brief  LPUARTÍ¨µÀ½ÓÊÕÊý¾Ýº¯Êý
  **
- ** \param [in] u8Idxé€šé“å·
+ ** \param [in] u8IdxÍ¨µÀºÅ
  **
- ** \retval æŽ¥æ”¶æ•°æ®
- **\retval ErrorInvalidParameteræŽ¥æ”¶å¤±è´¥
+ ** \retval ½ÓÊÕÊý¾Ý
+ **\retval ErrorInvalidParameter½ÓÊÕÊ§°Ü
  ******************************************************************************/
 uint8_t LPUart_ReceiveData(M0P_LPUART_TypeDef* LPUARTx)
 {
@@ -366,12 +366,12 @@ uint8_t LPUart_ReceiveData(M0P_LPUART_TypeDef* LPUARTx)
 
 /**
  ******************************************************************************
- ** \brief  LPUARTé€šé“åˆå§‹åŒ–å‡½æ•°
+ ** \brief  LPUARTÍ¨µÀ³õÊ¼»¯º¯Êý
  **
- ** \param [in] u8Idxé€šé“å·ï¼ŒpstcCfgåˆå§‹åŒ–ç»“æž„ä½“  @ref stc_lpuart_cfg_t
+ ** \param [in] u8IdxÍ¨µÀºÅ£¬pstcCfg³õÊ¼»¯½á¹¹Ìå  @ref stc_lpuart_cfg_t
  **
- ** \retval OKé…ç½®æˆåŠŸ
- **\retval ErrorInvalidParameteré…ç½®å¤±è´¥
+ ** \retval OKÅäÖÃ³É¹¦
+ **\retval ErrorInvalidParameterÅäÖÃÊ§°Ü
  ******************************************************************************/
 en_result_t LPUart_Init(M0P_LPUART_TypeDef* LPUARTx,stc_lpuart_cfg_t* pstcCfg)
 {
@@ -396,7 +396,7 @@ en_result_t LPUart_Init(M0P_LPUART_TypeDef* LPUARTx,stc_lpuart_cfg_t* pstcCfg)
     {
         u16OverShift = u32Over[pstcCfg->stcBaud.enSclkDiv/LPUartMsk8Or16Div];
         LPUARTx->SCNT = pstcCfg->stcBaud.u32Sclk/(pstcCfg->stcBaud.u32Baud<<u16OverShift);
-        LPUart_EnableFunc(LPUARTx,LPUartRenFunc);       ///<ä½¿èƒ½æ”¶å‘
+        LPUart_EnableFunc(LPUARTx,LPUartRenFunc);       ///<Ê¹ÄÜÊÕ·¢
     }
     
     
@@ -405,3 +405,4 @@ en_result_t LPUart_Init(M0P_LPUART_TypeDef* LPUARTx,stc_lpuart_cfg_t* pstcCfg)
     return enRet;
 }
 //@} // LPUartGroup      
+

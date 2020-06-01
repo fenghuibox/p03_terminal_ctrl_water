@@ -242,6 +242,24 @@ boolean_t GetBit(uint32_t addr, uint32_t offset)
 {
     return ((((*((volatile uint32_t *)(addr))) >> (offset)) & 1u) > 0) ? TRUE : FALSE;
 }
+
+#if 0
+// add by fenghui
+void  ToggleBit( uint32_t addr,  uint32_t offset )
+{
+	if( (((*((volatile uint32_t *)(addr))) >> (offset)) & 1u)  )
+		*((volatile uint32_t *)(addr)) &= (~(1UL<<(offset)));
+	else
+        *((volatile uint32_t *)(addr)) |= ((1UL)<<(offset));
+
+
+	//*((volatile uint32_t *)(addr)) ^= 1UL<<(offset);
+}
+
+#endif
+
+
+
 //@} // DDL Functions
 
 /******************************************************************************

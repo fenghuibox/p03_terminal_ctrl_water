@@ -83,10 +83,10 @@ const uint8_t Cnst_Month_Tbl[12]={0x31,0x28,0x31,0x30,0x31,0x30,0x31,0x31,0x30,0
  
 /**
 ******************************************************************************
-    ** \brief  RTCËÆ°Êï∞Âô®ÁöÑ‰ΩøËÉΩÊàñÂÅúÊ≠¢
+    ** \brief  RTCº∆ ˝∆˜µƒ πƒ‹ªÚÕ£÷π
     ** 
-    ** @param  NewState : TRUE Êàñ FALSE
-    ** \retval Êó†
+    ** @param  NewState : TRUE ªÚ FALSE
+    ** \retval Œﬁ
     **
 ******************************************************************************/ 
 void Rtc_Cmd(boolean_t NewState)
@@ -96,22 +96,22 @@ void Rtc_Cmd(boolean_t NewState)
 
 /**
 ******************************************************************************
-    ** \brief  RTCËÆ°Êï∞Âô®ÂêØÂä®Á≠âÂæÖÂáΩÊï∞ÔºåÂ¶ÇÂêØÂä®RTCËÆ°Êï∞Âô®ÂêéÁ´ãÂç≥ËøõÂÖ•‰ΩéÂäüËÄóÊ®°ÂºèÔºå
-    **         ËøõÂÖ•‰ΩéÂäüËÄóÊ®°Âºè‰πãÂâçÈúÄÊâßË°åÊ≠§ÂáΩÊï∞Ôºå‰ª•Á°Æ‰øùRTCÂ∑≤ÂêØÂä®ÂÆåÊàê
+    ** \brief  RTCº∆ ˝∆˜∆Ù∂Øµ»¥˝∫Ø ˝£¨»Á∆Ù∂ØRTCº∆ ˝∆˜∫Û¡¢º¥Ω¯»ÎµÕπ¶∫ƒƒ£ Ω£¨
+    **         Ω¯»ÎµÕπ¶∫ƒƒ£ Ω÷Æ«∞–Ë÷¥––¥À∫Ø ˝£¨“‘»∑±£RTC“—∆Ù∂ØÕÍ≥…
     ** 
-    ** @param  NewState : TRUE Êàñ FALSE
-    ** \retval Êó†
+    ** @param  NewState : TRUE ªÚ FALSE
+    ** \retval Œﬁ
     **
 ******************************************************************************/ 
 void Rtc_StartWait(void)
 {
     M0P_RTC->CR1_f.WAIT = 1;
-    while (M0P_RTC->CR1_f.WAITF != 1)  //Á≠âÂæÖÁõ¥Âà∞WAITF=1
+    while (M0P_RTC->CR1_f.WAITF != 1)  //µ»¥˝÷±µΩWAITF=1
     {
         ;
     }
     M0P_RTC->CR1_f.WAIT = 0;
-    while (M0P_RTC->CR1_f.WAITF != 0)  //Á≠âÂæÖÁõ¥Âà∞WAITF=0 
+    while (M0P_RTC->CR1_f.WAITF != 0)  //µ»¥˝÷±µΩWAITF=0 
     {
         ;
     }
@@ -119,24 +119,24 @@ void Rtc_StartWait(void)
  
 /**
 ******************************************************************************
-    ** \brief  RTCÁöÑ1HzËæìÂá∫ÁöÑ‰ΩøËÉΩÊàñÂÅúÊ≠¢
-    ** @param  pricision : RtcHz1selGeneralPricision Êàñ RtcHz1selHighPricision
-    ** @param  NewState : Hz1o_Disable Êàñ HZ1o_Enable
-    ** \retval Êó†
+    ** \brief  RTCµƒ1Hz ‰≥ˆµƒ πƒ‹ªÚÕ£÷π
+    ** @param  pricision : RtcHz1selGeneralPricision ªÚ RtcHz1selHighPricision
+    ** @param  NewState : Hz1o_Disable ªÚ HZ1o_Enable
+    ** \retval Œﬁ
     **
 ******************************************************************************/ 
 void Rtc_Hz1Cmd(en_rtc_hz1sel_t pricision, boolean_t NewState)
 {
-    SetBit((uint32_t)(&(M0P_RTC->CR0)), 6, pricision);  //ËÆæÁΩÆÊôÆÈÄöÁ≤æÂ∫¶ÊàñËÄÖÈ´òÁ≤æÂ∫¶1HzËæìÂá∫
-    SetBit((uint32_t)(&(M0P_RTC->CR0)), 5, NewState);   //ËÆæÁΩÆ1HzËæìÂá∫‰ΩøËÉΩÊàñÁ¶ÅÊ≠¢
+    SetBit((uint32_t)(&(M0P_RTC->CR0)), 6, pricision);  //…Ë÷√∆’Õ®æ´∂»ªÚ’ﬂ∏ﬂæ´∂»1Hz ‰≥ˆ
+    SetBit((uint32_t)(&(M0P_RTC->CR0)), 5, NewState);   //…Ë÷√1Hz ‰≥ˆ πƒ‹ªÚΩ˚÷π
 }    
 
 /**
 ******************************************************************************
-    ** \brief  ËÆæÁΩÆÂë®Êúü‰∏≠Êñ≠ÁöÑÁ±ªÂûã(PRDSEL)ÂèäÂÖ∂ÊâÄÈÄâÁ±ªÂûãÁöÑÊó∂Èó¥(PRDSÊàñPRDX)
+    ** \brief  …Ë÷√÷‹∆⁄÷–∂œµƒ¿‡–Õ(PRDSEL)º∞∆‰À˘—°¿‡–Õµƒ ±º‰(PRDSªÚPRDX)
     ** 
-  ** @param   pstCyc: Ê†πÊçÆÁªìÊûÑ‰ΩìÁöÑÂÆö‰πâËÆæÁΩÆPRDSEL„ÄÅPRDS‰∏éPRDX
-    ** \retval  Ok„ÄÅError Êàñ ErrorInvalidParameter
+  ** @param   pstCyc: ∏˘æ›Ω·ππÃÂµƒ∂®“Â…Ë÷√PRDSEL°¢PRDS”ÎPRDX
+    ** \retval  Ok°¢Error ªÚ ErrorInvalidParameter
     **
 ******************************************************************************/ 
 en_result_t Rtc_SetCyc(stc_rtc_cyccfg_t* pstCyc)
@@ -166,25 +166,25 @@ en_result_t Rtc_SetCyc(stc_rtc_cyccfg_t* pstCyc)
 
 /**
 ******************************************************************************
-    ** \brief  RTCÈóπÈíü‰∏≠Êñ≠ÁöÑ‰ΩøËÉΩÊàñÂÅúÊ≠¢
+    ** \brief  RTCƒ÷÷”÷–∂œµƒ πƒ‹ªÚÕ£÷π
     ** 
-    ** @param  NewState : TRUE Êàñ FALSE
-    ** \retval Êó†
+    ** @param  NewState : TRUE ªÚ FALSE
+    ** \retval Œﬁ
     **
 ******************************************************************************/
 void Rtc_AlmIeCmd(boolean_t NewState)
 {
-    SetBit((uint32_t)(&(M0P_RTC->CR1)), 3, 0);        //Ê∏ÖÈô§Âë®Êúü‰∏≠Êñ≠Ê†áÂøó‰Ωç
-    SetBit((uint32_t)(&(M0P_RTC->CR1)), 4, 0);        //Ê∏ÖÈô§Âë®Êúü‰∏≠Êñ≠Ê†áÂøó‰Ωç
+    SetBit((uint32_t)(&(M0P_RTC->CR1)), 3, 0);        //«Â≥˝÷‹∆⁄÷–∂œ±Í÷æŒª
+    SetBit((uint32_t)(&(M0P_RTC->CR1)), 4, 0);        //«Â≥˝÷‹∆⁄÷–∂œ±Í÷æŒª
     SetBit((uint32_t)(&(M0P_RTC->CR1)), 6, NewState);
 }
  
 /**
 ******************************************************************************
-    ** \brief  RTCÈóπÈíüÁöÑ‰ΩøËÉΩÊàñÂÅúÊ≠¢
+    ** \brief  RTCƒ÷÷”µƒ πƒ‹ªÚÕ£÷π
     ** 
-    ** @param  NewState : Almen_Disable Êàñ Almen_Enable
-    ** \retval Êó†
+    ** @param  NewState : Almen_Disable ªÚ Almen_Enable
+    ** \retval Œﬁ
     **
 ******************************************************************************/ 
 void Rtc_AlmEnCmd(boolean_t NewState)
@@ -194,10 +194,10 @@ void Rtc_AlmEnCmd(boolean_t NewState)
 
 /**
 ******************************************************************************
-    ** \brief  Ëé∑ÂèñRTCÈóπÈíü‰∏≠Êñ≠Áä∂ÊÄÅ‰Ωç
+    ** \brief  ªÒ»°RTCƒ÷÷”÷–∂œ◊¥Ã¨Œª
     ** 
-    ** @param  Êó†
-    ** \retval TRUE Êàñ FALSE
+    ** @param  Œﬁ
+    ** \retval TRUE ªÚ FALSE
     **
 ******************************************************************************/
 boolean_t Rtc_GetAlmfItStatus(void)
@@ -207,10 +207,10 @@ boolean_t Rtc_GetAlmfItStatus(void)
 
 /**
 ******************************************************************************
-    ** \brief  Ê∏ÖÈô§RTCÈóπÈíü‰∏≠Êñ≠Áä∂ÊÄÅ‰Ωç
+    ** \brief  «Â≥˝RTCƒ÷÷”÷–∂œ◊¥Ã¨Œª
     ** 
-    ** @param  Êó†
-    ** \retval Êó†
+    ** @param  Œﬁ
+    ** \retval Œﬁ
     **
 ******************************************************************************/
 void Rtc_ClearAlmfItStatus(void)
@@ -220,10 +220,10 @@ void Rtc_ClearAlmfItStatus(void)
 
 /**
 ******************************************************************************
-    ** \brief  Ê∏ÖÈô§RTCÂë®Êúü‰∏≠Êñ≠Áä∂ÊÄÅ‰Ωç
+    ** \brief  «Â≥˝RTC÷‹∆⁄÷–∂œ◊¥Ã¨Œª
     ** 
-    ** @param  Êó†
-    ** \retval Êó†
+    ** @param  Œﬁ
+    ** \retval Œﬁ
     **
 ******************************************************************************/
 void Rtc_ClearPrdfItStatus(void)
@@ -233,10 +233,10 @@ void Rtc_ClearPrdfItStatus(void)
 
 /**
 ******************************************************************************
-    ** \brief  Ëé∑ÂèñRTCÂë®Êúü‰∏≠Êñ≠Áä∂ÊÄÅ‰Ωç
+    ** \brief  ªÒ»°RTC÷‹∆⁄÷–∂œ◊¥Ã¨Œª
     ** 
-    ** @param  Êó†
-    ** \retval TRUE Êàñ FALSE
+    ** @param  Œﬁ
+    ** \retval TRUE ªÚ FALSE
     **
 ******************************************************************************/
 boolean_t Rtc_GetPridItStatus(void)
@@ -246,10 +246,10 @@ boolean_t Rtc_GetPridItStatus(void)
 
 /**
 ******************************************************************************
-    ** \brief  ÈÖçÁΩÆRTCÁöÑËØØÂ∑ÆË°•ÂÅøÂØÑÂ≠òÂô®
+    ** \brief  ≈‰÷√RTCµƒŒÛ≤Ó≤π≥•ºƒ¥Ê∆˜
     ** 
-    ** @param  CompValue:Êï∞ÂÄºÁöÑËåÉÂõ¥‰∏∫Ôºö32-256
-    ** @param  NewStatus: RtcCompenDisable Êàñ RtcAmCompenEnable
+    ** @param  CompValue: ˝÷µµƒ∑∂ŒßŒ™£∫32-256
+    ** @param  NewStatus: RtcCompenDisable ªÚ RtcAmCompenEnable
     ** \retval Ok  ErrorInvalidParameter
     **
 ******************************************************************************/
@@ -270,13 +270,13 @@ en_result_t Rtc_CompCfg(uint16_t CompVlue, en_rtc_compen_t NewStatus)
 
 /**
  ******************************************************************************
- ** \brief  RTCÊ†πÊçÆÊó•ÊúüËÆ°ÁÆóÂë®Êï∞
+ ** \brief  RTC∏˘æ›»’∆⁄º∆À„÷‹ ˝
  **
- ** \param pu8bufÊó∂Èó¥Êï∞ÊçÆ
- ** \param u8limit_minÊúÄÂ∞èÂÄº
- ** \param u8limit_maxÊúÄÂ§ßÂÄº
+ ** \param pu8buf ±º‰ ˝æ›
+ ** \param u8limit_min◊Ó–°÷µ
+ ** \param u8limit_max◊Ó¥Û÷µ
  **
- ** \retval Error ÈîôËØØÔºåOkÊ†°È™åÊ≠£Á°Æ
+ ** \retval Error ¥ÌŒÛ£¨Ok–£—È’˝»∑
  ** 
  ******************************************************************************/
 en_result_t Check_BCD_Format(uint8_t u8data,uint8_t u8limit_min, uint8_t u8limit_max)
@@ -292,11 +292,11 @@ en_result_t Check_BCD_Format(uint8_t u8data,uint8_t u8limit_min, uint8_t u8limit
 
 /**
  ******************************************************************************
- ** \brief  RTC Âπ≥„ÄÅÈó∞Âπ¥Ê£ÄÊµã
+ ** \brief  RTC ∆Ω°¢»ÚƒÍºÏ≤‚
  **
-** \param  u8year:Âπ¥ÂçÅËøõÂà∂‰Ωé‰∏§‰Ωç:0-99
+** \param  u8year:ƒÍ ÆΩ¯÷∆µÕ¡ΩŒª:0-99
  **
- ** \retval  1:Èó∞Âπ¥  0ÔºöÂπ≥Âπ¥
+ ** \retval  1:»ÚƒÍ  0£∫∆ΩƒÍ
  **
  ******************************************************************************/
 uint8_t Rtc_CheckLeapYear(uint8_t u8year)
@@ -315,11 +315,11 @@ uint8_t Rtc_CheckLeapYear(uint8_t u8year)
 
 /**
  ******************************************************************************
- ** \brief  RTCÊ†πÊçÆÂπ¥Ëé∑Âèñ‰∫åÊúàÁöÑÂ§©Êï∞
+ ** \brief  RTC∏˘æ›ƒÍªÒ»°∂˛‘¬µƒÃÏ ˝
  **
- ** \param [in] u8monthÊúà‰ªΩÔºåu8yearÂπ¥‰ªΩ
+ ** \param [in] u8month‘¬∑›£¨u8yearƒÍ∑›
  **
-** \retval u8dayÂ§©Êï∞:28Êàñ29
+** \retval u8dayÃÏ ˝:28ªÚ29
  ** 
  ******************************************************************************/
 uint8_t Get_Month2_Day( uint8_t u8year)
@@ -336,12 +336,12 @@ uint8_t Get_Month2_Day( uint8_t u8year)
 
 /**
  ******************************************************************************
- ** \brief  RTCËé∑ÂèñÊó∂Èó¥ÂáΩÊï∞
+ ** \brief  RTCªÒ»° ±º‰∫Ø ˝
  **
- ** \param time: Áî®‰∫éÂ≠òÊîæËØªÂèñËá™Êó∂Èó¥ÂØÑÂ≠òÂô®ÁöÑÊó∂Èó¥Êï∞ÊçÆÔºåÊ†ºÂºè‰∏∫BCDÁ†ÅÊ†ºÂºè
+ ** \param time: ”√”⁄¥Ê∑≈∂¡»°◊‘ ±º‰ºƒ¥Ê∆˜µƒ ±º‰ ˝æ›£¨∏Ò ΩŒ™BCD¬Î∏Ò Ω
  **
- ** \retval Ok  Ëé∑ÂèñÊ≠£Â∏∏
- ** \retval ErrorTimeout Êó∂Èó¥Ê∫¢Âá∫ÈîôËØØ
+ ** \retval Ok  ªÒ»°’˝≥£
+ ** \retval ErrorTimeout  ±º‰“Á≥ˆ¥ÌŒÛ
  ******************************************************************************/
 en_result_t Rtc_ReadDateTime(stc_rtc_time_t* time)
 {
@@ -390,11 +390,11 @@ en_result_t Rtc_ReadDateTime(stc_rtc_time_t* time)
 
 /**
  ******************************************************************************
- ** \brief  ÂêëRTCÊó∂Èó¥ÂØÑÂ≠òÂô®ÂÜôÂÖ•Êó∂Èó¥
+ ** \brief  œÚRTC ±º‰ºƒ¥Ê∆˜–¥»Î ±º‰
  **
- ** \param timeÔºö Â≠òÊîæÊó∂Èó¥ÁöÑÁªìÊûÑ‰ΩìÔºåÂêÑ‰∏™Êó∂Èó¥Âùá‰∏∫BCDÁ†ÅÊ†ºÂºè
+ ** \param time£∫ ¥Ê∑≈ ±º‰µƒΩ·ππÃÂ£¨∏˜∏ˆ ±º‰æ˘Œ™BCD¬Î∏Ò Ω
  **
- ** \retval ErrorTimeout Êàñ Ok
+ ** \retval ErrorTimeout ªÚ Ok
  ** 
  ******************************************************************************/
 en_result_t Rtc_SetTime(stc_rtc_time_t* time)
@@ -437,11 +437,11 @@ en_result_t Rtc_SetTime(stc_rtc_time_t* time)
 
 /**
  ******************************************************************************
- ** \brief  RTCÈóπÈíü‰∏≠Êñ≠Êó∂Èó¥Ëé∑Âèñ
+ ** \brief  RTCƒ÷÷”÷–∂œ ±º‰ªÒ»°
  **
- ** \param pstcAlarmTimeÔºöÂ≠òÊîæÈóπÈíüÊó∂Èó¥ÂØÑÂ≠òÂô®Êï∞ÊçÆÔºöÁßí ÂàÜ Êó∂ Âë® 
+ ** \param pstcAlarmTime£∫¥Ê∑≈ƒ÷÷” ±º‰ºƒ¥Ê∆˜ ˝æ›£∫√Î ∑÷  ± ÷‹ 
  **
- ** \retval Êó†
+ ** \retval Œﬁ
  ** 
  ******************************************************************************/
 void Rtc_GetAlarmTime(stc_rtc_alarmtime_t* pstcAlarmTime)
@@ -454,18 +454,18 @@ void Rtc_GetAlarmTime(stc_rtc_alarmtime_t* pstcAlarmTime)
 
 /**
  ******************************************************************************
- ** \brief  RTCÈóπÈíüËÆæÁΩÆ
+ ** \brief  RTCƒ÷÷”…Ë÷√
  **
- ** \param [in] pstcAlarmTimeÈóπÈíüÊó∂Èó¥ÔºöÁßí ÂàÜ Êó∂ Âë®
+ ** \param [in] pstcAlarmTimeƒ÷÷” ±º‰£∫√Î ∑÷  ± ÷‹
  **
- ** \retval Ok  ËÆæÁΩÆÊ≠£Â∏∏
+ ** \retval Ok  …Ë÷√’˝≥£
  ** 
  ******************************************************************************/
 en_result_t Rtc_SetAlarmTime(stc_rtc_alarmtime_t* pstcAlarmTime)
 {
     en_result_t enRet = Ok;
 //    ASSERT(NULL != pstcAlarmTime);
-    Rtc_AlmEnCmd(FALSE);      //ÈóπÈíüÁ¶ÅÊ≠¢‰ª•ÂêéÂÜçËÆæÁΩÆÈóπÈíüÊó∂Èó¥
+    Rtc_AlmEnCmd(FALSE);      //ƒ÷÷”Ω˚÷π“‘∫Û‘Ÿ…Ë÷√ƒ÷÷” ±º‰
     enRet = Check_BCD_Format(pstcAlarmTime->RtcAlarmSec,0x00,0x59);
     if(M0P_RTC->CR0_f.AMPM == RtcAm)
     {
@@ -493,28 +493,29 @@ en_result_t Rtc_SetAlarmTime(stc_rtc_alarmtime_t* pstcAlarmTime)
     M0P_RTC->ALMMIN  = pstcAlarmTime->RtcAlarmMinute & 0x7f;
     M0P_RTC->ALMHOUR = pstcAlarmTime->RtcAlarmHour & 0x3f;
     M0P_RTC->ALMWEEK = pstcAlarmTime->RtcAlarmWeek;
-    Rtc_AlmEnCmd(TRUE);      //ÈóπÈíüËÆ∏ÂèØ
+    Rtc_AlmEnCmd(TRUE);      //ƒ÷÷”–Ìø…
     enRet = Ok;
     return enRet;
 }
 
 /**
 ******************************************************************************
-    ** \brief  ÂàùÂßãÂåñRTC
+    ** \brief  ≥ı ºªØRTC
     ** 
-    ** @param  Rtc_InitStruct Â≠òÊîæstc_rtc_initstruct_tÁ±ªÂûãÁöÑÁªìÊûÑ‰Ωì
-    ** \retval Êó†
+    ** @param  Rtc_InitStruct ¥Ê∑≈stc_rtc_initstruct_t¿‡–ÕµƒΩ·ππÃÂ
+    ** \retval Œﬁ
     **
 ******************************************************************************/
 void Rtc_Init(stc_rtc_initstruct_t* Rtc_InitStruct)
 {
     Rtc_Cmd(FALSE);
-    M0P_RTC->CR0_f.AMPM = Rtc_InitStruct->rtcAmpm;        //ÂÆûÊó∂Êó∂ÈíüÂ∞èÊó∂ÁöÑÊó∂Âà∂
-    Rtc_SetCyc(&Rtc_InitStruct->rtcPrdsel);                //ËÆæÁΩÆÂë®Êúü‰∏≠Êñ≠ÁöÑÁ±ªÂûã(PRDSEL)ÂèäÂÖ∂ÊâÄÈÄâÁ±ªÂûãÁöÑÊó∂Èó¥(PRDSÊàñPRDX)
-    M0P_RTC->CR1_f.CKSEL = Rtc_InitStruct->rtcClksrc;      //ÂÆûÊó∂Êó∂ÈíüRTCÁöÑÊó∂ÈíüÊ∫ê
-    Rtc_CompCfg(Rtc_InitStruct->rtcCompValue, Rtc_InitStruct->rtcCompen); //ÈÖçÁΩÆÊó∂ÈíüËØØÂ∑ÆË°•ÂÅøÂØÑÂ≠òÂô®
-    Rtc_SetTime(&Rtc_InitStruct->rtcTime);                 //ËÆæÁΩÆÂàùÂßãÊó∂Èíü
+    M0P_RTC->CR0_f.AMPM = Rtc_InitStruct->rtcAmpm;        // µ ± ±÷”–° ±µƒ ±÷∆
+    Rtc_SetCyc(&Rtc_InitStruct->rtcPrdsel);                //…Ë÷√÷‹∆⁄÷–∂œµƒ¿‡–Õ(PRDSEL)º∞∆‰À˘—°¿‡–Õµƒ ±º‰(PRDSªÚPRDX)
+    M0P_RTC->CR1_f.CKSEL = Rtc_InitStruct->rtcClksrc;      // µ ± ±÷”RTCµƒ ±÷”‘¥
+    Rtc_CompCfg(Rtc_InitStruct->rtcCompValue, Rtc_InitStruct->rtcCompen); //≈‰÷√ ±÷”ŒÛ≤Ó≤π≥•ºƒ¥Ê∆˜
+    Rtc_SetTime(&Rtc_InitStruct->rtcTime);                 //…Ë÷√≥ı º ±÷”
 }
+
 
 
 

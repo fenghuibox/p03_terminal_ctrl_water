@@ -83,33 +83,33 @@ extern "C"
 
 /**
  *******************************************************************************
- ** \brief å¤–è®¾å¤ä½æ§åˆ¶ç±»å‹å®šä¹‰
+ ** \brief ÍâÉè¸´Î»¿ØÖÆÀàĞÍ¶¨Òå
  ** \note
  ******************************************************************************/
 typedef enum en_sysctrl_peripheral0
 {
-    ResetMskUart0      = 1u<<0u,       ///< ä¸²å£0
-    ResetMskUart1      = 1u<<1u,       ///< ä¸²å£1
-    ResetMskLpUart0    = 1u<<2u,       ///< ä½åŠŸè€—ä¸²å£0
-    ResetMskLpUart1    = 1u<<3u,       ///< ä½åŠŸè€—ä¸²å£1
+    ResetMskUart0      = 1u<<0u,       ///< ´®¿Ú0
+    ResetMskUart1      = 1u<<1u,       ///< ´®¿Ú1
+    ResetMskLpUart0    = 1u<<2u,       ///< µÍ¹¦ºÄ´®¿Ú0
+    ResetMskLpUart1    = 1u<<3u,       ///< µÍ¹¦ºÄ´®¿Ú1
     ResetMskI2c0       = 1u<<4u,       ///< I2C0
     ResetMskI2c1       = 1u<<5u,       ///< I2C1
     ResetMskSpi0       = 1u<<6u,       ///< SPI0
     ResetMskSpi1       = 1u<<7u,       ///< SPI1
-    ResetMskBaseTim    = 1u<<8u,       ///< åŸºç¡€å®šæ—¶å™¨TIM0/1/2
-    ResetMskLpTim0     = 1u<<9u,       ///< ä½åŠŸè€—å®šæ—¶å™¨0
-    ResetMskAdvTim     = 1u<<10u,      ///< é«˜çº§å®šæ—¶å™¨TIM4/5/6
-    ResetMskTim3       = 1u<<11u,      ///< å®šæ—¶å™¨3
+    ResetMskBaseTim    = 1u<<8u,       ///< »ù´¡¶¨Ê±Æ÷TIM0/1/2
+    ResetMskLpTim0     = 1u<<9u,       ///< µÍ¹¦ºÄ¶¨Ê±Æ÷0
+    ResetMskAdvTim     = 1u<<10u,      ///< ¸ß¼¶¶¨Ê±Æ÷TIM4/5/6
+    ResetMskTim3       = 1u<<11u,      ///< ¶¨Ê±Æ÷3
     ResetMskOpa        = 1u<<13u,      ///< OPA
-    ResetMskPca        = 1u<<14u,      ///< å¯ç¼–ç¨‹è®¡æ•°é˜µåˆ—
+    ResetMskPca        = 1u<<14u,      ///< ¿É±à³Ì¼ÆÊıÕóÁĞ
     ResetMskAdcBgr     = 1u<<16u,      ///< ADC&BGR
-    ResetMskVcLvd      = 1u<<17u,      ///< VCå’ŒLVD
+    ResetMskVcLvd      = 1u<<17u,      ///< VCºÍLVD
     ResetMskRng        = 1u<<18u,      ///< RNG
     ResetMskPcnt       = 1u<<19u,      ///< PCNT
     ResetMskRtc        = 1u<<20u,      ///< RTC
-    ResetMskTrim       = 1u<<21u,      ///< æ—¶é’Ÿæ ¡å‡†
+    ResetMskTrim       = 1u<<21u,      ///< Ê±ÖÓĞ£×¼
     ResetMskLcd        = 1u<<22u,      ///< LCD
-    ResetMskTick       = 1u<<24u,      ///< ç³»ç»Ÿå®šæ—¶å™¨
+    ResetMskTick       = 1u<<24u,      ///< ÏµÍ³¶¨Ê±Æ÷
     ResetMskSwd        = 1u<<25u,      ///< SWD
     ResetMskCrc        = 1u<<26u,      ///< CRC
     ResetMskAes        = 1u<<27u,      ///< AES
@@ -120,27 +120,27 @@ typedef enum en_sysctrl_peripheral0
 typedef enum en_sysctrl_peripheral1
 {
     ResetMskDac        = 1u<<3u,      ///< DAC
-    ResetMskLpTim1     = 1u<<4u,      ///< ä½åŠŸè€—å®šæ—¶å™¨1
+    ResetMskLpTim1     = 1u<<4u,      ///< µÍ¹¦ºÄ¶¨Ê±Æ÷1
     ResetMskUart2      = 1u<<8u,      ///< UART2
     ResetMskUart3      = 1u<<9u,      ///< UART3 
 }en_reset_peripheral1_t;
 
 /**
  *******************************************************************************
- ** \brief å¤ä½æºï¼ˆæ ‡è¯†ï¼‰æ˜¾ç¤º
+ ** \brief ¸´Î»Ô´£¨±êÊ¶£©ÏÔÊ¾
  **
  ** \note
  ******************************************************************************/
 typedef enum en_reset_flag
 {
-    ResetFlagMskPor5V     = 1u<<0u,         ///< 5Vå¯åŠ¨å¤ä½
-    ResetFlagMskPor1_5V   = 1u<<1u,         ///< 1.5Vå¯åŠ¨å¤ä½
-    ResetFlagMskLvd       = 1u<<2u,         ///< ä½ç”µå‹æ£€æµ‹å¤ä½
-    ResetFlagMskWdt       = 1u<<3u,         ///< çœ‹é—¨ç‹—å¤ä½
-    ResetFlagMskPca       = 1u<<4u,         ///< PCAå¤ä½
-    ResetFlagMskLockup    = 1u<<5u,         ///< ç³»ç»Ÿå¼‚å¸¸å¤ä½
-    ResetFlagMskSysreq    = 1u<<6u,         ///< è½¯ä»¶å¤ä½
-    ResetFlagMskRstb      = 1u<<7u,         ///< RESETè„š å¤ä½
+    ResetFlagMskPor5V     = 1u<<0u,         ///< 5VÆô¶¯¸´Î»
+    ResetFlagMskPor1_5V   = 1u<<1u,         ///< 1.5VÆô¶¯¸´Î»
+    ResetFlagMskLvd       = 1u<<2u,         ///< µÍµçÑ¹¼ì²â¸´Î»
+    ResetFlagMskWdt       = 1u<<3u,         ///< ¿´ÃÅ¹·¸´Î»
+    ResetFlagMskPca       = 1u<<4u,         ///< PCA¸´Î»
+    ResetFlagMskLockup    = 1u<<5u,         ///< ÏµÍ³Òì³£¸´Î»
+    ResetFlagMskSysreq    = 1u<<6u,         ///< Èí¼ş¸´Î»
+    ResetFlagMskRstb      = 1u<<7u,         ///< RESET½Å ¸´Î»
 }en_reset_flag_t;
 
 /*******************************************************************************
@@ -150,13 +150,13 @@ typedef enum en_reset_flag
 /*******************************************************************************
  * Global function prototypes (definition in C source)
  ******************************************************************************/
-///< è·å¾—å¤ä½æºçŠ¶æ€
+///< »ñµÃ¸´Î»Ô´×´Ì¬
 boolean_t Reset_GetFlag(en_reset_flag_t enRstFlg);
-///< æ¸…é™¤å¤ä½æºçŠ¶æ€
+///< Çå³ı¸´Î»Ô´×´Ì¬
 void Reset_ClearFlag(en_reset_flag_t enRstFlg);
 void Reset_ClearFlagAll(void);
 
-///< å¤–è®¾æ¨¡å—å¤ä½
+///< ÍâÉèÄ£¿é¸´Î»
 void Reset_RstPeripheralAll(void);
 void Reset_RstPeripheral0(en_reset_peripheral0_t enPeri);
 void Reset_RstPeripheral1(en_reset_peripheral1_t enPeri);
@@ -171,5 +171,6 @@ void Reset_RstPeripheral1(en_reset_peripheral1_t enPeri);
 /*******************************************************************************
  * EOF (not truncated)
  ******************************************************************************/
+
 
 

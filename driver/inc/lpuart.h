@@ -79,187 +79,187 @@ extern "C"
  ******************************************************************************/
  /**
  ******************************************************************************
- **\brief LPuarté€šé“é€‰æ‹©
+ **\brief LPuartÍ¨µÀÑ¡Ôñ
  ******************************************************************************/
 
 /**
  ******************************************************************************
- ** \brief lpuart çš„sclkæ—¶é’Ÿæºé€‰æ‹©
+ ** \brief lpuart µÄsclkÊ±ÖÓÔ´Ñ¡Ôñ
  ******************************************************************************/
 
 typedef enum en_lpuart_sclk_sel
 {
     LPUartMskPclk   = 0u<<11, ///<pclk
-    LPUartMskXtl    = 2u<<11, ///<å¤–éƒ¨ä½é€Ÿæ™¶æŒ¯
-    LPUartMskRcl    = 3u<<11, ///<å†…éƒ¨ä½é€Ÿæ™¶æŒ¯
+    LPUartMskXtl    = 2u<<11, ///<Íâ²¿µÍËÙ¾§Õñ
+    LPUartMskRcl    = 3u<<11, ///<ÄÚ²¿µÍËÙ¾§Õñ
 } en_lpuart_sclksel_t;
 
 /**
  ******************************************************************************
- ** \brief lpuartå¤šæœºæ¨¡å¼åœ°å€å¸§/æ•°æ®å¸§æˆ–è€…å¥‡å¶æ ¡éªŒ
+ ** \brief lpuart¶à»úÄ£Ê½µØÖ·Ö¡/Êı¾İÖ¡»òÕßÆæÅ¼Ğ£Ñé
  ******************************************************************************/
 typedef enum en_lpuart_mmdorck
 {
-    LPUartDataOrAddr = 0u, ///<å¤šæœºæ¨¡å¼æ—¶ï¼Œé€šè¿‡è¯»å†™SBUF[8]å†³å®šå¸§ä¸ºæ•°æ®å¸§æˆ–åœ°å€å¸§
-    LPUartEven       = 0x4u, ///<éå¤šæœºæ¨¡å¼å¶æ ¡éªŒ   
-    LPUartOdd        = 0x8u, ///<éå¤šæœºæ¨¡å¼å¥‡æ ¡éªŒ    
+    LPUartDataOrAddr = 0u, ///<¶à»úÄ£Ê½Ê±£¬Í¨¹ı¶ÁĞ´SBUF[8]¾ö¶¨Ö¡ÎªÊı¾İÖ¡»òµØÖ·Ö¡
+    LPUartEven       = 0x4u, ///<·Ç¶à»úÄ£Ê½Å¼Ğ£Ñé   
+    LPUartOdd        = 0x8u, ///<·Ç¶à»úÄ£Ê½ÆæĞ£Ñé    
 }en_lpuart_mmdorck_t;
 
 /**
  ******************************************************************************
- ** \brief lpuartå¤šæœºæ¨¡å¼åŠä»æœºåœ°å€å’Œåœ°å€æ©ç é…ç½®
+ ** \brief lpuart¶à»úÄ£Ê½¼°´Ó»úµØÖ·ºÍµØÖ·ÑÚÂëÅäÖÃ
  ******************************************************************************/
 
 typedef struct stc_lpuart_multimode
 {
-    uint8_t             u8SlaveAddr;  ///<ä»æœºåœ°å€
-    uint8_t             u8SaddEn;  ///<ä»åŠåœ°å€æ©ç 
+    uint8_t             u8SlaveAddr;  ///<´Ó»úµØÖ·
+    uint8_t             u8SaddEn;  ///<´Ó¼°µØÖ·ÑÚÂë
 }stc_lpuart_multimode_t;
 
 /**
  ******************************************************************************
- ** \brief lpuart å››ç§å·¥ä½œæ¨¡å¼é€‰æ‹©
+ ** \brief lpuart ËÄÖÖ¹¤×÷Ä£Ê½Ñ¡Ôñ
  ******************************************************************************/
 
 typedef enum en_lpuart_mode
 {
-    LPUartMskMode0 = 0x00u, ///<æ¨¡å¼0    
-    LPUartMskMode1 = 0x40u, ///<æ¨¡å¼1
-    LPUartMskMode2 = 0x80u, ///<æ¨¡å¼2
-    LPUartMskMode3 = 0xc0u, ///<æ¨¡å¼3
+    LPUartMskMode0 = 0x00u, ///<Ä£Ê½0    
+    LPUartMskMode1 = 0x40u, ///<Ä£Ê½1
+    LPUartMskMode2 = 0x80u, ///<Ä£Ê½2
+    LPUartMskMode3 = 0xc0u, ///<Ä£Ê½3
 } en_lpuart_mode_t;
 /**
  ******************************************************************************
- ** \brief lpuart stopé•¿åº¦é€‰æ‹©
+ ** \brief lpuart stop³¤¶ÈÑ¡Ôñ
  ******************************************************************************/
 
 typedef enum en_lpuart_stop
 {
-    LPUart1bit  = 0x0000u,  ///<1ä½åœæ­¢ä½ 
-    LPUart1_5bit = 0x4000u, ///<1.5ä½åœæ­¢ä½
-    LPUart2bit  = 0x8000u,  ///<2ä½åœæ­¢ä½
+    LPUart1bit  = 0x0000u,  ///<1Î»Í£Ö¹Î» 
+    LPUart1_5bit = 0x4000u, ///<1.5Î»Í£Ö¹Î»
+    LPUart2bit  = 0x8000u,  ///<2Î»Í£Ö¹Î»
 } en_lpuart_stop_t;
 /**
  ******************************************************************************
- ** \brief lpuart åŠŸèƒ½ä½¿èƒ½
+ ** \brief lpuart ¹¦ÄÜÊ¹ÄÜ
  ******************************************************************************/
 typedef enum en_lpuart_func
 {
-    LPUartRenFunc    = 4u,    ///<0-TX; ///<1-émode0æ¨¡å¼ä»£è¡¨RX&TX ,mode0æ¨¡å¼ä»£è¡¨RX;       
-    LPUartDmaRxFunc  = 16u,   ///<DMAæ¥æ”¶åŠŸèƒ½   
-    LPUartDmaTxFunc  = 17u,   ///<DMAå‘é€åŠŸèƒ½
-    LPUartRtsFunc    = 18u,   ///<ç¡¬ä»¶æµRTSåŠŸèƒ½
-    LPUartCtsFunc    = 19u,   ///<ç¡¬ä»¶æµCTSåŠŸèƒ½
-    LPUartHdFunc     = 22u,   ///<å•çº¿åŠåŒå·¥åŠŸèƒ½    
+    LPUartRenFunc    = 4u,    ///<0-TX; ///<1-·Çmode0Ä£Ê½´ú±íRX&TX ,mode0Ä£Ê½´ú±íRX;       
+    LPUartDmaRxFunc  = 16u,   ///<DMA½ÓÊÕ¹¦ÄÜ   
+    LPUartDmaTxFunc  = 17u,   ///<DMA·¢ËÍ¹¦ÄÜ
+    LPUartRtsFunc    = 18u,   ///<Ó²¼şÁ÷RTS¹¦ÄÜ
+    LPUartCtsFunc    = 19u,   ///<Ó²¼şÁ÷CTS¹¦ÄÜ
+    LPUartHdFunc     = 22u,   ///<µ¥Ïß°ëË«¹¤¹¦ÄÜ    
 }en_lpuart_func_t;
 /**
  ******************************************************************************
- ** \brief lpuartä¸­æ–­ä½¿èƒ½æ§åˆ¶
+ ** \brief lpuartÖĞ¶ÏÊ¹ÄÜ¿ØÖÆ
  ******************************************************************************/
 typedef enum en_lpuart_irq_sel
 {
-    LPUartRxIrq  = 0u,    ///<æ¥æ”¶ä¸­æ–­ä½¿èƒ½
-    LPUartTxIrq  = 1u,    ///<å‘é€ä¸­æ–­ä½¿èƒ½        
-    LPUartTxEIrq = 8u,    ///<TXç©ºä¸­æ–­ä½¿èƒ½
-    LPUartPEIrq  = 13u,   ///<å¥‡å¶æ ¡éªŒä¸­æ–­ä½¿èƒ½
-    LPUartCtsIrq = 20u,   ///<CTSä¿¡å·ç¿»è½¬ä¸­æ–­ä½¿èƒ½    
-    LPUartFEIrq  = 21u,   ///<å¸§é”™è¯¯ä¸­æ–­ä½¿èƒ½ 
+    LPUartRxIrq  = 0u,    ///<½ÓÊÕÖĞ¶ÏÊ¹ÄÜ
+    LPUartTxIrq  = 1u,    ///<·¢ËÍÖĞ¶ÏÊ¹ÄÜ        
+    LPUartTxEIrq = 8u,    ///<TX¿ÕÖĞ¶ÏÊ¹ÄÜ
+    LPUartPEIrq  = 13u,   ///<ÆæÅ¼Ğ£ÑéÖĞ¶ÏÊ¹ÄÜ
+    LPUartCtsIrq = 20u,   ///<CTSĞÅºÅ·­×ªÖĞ¶ÏÊ¹ÄÜ    
+    LPUartFEIrq  = 21u,   ///<Ö¡´íÎóÖĞ¶ÏÊ¹ÄÜ 
 }en_lpuart_irq_sel_t;
 
 /**
  ******************************************************************************
- ** \brief lpuart çŠ¶æ€æ ‡å¿—ä½
+ ** \brief lpuart ×´Ì¬±êÖ¾Î»
  ******************************************************************************/
 typedef enum en_lpuart_status
 {
-    LPUartRC    = 0u,  ///<æ¥æ”¶æ•°æ®å®Œæˆæ ‡è®°
-    LPUartTC    = 1u,  ///<å‘é€æ•°æ®å®Œæˆæ ‡è®°
-    LPUartFE    = 2u,  ///<å¸§é”™è¯¯æ ‡è®°
-    LPUartTxe   = 3u,  ///<TXbuffç©ºæ ‡è®°    
-    LPUartPE    = 4u,  ///<å¥‡å¶æ ¡éªŒé”™è¯¯æ ‡è®°
-    LPUartCtsIf = 5u,  ///<CTSä¸­æ–­æ ‡è®°
-    LPUartCts   = 6u,  ///<CTSä¿¡å·æ ‡è®°
+    LPUartRC    = 0u,  ///<½ÓÊÕÊı¾İÍê³É±ê¼Ç
+    LPUartTC    = 1u,  ///<·¢ËÍÊı¾İÍê³É±ê¼Ç
+    LPUartFE    = 2u,  ///<Ö¡´íÎó±ê¼Ç
+    LPUartTxe   = 3u,  ///<TXbuff¿Õ±ê¼Ç    
+    LPUartPE    = 4u,  ///<ÆæÅ¼Ğ£Ñé´íÎó±ê¼Ç
+    LPUartCtsIf = 5u,  ///<CTSÖĞ¶Ï±ê¼Ç
+    LPUartCts   = 6u,  ///<CTSĞÅºÅ±ê¼Ç
 }en_lpuart_status_t;
 
 /**
  ******************************************************************************
- ** \brief lpuart é€šé“é‡‡æ ·åˆ†é¢‘é…ç½®
+ ** \brief lpuart Í¨µÀ²ÉÑù·ÖÆµÅäÖÃ
  ******************************************************************************/
 typedef enum en_lpuart_clkdiv
 {
-    LPUartMsk16Or32Div = 0u,        ///<æ¨¡å¼0æ— æ•ˆï¼Œæ¨¡å¼1/3ä¸º16åˆ†é¢‘ï¼Œæ¨¡å¼2ä¸º32åˆ†é¢‘
-    LPUartMsk8Or16Div  = 0x200u,    ///<æ¨¡å¼0æ— æ•ˆï¼Œæ¨¡å¼1/3ä¸º8åˆ†é¢‘ï¼Œæ¨¡å¼2ä¸º16åˆ†é¢‘
-    LPUartMsk4Or8Div   = 0x400u,    ///<æ¨¡å¼0æ— æ•ˆï¼Œæ¨¡å¼1/3ä¸º4åˆ†é¢‘ï¼Œæ¨¡å¼2ä¸º8åˆ†é¢‘
+    LPUartMsk16Or32Div = 0u,        ///<Ä£Ê½0ÎŞĞ§£¬Ä£Ê½1/3Îª16·ÖÆµ£¬Ä£Ê½2Îª32·ÖÆµ
+    LPUartMsk8Or16Div  = 0x200u,    ///<Ä£Ê½0ÎŞĞ§£¬Ä£Ê½1/3Îª8·ÖÆµ£¬Ä£Ê½2Îª16·ÖÆµ
+    LPUartMsk4Or8Div   = 0x400u,    ///<Ä£Ê½0ÎŞĞ§£¬Ä£Ê½1/3Îª4·ÖÆµ£¬Ä£Ê½2Îª8·ÖÆµ
 }en_lpuart_clkdiv_t;
 
 /**
  ******************************************************************************
- ** \brief lpuart é€šé“Mode1å’ŒMode3æ³¢ç‰¹ç‡è®¡ç®—å‚æ•°
+ ** \brief lpuart Í¨µÀMode1ºÍMode3²¨ÌØÂÊ¼ÆËã²ÎÊı
  ******************************************************************************/
 typedef struct stc_lpuart_baud
 {
-    en_lpuart_sclksel_t  enSclkSel;      ///<ä¼ è¾“æ—¶é’Ÿæºé€‰æ‹©
-    en_lpuart_clkdiv_t   enSclkDiv;     ///<é‡‡æ ·åˆ†é¢‘é€‰æ‹© 
+    en_lpuart_sclksel_t  enSclkSel;      ///<´«ÊäÊ±ÖÓÔ´Ñ¡Ôñ
+    en_lpuart_clkdiv_t   enSclkDiv;     ///<²ÉÑù·ÖÆµÑ¡Ôñ 
     uint32_t             u32Sclk;        ///<sclk
-    uint32_t             u32Baud;        ///< æ³¢ç‰¹ç‡
+    uint32_t             u32Baud;        ///< ²¨ÌØÂÊ
 } stc_lpuart_baud_t;
 /**
  ******************************************************************************
- ** \lpuart æ€»ä½“é…ç½®
+ ** \lpuart ×ÜÌåÅäÖÃ
  ******************************************************************************/
 typedef struct stc_lpuart_cfg
 {
-    en_lpuart_mode_t       enRunMode;      ///<å››ç§æ¨¡å¼é…ç½®
-    en_lpuart_mmdorck_t    enMmdorCk;      ///<æ ¡éªŒæ¨¡å¼
-    en_lpuart_stop_t       enStopBit;      ///<åœæ­¢ä½é•¿åº¦    
-    stc_lpuart_baud_t      stcBaud;        ///<Mode1/3æ³¢ç‰¹ç‡é…ç½®                                                        
+    en_lpuart_mode_t       enRunMode;      ///<ËÄÖÖÄ£Ê½ÅäÖÃ
+    en_lpuart_mmdorck_t    enMmdorCk;      ///<Ğ£ÑéÄ£Ê½
+    en_lpuart_stop_t       enStopBit;      ///<Í£Ö¹Î»³¤¶È    
+    stc_lpuart_baud_t      stcBaud;        ///<Mode1/3²¨ÌØÂÊÅäÖÃ                                                        
 } stc_lpuart_cfg_t;
 
-// æ€»åˆå§‹åŒ–å¤„ç†
+// ×Ü³õÊ¼»¯´¦Àí
 en_result_t LPUart_Init(M0P_LPUART_TypeDef* LPUARTx, stc_lpuart_cfg_t* pstcCfg);
 
-// LPUART å•çº¿æ¨¡å¼ä½¿èƒ½/ç¦æ­¢
+// LPUART µ¥ÏßÄ£Ê½Ê¹ÄÜ/½ûÖ¹
 void LPUart_HdModeEnable(M0P_LPUART_TypeDef* LPUARTx);
 void LPUart_HdModeDisable(M0P_LPUART_TypeDef* LPUARTx);
 
 
-//TB8æ•°æ®è®¾ç½®
+//TB8Êı¾İÉèÖÃ
 void LPUart_SetTb8(M0P_LPUART_TypeDef* LPUARTx, boolean_t bTB8Value);
 
-//æ•°æ®å¯„å­˜å™¨bit8ä½è·å–
+//Êı¾İ¼Ä´æÆ÷bit8Î»»ñÈ¡
 boolean_t LPUart_GetRb8(M0P_LPUART_TypeDef* LPUARTx);
 
-//ä¸­æ–­ç›¸å…³è®¾ç½®å‡½æ•°ä½¿èƒ½å’Œç¦æ­¢
+//ÖĞ¶ÏÏà¹ØÉèÖÃº¯ÊıÊ¹ÄÜºÍ½ûÖ¹
 en_result_t LPUart_EnableIrq(M0P_LPUART_TypeDef* LPUARTx, en_lpuart_irq_sel_t enIrqSel);
 en_result_t LPUart_DisableIrq(M0P_LPUART_TypeDef* LPUARTx, en_lpuart_irq_sel_t enIrqSel);
 
-//ç‰¹æ®ŠåŠŸèƒ½ä½¿èƒ½å’Œç¦æ­¢
+//ÌØÊâ¹¦ÄÜÊ¹ÄÜºÍ½ûÖ¹
 en_result_t LPUart_EnableFunc(M0P_LPUART_TypeDef* LPUARTx, en_lpuart_func_t enFunc);
 en_result_t LPUart_DisableFunc(M0P_LPUART_TypeDef* LPUARTx, en_lpuart_func_t enFunc);
 
-//çŠ¶æ€ä½è·å–å‡½æ•°
+//×´Ì¬Î»»ñÈ¡º¯Êı
 boolean_t LPUart_GetStatus(M0P_LPUART_TypeDef* LPUARTx,en_lpuart_status_t enStatus);
-//çŠ¶æ€ä½çš„æ¸…é™¤
+//×´Ì¬Î»µÄÇå³ı
 en_result_t LPUart_ClrStatus(M0P_LPUART_TypeDef* LPUARTx,en_lpuart_status_t enStatus);
-//æ•´ä¸ªçŠ¶æ€å¯„å­˜å™¨è·å–
+//Õû¸ö×´Ì¬¼Ä´æÆ÷»ñÈ¡
 uint8_t LPUart_GetIsr(M0P_LPUART_TypeDef* LPUARTx);
-//æ•´ä¸ªçŠ¶æ€å¯„å­˜å™¨æ¸…é™¤
+//Õû¸ö×´Ì¬¼Ä´æÆ÷Çå³ı
 en_result_t LPUart_ClrIsr(M0P_LPUART_TypeDef* LPUARTx);
 
-//æ•°æ®æŸ¥è¯¢æ–¹å¼çš„å‘é€
+//Êı¾İ²éÑ¯·½Ê½µÄ·¢ËÍ
 en_result_t LPUart_SendData(M0P_LPUART_TypeDef* LPUARTx, uint8_t u8Data);
-//æ•°æ®ä¸­æ–­æ–¹å¼çš„å‘é€
+//Êı¾İÖĞ¶Ï·½Ê½µÄ·¢ËÍ
 en_result_t LPUart_SendDataIt(M0P_LPUART_TypeDef* LPUARTx, uint8_t u8Data);
-//æ•°æ®æ¥æ”¶
+//Êı¾İ½ÓÊÕ
 uint8_t LPUart_ReceiveData(M0P_LPUART_TypeDef* LPUARTx);
 
-//LPUARTxé€šé“å·ï¼ŒenClk æ—¶é’Ÿæºé€‰é¡¹
+//LPUARTxÍ¨µÀºÅ£¬enClk Ê±ÖÓÔ´Ñ¡Ïî
 en_result_t LPUart_SelSclk(M0P_LPUART_TypeDef* LPUARTx, en_lpuart_sclksel_t enSclk);
 
-//LPUARTé€šé“å¤šä¸»æœºæ¨¡å¼é…ç½®
+//LPUARTÍ¨µÀ¶àÖ÷»úÄ£Ê½ÅäÖÃ
 en_result_t LPUart_SetMultiMode(M0P_LPUART_TypeDef* LPUARTx, stc_lpuart_multimode_t* pstcMultiCfg);
 
-//LPUARTé€šé“å¤šä¸»æœºæ¨¡å¼ä»æœºåœ°å€é…ç½®å‡½æ•°
+//LPUARTÍ¨µÀ¶àÖ÷»úÄ£Ê½´Ó»úµØÖ·ÅäÖÃº¯Êı
 en_result_t LPUart_SetSaddr(M0P_LPUART_TypeDef* LPUARTx,uint8_t u8Addr);
 
 //@} // LPUartGroup
@@ -271,6 +271,7 @@ en_result_t LPUart_SetSaddr(M0P_LPUART_TypeDef* LPUARTx,uint8_t u8Addr);
 /******************************************************************************
  * EOF (not truncated)
  *****************************************************************************/
+
 
 
 

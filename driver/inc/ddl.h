@@ -162,6 +162,11 @@ void delay10us(uint32_t u32Cnt);
 void SetBit(uint32_t addr, uint32_t offset, boolean_t bFlag);
 void ClrBit(uint32_t addr, uint32_t offset);
 boolean_t GetBit(uint32_t addr, uint32_t offset);
+
+
+// add by fenghui
+//void  ToggleBit( uint32_t addr,  uint32_t offset );
+
 #ifdef __cplusplus
 }
 #endif
@@ -171,4 +176,5 @@ boolean_t GetBit(uint32_t addr, uint32_t offset);
 /******************************************************************************/
 /* EOF (not truncated)                                                        */
 /******************************************************************************/
+
 
