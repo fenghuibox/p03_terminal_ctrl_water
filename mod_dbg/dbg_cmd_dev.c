@@ -10,22 +10,48 @@
  
 
 
-
+#if 0
 #include "com_includes.h"
-
-#include "dbg.h"
-
+#include "mod_timer_tick.h"
 
 
-void dbgInit( void )
+#include "mod_uart_debug.h"
+
+#include "dev_state.h"
+
+
+
+//=================================================
+
+
+const char strCmdDevHead[] =      "dev";
+
+
+
+
+const char strCmdDevOnceWorkSecGet[]  = "onceworksecget";
+
+
+const char strCmdDevOnceWorkSecSet[]     =  "onceworksecset";
+
+
+
+
+
+
+
+// str =
+u8 debugCmdDev( u8 *str,  u8 len )
 {
+	
+		
 
 
-	dbgUartInit();
+	return FALSE;
 
-	debugCmdUartPassInit();
+
 }
 
 
-
+#endif
 

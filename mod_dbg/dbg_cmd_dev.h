@@ -9,23 +9,23 @@
  *|-------------------------------------------------------------*/
  
 
+#ifndef ___DBG_CMD_DEV_H
+#define ___DBG_CMD_DEV_H
 
 
-#include "com_includes.h"
+#include "com_typedef.h"
 
-#include "dbg.h"
+extern const char strCmdDevHead[];
 
-
-
-void dbgInit( void )
-{
-
-
-	dbgUartInit();
-
-	debugCmdUartPassInit();
-}
+#define DEBUG_DEV_HEAD_LEN   (3)
 
 
 
+
+// str = 
+extern u8 debugCmdDev( u8 *str,  u8 len );
+
+
+
+#endif
 

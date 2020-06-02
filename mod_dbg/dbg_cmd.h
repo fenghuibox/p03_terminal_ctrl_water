@@ -9,23 +9,13 @@
  *|-------------------------------------------------------------*/
  
 
+#ifndef ___DBG_CMD_H
+#define ___DBG_CMD_H
 
 
-#include "com_includes.h"
+#include "com_typedef.h"
 
-#include "dbg.h"
+extern u8 debugCmd( u8 *str,  u8 len );
 
-
-
-void dbgInit( void )
-{
-
-
-	dbgUartInit();
-
-	debugCmdUartPassInit();
-}
-
-
-
+#endif
 

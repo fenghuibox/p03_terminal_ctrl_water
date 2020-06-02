@@ -18,10 +18,10 @@
 
 #include "dbg_uart.h"
 
-//#include "dbg_cmd.h"
-//#include "dbg_cmd_uart_pass.h"
-//#include "dbg_cmd_aes.h"
-//#include "dbg_cmd_dev.h"
+#include "dbg_cmd.h"
+#include "dbg_cmd_uart_pass.h"
+#include "dbg_cmd_aes.h"
+#include "dbg_cmd_dev.h"
 
 
 

@@ -24,4 +24,5 @@
   ../dri\dri_includes.h ../dri/dri_clk.h ../dri/dri_timer.h \
   ../dri/dri_uart_debug.h ../dri/dri.h ../mod\mod_includes.h \
   ../mod_timer\timer.h ../mod_dbg\dbg.h ../mod_dbg/dbg_uart.h \
-  ../mod/mod.h
+  ../mod_dbg/dbg_cmd.h ../mod_dbg/dbg_cmd_uart_pass.h \
+  ../mod_dbg/dbg_cmd_aes.h ../mod_dbg/dbg_cmd_dev.h ../mod/mod.h

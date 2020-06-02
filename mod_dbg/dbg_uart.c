@@ -180,10 +180,11 @@ void dbgUartTx( u8 *pBuf, u32 len )
 	enQueueV( _stUartPackDbg.pTxQV, pBuf, len );
 }
 
+static void _dbgUartRxCB( u8 *str,	u8 len );
 
 static void _dbgUartRx( u8 *pBuf, u32 len )
 {
-	dbgUartTx( pBuf, len );
+	_dbgUartRxCB( pBuf, len );
 }
 
 
@@ -296,40 +297,32 @@ void debugUartTxPass( u8 *str,  u8 len )
 	enQueueV( _stUartPackDbg.pTxQV, str, len);
 }
 
-#if 0 // fenghuiw
-static void _uartDebugRxCB( u8 *str,  u8 len )
+
+
+
+static void _dbgUartRxCB( u8 *str,  u8 len )
 {
+	
+	#include "dbg_cmd.h"
+	
 	//dprintf( (const char *)str );
 	
-	#if 1 // fhwait1 //-----------------------------------
+	#if 0 // fenghuiw //-----------------------------------
 		if( debugCmd( str, len ) == TRUE )
 			return;
 		
 		if( devStateIsUartPass() )
 		{
-			if( debugPassIsIpad() )
-			{
-				ipadUartTx(str, len); // 透传
-			}
-			else if( debugPassIsZigbee() )
+			if( debugPassIsZigbee() )
 			{
 				modUartZigbeeTx(str, len); // 透传
 			}
-			else if ( debugPassIs4g() )
-			{
-				modUart4gTx(str, len); // 透传
-			}
-			else if ( debugPassIsUart485() )
-			{
-				m485UartTx(str, len); // 透传
-			}
+
 		}
 		else
 		{
 			dprintf("debugRx unkown Str:%s\r\n", str);
 			dprintfBuf("debugRx unkown Hex:", str, len, 1);
-
-			ipadUartTx(str, len);
 		}
 
 	#else//-----------------------------------
@@ -338,14 +331,13 @@ static void _uartDebugRxCB( u8 *str,  u8 len )
 			return;
 		
 
-		modUart4gTx(str, len); // 透传
+		dbgUartTx(str, len);
 
 
 	#endif//-----------------------------------
 	
 }
 
-#endif
 
 
 

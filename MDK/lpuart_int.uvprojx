@@ -605,6 +605,26 @@
               <FileType>1</FileType>
               <FilePath>..\mod_dbg\dbg_uart.c</FilePath>
             </File>
+            <File>
+              <FileName>dbg_cmd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_dbg\dbg_cmd.c</FilePath>
+            </File>
+            <File>
+              <FileName>dbg_cmd_aes.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_dbg\dbg_cmd_aes.c</FilePath>
+            </File>
+            <File>
+              <FileName>dbg_cmd_dev.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_dbg\dbg_cmd_dev.c</FilePath>
+            </File>
+            <File>
+              <FileName>dbg_cmd_uart_pass.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_dbg\dbg_cmd_uart_pass.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -35,6 +35,10 @@
 ".\output\release\uart_pack.o"
 ".\output\release\dbg.o"
 ".\output\release\dbg_uart.o"
+".\output\release\dbg_cmd.o"
+".\output\release\dbg_cmd_aes.o"
+".\output\release\dbg_cmd_dev.o"
+".\output\release\dbg_cmd_uart_pass.o"
 ".\output\release\mod.o"
 --library_type=microlib --strict --scatter ".\output\release\lpuart_int.sct"
 --keep=*Handler --summary_stderr --info summarysizes --map --load_addr_map_info --symbols
