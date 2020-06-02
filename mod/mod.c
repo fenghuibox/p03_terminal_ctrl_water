@@ -26,9 +26,9 @@ void modInit( void )
 
 	timerInit();  // 1 
 	
+	dbgInit();
 #else
 
-	timerInit();  // 1 
 
 	configInit(); // 2 read/def eeprom
 
@@ -39,7 +39,6 @@ void modInit( void )
 
 	aesInit();
 
-	dbgInit();
 
 	m485Init();
 

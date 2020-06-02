@@ -7,51 +7,37 @@
  *|-------------------------------------------------------------|
  *| contact | QQ:258820709    email:fenghuibox@qq.com           |
  *|-------------------------------------------------------------*/
-
  
 
-#ifndef __MOD_INCLUDES_H
-#define __MOD_INCLUDES_H
+#ifndef __DBG_UART_H
+#define __DBG_UART_H
 
 
 #include "com_typedef.h"
 
 
 
-#include "timer.h"
 
-#include "dbg.h"
+extern void dprintf(const char *pFormat, ...);
 
-/*
-#include "cfg.h"
-
-
-#include "aes.h"
+extern void dprintfBuf( char *pStr, u8 *pBuf, u32 len, u8 print0D0A );
 
 
 
-#include "m485.h"
-
-#include "zgb.h"
-#include "g4.h"
+extern void dbgUartInit( void );
 
 
-#include "ipad.h"
+
+extern void debugUartTxPass( u8 *str,  u8 len );
 
 
-#include "frame.h"
 
 
-#include "led.h"
+#ifdef TEST_MOD_DBG_UART
+	void testModDbgUart( void );
+#endif
 
 
-#include "ctrl.h"
-
-#include "sg.h"
-
-*/
-
-#include "mod.h"
 
 
 #endif

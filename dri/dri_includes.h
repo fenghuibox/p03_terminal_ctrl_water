@@ -14,13 +14,15 @@
 
 #include "dri_timer.h"
 
+#include "dri_uart_debug.h"
+
+
 //#include "dri_interrupt.h"
 //#include "dri_power.h"
 
 //#include "dri_gpio.h"
 
 //#include "dri_adc.h"
-//#include "dri_uart.h"
 
 
 

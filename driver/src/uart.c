@@ -72,12 +72,12 @@
 
 /**
  ******************************************************************************
- ** \brief  UARTé€šä¿¡ä¸­æ–­ä½¿èƒ½å‡½æ•°è®¾ç½®
+ ** \brief  UARTÍ¨ÐÅÖÐ¶ÏÊ¹ÄÜº¯ÊýÉèÖÃ
  **
- ** \param [in] UARTxé€šé“å·ï¼ŒenIrqSelå‘é€oræŽ¥æ”¶ä¸­æ–­ä½¿èƒ½
+ ** \param [in] UARTxÍ¨µÀºÅ£¬enIrqSel·¢ËÍor½ÓÊÕÖÐ¶ÏÊ¹ÄÜ
  **
- ** \retval OKé…ç½®æˆåŠŸ
- ** \retval ErrorInvalidParameteré…ç½®å¤±è´¥
+ ** \retval OKÅäÖÃ³É¹¦
+ ** \retval ErrorInvalidParameterÅäÖÃÊ§°Ü
  ******************************************************************************/
 en_result_t Uart_EnableIrq(M0P_UART_TypeDef* UARTx, en_uart_irq_sel_t enIrqSel)
 {
@@ -87,12 +87,12 @@ en_result_t Uart_EnableIrq(M0P_UART_TypeDef* UARTx, en_uart_irq_sel_t enIrqSel)
 }
 /**
  ******************************************************************************
- ** \brief  UARTé€šä¿¡ä¸­æ–­ç¦æ­¢å‡½æ•°è®¾ç½®
+ ** \brief  UARTÍ¨ÐÅÖÐ¶Ï½ûÖ¹º¯ÊýÉèÖÃ
  **
- ** \param [in] UARTxé€šé“å·ï¼ŒenIrqSelå‘é€oræŽ¥æ”¶ä¸­æ–­ç¦æ­¢
+ ** \param [in] UARTxÍ¨µÀºÅ£¬enIrqSel·¢ËÍor½ÓÊÕÖÐ¶Ï½ûÖ¹
  **
- ** \retval OKé…ç½®æˆåŠŸ
- ** \retval ErrorInvalidParameteré…ç½®å¤±è´¥
+ ** \retval OKÅäÖÃ³É¹¦
+ ** \retval ErrorInvalidParameterÅäÖÃÊ§°Ü
  ******************************************************************************/
 en_result_t Uart_DisableIrq(M0P_UART_TypeDef* UARTx, en_uart_irq_sel_t enIrqSel)
 {
@@ -103,12 +103,12 @@ en_result_t Uart_DisableIrq(M0P_UART_TypeDef* UARTx, en_uart_irq_sel_t enIrqSel)
 
 /**
  ******************************************************************************
- ** \brief  UARTé€šé“å¤šä¸»æœºæ¨¡å¼é…ç½®
+ ** \brief  UARTÍ¨µÀ¶àÖ÷»úÄ£Ê½ÅäÖÃ
  **
- ** \param [in] UARTxé€šé“å·ï¼ŒstcMultiCfgå¤šä¸»æœºæ¨¡å¼ç»“æž„
+ ** \param [in] UARTxÍ¨µÀºÅ£¬stcMultiCfg¶àÖ÷»úÄ£Ê½½á¹¹
  **
- ** \retval OKé…ç½®æˆåŠŸ
- ** \retval ErrorInvalidParameteré…ç½®å¤±è´¥
+ ** \retval OKÅäÖÃ³É¹¦
+ ** \retval ErrorInvalidParameterÅäÖÃÊ§°Ü
  ******************************************************************************/
 en_result_t Uart_SetMultiMode(M0P_UART_TypeDef* UARTx, stc_uart_multimode_t* pstcMultiCfg)
 {
@@ -129,9 +129,9 @@ en_result_t Uart_SetMultiMode(M0P_UART_TypeDef* UARTx, stc_uart_multimode_t* pst
 
 /**
  ******************************************************************************
- ** \brief  UARTå•çº¿åŠåŒå·¥æ¨¡å¼ä½¿èƒ½
+ ** \brief  UARTµ¥Ïß°ëË«¹¤Ä£Ê½Ê¹ÄÜ
  **
- ** \param [in] UARTx é€šé“å·
+ ** \param [in] UARTx Í¨µÀºÅ
  **
  ** \retval Null
  ******************************************************************************/
@@ -142,9 +142,9 @@ void Uart_HdModeEnable(M0P_UART_TypeDef* UARTx)
 
 /**
  ******************************************************************************
- ** \brief  UARTå•çº¿åŠåŒå·¥æ¨¡å¼å…³é—­
+ ** \brief  UARTµ¥Ïß°ëË«¹¤Ä£Ê½¹Ø±Õ
  **
- ** \param [in] UARTx é€šé“å·
+ ** \param [in] UARTx Í¨µÀºÅ
  **
  ** \retval Null
  ******************************************************************************/
@@ -155,10 +155,10 @@ void Uart_HdModeDisable(M0P_UART_TypeDef* UARTx)
 
 /**
  ******************************************************************************
- ** \brief  UARTé€šé“å¤šæœºæ¨¡å¼å‘é€æ•°æ®/åœ°å€å¸§é…ç½®TB8
+ ** \brief  UARTÍ¨µÀ¶à»úÄ£Ê½·¢ËÍÊý¾Ý/µØÖ·Ö¡ÅäÖÃTB8
  **
- ** \param [in] UARTx é€šé“å·
- ** \param [in] TRUE-TB8ä¸ºåœ°å€å¸§æ ‡å¿—ï¼›FALSE-TB8ä¸ºæ•°æ®å¸§æ ‡å¿—ï¼›
+ ** \param [in] UARTx Í¨µÀºÅ
+ ** \param [in] TRUE-TB8ÎªµØÖ·Ö¡±êÖ¾£»FALSE-TB8ÎªÊý¾ÝÖ¡±êÖ¾£»
  **
  ** \retval Null
  ******************************************************************************/
@@ -170,9 +170,9 @@ void Uart_SetTb8(M0P_UART_TypeDef* UARTx, boolean_t bTB8Value)
 
 /**
  ******************************************************************************
- ** \brief èŽ·å–RB8æ•°å€¼
+ ** \brief »ñÈ¡RB8ÊýÖµ
  **
- ** \param [in] UARTxé€šé“å·
+ ** \param [in] UARTxÍ¨µÀºÅ
  **
  ** \retval RB8
  ******************************************************************************/
@@ -183,12 +183,12 @@ boolean_t Uart_GetRb8(M0P_UART_TypeDef* UARTx)
 
 /**
  ******************************************************************************
- ** \brief  UARTé€šé“å¤šä¸»æœºæ¨¡å¼ä»Žæœºåœ°å€é…ç½®å‡½æ•°
+ ** \brief  UARTÍ¨µÀ¶àÖ÷»úÄ£Ê½´Ó»úµØÖ·ÅäÖÃº¯Êý
  **
- ** \param [in] UARTxé€šé“å·ï¼Œaddråœ°å€
+ ** \param [in] UARTxÍ¨µÀºÅ£¬addrµØÖ·
  **
- ** \retval OKé…ç½®æˆåŠŸ
- ** \retval ErrorInvalidParameteré…ç½®å¤±è´¥
+ ** \retval OKÅäÖÃ³É¹¦
+ ** \retval ErrorInvalidParameterÅäÖÃÊ§°Ü
  ******************************************************************************/
 en_result_t Uart_SetSaddr(M0P_UART_TypeDef* UARTx,uint8_t u8Addr)
 {
@@ -199,12 +199,12 @@ en_result_t Uart_SetSaddr(M0P_UART_TypeDef* UARTx,uint8_t u8Addr)
 
 /**
  ******************************************************************************
- ** \brief  UARTé€šé“å‘é€æˆ–æŽ¥æ”¶ç­‰åŠŸèƒ½ä½¿èƒ½è®¾ç½®
+ ** \brief  UARTÍ¨µÀ·¢ËÍ»ò½ÓÊÕµÈ¹¦ÄÜÊ¹ÄÜÉèÖÃ
  **
- ** \param [in] UARTxé€šé“å·ï¼ŒenFuncåŠŸèƒ½
+ ** \param [in] UARTxÍ¨µÀºÅ£¬enFunc¹¦ÄÜ
  **
- ** \retval OKé…ç½®æˆåŠŸ
- ** \retval ErrorInvalidParameteré…ç½®å¤±è´¥
+ ** \retval OKÅäÖÃ³É¹¦
+ ** \retval ErrorInvalidParameterÅäÖÃÊ§°Ü
  ******************************************************************************/
 en_result_t Uart_EnableFunc(M0P_UART_TypeDef* UARTx, en_uart_func_t enFunc)
 {    
@@ -214,12 +214,12 @@ en_result_t Uart_EnableFunc(M0P_UART_TypeDef* UARTx, en_uart_func_t enFunc)
 }
 /**
  ******************************************************************************
- ** \brief  UARTé€šé“å‘é€æˆ–æŽ¥æ”¶ç­‰åŠŸèƒ½ç¦æ­¢è®¾ç½®
+ ** \brief  UARTÍ¨µÀ·¢ËÍ»ò½ÓÊÕµÈ¹¦ÄÜ½ûÖ¹ÉèÖÃ
  **
- ** \param [in] UARTxé€šé“å·ï¼ŒenFuncåŠŸèƒ½
+ ** \param [in] UARTxÍ¨µÀºÅ£¬enFunc¹¦ÄÜ
  **
- ** \retval OKé…ç½®æˆåŠŸ
- ** \retval ErrorInvalidParameteré…ç½®å¤±è´¥
+ ** \retval OKÅäÖÃ³É¹¦
+ ** \retval ErrorInvalidParameterÅäÖÃÊ§°Ü
  ******************************************************************************/
 en_result_t Uart_DisableFunc(M0P_UART_TypeDef* UARTx, en_uart_func_t enFunc)
 {
@@ -229,11 +229,11 @@ en_result_t Uart_DisableFunc(M0P_UART_TypeDef* UARTx, en_uart_func_t enFunc)
 }
 /**
  ******************************************************************************
- ** \brief  UARTé€šé“é€šä¿¡çŠ¶æ€èŽ·å–
+ ** \brief  UARTÍ¨µÀÍ¨ÐÅ×´Ì¬»ñÈ¡
  **
- ** \param [in] UARTxé€šé“å·
+ ** \param [in] UARTxÍ¨µÀºÅ
  **
- ** \retval çŠ¶æ€å€¼
+ ** \retval ×´Ì¬Öµ
  ******************************************************************************/
 uint8_t Uart_GetIsr(M0P_UART_TypeDef* UARTx)
 {
@@ -242,11 +242,11 @@ uint8_t Uart_GetIsr(M0P_UART_TypeDef* UARTx)
 
 /**
  ******************************************************************************
- ** \brief  UARTé€šé“é€šä¿¡çŠ¶æ€èŽ·å–
+ ** \brief  UARTÍ¨µÀÍ¨ÐÅ×´Ì¬»ñÈ¡
  **
- ** \param [in] UARTxé€šé“å·ï¼ŒenStatusèŽ·å–å“ªä¸ªçŠ¶æ€
+ ** \param [in] UARTxÍ¨µÀºÅ£¬enStatus»ñÈ¡ÄÄ¸ö×´Ì¬
  **
- ** \retval çŠ¶æ€å€¼
+ ** \retval ×´Ì¬Öµ
  ******************************************************************************/
 boolean_t Uart_GetStatus(M0P_UART_TypeDef* UARTx, en_uart_status_t enStatus)
 {
@@ -261,12 +261,12 @@ boolean_t Uart_GetStatus(M0P_UART_TypeDef* UARTx, en_uart_status_t enStatus)
 }
 /**
  ******************************************************************************
- ** \brief  UARTé€šé“é€šä¿¡çŠ¶æ€æ¸…é™¤
+ ** \brief  UARTÍ¨µÀÍ¨ÐÅ×´Ì¬Çå³ý
  **
- ** \param [in] UARTxé€šé“å·
+ ** \param [in] UARTxÍ¨µÀºÅ
  **
  ** \retval OK
- ** \retval ErrorInvalidParameteræ¸…é™¤å¤±è´¥
+ ** \retval ErrorInvalidParameterÇå³ýÊ§°Ü
  ******************************************************************************/
 en_result_t Uart_ClrIsr(M0P_UART_TypeDef* UARTx)
 {
@@ -275,12 +275,12 @@ en_result_t Uart_ClrIsr(M0P_UART_TypeDef* UARTx)
 }
 /**
  ******************************************************************************
- ** \brief  UARTé€šé“é€šä¿¡çŠ¶æ€æ¸…é™¤
+ ** \brief  UARTÍ¨µÀÍ¨ÐÅ×´Ì¬Çå³ý
  **
- ** \param [in] UARTxé€šé“å·ï¼ŒenStatusæ¸…é™¤å“ªä¸ªçŠ¶æ€
+ ** \param [in] UARTxÍ¨µÀºÅ£¬enStatusÇå³ýÄÄ¸ö×´Ì¬
  **
  ** \retval OK
- ** \retval ErrorInvalidParameteræ¸…é™¤å¤±è´¥
+ ** \retval ErrorInvalidParameterÇå³ýÊ§°Ü
  ******************************************************************************/
 en_result_t Uart_ClrStatus(M0P_UART_TypeDef* UARTx,en_uart_status_t enStatus)
 {
@@ -292,12 +292,12 @@ en_result_t Uart_ClrStatus(M0P_UART_TypeDef* UARTx,en_uart_status_t enStatus)
 }
 /**
  ******************************************************************************
- ** \brief  UARTé€šé“å‘é€æ•°æ®å‡½æ•°,æŸ¥è¯¢æ–¹å¼è°ƒç”¨æ­¤å‡½æ•°ï¼Œä¸­æ–­æ–¹å¼å‘é€ä¸é€‚ç”¨
+ ** \brief  UARTÍ¨µÀ·¢ËÍÊý¾Ýº¯Êý,²éÑ¯·½Ê½µ÷ÓÃ´Ëº¯Êý£¬ÖÐ¶Ï·½Ê½·¢ËÍ²»ÊÊÓÃ
  **
- ** \param [in] UARTxé€šé“å·ï¼ŒDataå‘é€æ•°æ®
+ ** \param [in] UARTxÍ¨µÀºÅ£¬Data·¢ËÍÊý¾Ý
  **
- ** \retval Okå‘é€æˆåŠŸ
- ** \retval ErrorInvalidParameterå‘é€å¤±è´¥
+ ** \retval Ok·¢ËÍ³É¹¦
+ ** \retval ErrorInvalidParameter·¢ËÍÊ§°Ü
  ******************************************************************************/
 en_result_t Uart_SendDataPoll(M0P_UART_TypeDef* UARTx, uint8_t u8Data)
 {
@@ -312,12 +312,12 @@ en_result_t Uart_SendDataPoll(M0P_UART_TypeDef* UARTx, uint8_t u8Data)
 
 /**
  ******************************************************************************
- ** \brief  UARTé€šé“å‘é€æ•°æ®å‡½æ•°,ä¸­æ–­æ–¹å¼è°ƒç”¨æ­¤å‡½æ•°
+ ** \brief  UARTÍ¨µÀ·¢ËÍÊý¾Ýº¯Êý,ÖÐ¶Ï·½Ê½µ÷ÓÃ´Ëº¯Êý
  **
- ** \param [in] UARTxé€šé“å·ï¼ŒDataå‘é€æ•°æ®
+ ** \param [in] UARTxÍ¨µÀºÅ£¬Data·¢ËÍÊý¾Ý
  **
- ** \retval Okå‘é€æˆåŠŸ
- ** \retval ErrorInvalidParameterå‘é€å¤±è´¥
+ ** \retval Ok·¢ËÍ³É¹¦
+ ** \retval ErrorInvalidParameter·¢ËÍÊ§°Ü
  ******************************************************************************/
 en_result_t Uart_SendDataIt(M0P_UART_TypeDef* UARTx, uint8_t u8Data)
 { 
@@ -328,11 +328,11 @@ en_result_t Uart_SendDataIt(M0P_UART_TypeDef* UARTx, uint8_t u8Data)
 
 /**
  ******************************************************************************
- ** \brief  UARTé€šé“æŽ¥æ”¶æ•°æ®å‡½æ•°
+ ** \brief  UARTÍ¨µÀ½ÓÊÕÊý¾Ýº¯Êý
  **
- ** \param [in] UARTxé€šé“å·
+ ** \param [in] UARTxÍ¨µÀºÅ
  **
- ** \retval æŽ¥æ”¶æ•°æ®
+ ** \retval ½ÓÊÕÊý¾Ý
  ******************************************************************************/
 uint8_t Uart_ReceiveData(M0P_UART_TypeDef* UARTx)
 {
@@ -341,12 +341,12 @@ uint8_t Uart_ReceiveData(M0P_UART_TypeDef* UARTx)
 
 /**
  ******************************************************************************
- ** \brief  UARTé€šé“åˆå§‹åŒ–å‡½æ•°
+ ** \brief  UARTÍ¨µÀ³õÊ¼»¯º¯Êý
  **
- ** \param [in] UARTxé€šé“å·ï¼ŒpstcCfgåˆå§‹åŒ–ç»“æž„ä½“ @ref stc_uart_cfg_t
+ ** \param [in] UARTxÍ¨µÀºÅ£¬pstcCfg³õÊ¼»¯½á¹¹Ìå @ref stc_uart_cfg_t
  **
- ** \retval OKé…ç½®æˆåŠŸ
- ** \retval ErrorInvalidParameteré…ç½®å¤±è´¥
+ ** \retval OKÅäÖÃ³É¹¦
+ ** \retval ErrorInvalidParameterÅäÖÃÊ§°Ü
  ******************************************************************************/
 en_result_t Uart_Init(M0P_UART_TypeDef* UARTx, stc_uart_cfg_t* pstcCfg)
 {
@@ -370,7 +370,7 @@ en_result_t Uart_Init(M0P_UART_TypeDef* UARTx, stc_uart_cfg_t* pstcCfg)
     {
         u16OverShift = u32Over[pstcCfg->stcBaud.enClkDiv/UartMsk8Or16Div];
         UARTx->SCNT = pstcCfg->stcBaud.u32Pclk/(pstcCfg->stcBaud.u32Baud<<u16OverShift);
-        Uart_EnableFunc(UARTx,UartRenFunc);       ///<ä½¿èƒ½æ”¶å‘
+        Uart_EnableFunc(UARTx,UartRenFunc);       ///<Ê¹ÄÜÊÕ·¢
     }
     
     
@@ -379,3 +379,4 @@ en_result_t Uart_Init(M0P_UART_TypeDef* UARTx, stc_uart_cfg_t* pstcCfg)
     return enRet;
 }
 //@} // UartGroup      
+

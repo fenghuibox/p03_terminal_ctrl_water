@@ -18,7 +18,7 @@
 
 
 
-typedef U32 QUEUE_ElemType; /* ElemType类型根据实际情况而定，这里假设为U32 */
+typedef u8  QUEUE_ElemType; /* ElemType类型根据实际情况而定，这里假设为U32 */
 
 
 
@@ -26,7 +26,7 @@ typedef U32 QUEUE_ElemType; /* ElemType类型根据实际情况而定，这里假设为U32 */
 
 
 
-#define QUEUE_LEN_MAX (200)
+#define QUEUE_LEN_MAX (512)
 
 
 typedef enum 

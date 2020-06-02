@@ -1,5 +1,6 @@
-./output/release/mod.o: ../mod/mod.c ../com\com_includes.h \
-  ../com/com_typedef.h C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\assert.h \
+./output/release/dri_uart_debug.o: ../dri/dri_uart_debug.c \
+  ../com\com_includes.h ../com/com_typedef.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\assert.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
@@ -21,5 +22,4 @@
   ../com/com_str.h ../com/com_atoi.h ../com/com_bit.h ../com/com_delay.h \
   ../com/com_memory.h ../com/com_var.h ../com/com_sqList.h \
   ../com/com_queue.h ../com/com_queue_val_len.h ../com/com_mac.h \
-  ../mod/mod_includes.h ../mod_timer\timer.h ../dri\dri_timer.h \
-  ../mod_dbg\dbg.h ../mod_dbg/dbg_uart.h ../mod/mod.h
+  ../dri/dri_uart_debug.h

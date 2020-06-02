@@ -336,7 +336,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\..\mcu\common;.\..\driver\inc;.\..\source;.\..\com;.\..\dri;.\..\mod;.\..\mod_timer</IncludePath>
+              <IncludePath>.\..\mcu\common;.\..\driver\inc;.\..\source;.\..\com;.\..\dri;.\..\mod;.\..\mod_timer;.\..\uart_pack;.\..\mod_dbg</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -565,15 +565,10 @@
               <FileType>1</FileType>
               <FilePath>..\dri\dri_timer.c</FilePath>
             </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>mod</GroupName>
-          <Files>
             <File>
-              <FileName>mod.c</FileName>
+              <FileName>dri_uart_debug.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\mod\mod.c</FilePath>
+              <FilePath>..\dri\dri_uart_debug.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -584,6 +579,41 @@
               <FileName>timer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\mod_timer\timer.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>uart_pack</GroupName>
+          <Files>
+            <File>
+              <FileName>uart_pack.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\uart_pack\uart_pack.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>mod_dbg</GroupName>
+          <Files>
+            <File>
+              <FileName>dbg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_dbg\dbg.c</FilePath>
+            </File>
+            <File>
+              <FileName>dbg_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_dbg\dbg_uart.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>mod</GroupName>
+          <Files>
+            <File>
+              <FileName>mod.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod\mod.c</FilePath>
             </File>
           </Files>
         </Group>

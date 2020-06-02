@@ -64,13 +64,18 @@ static void _test( void )
 		testTimer();
 	#endif	
 
+	
+	#ifdef TEST_DRI_UART_DEBUG
+		//testDriUartDbg( );
+	#endif
+
 	#ifdef TEST_MOD_CONFIG
 		testConfig();
 	#endif	
 
 	
-	#ifdef TEST_MOD_DEBUG_UART
-		testModDebugUart();
+	#ifdef TEST_MOD_DBG_UART
+		testModDbgUart();
 	#endif	
 
 	#ifdef TEST_MOD_AES
@@ -85,7 +90,6 @@ static void _test( void )
 		testCtrlOut();
 	#endif		
 }
-
 
 
 
@@ -107,12 +111,14 @@ int main(void)
 	_test();
 
 	
-	
+	//_testUartBsp();
 
 	
 	while(1)
     {
 		driTimerLoopIrqCB();
+
+		//testDbgUartTxPollCB();
     }
 	
 

@@ -21,7 +21,7 @@ void driInit( void )
 	
 	driTimerInit();
 	
-	//driUartInit();
+	driUartDebugInit(NULL);
 
 	//driAdcInit();
 

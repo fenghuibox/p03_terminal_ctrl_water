@@ -119,6 +119,11 @@ typedef void ( *FunKeyUpCB)( void );
 
 typedef void ( *LedCB)( void );
 
+typedef void ( *irqCB)( void );
+
+typedef  void ( *FunUartPackRxCB)(u8 *str,u32 len); // 
+typedef  void ( *FunUartPackTxFinishCB)( void );    // 
+
 
 typedef  void ( *FunBspRxCB)(u8 *str,u8 len); // bsp_uart.c
 
@@ -142,18 +147,20 @@ typedef  int ( *FunG2sTxCB)( u8 *pBuf, u16 len );
 
 //#define TEST_DRI_TIMER
 
+//#define  TEST_DRI_UART_DEBUG
+
 
 //#define TEST_COM_DELAY
 
-#define TEST_MOD_TIMER
+//#define TEST_MOD_TIMER
 
+//#define  TEST_MOD_DBG_UART
 
 //#define  TEST_DRI_FLASH_F_EEP
 
 //#define  TEST_MOD_CONFIG
 
 
-//#define  TEST_MOD_DEBUG_UART
 
 //#define  TEST_MOD_AES
 
