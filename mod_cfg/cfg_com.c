@@ -8,52 +8,20 @@
  *| contact | QQ:258820709    email:fenghuibox@qq.com           |
  *|-------------------------------------------------------------*/
 
- 
 
-#ifndef __MOD_INCLUDES_H
-#define __MOD_INCLUDES_H
-
-
-#include "com_typedef.h"
+#include "cfg_com.h"
 
 
 
-#include "timer.h"
-
-#include "cfg.h"
-
-#include "dbg.h"
-
-/*
 
 
-#include "aes.h"
+ST_CONFIG _stAppConfig;
+
+
+u8 _cfgModify;
 
 
 
-#include "m485.h"
-
-#include "zgb.h"
-#include "g4.h"
 
 
-#include "ipad.h"
-
-
-#include "frame.h"
-
-
-#include "led.h"
-
-
-#include "ctrl.h"
-
-#include "sg.h"
-
-*/
-
-#include "mod.h"
-
-
-#endif
 

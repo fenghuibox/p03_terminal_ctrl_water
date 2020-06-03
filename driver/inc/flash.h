@@ -137,6 +137,10 @@ en_result_t Flash_WriteByte(uint32_t u32Addr, uint8_t u8Data);
 en_result_t Flash_WriteHalfWord(uint32_t u32Addr, uint16_t u16Data);
 en_result_t Flash_WriteWord(uint32_t u32Addr, uint32_t u32Data);
 
+// pageId : 0 -- (255) 
+en_result_t Flash_WritePage( uint32_t pageId, uint32_t *pInBuf ); // add by fenghui
+
+
 ///<Flash 编程保护加锁/解锁
 void Flash_LockAll(void);
 void Flash_UnlockAll(void);
@@ -165,4 +169,5 @@ en_result_t Flash_ClearIntFlag(en_flash_int_type_t enFlashIntType);
 /******************************************************************************/
 /* EOF (not truncated)                                                        */
 /******************************************************************************/
+
 

@@ -12,6 +12,9 @@
 
 #include "dri_clk.h"
 
+#include "dri_flash_f_eep.h"
+
+
 #include "dri_timer.h"
 
 #include "dri_uart_debug.h"

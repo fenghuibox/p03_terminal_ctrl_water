@@ -7,10 +7,19 @@
  *|-------------------------------------------------------------|
  *| contact | QQ:258820709    email:fenghuibox@qq.com           |
  *|-------------------------------------------------------------*/
- 
+
+
+
+#ifndef ___CONFIG_H
+#define ___CONFIG_H
+
 
 #include "com_includes.h"
-#include "mod_includes.h"
+
+
+#include "cfg_page_id.h"
+#include "cfg_base.h"
+#include "cfg_aes.h"
 
 
 
@@ -20,44 +29,47 @@
 
 
 
-void modInit( void )
-{
-#if 1
+#define FLASH_NEW_VAL   (0xFF)//(0xFFFFFFFF) // flash 未写时读出为 0xFF
 
-	timerInit();  // 1 
-	
-	configInit(); // 2 read/def eeprom
-	
-	dbgInit();
-#else
+#define CONFIG_DEF_FLASH_IS_NEW (0)
 
 
+//======flash is new======================================
 
-	sgInit();	   // 3 通信通道
+//extern u8 cfgNewGet( void );
+
+//extern u8 cfgNewSet( u8 eepNew );
+
+//extern u8 cfgNewDef( void );
 
 
-	ctrlInit(); // ctrl
-
-	aesInit();
 
 
-	m485Init();
+//======config to def======================================
 
-	zgbInit();
+extern void configDef( void );
 
-	g4Init();
 
-	frameInit();
+extern void configLoad( void );
 
-	ipadInit();
 
+
+
+extern void configInit( void );
+
+
+extern void configUpdate( void );
+
+
+
+
+
+#ifdef TEST_MOD_CONFIG
+
+extern void testConfig( void );
 
 #endif
 
 
-	
-
-}
-
-
+#endif
 

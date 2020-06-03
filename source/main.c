@@ -97,6 +97,7 @@ static void _test( void )
 
 int main(void)
 {  
+	gB1.inited = 0;
 
 	driInit();
 
@@ -111,7 +112,9 @@ int main(void)
 	_test();
 
 	
-	//_testUartBsp();
+	dprintf("p03_terminal_ctrl_water V0.1_20200613 fenghui\r\n");
+
+	gB1.inited = 1;
 
 	
 	while(1)

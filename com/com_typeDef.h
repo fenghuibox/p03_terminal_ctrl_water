@@ -22,6 +22,32 @@
 
 
 #if 1
+typedef signed int s32;
+typedef signed short s16;
+typedef signed char s8;
+typedef signed int const sc32; /* Read Only */
+typedef signed short const sc16; /* Read Only */
+typedef signed char const sc8; /* Read Only */
+typedef volatile signed int vs32;
+typedef volatile signed short vs16;
+typedef volatile signed char vs8;
+typedef volatile signed int const vsc32; /* Read Only */
+typedef volatile signed short const vsc16; /* Read Only */
+typedef volatile signed char const vsc8; /* Read Only */
+typedef unsigned int u32;
+typedef unsigned short u16;
+typedef unsigned char u8;
+typedef unsigned int const uc32; /* Read Only */
+typedef unsigned short const uc16; /* Read Only */
+typedef unsigned char const uc8; /* Read Only */
+typedef volatile unsigned int vu32;
+typedef volatile unsigned short vu16;
+typedef volatile unsigned char vu8;
+typedef volatile unsigned int const vuc32; /* Read Only */
+typedef volatile unsigned short const vuc16; /* Read Only */
+typedef volatile unsigned char const vuc8; /* Read Only */
+
+#else
 typedef signed long s32;
 typedef signed short s16;
 typedef signed char s8;
@@ -47,11 +73,40 @@ typedef volatile unsigned long const vuc32; /* Read Only */
 typedef volatile unsigned short const vuc16; /* Read Only */
 typedef volatile unsigned char const vuc8; /* Read Only */
 
+
 #endif
 
 
 
+
 #if 1
+
+typedef signed int S32;
+typedef signed short S16;
+typedef signed char S8;
+typedef signed int const SC32; /* Read Only */
+typedef signed short const SC16; /* Read Only */
+typedef signed char const SC8; /* Read Only */
+typedef volatile signed int VS32;
+typedef volatile signed short VS16;
+typedef volatile signed char VS8;
+typedef volatile signed int const VSC32; /* Read Only */
+typedef volatile signed short const VSC16; /* Read Only */
+typedef volatile signed char const VSC8; /* Read Only */
+typedef unsigned int U32;
+typedef unsigned short U16;
+typedef unsigned char U8;
+typedef unsigned int const UC32; /* Read Only */
+typedef unsigned short const UC16; /* Read Only */
+typedef unsigned char const UC8; /* Read Only */
+typedef volatile unsigned int VU32;
+typedef volatile unsigned short VU16;
+typedef volatile unsigned char VU8;
+typedef volatile unsigned int const VUC32; /* Read Only */
+typedef volatile unsigned short const VUC16; /* Read Only */
+typedef volatile unsigned char const VUC8; /* Read Only */
+
+#else
 
 typedef signed long S32;
 typedef signed short S16;
@@ -77,7 +132,6 @@ typedef volatile unsigned char VU8;
 typedef volatile unsigned long const VUC32; /* Read Only */
 typedef volatile unsigned short const VUC16; /* Read Only */
 typedef volatile unsigned char const VUC8; /* Read Only */
-
 
 #endif
 

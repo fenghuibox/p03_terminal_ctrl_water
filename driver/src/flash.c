@@ -85,21 +85,21 @@
  ******************************************************************************
  ** \brief FLASH OP
  ** 
- ** Flash æ“ä½œæ§åˆ¶æ•°æ®ç±»å‹é‡å®šä¹‰ 
+ ** Flash ²Ù×÷¿ØÖÆÊı¾İÀàĞÍÖØ¶¨Òå 
  ******************************************************************************/
 typedef enum en_flash_op
 {
-    Read        = 0u,           ///<è¯»é…ç½®å€¼
-    Program     = 1u,           ///<ç¼–ç¨‹é…ç½®å€¼
-    SectorErase = 2u,           ///<æ‰‡åŒºæ“¦é™¤é…ç½®å€¼
-    ChipErase   = 3u,           ///<å…¨ç‰‡æ“¦é™¤é…ç½®å€¼
+    Read        = 0u,           ///<¶ÁÅäÖÃÖµ
+    Program     = 1u,           ///<±à³ÌÅäÖÃÖµ
+    SectorErase = 2u,           ///<ÉÈÇø²Á³ıÅäÖÃÖµ
+    ChipErase   = 3u,           ///<È«Æ¬²Á³ıÅäÖÃÖµ
 } en_flash_op_t;
 
 /**
  ******************************************************************************
- ** \brief FLASH ç¼–ç¨‹æ—¶é—´å‚æ•°é…ç½®
+ ** \brief FLASH ±à³ÌÊ±¼ä²ÎÊıÅäÖÃ
  ** 
- ** FLASHç¼–ç¨‹æ—¶é—´å‚æ•°é…ç½®æ•°ç»„å®šä¹‰ (4MHz)
+ ** FLASH±à³ÌÊ±¼ä²ÎÊıÅäÖÃÊı×é¶¨Òå (4MHz)
  ******************************************************************************/
 const uint32_t pu32PcgTimer4M[] = { 
                                     0x20u,          //Tnvs   
@@ -125,10 +125,10 @@ const uint32_t pu32PcgTimer4M[] = {
 
 /**
  *****************************************************************************
- ** \brief Flashä¸­æ–­æ ‡å¿—è·å–
+ ** \brief FlashÖĞ¶Ï±êÖ¾»ñÈ¡
  **
  **
- ** \param [in]  enFlashIntType          Flashä¸­æ–­ç±»å‹
+ ** \param [in]  enFlashIntType          FlashÖĞ¶ÏÀàĞÍ
  ** 
  ** \retval TRUE or FALSE                                      
  *****************************************************************************/
@@ -146,10 +146,10 @@ boolean_t Flash_GetIntFlag(en_flash_int_type_t enFlashIntType)
 
 /**
  *****************************************************************************
- ** \brief Flashä¸­æ–­æ ‡å¿—æ¸…é™¤
+ ** \brief FlashÖĞ¶Ï±êÖ¾Çå³ı
  **
  **
- ** \param [in]  enFlashIntType          Flashä¸­æ–­ç±»å‹
+ ** \param [in]  enFlashIntType          FlashÖĞ¶ÏÀàĞÍ
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -165,10 +165,10 @@ en_result_t Flash_ClearIntFlag(en_flash_int_type_t enFlashIntType)
 
 /**
  *****************************************************************************
- ** \brief Flashä¸­æ–­ä½¿èƒ½
+ ** \brief FlashÖĞ¶ÏÊ¹ÄÜ
  **
  **
- ** \param [in]  enFlashIntType          Flashä¸­æ–­ç±»å‹
+ ** \param [in]  enFlashIntType          FlashÖĞ¶ÏÀàĞÍ
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -186,10 +186,10 @@ en_result_t Flash_EnableIrq (en_flash_int_type_t enFlashIntType)
 
 /**
  *****************************************************************************
- ** \brief Flashä¸­æ–­ç¦æ­¢
+ ** \brief FlashÖĞ¶Ï½ûÖ¹
  **
  **
- ** \param [in]  enFlashIntType          Flashä¸­æ–­ç±»å‹
+ ** \param [in]  enFlashIntType          FlashÖĞ¶ÏÀàĞÍ
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -207,24 +207,24 @@ en_result_t Flash_DisableIrq(en_flash_int_type_t enFlashIntType)
 
 /**
  *****************************************************************************
- ** \brief FLASH åˆå§‹åŒ–å‡½æ•°â€”â€”ä¸­æ–­æœåŠ¡ç¨‹åºã€ç¼–ç¨‹æ—¶é—´é…ç½®åŠä½åŠŸè€—æ¨¡å¼
+ ** \brief FLASH ³õÊ¼»¯º¯Êı¡ª¡ªÖĞ¶Ï·şÎñ³ÌĞò¡¢±à³ÌÊ±¼äÅäÖÃ¼°µÍ¹¦ºÄÄ£Ê½
  **
- ** è¯¥å‡½æ•°ç”¨äºé…ç½®ä¸­æ–­æœåŠ¡å‡½æ•°ã€ä½åŠŸè€—æ¨¡å¼ã€æ ¹æ®ç³»ç»Ÿæ—¶é’Ÿé…ç½®FLASHç¼–ç¨‹æ—¶é—´ç›¸å…³å¯„å­˜å™¨.
+ ** ¸Ãº¯ÊıÓÃÓÚÅäÖÃÖĞ¶Ï·şÎñº¯Êı¡¢µÍ¹¦ºÄÄ£Ê½¡¢¸ù¾İÏµÍ³Ê±ÖÓÅäÖÃFLASH±à³ÌÊ±¼äÏà¹Ø¼Ä´æÆ÷.
  **
- ** \param [in]  u8FreqCfg        FLASHç¼–ç¨‹æ—¶é’Ÿé¢‘ç‡é…ç½®(æ ¹æ®HCLKçš„é¢‘ç‡é€‰æ‹©é…ç½®å€¼)ï¼š
+ ** \param [in]  u8FreqCfg        FLASH±à³ÌÊ±ÖÓÆµÂÊÅäÖÃ(¸ù¾İHCLKµÄÆµÂÊÑ¡ÔñÅäÖÃÖµ)£º
  **                               1      - 4MHz;
  **                               2      - 8MHz;
  **                               4      - 16MHz;
  **                               6      - 24MHz;
  **                               8      - 32MHz;
  **                               12     - 48MHz;
- **                               other   -  æ— æ•ˆå€¼
- ** \param [in] bDpstbEn          TRUE  - å½“ç³»ç»Ÿè¿›å…¥DeepSleepæ¨¡å¼ï¼ŒFLASHè¿›å…¥ä½åŠŸè€—æ¨¡å¼;
- **                               FALSE - å½“ç³»ç»Ÿè¿›å…¥DeepSleepæ¨¡å¼ï¼ŒFLASHä¸è¿›å…¥ä½åŠŸè€—æ¨¡å¼;
+ **                               other   -  ÎŞĞ§Öµ
+ ** \param [in] bDpstbEn          TRUE  - µ±ÏµÍ³½øÈëDeepSleepÄ£Ê½£¬FLASH½øÈëµÍ¹¦ºÄÄ£Ê½;
+ **                               FALSE - µ±ÏµÍ³½øÈëDeepSleepÄ£Ê½£¬FLASH²»½øÈëµÍ¹¦ºÄÄ£Ê½;
  ** 
- ** \retval Ok                    æ“ä½œæˆåŠŸ.
- ** \retval ErrorInvalidParameter å‚æ•°æ— æ•ˆ.
- ** \retval ErrorUninitialized    åˆå§‹åŒ–å¤±è´¥ã€‚
+ ** \retval Ok                    ²Ù×÷³É¹¦.
+ ** \retval ErrorInvalidParameter ²ÎÊıÎŞĞ§.
+ ** \retval ErrorUninitialized    ³õÊ¼»¯Ê§°Ü¡£
  *****************************************************************************/
 en_result_t Flash_Init(uint8_t u8FreqCfg, boolean_t bDpstbEn)
 {
@@ -244,13 +244,13 @@ en_result_t Flash_Init(uint8_t u8FreqCfg, boolean_t bDpstbEn)
     
     M0P_FLASH->CR_f.DPSTB_EN = bDpstbEn;
     
-    //flashæ—¶é—´å‚æ•°é…ç½®å€¼è®¡ç®—
+    //flashÊ±¼ä²ÎÊıÅäÖÃÖµ¼ÆËã
     for(u32Index=0; u32Index<8; u32Index++)
     {
         u32PrgTimer[u32Index] = u8FreqCfg * pu32PcgTimer4M[u32Index];
     } 
     
-    //flashæ—¶é—´å‚æ•°å¯„å­˜å™¨é…ç½®
+    //flashÊ±¼ä²ÎÊı¼Ä´æÆ÷ÅäÖÃ
     for(u32Index=0; u32Index<8; u32Index++)
     {
         u32TimeOut = FLASH_TIMEOUT_INIT;
@@ -273,16 +273,16 @@ en_result_t Flash_Init(uint8_t u8FreqCfg, boolean_t bDpstbEn)
 
 /**
  *****************************************************************************
- ** \brief FLASH å­—èŠ‚å†™
+ ** \brief FLASH ×Ö½ÚĞ´
  **
- ** ç”¨äºå‘FLASHå†™å…¥1å­—èŠ‚æ•°æ®.
+ ** ÓÃÓÚÏòFLASHĞ´Èë1×Ö½ÚÊı¾İ.
  **
- ** \param [in]  u32Addr          Flashåœ°å€
- ** \param [in]  u8Data           1å­—èŠ‚æ•°æ®
+ ** \param [in]  u32Addr          FlashµØÖ·
+ ** \param [in]  u8Data           1×Ö½ÚÊı¾İ
  ** 
- ** \retval Ok                    å†™å…¥æˆåŠŸ.
- ** \retval ErrorInvalidParameter FLASHåœ°å€æ— æ•ˆ
- ** \retval ErrorTimeout          æ“ä½œè¶…æ—¶
+ ** \retval Ok                    Ğ´Èë³É¹¦.
+ ** \retval ErrorInvalidParameter FLASHµØÖ·ÎŞĞ§
+ ** \retval ErrorTimeout          ²Ù×÷³¬Ê±
  *****************************************************************************/
 en_result_t Flash_WriteByte(uint32_t u32Addr, uint8_t u8Data)
 {
@@ -320,7 +320,7 @@ en_result_t Flash_WriteByte(uint32_t u32Addr, uint8_t u8Data)
         }
     }
     
-    //Flash è§£é”
+    //Flash ½âËø
     Flash_UnlockAll();
     
     //write data
@@ -336,7 +336,7 @@ en_result_t Flash_WriteByte(uint32_t u32Addr, uint8_t u8Data)
         }
     }
     
-    //Flash åŠ é”
+    //Flash ¼ÓËø
     Flash_LockAll();
     
     return (enResult);
@@ -344,16 +344,16 @@ en_result_t Flash_WriteByte(uint32_t u32Addr, uint8_t u8Data)
 
 /**
  *****************************************************************************
- ** \brief FLASH åŠå­—å†™
+ ** \brief FLASH °ë×ÖĞ´
  **
- ** ç”¨äºå‘FLASHå†™å…¥åŠå­—ï¼ˆ2å­—èŠ‚ï¼‰æ•°æ®.
+ ** ÓÃÓÚÏòFLASHĞ´Èë°ë×Ö£¨2×Ö½Ú£©Êı¾İ.
  **
- ** \param [in]  u32Addr         Flashåœ°å€
- ** \param [in]  u16Data        åŠå­—ï¼ˆ2å­—èŠ‚ï¼‰æ•°æ®
+ ** \param [in]  u32Addr         FlashµØÖ·
+ ** \param [in]  u16Data        °ë×Ö£¨2×Ö½Ú£©Êı¾İ
  ** 
- ** \retval Ok                    å†™å…¥æˆåŠŸ.
- ** \retval ErrorInvalidParameter FLASHåœ°å€æ— æ•ˆ
- ** \retval ErrorTimeout          æ“ä½œè¶…æ—¶
+ ** \retval Ok                    Ğ´Èë³É¹¦.
+ ** \retval ErrorInvalidParameter FLASHµØÖ·ÎŞĞ§
+ ** \retval ErrorTimeout          ²Ù×÷³¬Ê±
  *****************************************************************************/
 en_result_t Flash_WriteHalfWord(uint32_t u32Addr, uint16_t u16Data)
 {
@@ -391,7 +391,7 @@ en_result_t Flash_WriteHalfWord(uint32_t u32Addr, uint16_t u16Data)
         }
     }
     
-    //Flash è§£é”
+    //Flash ½âËø
     Flash_UnlockAll();
     
     //write data
@@ -407,7 +407,7 @@ en_result_t Flash_WriteHalfWord(uint32_t u32Addr, uint16_t u16Data)
         }
     }
     
-    //Flash åŠ é”
+    //Flash ¼ÓËø
     Flash_LockAll();
     
     return (enResult);
@@ -415,16 +415,16 @@ en_result_t Flash_WriteHalfWord(uint32_t u32Addr, uint16_t u16Data)
 
 /**
  *****************************************************************************
- ** \brief FLASH å­—å†™
+ ** \brief FLASH ×ÖĞ´
  **
- ** ç”¨äºå‘FLASHå†™å…¥1ä¸ªå­—çš„æ•°æ®.
+ ** ÓÃÓÚÏòFLASHĞ´Èë1¸ö×ÖµÄÊı¾İ.
  **
- ** \param [in]  u32Addr         Flashåœ°å€
- ** \param [in]  u32Data         1ä¸ªå­—æ•°æ®
+ ** \param [in]  u32Addr         FlashµØÖ·
+ ** \param [in]  u32Data         1¸ö×ÖÊı¾İ
  ** 
- ** \retval Ok                    å†™å…¥æˆåŠŸ.
- ** \retval ErrorInvalidParameter FLASHåœ°å€æ— æ•ˆ
- ** \retval ErrorTimeout          æ“ä½œè¶…æ—¶
+ ** \retval Ok                    Ğ´Èë³É¹¦.
+ ** \retval ErrorInvalidParameter FLASHµØÖ·ÎŞĞ§
+ ** \retval ErrorTimeout          ²Ù×÷³¬Ê±
  *****************************************************************************/
 en_result_t Flash_WriteWord(uint32_t u32Addr, uint32_t u32Data)
 {
@@ -447,7 +447,7 @@ en_result_t Flash_WriteWord(uint32_t u32Addr, uint32_t u32Data)
         }
     }
     
-    //Flash è§£é”
+    //Flash ½âËø
     Flash_UnlockAll();
     
     //set OP
@@ -478,23 +478,106 @@ en_result_t Flash_WriteWord(uint32_t u32Addr, uint32_t u32Data)
         }
     }
     
-    //Flash åŠ é”
+    //Flash ¼ÓËø
     Flash_LockAll();
     
     return (enResult);
 }
 
+
+
+// pageId : 0 -- (255) 
+en_result_t Flash_WritePage( uint32_t pageId, uint32_t *pInBuf ) // add by fenghui
+{
+	#define FLASH_PAGE_SIZE            (512)
+	#define _FLASH_TEMP_BUF_U32_CNT  (  FLASH_PAGE_SIZE/4 )
+	
+    en_result_t             enResult = Ok;    
+    volatile uint32_t       u32TimeOut = FLASH_TIMEOUT_PGM;
+	
+    uint32_t i;
+    volatile uint32_t *pFlash, *pBuf;
+    
+    pFlash = ( volatile uint32_t *)(FLASH_PAGE_SIZE * pageId);
+
+    if ( FLASH_END_ADDR < (uint32_t) pFlash )
+    {
+        enResult = ErrorInvalidParameter;
+        return (enResult);
+    }
+	
+    pBuf = pInBuf;
+	
+    
+    //busy?
+    u32TimeOut = FLASH_TIMEOUT_PGM;
+    while (TRUE == M0P_FLASH->CR_f.BUSY)
+    {
+        if(0 == u32TimeOut--)
+        {
+            return ErrorTimeout;
+        }
+    }
+    
+    //Flash ½âËø
+    Flash_UnlockAll();
+    
+    //set OP
+    u32TimeOut = FLASH_TIMEOUT_PGM;
+    while(Program != M0P_FLASH->CR_f.OP)
+    {
+        if(u32TimeOut--)
+        {
+            FLASH_BYPASS();
+            M0P_FLASH->CR_f.OP = Program;
+        }
+        else
+        {
+            return ErrorTimeout;
+        }
+    }
+    
+    //write data
+   // *((volatile uint32_t*)u32Addr) = u32Data;
+	
+    for( i = _FLASH_TEMP_BUF_U32_CNT; i != 0; i--, pFlash++ )
+    {
+       *pFlash = *pBuf++;
+    }
+
+	
+    
+    //busy?
+    u32TimeOut = FLASH_TIMEOUT_PGM;
+    while (TRUE == M0P_FLASH->CR_f.BUSY)
+    {
+        if(0 == u32TimeOut--)
+        {
+            return ErrorTimeout;
+        }
+    }
+    
+    //Flash ¼ÓËø
+    Flash_LockAll();
+    
+    return (enResult);
+}
+
+
+
+
+
 /**
  *****************************************************************************
- ** \brief FLASH æ‰‡åŒºæ“¦é™¤
+ ** \brief FLASH ÉÈÇø²Á³ı
  **
- ** FLASH æ‰‡åŒºæ“¦é™¤.
+ ** FLASH ÉÈÇø²Á³ı.
  **
- ** \param [in]  u32SectorAddr    æ‰€æ“¦é™¤æ‰‡åŒºå†…çš„åœ°å€
+ ** \param [in]  u32SectorAddr    Ëù²Á³ıÉÈÇøÄÚµÄµØÖ·
  ** 
- ** \retval Ok                    æ“¦é™¤æˆåŠŸ.
- ** \retval ErrorInvalidParameter FLASHåœ°å€æ— æ•ˆ 
- ** \retval ErrorTimeout          æ“ä½œè¶…æ—¶
+ ** \retval Ok                    ²Á³ı³É¹¦.
+ ** \retval ErrorInvalidParameter FLASHµØÖ·ÎŞĞ§ 
+ ** \retval ErrorTimeout          ²Ù×÷³¬Ê±
  *****************************************************************************/
 en_result_t Flash_SectorErase(uint32_t u32SectorAddr)
 {
@@ -517,7 +600,7 @@ en_result_t Flash_SectorErase(uint32_t u32SectorAddr)
         }
     }
     
-    //Flash è§£é”
+    //Flash ½âËø
     Flash_UnlockAll();
     
     //set OP
@@ -548,7 +631,7 @@ en_result_t Flash_SectorErase(uint32_t u32SectorAddr)
         }
     }
     
-    //Flash åŠ é”
+    //Flash ¼ÓËø
     Flash_LockAll();
     
     return (enResult);
@@ -556,13 +639,13 @@ en_result_t Flash_SectorErase(uint32_t u32SectorAddr)
 
 /**
  *****************************************************************************
- ** \brief FLASH å…¨ç‰‡æ“¦é™¤(è¯¥å‡½æ•°ä»…é™RAMä¸­è¿è¡Œï¼ï¼ï¼)
+ ** \brief FLASH È«Æ¬²Á³ı(¸Ãº¯Êı½öÏŞRAMÖĞÔËĞĞ£¡£¡£¡)
  **
- ** FLASH å…¨ç‰‡æ“¦é™¤.
+ ** FLASH È«Æ¬²Á³ı.
  **
  ** 
- ** \retval Ok              æ“¦é™¤æˆåŠŸ.
- ** \retval ErrorTimeout    æ“ä½œè¶…æ—¶
+ ** \retval Ok              ²Á³ı³É¹¦.
+ ** \retval ErrorTimeout    ²Ù×÷³¬Ê±
  **
  *****************************************************************************/
 en_result_t Flash_ChipErase(void)
@@ -595,7 +678,7 @@ en_result_t Flash_ChipErase(void)
         }
     }
     
-    //Flash è§£é”
+    //Flash ½âËø
     Flash_UnlockAll();
     
     //write data
@@ -611,7 +694,7 @@ en_result_t Flash_ChipErase(void)
         }
     }
     
-    //Flash åŠ é”
+    //Flash ¼ÓËø
     Flash_LockAll();
     
     return (enResult);
@@ -619,7 +702,7 @@ en_result_t Flash_ChipErase(void)
 
 /**
  *****************************************************************************
- ** \brief FLASH ç¼–ç¨‹ä¿æŠ¤åŠ é”
+ ** \brief FLASH ±à³Ì±£»¤¼ÓËø
  **
  ** 
  ** \retval Null                               
@@ -635,7 +718,7 @@ void Flash_LockAll(void)
 
 /**
  *****************************************************************************
- ** \brief FLASH ç¼–ç¨‹ä¿æŠ¤è§£é”
+ ** \brief FLASH ±à³Ì±£»¤½âËø
  **
  ** 
  ** \retval Null                             
@@ -652,12 +735,12 @@ void Flash_UnlockAll(void)
 
 /**
  *****************************************************************************
- ** \brief FLASH è¯»ç­‰å¾…å‘¨æœŸè®¾ç½®
+ ** \brief FLASH ¶ÁµÈ´ıÖÜÆÚÉèÖÃ
  **
- ** \param [in]  enWaitCycle  æ’å…¥FLASHè¯»ç­‰å¾…å‘¨æœŸæ•°æšä¸¾ç±»å‹
+ ** \param [in]  enWaitCycle  ²åÈëFLASH¶ÁµÈ´ıÖÜÆÚÊıÃ¶¾ÙÀàĞÍ
  ** 
- ** \retval Ok                    è§£é”æˆåŠŸ
- ** \retval ErrorInvalidParameter å‚æ•°é”™è¯¯                                
+ ** \retval Ok                    ½âËø³É¹¦
+ ** \retval ErrorInvalidParameter ²ÎÊı´íÎó                                
  *****************************************************************************/
 en_result_t Flash_WaitCycle(en_flash_waitcycle_t enWaitCycle)
 {
@@ -671,16 +754,16 @@ en_result_t Flash_WaitCycle(en_flash_waitcycle_t enWaitCycle)
 
 /**
  *****************************************************************************
- ** \brief FLASH LOCK è®¾ç½®
+ ** \brief FLASH LOCK ÉèÖÃ
  **
  ** \param [in]  enLock  @ref en_flash_lock_t
- ** \param [in]  u32LockValue 32bitsï¼Œå¯¹åº”bit=0ï¼šåŠ é”ï¼Œå¯¹åº”Sectorä¸å…è®¸æ“¦å†™ï¼›å¯¹åº”bit=1ï¼šè§£é”ã€‚
- ** \note  åŠ è§£é”èŒƒå›´Sectorï¼š[enLock*128 + i*4, enLock*128 + i*4+3]
- **        (iè¡¨ç¤ºu32LockValueçš„bitä½ç½®ï¼Œ0~31)
- **        ä¾‹å¦‚ï¼šenLock = FlashLock1, u32LockValue = 0x00000002,
- **              åˆ™åŠ è§£é”èŒƒå›´ä¸ºï¼š[Sector128,Sector131]
- ** \retval Ok                    è§£é”æˆåŠŸ
- ** \retval ErrorInvalidParameter å‚æ•°é”™è¯¯                                
+ ** \param [in]  u32LockValue 32bits£¬¶ÔÓ¦bit=0£º¼ÓËø£¬¶ÔÓ¦Sector²»ÔÊĞí²ÁĞ´£»¶ÔÓ¦bit=1£º½âËø¡£
+ ** \note  ¼Ó½âËø·¶Î§Sector£º[enLock*128 + i*4, enLock*128 + i*4+3]
+ **        (i±íÊ¾u32LockValueµÄbitÎ»ÖÃ£¬0~31)
+ **        ÀıÈç£ºenLock = FlashLock1, u32LockValue = 0x00000002,
+ **              Ôò¼Ó½âËø·¶Î§Îª£º[Sector128,Sector131]
+ ** \retval Ok                    ½âËø³É¹¦
+ ** \retval ErrorInvalidParameter ²ÎÊı´íÎó                                
  *****************************************************************************/
 en_result_t Flash_LockSet(en_flash_lock_t enLock, uint32_t u32LockValue)
 {
@@ -694,3 +777,4 @@ en_result_t Flash_LockSet(en_flash_lock_t enLock, uint32_t u32LockValue)
 /*******************************************************************************
  * EOF (not truncated)
  ******************************************************************************/
+

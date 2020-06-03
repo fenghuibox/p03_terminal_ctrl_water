@@ -18,6 +18,8 @@ void driInit( void )
 
 
 	driClkInit();
+
+	driFlashEepInit();
 	
 	driTimerInit();
 	

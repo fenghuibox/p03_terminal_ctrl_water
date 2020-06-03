@@ -8,51 +8,49 @@
  *| contact | QQ:258820709    email:fenghuibox@qq.com           |
  *|-------------------------------------------------------------*/
 
- 
-
-#ifndef __MOD_INCLUDES_H
-#define __MOD_INCLUDES_H
 
 
-#include "com_typedef.h"
+#ifndef ___CFG_COMM_H
+#define ___CFG_COMM_H
+
+
+#include "com_includes.h"
+
+
+#include "cfg_aes.h"
+
+
+typedef struct
+{
+    u32 write_cnt;
+    u32 cfg_ver;
+    u32 sleep_sec;
+    u32 work_sec;
+
+	u32 open_sec;
+	u32 close_sec;
+
+	
+
+    u8 aes_key[EEP_LEN_CFG_AES_KEY];
+    u8 aes_switch;
+    u8 flash_is_new;
+    u8 work_state;
+
+	
+    u32 end;
+}ST_CONFIG;
 
 
 
-#include "timer.h"
-
-#include "cfg.h"
-
-#include "dbg.h"
-
-/*
-
-
-#include "aes.h"
 
 
 
-#include "m485.h"
-
-#include "zgb.h"
-#include "g4.h"
+extern ST_CONFIG _stAppConfig;
+extern u8 _cfgModify;
 
 
-#include "ipad.h"
 
-
-#include "frame.h"
-
-
-#include "led.h"
-
-
-#include "ctrl.h"
-
-#include "sg.h"
-
-*/
-
-#include "mod.h"
 
 
 #endif

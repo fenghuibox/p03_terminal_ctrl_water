@@ -336,7 +336,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\..\mcu\common;.\..\driver\inc;.\..\source;.\..\com;.\..\dri;.\..\mod;.\..\mod_timer;.\..\uart_pack;.\..\mod_dbg</IncludePath>
+              <IncludePath>.\..\mcu\common;.\..\driver\inc;.\..\source;.\..\com;.\..\dri;.\..\mod;.\..\mod_timer;.\..\uart_pack;.\..\mod_dbg;.\..\mod_cfg</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -561,6 +561,11 @@
               <FilePath>..\dri\dri_clk.c</FilePath>
             </File>
             <File>
+              <FileName>dri_flash_f_eep.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\dri\dri_flash_f_eep.c</FilePath>
+            </File>
+            <File>
               <FileName>dri_timer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\dri\dri_timer.c</FilePath>
@@ -569,6 +574,36 @@
               <FileName>dri_uart_debug.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\dri\dri_uart_debug.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>mod_cfg</GroupName>
+          <Files>
+            <File>
+              <FileName>cfg_com.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_cfg\cfg_com.c</FilePath>
+            </File>
+            <File>
+              <FileName>cfg_aes.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_cfg\cfg_aes.c</FilePath>
+            </File>
+            <File>
+              <FileName>cfg_base.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_cfg\cfg_base.c</FilePath>
+            </File>
+            <File>
+              <FileName>cfg_page_id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_cfg\cfg_page_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>cfg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_cfg\cfg.c</FilePath>
             </File>
           </Files>
         </Group>

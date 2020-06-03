@@ -22,6 +22,7 @@
   ../com/com_memory.h ../com/com_var.h ../com/com_sqList.h \
   ../com/com_queue.h ../com/com_queue_val_len.h ../com/com_mac.h \
   ../mod/mod_includes.h ../mod_timer\timer.h ../dri\dri_timer.h \
-  ../mod_dbg\dbg.h ../mod_dbg/dbg_uart.h ../mod_dbg/dbg_cmd.h \
-  ../mod_dbg/dbg_cmd_uart_pass.h ../mod_dbg/dbg_cmd_aes.h \
-  ../mod_dbg/dbg_cmd_dev.h ../mod/mod.h
+  ../mod_cfg\cfg.h ../mod_cfg/cfg_page_id.h ../mod_cfg/cfg_base.h \
+  ../mod_cfg/cfg_aes.h ../mod_dbg\dbg.h ../mod_dbg/dbg_uart.h \
+  ../mod_dbg/dbg_cmd.h ../mod_dbg/dbg_cmd_uart_pass.h \
+  ../mod_dbg/dbg_cmd_aes.h ../mod_dbg/dbg_cmd_dev.h ../mod/mod.h

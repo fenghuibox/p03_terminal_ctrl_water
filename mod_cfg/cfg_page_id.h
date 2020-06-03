@@ -8,51 +8,32 @@
  *| contact | QQ:258820709    email:fenghuibox@qq.com           |
  *|-------------------------------------------------------------*/
 
- 
-
-#ifndef __MOD_INCLUDES_H
-#define __MOD_INCLUDES_H
 
 
-#include "com_typedef.h"
+#ifndef ___CFG_PAGE_ID_H
+#define ___CFG_PAGE_ID_H
 
 
-
-#include "timer.h"
-
-#include "cfg.h"
-
-#include "dbg.h"
-
-/*
-
-
-#include "aes.h"
+#include "com_includes.h"
 
 
 
-#include "m485.h"
-
-#include "zgb.h"
-#include "g4.h"
+extern u32 cfgPageIdIsOk( u32 id );
 
 
-#include "ipad.h"
+extern u32 cfgPageIdGet( void );
 
 
-#include "frame.h"
+extern int cfgPageIdSet( u32 pageId );
 
 
-#include "led.h"
 
 
-#include "ctrl.h"
+extern void cfgPageIdInit( void );
 
-#include "sg.h"
 
-*/
 
-#include "mod.h"
+
 
 
 #endif

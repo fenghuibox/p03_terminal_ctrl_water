@@ -8,51 +8,51 @@
  *| contact | QQ:258820709    email:fenghuibox@qq.com           |
  *|-------------------------------------------------------------*/
 
- 
-
-#ifndef __MOD_INCLUDES_H
-#define __MOD_INCLUDES_H
 
 
-#include "com_typedef.h"
+#ifndef ___CFG_AES_H
+#define ___CFG_AES_H
 
 
-
-#include "timer.h"
-
-#include "cfg.h"
-
-#include "dbg.h"
-
-/*
-
-
-#include "aes.h"
+#include "com_includes.h"
 
 
 
-#include "m485.h"
 
-#include "zgb.h"
-#include "g4.h"
+#define EEP_LEN_CFG_AES_KEY           ( 3 * 4 ) // 12
 
 
-#include "ipad.h"
+
+#define CONFIG_DEF_AES_KEY_ONE  (88)
+#define CONFIG_DEF_AES_KEY      {88, 88, 88, 88, 88, 88, 88, 88, 88, 88, 88, 88}
+#define CONFIG_DEF_AES_SWITCH   (0)
 
 
-#include "frame.h"
 
 
-#include "led.h"
+
+//====== aes switch  =====================================
+extern u8 cfgAesSwitchGet( void ); //
+
+extern u8 cfgAesSwitchSet( u8 s );
+
+extern u32 cfgAesSwitchDef( void );
 
 
-#include "ctrl.h"
 
-#include "sg.h"
 
-*/
 
-#include "mod.h"
+//====== aes key =====================================
+extern void cfgAesKeyGet( u8 *pAesKey );
+
+
+extern void cfgAesKeySet(u8 *pAesKey);
+
+extern void cfgAesKeyDef( void );
+
+
+
+
 
 
 #endif
