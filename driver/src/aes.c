@@ -86,12 +86,12 @@
  
 /**
  * \brief   
- *          AES åŠ å¯†
+ *          AES ¼ÓÃÜ
  *
- * \param   [in]   pstcAesCfg    AES é…ç½®ç»“æ„ä½“ @ref stc_aes_cfg_t
+ * \param   [in]   pstcAesCfg    AES ÅäÖÃ½á¹¹Ìå @ref stc_aes_cfg_t
  *
- * \retval  en_result_t  Ok:  é…ç½®æˆåŠŸ
- * \retval  en_result_t  ErrorInvalidParameter: æ— æ•ˆå‚æ•°
+ * \retval  en_result_t  Ok:  ÅäÖÃ³É¹¦
+ * \retval  en_result_t  ErrorInvalidParameter: ÎŞĞ§²ÎÊı
  */
 en_result_t AES_Encrypt(stc_aes_cfg_t* pstcAesCfg)
 {
@@ -144,12 +144,12 @@ en_result_t AES_Encrypt(stc_aes_cfg_t* pstcAesCfg)
 
 /**
  * \brief   
- *          AES è§£å¯†
+ *          AES ½âÃÜ
  *
- * \param   [in]   pstcAesCfg    AES é…ç½®ç»“æ„ä½“ @ref stc_aes_cfg_t
+ * \param   [in]   pstcAesCfg    AES ÅäÖÃ½á¹¹Ìå @ref stc_aes_cfg_t
  *
- * \retval  en_result_t  Ok:  é…ç½®æˆåŠŸ
- * \retval  en_result_t  ErrorInvalidParameter: æ— æ•ˆå‚æ•°
+ * \retval  en_result_t  Ok:  ÅäÖÃ³É¹¦
+ * \retval  en_result_t  ErrorInvalidParameter: ÎŞĞ§²ÎÊı
  */
 en_result_t AES_Decrypt(stc_aes_cfg_t* pstcAesCfg)
 {
@@ -204,3 +204,4 @@ en_result_t AES_Decrypt(stc_aes_cfg_t* pstcAesCfg)
 /*******************************************************************************
  * EOF (not truncated)
  ******************************************************************************/
+

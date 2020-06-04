@@ -14,10 +14,11 @@
 
 
 
-extern volatile u32 g32TimerCnt;
+//extern volatile u32 g32TimerCnt;
 
 
 
+u32 driTimerCntGet( void );
 
 void driTimerInit( void );
 

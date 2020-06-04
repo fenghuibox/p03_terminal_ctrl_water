@@ -16,10 +16,14 @@
 #include "com_typedef.h"
 
 
+
+extern u32 devVbattValGet( void );
+
+
 extern void devVbattInit( void );
 
 
-extern  void modVbattCB( void );
+//extern  void modVbattCB( void );
 
 
 #endif

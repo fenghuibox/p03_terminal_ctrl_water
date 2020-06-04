@@ -20,7 +20,7 @@
 
 
 //#define VBATT_SCAN_GAP_MS  ( 20 )
-#define VBATT_SCAN_GAP_MS  ( 50 )
+#define VBATT_SCAN_GAP_MS  ( 100 )
 
 
 
@@ -30,6 +30,15 @@
 static u32 _adcArr[_ADC_VAL_CNT];
 static u32 _adcVal;
 static  u8 _adcIndex;
+
+
+
+u32 devVbattValGet( void )
+{
+	return _adcVal;
+}
+
+
 
 
 
@@ -47,7 +56,7 @@ static void _adcValIn( u32 val )
 		//_adcVal = ( _adcArr[0] + _adcArr[1] + _adcArr[2] ) / 3;
 		_adcVal = ( _adcArr[0] + _adcArr[1] ) / 2;
 
-		dprintf( "\r\nvbat=%d",_adcVal );
+		//dprintf( "\r\nvbat=%d",_adcVal );
 		
 	}
 	

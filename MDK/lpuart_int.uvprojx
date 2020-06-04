@@ -336,7 +336,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\..\mcu\common;.\..\driver\inc;.\..\source;.\..\com;.\..\dri;.\..\mod;.\..\mod_timer;.\..\uart_pack;.\..\mod_dbg;.\..\mod_cfg;.\..\dev</IncludePath>
+              <IncludePath>.\..\mcu\common;.\..\driver\inc;.\..\source;.\..\com;.\..\dri;.\..\mod;.\..\mod_timer;.\..\uart_pack;.\..\mod_dbg;.\..\mod_cfg;.\..\dev;.\..\mod_aes;.\..\mod_frame</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -474,6 +474,11 @@
               <FileName>bgr.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\driver\src\bgr.c</FilePath>
+            </File>
+            <File>
+              <FileName>aes.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\driver\src\aes.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -674,6 +679,76 @@
               <FileName>dbg_cmd_uart_pass.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\mod_dbg\dbg_cmd_uart_pass.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>mod_aes</GroupName>
+          <Files>
+            <File>
+              <FileName>aes_switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_aes\aes_switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>aes_128.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_aes\aes_128.c</FilePath>
+            </File>
+            <File>
+              <FileName>aes_key4.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_aes\aes_key4.c</FilePath>
+            </File>
+            <File>
+              <FileName>aes_key12.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_aes\aes_key12.c</FilePath>
+            </File>
+            <File>
+              <FileName>aes_key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_aes\aes_key.c</FilePath>
+            </File>
+            <File>
+              <FileName>aes_mod.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_aes\aes_mod.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>mod_frame</GroupName>
+          <Files>
+            <File>
+              <FileName>f_response_frame.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_frame\f_response_frame.c</FilePath>
+            </File>
+            <File>
+              <FileName>f_txt_frame_dpara_base.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_frame\f_txt_frame_dpara_base.c</FilePath>
+            </File>
+            <File>
+              <FileName>f_txt_frame_dpara_zgb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_frame\f_txt_frame_dpara_zgb.c</FilePath>
+            </File>
+            <File>
+              <FileName>f_txt_frame_data.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_frame\f_txt_frame_data.c</FilePath>
+            </File>
+            <File>
+              <FileName>f_txt_frame.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_frame\f_txt_frame.c</FilePath>
+            </File>
+            <File>
+              <FileName>frame.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_frame\frame.c</FilePath>
             </File>
           </Files>
         </Group>

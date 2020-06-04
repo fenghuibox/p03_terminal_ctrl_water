@@ -31,6 +31,12 @@ static u8            _isCallIrqFun;
 
 
 
+u32 driTimerCntGet( void )
+{
+	return g32TimerCnt;
+}
+
+
 
 /*******************************************************************************
  * BT1中断服务函数

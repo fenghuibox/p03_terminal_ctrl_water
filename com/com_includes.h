@@ -28,6 +28,7 @@
 #include "bt.h"
 #include "bgr.h"
 #include "adc.h"
+#include "aes.h"
 #include "ddl.h"
 #include "flash.h"
 #include "gpio.h"

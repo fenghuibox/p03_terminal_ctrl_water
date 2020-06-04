@@ -187,14 +187,29 @@ typedef  void ( *FunAdcCB)( u32 val );    //
 
 typedef  int ( *FunG2sTxCB)( u8 *pBuf, u16 len );
 
-//=====================================================
-#define USE_IWDG
 
 
 
 
-//=====================================================
-#define DRI_INIT_USE_GPIO_IO
+
+
+
+
+//========= 选用 模块 开关 =============================
+
+#if 0
+	#define USE_IWDG
+#endif
+
+
+#if 0
+	#define AES_128_USE_SW
+#else
+	#define AES_128_USE_HW
+#endif
+
+
+
 
 
 //====== 模块 测试开关 (一般情况下，只开启一个 )======================
@@ -214,9 +229,13 @@ typedef  int ( *FunG2sTxCB)( u8 *pBuf, u16 len );
 
 //#define  TEST_MOD_CONFIG
 
-
+//#define TEST_AES_128_HW
 
 //#define  TEST_MOD_AES
+
+
+
+
 
 //#define  TEST_ZGB_NODE
 

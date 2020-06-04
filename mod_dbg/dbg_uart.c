@@ -22,7 +22,7 @@
 
 
 #define DBG_Q_LEN  (128)
-#define DBG_QV_LEN (256)
+#define DBG_QV_LEN (512)
 
 //=================================================
 

@@ -104,6 +104,9 @@ static void _clkCtrl( boolean_t onOrOff ) // true: on  false :off
 	
 	Sysctrl_SetPeripheralGate(SysctrlPeripheralAdcBgr,onOrOff);
 
+	#ifdef AES_128_USE_HW
+		Sysctrl_SetPeripheralGate(SysctrlPeripheralAes, onOrOff);
+	#endif
 
 	//Sysctrl_SetPeripheralGate(SysctrlPeripheralTick,onOrOff);
 	//Sysctrl_SetPeripheralGate(SysctrlPeripheralDma,onOrOff);

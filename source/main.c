@@ -54,8 +54,11 @@ static void _testLedInit(void)
 
 
 
+
 static void _test( void )
 {
+	//_testAes();
+	
 	#ifdef TEST_COM_DELAY
 		testDelay();
 	#endif
@@ -78,6 +81,13 @@ static void _test( void )
 	#ifdef TEST_MOD_DBG_UART
 		testModDbgUart();
 	#endif	
+
+
+	#ifdef TEST_AES_128_HW
+	
+		#include "aes_128.h"
+		testAesHw();
+	#endif		
 
 	#ifdef TEST_MOD_AES
 		testModAes();
