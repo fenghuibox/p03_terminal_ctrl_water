@@ -14,6 +14,7 @@
 #include "com_includes.h"
 #include "dri_includes.h"
 #include "mod_includes.h"
+#include "dev.h"
 
 
 
@@ -105,7 +106,7 @@ int main(void)
 
 	modInit();
 
-	//devInit();
+	devInit();
 
 	//ledInit();
 	
@@ -121,7 +122,9 @@ int main(void)
     {
 		driTimerLoopIrqCB();
 
-		//testDbgUartTxPollCB();
+		#ifdef USE_IWDG
+			iwdgRefresh();
+		#endif
     }
 	
 

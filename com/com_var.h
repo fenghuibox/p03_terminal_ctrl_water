@@ -33,7 +33,7 @@ typedef struct
 	u8 dbgUartTxIsIdle:1; // 
 
 	
-	u8 adcIsOk:1; // 
+	//u8 adcHaveVal:1; // 
 	u8 vbattIsLow:1; // 
 
 	u8 inited; // 初始化是否完成了  0:没有完成  1:完成

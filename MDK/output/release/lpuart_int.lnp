@@ -14,6 +14,8 @@
 ".\output\release\sysctrl.o"
 ".\output\release\lptim.o"
 ".\output\release\bt.o"
+".\output\release\wdt.o"
+".\output\release\bgr.o"
 ".\output\release\com_atoi.o"
 ".\output\release\com_bit.o"
 ".\output\release\com_buf.o"
@@ -32,6 +34,7 @@
 ".\output\release\dri_flash_f_eep.o"
 ".\output\release\dri_timer.o"
 ".\output\release\dri_uart_debug.o"
+".\output\release\dri_adc.o"
 ".\output\release\cfg_com.o"
 ".\output\release\cfg_aes.o"
 ".\output\release\cfg_base.o"
@@ -46,6 +49,11 @@
 ".\output\release\dbg_cmd_dev.o"
 ".\output\release\dbg_cmd_uart_pass.o"
 ".\output\release\mod.o"
+".\output\release\dev_iwdg.o"
+".\output\release\dev_sleep.o"
+".\output\release\dev_state.o"
+".\output\release\dev_vbatt.o"
+".\output\release\dev.o"
 --library_type=microlib --strict --scatter ".\output\release\lpuart_int.sct"
 --keep=*Handler --summary_stderr --info summarysizes --map --load_addr_map_info --symbols
 --info sizes --info totals

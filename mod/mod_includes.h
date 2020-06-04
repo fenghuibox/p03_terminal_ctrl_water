@@ -34,10 +34,6 @@
 #include "m485.h"
 
 #include "zgb.h"
-#include "g4.h"
-
-
-#include "ipad.h"
 
 
 #include "frame.h"
@@ -46,7 +42,6 @@
 #include "led.h"
 
 
-#include "ctrl.h"
 
 #include "sg.h"
 

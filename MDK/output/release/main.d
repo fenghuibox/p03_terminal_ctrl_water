@@ -15,16 +15,18 @@
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\arm_compat.h \
   ../mcu/common\system_hc32l17x.h ../driver/inc/sysctrl.h \
   ../driver/inc/ddl.h ../source\ddl_device.h ../driver/inc\bt.h \
-  ../driver/inc\adc.h ../driver/inc\flash.h ../driver/inc\gpio.h \
-  ../driver/inc\lpm.h ../driver/inc\lpuart.h ../driver/inc\reset.h \
-  ../driver/inc\rtc.h ../com/com_char.h ../com/com_buf.h \
-  ../com/com_str.h ../com/com_atoi.h ../com/com_bit.h ../com/com_delay.h \
-  ../com/com_memory.h ../com/com_var.h ../com/com_sqList.h \
-  ../com/com_queue.h ../com/com_queue_val_len.h ../com/com_mac.h \
-  ../dri\dri_includes.h ../dri/dri_clk.h ../dri/dri_flash_f_eep.h \
-  ../dri/dri_timer.h ../dri/dri_uart_debug.h ../dri/dri.h \
+  ../driver/inc\bgr.h ../driver/inc\adc.h ../driver/inc\flash.h \
+  ../driver/inc\gpio.h ../driver/inc\lpm.h ../driver/inc\lpuart.h \
+  ../driver/inc\reset.h ../driver/inc\rtc.h ../driver/inc\wdt.h \
+  ../com/com_char.h ../com/com_buf.h ../com/com_str.h ../com/com_atoi.h \
+  ../com/com_bit.h ../com/com_delay.h ../com/com_memory.h \
+  ../com/com_var.h ../com/com_sqList.h ../com/com_queue.h \
+  ../com/com_queue_val_len.h ../com/com_mac.h ../dri\dri_includes.h \
+  ../dri/dri_clk.h ../dri/dri_flash_f_eep.h ../dri/dri_timer.h \
+  ../dri/dri_uart_debug.h ../dri/dri_adc.h ../dri/dri.h \
   ../mod\mod_includes.h ../mod_timer\timer.h ../mod_cfg\cfg.h \
   ../mod_cfg/cfg_page_id.h ../mod_cfg/cfg_base.h ../mod_cfg/cfg_aes.h \
   ../mod_dbg\dbg.h ../mod_dbg/dbg_uart.h ../mod_dbg/dbg_cmd.h \
   ../mod_dbg/dbg_cmd_uart_pass.h ../mod_dbg/dbg_cmd_aes.h \
-  ../mod_dbg/dbg_cmd_dev.h ../mod/mod.h
+  ../mod_dbg/dbg_cmd_dev.h ../mod/mod.h ../dev\dev.h ../dev/dev_state.h \
+  ../dev/dev_vbatt.h ../dev/dev_sleep.h ../dev/dev_iwdg.h

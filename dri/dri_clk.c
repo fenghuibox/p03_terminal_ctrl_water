@@ -96,8 +96,10 @@ static void _clkCtrl( boolean_t onOrOff ) // true: on  false :off
 	Sysctrl_SetPeripheralGate(SysctrlPeripheralUart1,onOrOff);
 
 	Sysctrl_SetPeripheralGate(SysctrlPeripheralFlash,onOrOff);
-	
-	Sysctrl_SetPeripheralGate(SysctrlPeripheralWdt,onOrOff);
+
+	#ifdef USE_IWDG
+		Sysctrl_SetPeripheralGate(SysctrlPeripheralWdt,onOrOff);
+	#endif
 
 	
 	Sysctrl_SetPeripheralGate(SysctrlPeripheralAdcBgr,onOrOff);

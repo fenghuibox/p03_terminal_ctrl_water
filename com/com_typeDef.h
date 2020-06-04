@@ -179,17 +179,17 @@ typedef  void ( *FunUartPackRxCB)(u8 *str,u32 len); //
 typedef  void ( *FunUartPackTxFinishCB)( void );    // 
 
 
-typedef  void ( *FunBspRxCB)(u8 *str,u8 len); // bsp_uart.c
 
-typedef  void ( *FunBspRxCB)(u8 *str,u8 len); // 
+typedef  void ( *FunAdcCB)( u32 val );    // 
 
-
-
-typedef  void ( *FunBspTxFinishCB)( void ); // bsp_uart.c
 
 
 
 typedef  int ( *FunG2sTxCB)( u8 *pBuf, u16 len );
+
+//=====================================================
+#define USE_IWDG
+
 
 
 

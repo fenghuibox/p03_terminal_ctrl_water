@@ -26,6 +26,7 @@
 
 
 #include "bt.h"
+#include "bgr.h"
 #include "adc.h"
 #include "ddl.h"
 #include "flash.h"
@@ -35,6 +36,7 @@
 #include "reset.h"
 #include "rtc.h"
 #include "sysctrl.h"
+#include "wdt.h"
 
 
 

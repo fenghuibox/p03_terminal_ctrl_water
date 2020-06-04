@@ -336,7 +336,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\..\mcu\common;.\..\driver\inc;.\..\source;.\..\com;.\..\dri;.\..\mod;.\..\mod_timer;.\..\uart_pack;.\..\mod_dbg;.\..\mod_cfg</IncludePath>
+              <IncludePath>.\..\mcu\common;.\..\driver\inc;.\..\source;.\..\com;.\..\dri;.\..\mod;.\..\mod_timer;.\..\uart_pack;.\..\mod_dbg;.\..\mod_cfg;.\..\dev</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -465,6 +465,16 @@
               <FileType>1</FileType>
               <FilePath>..\driver\src\bt.c</FilePath>
             </File>
+            <File>
+              <FileName>wdt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\driver\src\wdt.c</FilePath>
+            </File>
+            <File>
+              <FileName>bgr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\driver\src\bgr.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -575,6 +585,11 @@
               <FileType>1</FileType>
               <FilePath>..\dri\dri_uart_debug.c</FilePath>
             </File>
+            <File>
+              <FileName>dri_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\dri\dri_adc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -669,6 +684,36 @@
               <FileName>mod.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\mod\mod.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>dev</GroupName>
+          <Files>
+            <File>
+              <FileName>dev_iwdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\dev\dev_iwdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>dev_sleep.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\dev\dev_sleep.c</FilePath>
+            </File>
+            <File>
+              <FileName>dev_state.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\dev\dev_state.c</FilePath>
+            </File>
+            <File>
+              <FileName>dev_vbatt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\dev\dev_vbatt.c</FilePath>
+            </File>
+            <File>
+              <FileName>dev.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\dev\dev.c</FilePath>
             </File>
           </Files>
         </Group>
