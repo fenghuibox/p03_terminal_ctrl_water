@@ -17,13 +17,14 @@
   ../driver/inc/ddl.h ../source\ddl_device.h ../driver/inc\bt.h \
   ../driver/inc\bgr.h ../driver/inc\adc.h ../driver/inc\aes.h \
   ../driver/inc\flash.h ../driver/inc\gpio.h ../driver/inc\lpm.h \
-  ../driver/inc\lpuart.h ../driver/inc\reset.h ../driver/inc\rtc.h \
-  ../driver/inc\wdt.h ../com/com_char.h ../com/com_buf.h \
-  ../com/com_str.h ../com/com_atoi.h ../com/com_bit.h ../com/com_delay.h \
-  ../com/com_memory.h ../com/com_var.h ../com/com_sqList.h \
-  ../com/com_queue.h ../com/com_queue_val_len.h ../com/com_mac.h \
-  ../dri\dri_includes.h ../dri/dri_clk.h ../dri/dri_flash_f_eep.h \
-  ../dri/dri_timer.h ../dri/dri_uart_debug.h ../dri/dri_adc.h \
+  ../driver/inc\lpuart.h ../driver/inc\uart.h ../driver/inc\reset.h \
+  ../driver/inc\rtc.h ../driver/inc\wdt.h ../com/com_char.h \
+  ../com/com_buf.h ../com/com_str.h ../com/com_atoi.h ../com/com_bit.h \
+  ../com/com_delay.h ../com/com_memory.h ../com/com_var.h \
+  ../com/com_sqList.h ../com/com_queue.h ../com/com_queue_val_len.h \
+  ../com/com_mac.h ../dri\dri_includes.h ../dri/dri_clk.h \
+  ../dri/dri_flash_f_eep.h ../dri/dri_timer.h ../dri/dri_uart_debug.h \
+  ../dri/dri_uart_zgb.h ../dri/dri_io_zgb.h ../dri/dri_adc.h \
   ../dri/dri.h ../mod\mod_includes.h ../mod_timer\timer.h \
   ../mod_cfg\cfg.h ../mod_cfg/cfg_page_id.h ../mod_cfg/cfg_base.h \
   ../mod_cfg/cfg_aes.h ../mod_dbg\dbg.h ../mod_dbg/dbg_uart.h \
@@ -35,5 +36,9 @@
   ../mod_frame/f_response_frame.h ../mod_frame/f_txt_frame_data.h \
   ../mod_frame/f_txt_frame_dpara_base.h \
   ../mod_frame/f_txt_frame_dpara_zgb.h ../mod_frame/f_txt_frame.h \
-  ../mod/mod.h ../dev\dev.h ../dev/dev_state.h ../dev/dev_vbatt.h \
-  ../dev/dev_sleep.h ../dev/dev_iwdg.h
+  ../mod_zgb\zgb.h ../mod_zgb/zgb_io.h ../mod_zgb/zgb_uart.h \
+  ../mod_zgb/zgb_cmd.h ../mod_zgb/zgb_mac.h ../mod_zgb/zgb_state.h \
+  ../mod_zgb/zgb_node.h ../mod_zgb/zgb_unpack.h \
+  ../mod_zgb/zgb_g2n_state.h ../mod_zgb/zgb_g2n.h \
+  ../mod_zgb/zgb_rx_pass.h ../mod/mod.h ../dev\dev.h ../dev/dev_state.h \
+  ../dev/dev_vbatt.h ../dev/dev_sleep.h ../dev/dev_iwdg.h

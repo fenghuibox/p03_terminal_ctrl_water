@@ -28,6 +28,8 @@
 
 #include "frame.h"
 
+#include "zgb.h"
+
 /*
 
 
@@ -36,7 +38,6 @@
 
 #include "m485.h"
 
-#include "zgb.h"
 
 
 

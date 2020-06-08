@@ -18,8 +18,12 @@
 #include "dri_timer.h"
 
 #include "dri_uart_debug.h"
+#include "dri_uart_zgb.h"
+#include "dri_io_zgb.h"
 
 #include "dri_adc.h"
+
+
 
 //#include "dri_interrupt.h"
 //#include "dri_power.h"

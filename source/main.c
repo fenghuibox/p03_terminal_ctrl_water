@@ -93,6 +93,15 @@ static void _test( void )
 		testModAes();
 	#endif	
 
+
+
+	#ifdef TEST_MOD_ZGB_UART
+		testModZgbUart();
+	#endif
+
+
+	
+
 	#ifdef TEST_ZGB_NODE
 		testZgbNode();
 	#endif	

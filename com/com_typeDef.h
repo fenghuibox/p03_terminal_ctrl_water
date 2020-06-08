@@ -233,13 +233,14 @@ typedef  int ( *FunG2sTxCB)( u8 *pBuf, u16 len );
 
 //#define  TEST_MOD_AES
 
+//#define  TEST_MOD_ZGB_UART
 
 
 
 
-//#define  TEST_ZGB_NODE
 
-//#define TEST_CTRL_OUT
+
+
 
 
 #endif

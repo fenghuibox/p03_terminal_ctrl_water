@@ -34,6 +34,7 @@
 #include "gpio.h"
 #include "lpm.h"
 #include "lpuart.h"
+#include "uart.h"
 #include "reset.h"
 #include "rtc.h"
 #include "sysctrl.h"

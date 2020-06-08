@@ -17,10 +17,10 @@
   ../driver/inc/ddl.h ../source\ddl_device.h ../driver/inc\bt.h \
   ../driver/inc\bgr.h ../driver/inc\adc.h ../driver/inc\aes.h \
   ../driver/inc\flash.h ../driver/inc\gpio.h ../driver/inc\lpm.h \
-  ../driver/inc\lpuart.h ../driver/inc\reset.h ../driver/inc\rtc.h \
-  ../driver/inc\wdt.h ../com/com_char.h ../com/com_buf.h \
-  ../com/com_str.h ../com/com_atoi.h ../com/com_bit.h ../com/com_delay.h \
-  ../com/com_memory.h ../com/com_var.h ../com/com_sqList.h \
-  ../com/com_queue.h ../com/com_queue_val_len.h ../com/com_mac.h \
-  ../dri\dri_adc.h ../mod_dbg\dbg_uart.h ../mod_timer\timer.h \
-  ../dri\dri_timer.h
+  ../driver/inc\lpuart.h ../driver/inc\uart.h ../driver/inc\reset.h \
+  ../driver/inc\rtc.h ../driver/inc\wdt.h ../com/com_char.h \
+  ../com/com_buf.h ../com/com_str.h ../com/com_atoi.h ../com/com_bit.h \
+  ../com/com_delay.h ../com/com_memory.h ../com/com_var.h \
+  ../com/com_sqList.h ../com/com_queue.h ../com/com_queue_val_len.h \
+  ../com/com_mac.h ../dri\dri_adc.h ../mod_dbg\dbg_uart.h \
+  ../mod_timer\timer.h ../dri\dri_timer.h

@@ -315,7 +315,7 @@ static void _dbgUartRxCB( u8 *str,  u8 len )
 		{
 			if( debugPassIsZigbee() )
 			{
-				modUartZigbeeTx(str, len); // Í¸´«
+				dbgUartTx(str, len); // Í¸´«
 			}
 
 		}

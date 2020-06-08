@@ -7,6 +7,7 @@
 
 
 
+extern void driSoftReset( void );
 
 
 extern void driInit( void );

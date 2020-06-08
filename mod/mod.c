@@ -29,21 +29,22 @@ void modInit( void )
 	configInit(); // 2 read/def eeprom
 	
 	dbgInit();
+
+	
+	aesInit();
+	
+	zgbInit();
+	
+	
 #else
 
 
 
 	sgInit();	   // 3 通信通道
 
-
 	ctrlInit(); // ctrl
 
-	aesInit();
-
-
 	m485Init();
-
-	zgbInit();
 
 	g4Init();
 

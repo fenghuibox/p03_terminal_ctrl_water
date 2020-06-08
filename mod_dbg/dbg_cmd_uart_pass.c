@@ -21,7 +21,7 @@
 
 #include "dbg_cmd_uart_pass.h"
 
-//#include "dev_state.h"
+#include "dev_state.h"
 
 
 const char strCmdUartPassHead[]  =  "uartpass";
@@ -37,8 +37,6 @@ const char strCmdUartOff[] = "0";
 
 
 #define UART_PASS_CMD_LEN_OFF     ( 1 )
-#define UART_PASS_CMD_LEN_4G     ( 3 )
-#define UART_PASS_CMD_LEN_IPAD   ( 5 )
 #define UART_PASS_CMD_LEN_ZGB    ( 7 )
 #define UART_PASS_CMD_LEN_485    ( 8 )
 
@@ -72,7 +70,6 @@ u8 debugPassIsZigbee( void )
 //str = zigbee1 / 4g1 ......
 u8 debugCmdUartPass( u8 *str,  u8 len  )
 {
-	#if 0 // fenghuiw
 	if( len == UART_PASS_CMD_LEN_OFF )
 	{
 		if(   *str == '0' )
@@ -91,9 +88,6 @@ u8 debugCmdUartPass( u8 *str,  u8 len  )
 			return TRUE;
 		}
 	}
-	#endif
-
-	
 
 	return FALSE;
 

@@ -336,7 +336,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\..\mcu\common;.\..\driver\inc;.\..\source;.\..\com;.\..\dri;.\..\mod;.\..\mod_timer;.\..\uart_pack;.\..\mod_dbg;.\..\mod_cfg;.\..\dev;.\..\mod_aes;.\..\mod_frame</IncludePath>
+              <IncludePath>.\..\mcu\common;.\..\driver\inc;.\..\source;.\..\com;.\..\dri;.\..\mod;.\..\mod_timer;.\..\uart_pack;.\..\mod_dbg;.\..\mod_cfg;.\..\dev;.\..\mod_aes;.\..\mod_frame;.\..\mod_zgb</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -439,6 +439,11 @@
               <FileName>lpuart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\driver\src\lpuart.c</FilePath>
+            </File>
+            <File>
+              <FileName>uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\driver\src\uart.c</FilePath>
             </File>
             <File>
               <FileName>reset.c</FileName>
@@ -595,6 +600,16 @@
               <FileType>1</FileType>
               <FilePath>..\dri\dri_adc.c</FilePath>
             </File>
+            <File>
+              <FileName>dri_io_zgb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\dri\dri_io_zgb.c</FilePath>
+            </File>
+            <File>
+              <FileName>dri_uart_zgb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\dri\dri_uart_zgb.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -680,6 +695,11 @@
               <FileType>1</FileType>
               <FilePath>..\mod_dbg\dbg_cmd_uart_pass.c</FilePath>
             </File>
+            <File>
+              <FileName>dbg_cmd_mac.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_dbg\dbg_cmd_mac.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -749,6 +769,41 @@
               <FileName>frame.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\mod_frame\frame.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>mod_zgb</GroupName>
+          <Files>
+            <File>
+              <FileName>zgb_io.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_zgb\zgb_io.c</FilePath>
+            </File>
+            <File>
+              <FileName>zgb_mac.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_zgb\zgb_mac.c</FilePath>
+            </File>
+            <File>
+              <FileName>zgb_state.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_zgb\zgb_state.c</FilePath>
+            </File>
+            <File>
+              <FileName>zgb_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_zgb\zgb_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>zgb_cmd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_zgb\zgb_cmd.c</FilePath>
+            </File>
+            <File>
+              <FileName>zgb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_zgb\zgb.c</FilePath>
             </File>
           </Files>
         </Group>

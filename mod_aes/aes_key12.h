@@ -30,9 +30,6 @@ extern void aesKey12Get( u8 *pKey );
 
 extern u8 aesKey12isEqu( u8 *pKey );
 
-
-extern u8 * _aesKey12Get( void );
-
 extern void aesKey12Def( void );
 
 

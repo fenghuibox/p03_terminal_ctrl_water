@@ -11,6 +11,15 @@
 
 
 
+
+
+
+void driSoftReset( void )
+{
+	NVIC_SystemReset();
+}
+
+
 //----------------------------------------------------------------
 
 void driInit( void )
@@ -24,6 +33,11 @@ void driInit( void )
 	driTimerInit();
 	
 	driUartDebugInit(NULL);
+	
+	driUartZgbInit(NULL);
+
+	
+	driIoZgbInit();
 
 	driAdcInit();
 

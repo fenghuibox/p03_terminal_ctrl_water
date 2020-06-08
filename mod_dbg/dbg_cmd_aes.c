@@ -9,7 +9,7 @@
  *|-------------------------------------------------------------*/
  
 
-#if 0
+#if 1
 
 #include "com_includes.h"
 #include "timer.h"
@@ -17,7 +17,7 @@
 #include "aes_switch.h"
 #include "aes_key12.h"
 
-#include "mod_uart_debug.h"
+#include "dbg_uart.h"
 
 #include "dev_state.h"
 
@@ -58,14 +58,16 @@ const char strCmdAesKeySet[]     =  "keyset";
 // str = switchget / keyget ...
 u8 debugCmdAes( u8 *str,  u8 len )
 {
+	u8 pKey12[AES_KEY_12_LEN];
+	
 	if( len == DEBUG_AES_SWITCH_GET_CMD_LEN )
 	{
 		if( strcmp( ( const char *)str, strCmdAesSwitchGet ) == 0 )
 		{
 			if( aesSwitchGet() )
-				modUartDebugTx0( "\naes switch on" );
+				dprintf( "\naes switch on" );
 			else
-				modUartDebugTx0( "\naes switch off" );
+				dprintf( "\naes switch off" );
 				
 			return TRUE;
 		}
@@ -75,13 +77,13 @@ u8 debugCmdAes( u8 *str,  u8 len )
 		if( strcmp( ( const char *)str, strCmdAesSwitchSet1 ) == 0 )
 		{
 			aesSwitchSet( 1 );
-			modUartDebugTx0( "\naes switch on" );
+			dprintf( "\naes switch on" );
 			return TRUE;
 		}
 		else if( strcmp( ( const char *)str, strCmdAesSwitchSet0 ) == 0 )
 		{
 			aesSwitchSet( 0 );
-			modUartDebugTx0( "\naes switch off" );
+			dprintf( "\naes switch off" );
 			return TRUE;
 		}
 		
@@ -90,8 +92,8 @@ u8 debugCmdAes( u8 *str,  u8 len )
 	{
 		if( strcmp( ( const char *)str, strCmdAesKeyGet ) == 0 )
 		{
-			modUartDebugTx0( "\naeskey:" );
-			modUartDebugTxU8buf( _aesKey12Get(), AES_KEY_12_LEN );
+			aesKey12Get( pKey12 );
+			dprintfBuf( "\naeskey:", pKey12, AES_KEY_12_LEN, 1);
 			return TRUE;
 		}
 	}
@@ -101,12 +103,11 @@ u8 debugCmdAes( u8 *str,  u8 len )
 		{ 
 			if( aesKey12Set( str + _AES_KEY_SET_HEAD_CMD_LEN ) == FALSE )
 			{
-				modUartDebugTx0( "\naeskeyset Error" );
+				dprintf( "\naeskeyset Error" );
 			}
 			else
 			{
-				modUartDebugTx0( "\naeskeyset ok, key=" );
-				modUartDebugTxU8buf( str + _AES_KEY_SET_HEAD_CMD_LEN , AES_KEY_12_LEN );
+				dprintfBuf( "\naeskeyset ok, key=", str + _AES_KEY_SET_HEAD_CMD_LEN , AES_KEY_12_LEN, 1 );
 			}
 			return TRUE;
 		}
