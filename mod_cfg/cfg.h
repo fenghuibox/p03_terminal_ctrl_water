@@ -20,7 +20,7 @@
 #include "cfg_page_id.h"
 #include "cfg_base.h"
 #include "cfg_aes.h"
-
+#include "cfg_ctrl.h"
 
 
 

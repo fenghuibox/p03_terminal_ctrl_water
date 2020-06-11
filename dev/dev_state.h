@@ -59,7 +59,6 @@ typedef enum
 	DEV_STATE_IDLE, // 2
 	DEV_STATE_WORK, // 3
 	
-	DEV_STATE_CFG,    // ≈‰÷√Ã¨
 	DEV_STATE_UART_PASS,    // debug uart Õ∏¥´Ã¨
 	
 	DEV_STATE_SLEEP,  
@@ -106,9 +105,6 @@ typedef enum
 	DEV_EVENT_UART_PASS_START, // 
 	DEV_EVENT_UART_PASS_END,   // 
 	
-	DEV_EVENT_CFG_START, // 
-	DEV_EVENT_CFG_END,   // 
-
 		
 	DEV_EVENT_SLEEP_START, // 
 	DEV_EVENT_SLEEP_END,   // 

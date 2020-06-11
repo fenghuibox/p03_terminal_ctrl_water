@@ -4,6 +4,7 @@
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\time.h \
   ../mcu/common\board_stkhc32l17x.h ../mcu/common\interrupts_hc32l17x.h \
   ../driver/inc\ddl.h ../mcu/common\base_types.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
@@ -24,8 +25,9 @@
   ../com/com_sqList.h ../com/com_queue.h ../com/com_queue_val_len.h \
   ../com/com_mac.h ../dri\dri_uart_zgb.h ../uart_pack\uart_pack.h \
   ../mod_zgb/zgb_uart.h ../mod_timer\timer.h ../dri\dri_timer.h \
-  ../mod_dbg\dbg_uart.h ../dev\dev_state.h ../mod_zgb/zgb_cmd.h \
-  ../mod_zgb/zgb_mac.h ../mod_zgb/zgb_unpack.h ../mod_zgb/zgb_rx_pass.h \
-  ../mod_zgb/zgb_g2n.h ../mod_frame\f_txt_frame.h \
+  ../mod_dbg\dbg.h ../mod_dbg/dbg_uart.h ../mod_dbg/dbg_cmd.h \
+  ../mod_dbg/dbg_cmd_uart_pass.h ../mod_dbg/dbg_cmd_aes.h \
+  ../mod_dbg/dbg_cmd_dev.h ../dev\dev_state.h ../mod_zgb/zgb_cmd.h \
+  ../mod_zgb/zgb_mac.h ../mod_frame\f_txt_frame.h \
   ../mod_frame/f_frame_comm.h ../com\com_mac.h \
-  ../mod_frame/f_txt_frame_data.h
+  ../mod_frame/f_txt_frame_data.h ../mod_sn\sn_rx.h ../mod_sn\sn_n2s.h

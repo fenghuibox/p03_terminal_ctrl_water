@@ -193,3 +193,18 @@ u32 str2float( u8  *str )
 }
 
 
+
+
+//BCD码转十进制函数，输入BCD，返回十进制
+u8 BCD2decimal( u8 bcd )
+{
+	u8 Decimal;
+	
+	Decimal = bcd >> 4;
+
+	Decimal = Decimal * 10 + ( bcd &= 0x0F );
+	
+	return Decimal ;
+}
+
+

@@ -15,7 +15,10 @@
 //====== aes switch  =====================================
 u8 cfgAesSwitchGet( void ) //
 {
-    return _stAppConfig.aes_switch;
+    if( _stAppConfig.aes_switch == 0 )
+		return 0;
+
+	return 1;
 }
 
 u8 cfgAesSwitchSet( u8 s )

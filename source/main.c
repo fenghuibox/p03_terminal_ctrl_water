@@ -19,42 +19,6 @@
 
 
 
-#define TEST_PORT  (GpioPortA)
-#define TEST_PIN   (GpioPin2)
-
-
-static void _testLedInit(void)
-{
-    stc_gpio_cfg_t stcGpioCfg;
-	
-
-	DDL_ZERO_STRUCT(stcGpioCfg);
-	
-	
-    ///< 打开GPIO外设时钟门控
-   // Sysctrl_SetPeripheralGate(SysctrlPeripheralGpio, TRUE); 
-    
-    ///< 端口方向配置->输出(其它参数与以上（输入）配置参数一致)
-    stcGpioCfg.enDir = GpioDirOut;
-	
-    ///< 端口上下拉配置->下拉
-    stcGpioCfg.enPu = GpioPuDisable;
-    stcGpioCfg.enPd = GpioPdEnable;
-    
-    ///< LED关闭
-    Gpio_ClrIO(TEST_PORT, TEST_PIN);
-    
-    ///< GPIO IO LED端口初始化
-    Gpio_Init(TEST_PORT, TEST_PIN, &stcGpioCfg);
-    
-}
-
-
-
-
-
-
-
 static void _test( void )
 {
 	//_testAes();
@@ -94,16 +58,13 @@ static void _test( void )
 	#endif	
 
 
-
 	#ifdef TEST_MOD_ZGB_UART
 		testModZgbUart();
 	#endif
 
 
-	
-
-	#ifdef TEST_ZGB_NODE
-		testZgbNode();
+	#ifdef TEST_COM_TIME
+		testComTime();
 	#endif	
 
 	#ifdef TEST_CTRL_OUT
@@ -121,21 +82,18 @@ int main(void)
 
 	driInit();
 
-	_testLedInit();
-
 	modInit();
 
 	devInit();
 
-	//ledInit();
 	
-	_test();
+	
 
-	
-	dprintf("p03_terminal_ctrl_water V0.1_20200613 fenghui\r\n");
+	dprintf("\r\np03_terminal_ctrl_water V0.1_20200613 fenghui\r\n");
 
 	gB1.inited = 1;
-
+	
+	_test();
 	
 	while(1)
     {

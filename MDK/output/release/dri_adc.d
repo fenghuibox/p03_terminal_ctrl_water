@@ -3,7 +3,8 @@
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h ../com\com_includes.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\time.h ../com\com_includes.h \
   ../mcu/common\board_stkhc32l17x.h ../mcu/common\interrupts_hc32l17x.h \
   ../driver/inc\ddl.h ../mcu/common\base_types.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \

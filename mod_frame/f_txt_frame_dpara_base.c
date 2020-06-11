@@ -1,5 +1,5 @@
 
-#if 0
+#if 1
 
 /*--------------------------------------------------------------|
  *| company | 湖南华中苗木云科技有限公司                        |
@@ -20,6 +20,10 @@
 #include "f_txt_frame_data.h"
 
 #include "cfg_base.h"
+
+
+
+
 
 
 
@@ -51,7 +55,7 @@ u8 para_config_ver_exe( ST_FRAME *pstFrame )
 {	
 	if( pstFrame->action == TXT_FRAME_ACTION_GET )
 	{
-		gstG2S.config_ver = 1;
+		gstN2S.config_ver = 1;
 
 		gB1.txtFrameExeOKhaveRspReport = 1;
 
@@ -61,7 +65,7 @@ u8 para_config_ver_exe( ST_FRAME *pstFrame )
 	{
 		paraCfgVerSet( pstFrame->pBuf + DPACK_OFFSET_PARA );
 		
-		//gstG2S.config_ver = 1;
+		//gstN2S.config_ver = 1;
 
 		//gB1.txtFrameExeOKhaveRspReport = 1;
 
@@ -103,7 +107,7 @@ u8 para_def_exe( ST_FRAME *pstFrame )
 		if( paraDefSet( pstFrame->pBuf + DPACK_OFFSET_PARA ) == FALSE )
 			return FALSE;
 		
-		gstG2S.def = 1;
+		gstN2S.def = 1;
 		gB1.txtFrameExeOKhaveRspReport = 1;
 
 		return TRUE;
@@ -148,7 +152,7 @@ u8 para_aes_switch_exe( ST_FRAME *pstFrame )
 {
 	if( pstFrame->action == TXT_FRAME_ACTION_GET )
 	{
-		gstG2S.aes_switch = 1;
+		gstN2S.aes_switch = 1;
 		gB1.txtFrameExeOKhaveRspReport = 1;
 
 		return TRUE;
@@ -158,7 +162,7 @@ u8 para_aes_switch_exe( ST_FRAME *pstFrame )
 		if( paraAesSwitchSet( pstFrame->pBuf + DPACK_OFFSET_PARA ) == FALSE )
 			return FALSE;
 		
-		//gstG2S.aes_switch = 1;
+		//gstN2S.aes_switch = 1;
 		//gB1.txtFrameExeOKhaveRspReport = 1;
 
 		return TRUE;
@@ -190,7 +194,7 @@ u8 para_aes_key_exe( ST_FRAME *pstFrame )
 {
 	if( pstFrame->action == TXT_FRAME_ACTION_GET )
 	{
-		gstG2S.aes_key = 1;
+		gstN2S.aes_key = 1;
 		gB1.txtFrameExeOKhaveRspReport = 1;
 
 		return TRUE;
@@ -200,7 +204,7 @@ u8 para_aes_key_exe( ST_FRAME *pstFrame )
 		if( paraAesKeySet( pstFrame->pBuf + DPACK_OFFSET_PARA ) == FALSE )
 			return FALSE;
 		
-		//gstG2S.aes_key = 1;
+		//gstN2S.aes_key = 1;
 		//gB1.txtFrameExeOKhaveRspReport = 1;
 
 		return TRUE;
@@ -223,7 +227,7 @@ u8 para_reboot_exe( ST_FRAME *pstFrame )
 {
 	/*if( pstFrame->action == TXT_FRAME_ACTION_GET )
 	{
-		gstG2S.aes_key = 1;
+		gstN2S.aes_key = 1;
 		gB1.txtFrameExeOKhaveRspReport = 1;
 
 		return TRUE;
@@ -232,7 +236,7 @@ u8 para_reboot_exe( ST_FRAME *pstFrame )
 	{
 		timerStart( 100, 1, _rebootTimerCB );
 		
-		//gstG2S.reboot = 1;
+		//gstN2S.reboot = 1;
 		//gB1.txtFrameExeOKhaveRspReport = 1;
 
 		return TRUE;
@@ -242,11 +246,110 @@ u8 para_reboot_exe( ST_FRAME *pstFrame )
 }
 
 
+
+// ------------- sleep sec  -----------------------------------------
+void paraSleepSecSet( u8 *pPara )
+{
+	u32 temp;
+	
+	temp = byteMergeto32( pPara[0], pPara[1], pPara[2], pPara[3] );
+
+	cfgSleepSecSet( temp );
+}
+
+
+void paraSleepSecGet( u8 *pPara )
+{
+	u32 temp;
+
+	temp = cfgSleepSecGet();
+	
+	u32splitToByte( temp, pPara );
+}
+
+
+
+
+u8 para_sleep_sec_exe( ST_FRAME *pstFrame )
+{	
+	if( pstFrame->action == TXT_FRAME_ACTION_GET )
+	{
+		gstN2S.sleep_sec = 1;
+
+		gB1.txtFrameExeOKhaveRspReport = 1;
+
+		return TRUE;
+	}
+	else if( pstFrame->action == TXT_FRAME_ACTION_SET )
+	{
+		paraSleepSecSet( pstFrame->pBuf + DPACK_OFFSET_PARA );
+		
+		//gstN2S.sleep_sec = 1;
+
+		//gB1.txtFrameExeOKhaveRspReport = 1;
+
+		return TRUE;
+	}
+	
+	return FALSE;
+}
+
+
+// ------------- work sec  -----------------------------------------
+void paraWorkSecSet( u8 *pPara )
+{
+	u32 temp;
+	
+	temp = byteMergeto32( pPara[0], pPara[1], pPara[2], pPara[3] );
+
+	cfgWorkSecSet( temp );
+}
+
+
+void paraWorkSecGet( u8 *pPara )
+{
+	u32 temp;
+
+	temp = cfgWorkSecGet();
+	
+	u32splitToByte( temp, pPara );
+}
+
+
+
+
+u8 para_work_sec_exe( ST_FRAME *pstFrame )
+{	
+	if( pstFrame->action == TXT_FRAME_ACTION_GET )
+	{
+		gstN2S.work_sec = 1;
+
+		gB1.txtFrameExeOKhaveRspReport = 1;
+
+		return TRUE;
+	}
+	else if( pstFrame->action == TXT_FRAME_ACTION_SET )
+	{
+		paraWorkSecSet( pstFrame->pBuf + DPACK_OFFSET_PARA );
+		
+		//gstN2S.work_sec = 1;
+
+		//gB1.txtFrameExeOKhaveRspReport = 1;
+
+		return TRUE;
+	}
+	
+	return FALSE;
+}
+
+
+
+
 // ------------- ver -----------------------------------------
 
 u8 paraVerGet( void )
 {	
-	return 24;
+	return 17;
 }
 
 
@@ -257,7 +360,7 @@ u8 para_ver_exe( ST_FRAME *pstFrame )
 {
 	if( pstFrame->action == TXT_FRAME_ACTION_GET )
 	{
-		gstG2S.ver = 1;
+		gstN2S.ver = 1;
 
 		gB1.txtFrameExeOKhaveRspReport = 1;
 
@@ -273,7 +376,7 @@ u8 para_ver_exe( ST_FRAME *pstFrame )
 // ------------- dev type -----------------------------------------
 EN_DEV_TYPE paraDevTypeGet( void )
 {
-	return DEV_TYPE_GATEWAY;
+	return DEV_TYPE_CTRL;
 }
 
 
@@ -283,7 +386,7 @@ u8 para_dev_type_exe( ST_FRAME *pstFrame )
 {
 	if( pstFrame->action == TXT_FRAME_ACTION_GET )
 	{
-		gstG2S.dev_type = 1;
+		gstN2S.dev_type = 1;
 
 		gB1.txtFrameExeOKhaveRspReport = 1;
 
@@ -300,7 +403,7 @@ u8 para_heartbeat_exe( ST_FRAME *pstFrame )
 {
 	if( pstFrame->action == TXT_FRAME_ACTION_GET )
 	{
-		gstG2S.heartbeat = 1;
+		gstN2S.heartbeat = 1;
 
 		gB1.txtFrameExeOKhaveRspReport = 1;
 
@@ -321,7 +424,7 @@ void paraBatteryGet( u8 *pPara )
 	
 	u16 val;
 	
-	modBattGetVbyAdc( &val ); 
+	val = devVbattValGet(); 
 
 	u16splitToByteHL( val, pPara );
 }
@@ -331,7 +434,7 @@ u8 para_battery_exe( ST_FRAME *pstFrame )
 {
 	if( pstFrame->action == TXT_FRAME_ACTION_GET )
 	{
-		gstG2S.battery = 1;
+		gstN2S.battery = 1;
 
 		gB1.txtFrameExeOKhaveRspReport = 1;
 
@@ -340,58 +443,6 @@ u8 para_battery_exe( ST_FRAME *pstFrame )
 	
 	return FALSE;
 
-}
-
-
-
-
-
-// ------------- work state -----------------------------------------
-int paraWorkStateSet( u8 *pPara  )
-{
-	if( *pPara == 0 )
-	{
-		cfgWorkStateSet( DEV_WORK_STATE_NORMAL );
-	}
-	else if( *pPara == 1 )
-	{
-		cfgWorkStateSet( DEV_WORK_STATE_CONFIG );
-	}
-	else
-	{
-		return FALSE;
-	}
-
-	return TRUE;
-}
-
-
-EN_DEV_WORK_STATE paraWorkStateGet( void )
-{
-	return (EN_DEV_WORK_STATE)cfgWorkStateGet();
-}
-
-
-u8 para_work_state_exe( ST_FRAME *pstFrame )
-{
-	if( pstFrame->action == TXT_FRAME_ACTION_GET )
-	{
-		gstG2S.work_state = 1;
-		gB1.txtFrameExeOKhaveRspReport = 1;
-
-		return TRUE;
-	}
-	else if( pstFrame->action == TXT_FRAME_ACTION_SET )
-	{
-		if( paraWorkStateSet( pstFrame->pBuf + DPACK_OFFSET_PARA ) == FALSE )
-			return FALSE;
-		
-		//gstG2S.work_state = 1;
-		//gB1.txtFrameExeOKhaveRspReport = 1;
-
-		return TRUE;
-	}
-	return FALSE;
 }
 
 

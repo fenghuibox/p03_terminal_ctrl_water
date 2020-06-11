@@ -4,6 +4,7 @@
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\time.h \
   ../mcu/common\board_stkhc32l17x.h ../mcu/common\interrupts_hc32l17x.h \
   ../driver/inc\ddl.h ../mcu/common\base_types.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
@@ -24,6 +25,4 @@
   ../com/com_sqList.h ../com/com_queue.h ../com/com_queue_val_len.h \
   ../com/com_mac.h ../mod_zgb/zgb.h ../mod_zgb/zgb_io.h \
   ../mod_zgb/zgb_uart.h ../mod_zgb/zgb_cmd.h ../mod_zgb/zgb_mac.h \
-  ../mod_zgb/zgb_state.h ../mod_zgb/zgb_node.h ../mod_zgb/zgb_unpack.h \
-  ../mod_zgb/zgb_g2n_state.h ../mod_zgb/zgb_g2n.h \
-  ../mod_zgb/zgb_rx_pass.h
+  ../mod_zgb/zgb_state.h

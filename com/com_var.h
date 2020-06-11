@@ -17,7 +17,7 @@
 
 typedef struct
 {
-	//u8 txtFrameIsExeIng:1;           // 正在执行中
+	u8 led:1;           // 
 	//u8 txtFrameExeIsWaitReport:1;    // 执行完帧后，正在等待应答的报告
 	u8 txtFrameExeOKhaveRspReport:1; // 执行完帧后，需要等待应答的报告
 	//u8 txtFrameExeIsRspReport:1;     // 执行完帧后， 应答了报告

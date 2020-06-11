@@ -23,20 +23,32 @@
 typedef struct
 {
     u32 write_cnt;
+    u32 flash_is_new;
+	
     u32 cfg_ver;
-    u32 sleep_sec;
-    u32 work_sec;
+    u32 sleep_sec;  // def: 15
+    u32 work_sec;   // def:  5
 
-	u32 open_sec;
-	u32 close_sec;
+	
+	u32 ctrl_mode;                // 控制模式  0：命令控制模式  1：周期控制模式   def:0
+	
+	u32 cmd_ctrl_open_sec;      // 命令控制时，开的时长 def:60
+	u32 cmd_ctrl_start_sec;     // (内部使用)执行命令控制时的时间戳 
 
 	
 
-    u8 aes_key[EEP_LEN_CFG_AES_KEY];
-    u8 aes_switch;
-    u8 flash_is_new;
-    u8 work_state;
+	u32 period_ctrl_open_minute;  // 自动周期控制时， 开的时长   def:  1
+	u32 period_ctrl_close_minute; // 自动周期控制时， 关的时长   def: 60
 
+	u32 period_ctrl_timeout_sec; // (内部使用) 自动周期控制时，定时的时间戳  
+	u32 period_ctrl_action;      // (内部使用) 自动周期控制时，定时到时的控制行为 ( 1: 开  0:关)
+	
+
+	u32 ctrl_state;// 水阀的状态  0:关
+
+    u32 aes_switch;                // def: 0
+    u8 aes_key[EEP_LEN_CFG_AES_KEY];
+	
 	
     u32 end;
 }ST_CONFIG;

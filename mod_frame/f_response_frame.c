@@ -8,7 +8,7 @@
  *| contact | QQ:258820709    email:fenghuibox@qq.com           |
  *|-------------------------------------------------------------*/
  
-#if 0
+#if 1
 
 #include "com_includes.h"
 
@@ -179,7 +179,7 @@ EN_FRAME_UNPACK rspFrameUnpack( u8 *pFrame, u8 len, u8 isNode )
 	if( FRAME_UNPACK_OK != rst )
 		return rst;
 
-	if( macIsOk( pFrame + RSP_FRAME_OFFSET_TARGET_ID, isNode ) == FALSE )
+	if( macIsOk( pFrame + RSP_FRAME_OFFSET_TARGET_ID ) == FALSE )
 		return FRAME_UNPACK_NG_ID;
 
 	return FRAME_UNPACK_OK;
@@ -231,21 +231,6 @@ void resFrameCreate( ST_RSP_FRAME *pstRspFrame, u8 isNodeAndGateway )
 
 
 
-/* ********************* 应答帧是不是透传  ****************************  
------------------------------------------------------------------------
-	通信端标志 如果 是 1, 则是 节点与网关通信, 不是透传
------------------------------------------------------------------------
-	通信端标志 如果 是 0, 则是 节点与服务器通信, 是透传
------------------------------------------------------------------------
-*/
-u8 resFrameIsPass( ST_RSP_FRAME *pstRspFrame )
-{
-	if(  pstRspFrame->ver & RSP_FRAME_VER_BIT_ID_COMM_TERMINAL  )
-		return FALSE;
-
-	return TRUE;
-		
-}
 
 
 

@@ -336,7 +336,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\..\mcu\common;.\..\driver\inc;.\..\source;.\..\com;.\..\dri;.\..\mod;.\..\mod_timer;.\..\uart_pack;.\..\mod_dbg;.\..\mod_cfg;.\..\dev;.\..\mod_aes;.\..\mod_frame;.\..\mod_zgb</IncludePath>
+              <IncludePath>.\..\mcu\common;.\..\driver\inc;.\..\source;.\..\com;.\..\dri;.\..\mod;.\..\mod_timer;.\..\uart_pack;.\..\mod_dbg;.\..\mod_cfg;.\..\dev;.\..\mod_aes;.\..\mod_frame;.\..\mod_zgb;.\..\mod_ctrl;.\..\mod_led;.\..\mod_sn</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -565,6 +565,11 @@
               <FileType>1</FileType>
               <FilePath>..\com\com_var.c</FilePath>
             </File>
+            <File>
+              <FileName>com_time.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\com\com_time.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -574,6 +579,11 @@
               <FileName>dri.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\dri\dri.c</FilePath>
+            </File>
+            <File>
+              <FileName>dri_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\dri\dri_adc.c</FilePath>
             </File>
             <File>
               <FileName>dri_clk.c</FileName>
@@ -586,6 +596,31 @@
               <FilePath>..\dri\dri_flash_f_eep.c</FilePath>
             </File>
             <File>
+              <FileName>dri_io_ch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\dri\dri_io_ch.c</FilePath>
+            </File>
+            <File>
+              <FileName>dri_io_ctrl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\dri\dri_io_ctrl.c</FilePath>
+            </File>
+            <File>
+              <FileName>dri_io_led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\dri\dri_io_led.c</FilePath>
+            </File>
+            <File>
+              <FileName>dri_io_zgb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\dri\dri_io_zgb.c</FilePath>
+            </File>
+            <File>
+              <FileName>dri_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\dri\dri_rtc.c</FilePath>
+            </File>
+            <File>
               <FileName>dri_timer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\dri\dri_timer.c</FilePath>
@@ -594,16 +629,6 @@
               <FileName>dri_uart_debug.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\dri\dri_uart_debug.c</FilePath>
-            </File>
-            <File>
-              <FileName>dri_adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\dri\dri_adc.c</FilePath>
-            </File>
-            <File>
-              <FileName>dri_io_zgb.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\dri\dri_io_zgb.c</FilePath>
             </File>
             <File>
               <FileName>dri_uart_zgb.c</FileName>
@@ -634,6 +659,11 @@
               <FileName>cfg_page_id.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\mod_cfg\cfg_page_id.c</FilePath>
+            </File>
+            <File>
+              <FileName>cfg_ctrl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_cfg\cfg_ctrl.c</FilePath>
             </File>
             <File>
               <FileName>cfg.c</FileName>
@@ -746,14 +776,9 @@
               <FilePath>..\mod_frame\f_response_frame.c</FilePath>
             </File>
             <File>
-              <FileName>f_txt_frame_dpara_base.c</FileName>
+              <FileName>f_txt_frame.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\mod_frame\f_txt_frame_dpara_base.c</FilePath>
-            </File>
-            <File>
-              <FileName>f_txt_frame_dpara_zgb.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\mod_frame\f_txt_frame_dpara_zgb.c</FilePath>
+              <FilePath>..\mod_frame\f_txt_frame.c</FilePath>
             </File>
             <File>
               <FileName>f_txt_frame_data.c</FileName>
@@ -761,9 +786,24 @@
               <FilePath>..\mod_frame\f_txt_frame_data.c</FilePath>
             </File>
             <File>
-              <FileName>f_txt_frame.c</FileName>
+              <FileName>f_txt_frame_dpara_485.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\mod_frame\f_txt_frame.c</FilePath>
+              <FilePath>..\mod_frame\f_txt_frame_dpara_485.c</FilePath>
+            </File>
+            <File>
+              <FileName>f_txt_frame_dpara_base.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_frame\f_txt_frame_dpara_base.c</FilePath>
+            </File>
+            <File>
+              <FileName>f_txt_frame_dpara_ctrl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_frame\f_txt_frame_dpara_ctrl.c</FilePath>
+            </File>
+            <File>
+              <FileName>f_txt_frame_dpara_zgb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_frame\f_txt_frame_dpara_zgb.c</FilePath>
             </File>
             <File>
               <FileName>frame.c</FileName>
@@ -804,6 +844,116 @@
               <FileName>zgb.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\mod_zgb\zgb.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>mod_ctrl</GroupName>
+          <Files>
+            <File>
+              <FileName>ctrl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_ctrl\ctrl.c</FilePath>
+            </File>
+            <File>
+              <FileName>ctrl_cmd_ctrl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_ctrl\ctrl_cmd_ctrl.c</FilePath>
+            </File>
+            <File>
+              <FileName>ctrl_cmd_ctrl_open_sec.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_ctrl\ctrl_cmd_ctrl_open_sec.c</FilePath>
+            </File>
+            <File>
+              <FileName>ctrl_mode.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_ctrl\ctrl_mode.c</FilePath>
+            </File>
+            <File>
+              <FileName>ctrl_period_ctrl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_ctrl\ctrl_period_ctrl.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>mod_led</GroupName>
+          <Files>
+            <File>
+              <FileName>led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_led\led.c</FilePath>
+            </File>
+            <File>
+              <FileName>led_com.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_led\led_com.c</FilePath>
+            </File>
+            <File>
+              <FileName>led_err.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_led\led_err.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>mod_sn</GroupName>
+          <Files>
+            <File>
+              <FileName>sn.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_sn\sn.c</FilePath>
+            </File>
+            <File>
+              <FileName>sn_ch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_sn\sn_ch.c</FilePath>
+            </File>
+            <File>
+              <FileName>sn_master_state.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_sn\sn_master_state.c</FilePath>
+            </File>
+            <File>
+              <FileName>sn_n2s.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_sn\sn_n2s.c</FilePath>
+            </File>
+            <File>
+              <FileName>sn_n2s_state.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_sn\sn_n2s_state.c</FilePath>
+            </File>
+            <File>
+              <FileName>sn_rx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_sn\sn_rx.c</FilePath>
+            </File>
+            <File>
+              <FileName>sn_rx_queue.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_sn\sn_rx_queue.c</FilePath>
+            </File>
+            <File>
+              <FileName>sn_rx_unpack.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_sn\sn_rx_unpack.c</FilePath>
+            </File>
+            <File>
+              <FileName>sn_tx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_sn\sn_tx.c</FilePath>
+            </File>
+            <File>
+              <FileName>sn_tx_cmd_arr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_sn\sn_tx_cmd_arr.c</FilePath>
+            </File>
+            <File>
+              <FileName>sn_tx_rsp_arr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mod_sn\sn_tx_rsp_arr.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -18,6 +18,8 @@
 #include <stdarg.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
+
 //#include <malloc.h>
 
 
@@ -185,7 +187,7 @@ typedef  void ( *FunAdcCB)( u32 val );    //
 
 
 
-typedef  int ( *FunG2sTxCB)( u8 *pBuf, u16 len );
+typedef  int ( *FunN2sTxCB)( u8 *pBuf, u16 len );
 
 
 
@@ -237,6 +239,7 @@ typedef  int ( *FunG2sTxCB)( u8 *pBuf, u16 len );
 
 
 
+//#define  TEST_COM_TIME
 
 
 

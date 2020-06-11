@@ -17,6 +17,7 @@
 
 
 
+extern u8 zgbUartTxPoll( void ); // >50 ms
 
 
 
@@ -25,7 +26,7 @@ extern u8 zgbUartIsIdle( void );
 
 
 //extern void modUartZigbeeTx( u8 *str,  u8 len );
-extern void zgbUartTx( u8 *str,  u32 len );
+extern int zgbUartTx( u8 *str,  u16 len );
 
 
 

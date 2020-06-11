@@ -63,6 +63,8 @@ extern u32 str2Dec( u8 *str );
 // "12.3"->12.3
 extern u32 str2float( u8  *str );
 
+//BCD码转十进制函数，输入BCD，返回十进制
+extern u8 BCD2decimal( u8 bcd );
 
 
 #endif

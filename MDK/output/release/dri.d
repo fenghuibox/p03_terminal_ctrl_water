@@ -3,7 +3,8 @@
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h ../com\com_includes.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\time.h ../com\com_includes.h \
   ../mcu/common\board_stkhc32l17x.h ../mcu/common\interrupts_hc32l17x.h \
   ../driver/inc\ddl.h ../mcu/common\base_types.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
@@ -24,5 +25,6 @@
   ../com/com_sqList.h ../com/com_queue.h ../com/com_queue_val_len.h \
   ../com/com_mac.h ../dri/dri_includes.h ../dri/dri_clk.h \
   ../dri/dri_flash_f_eep.h ../dri/dri_timer.h ../dri/dri_uart_debug.h \
-  ../dri/dri_uart_zgb.h ../dri/dri_io_zgb.h ../dri/dri_adc.h \
-  ../dri/dri.h
+  ../dri/dri_uart_zgb.h ../dri/dri_io_zgb.h ../dri/dri_io_ch.h \
+  ../dri/dri_io_ctrl.h ../dri/dri_io_led.h ../dri/dri_adc.h \
+  ../dri/dri_rtc.h ../com\com_time.h ../dri/dri.h

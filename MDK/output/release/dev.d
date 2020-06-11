@@ -4,6 +4,7 @@
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\time.h \
   ../mcu/common\board_stkhc32l17x.h ../mcu/common\interrupts_hc32l17x.h \
   ../driver/inc\ddl.h ../mcu/common\base_types.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
@@ -25,4 +26,10 @@
   ../com/com_mac.h ../mod_timer\timer.h ../dri\dri_timer.h ../dev/dev.h \
   ../dev/dev_state.h ../dev/dev_vbatt.h ../dev/dev_sleep.h \
   ../dev/dev_iwdg.h ../mod_cfg\cfg.h ../mod_cfg/cfg_page_id.h \
-  ../mod_cfg/cfg_base.h ../mod_cfg/cfg_aes.h ../mod_dbg\dbg_uart.h
+  ../mod_cfg/cfg_base.h ../mod_cfg/cfg_aes.h ../mod_cfg/cfg_ctrl.h \
+  ../mod_sn\sn.h ../mod_sn/sn_ch.h ../mod_sn/sn_master_state.h \
+  ../mod_sn/sn_n2s_state.h ../mod_sn/sn_n2s.h ../mod_zgb\zgb_uart.h \
+  ../mod_sn/sn_rx_unpack.h ../mod_sn/sn_rx_queue.h ../mod_sn/sn_rx.h \
+  ../mod_ctrl\ctrl.h ../mod_ctrl/ctrl_mode.h ../mod_ctrl/ctrl_cmd_ctrl.h \
+  ../mod_ctrl/ctrl_cmd_ctrl_open_sec.h ../mod_ctrl/ctrl_period_ctrl.h \
+  ../mod_dbg\dbg_uart.h ../mod_frame\f_frame_comm.h ../com\com_mac.h

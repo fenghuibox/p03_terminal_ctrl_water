@@ -29,9 +29,9 @@
 
 #define DEV_POLL_GAP_MS  (50)
 
-#define IDLE_POLL_CNT   DEV_WAIT_SEC_IDLE * (1000 / DEV_POLL_GAP_MS )
-#define CFG_POLL_CNT    DEV_WAIT_SEC_CFG  * (1000 / DEV_POLL_GAP_MS )
-#define WORK_POLL_CNT   DEV_WAIT_SEC_WORK * (1000 / DEV_POLL_GAP_MS )
+#define IDLE_POLL_CNT        DEV_WAIT_SEC_IDLE * (1000 / DEV_POLL_GAP_MS )
+#define WORK_POLL_CNT        DEV_WAIT_SEC_WORK * (1000 / DEV_POLL_GAP_MS )
+#define UART_PASS_POLL_CNT   DEV_WAIT_SEC_WORK * (1000 / DEV_POLL_GAP_MS )
 
 
 
@@ -168,11 +168,6 @@ static void _devIdlePoll( void )
 	//if( _devS != DEV_STATE_IDLE )
 	//	return;
 
-	if( cfgWorkStateIsNormal() == FALSE )
-	{
-		_devStateSet( DEV_STATE_CFG );
-		return;
-	}
 
 	// work state is normal
 	if( devHaveWork() == TRUE  )
@@ -195,20 +190,14 @@ static void _devIdlePoll( void )
 
 		#include "sg_g2s.h"
 
-		g2sHeartbeat();
+		n2sHeartbeat();
 		#endif
 	}
 		
 }
 
 static void _devWorkPoll( void )
-{
-	if( cfgWorkStateIsNormal() == FALSE )
-	{
-		_devStateSet( DEV_STATE_CFG );
-		return;
-	}
-		
+{	
 	if( devHaveWork() == FALSE )
 	{
 		if( _pollCnt )
@@ -229,37 +218,6 @@ static void _devWorkPoll( void )
 }
 
 
-static void _devCfgPoll( void )
-{
-	if( cfgWorkStateIsNormal() == TRUE )
-	{
-		_devStateSet( DEV_STATE_IDLE );
-		return;
-	}
-	
-
-	if( _pollCnt )
-	{
-		_pollCnt--;
-	}
-	else
-	{
-		#if 0
-		// ≈‰÷√ ±º‰µΩ
-		// to idle
-
-		if( modCfgWorkSecGet() ==  CFG_IDLE_SEC_MAX )
-		{
-			_devStateSet( DEV_STATE_IDLE );
-		}
-		else
-		{
-			// to sleep ?
-		}
-		#endif
-	}
-		
-}
 
 
 static void _devZigbeeErrPoll( void )
@@ -328,10 +286,6 @@ static void _devTimerPollCB( void ) // dev state to init
 	else if( _devS == DEV_STATE_IDLE  )
 	{
 		_devIdlePoll();
-	}
-	else if ( _devS == DEV_STATE_CFG  )
-	{
-		_devCfgPoll();
 	}
 	else if ( _devS == DEV_STATE_ERR_HINT_ZIGBEE )
 	{
@@ -407,17 +361,11 @@ static void _sToWork( void )
 	
 }
 
-//====================================================
-static void _sToCfg( void )
-{
-	_pollCnt =  CFG_POLL_CNT;
-}
-
 
 //====================================================
 static void _sToZigbeeUartPassDebug( void )
 {
-	_pollCnt =  CFG_POLL_CNT;
+	_pollCnt =  UART_PASS_POLL_CNT;
 }
 
 //====================================================
@@ -464,10 +412,6 @@ static void _devStateSet( EN_DEV_STATE s )
 	case DEV_STATE_IDLE:
 		_sToIdle();
 		break;
-		
-	case DEV_STATE_CFG:
-		_sToCfg();
-		break;	
 
 	case DEV_STATE_UART_PASS:
 		_sToZigbeeUartPassDebug();
@@ -507,19 +451,7 @@ static void _devOnEvent( EN_DEV_EVENT e, void *data)
 {	
 	switch( _devS )
 	{
-	case DEV_STATE_CFG:
-		if( DEV_EVENT_WORK_START == e )
-		{
-			_devStateSet( DEV_STATE_IDLE );
-		}
-		break;
-
 	case DEV_STATE_WORK:
-		if( DEV_EVENT_CFG_START == e )
-		{
-			_devStateSet( DEV_STATE_CFG );
-		}
-
 		break;
 
 		
@@ -527,10 +459,6 @@ static void _devOnEvent( EN_DEV_EVENT e, void *data)
 		if( DEV_EVENT_WORK_START == e )
 		{
 			_devStateSet( DEV_STATE_WORK );
-		}
-		else if ( DEV_EVENT_CFG_START== e )
-		{
-			_devStateSet( DEV_STATE_CFG );
 		}
 		else if ( DEV_EVENT_IDLE_END == e )
 		{

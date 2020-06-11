@@ -147,7 +147,8 @@ RSP: AB BC CD E5 01 01 00
 --------------------------------------------------------------------------*/
 static void _zcmdAutoNet( void )
 {
-	u8 pCmd[ZCMD_FOREVER_HEAD_ID_AUTO_NET_LEN] = {0xAB, 0xBC, 0xCD, 0xE5, 0x00, 0x00, 0xAA};
+  //u8 pCmd[ZCMD_FOREVER_HEAD_ID_AUTO_NET_LEN] = {0xAB, 0xBC, 0xCD, 0xE5, 0x00, 0x00, 0xAA};
+	u8 pCmd[ZCMD_FOREVER_HEAD_ID_AUTO_NET_LEN] = {0xAB, 0xBC, 0xCD, 0xE5, 0x00, 0x01, 0xAA};
 
 	pCmd[4] = _stZcmdPara.autoNet;
 	

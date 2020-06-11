@@ -19,8 +19,9 @@
 #include "zgb_uart.h"
 
 #include "timer.h"
-//#include "dbg.h"
-#include "dbg_uart.h"
+
+#include "dbg.h"
+//#include "dbg_uart.h"
 
 
 #include "dev_state.h"
@@ -28,20 +29,13 @@
 //--------------------------------
 
 #include "zgb_cmd.h"
-#include "zgb_unpack.h"
-#include "zgb_rx_pass.h"
-#include "zgb_g2n.h"
-
 
 #include "f_txt_frame.h"
 
 //
 
-
-
-
-//#include "zgb_uart.h"
-//#include "dev_state.h"
+#include "zgb_uart.h"
+#include "dev_state.h"
 
 
 #define ZGB_Q_LEN  (256)
@@ -221,9 +215,12 @@ u8 zgbUartIsIdle( void )
 
 
 
-void zgbUartTx( u8 *pBuf, u32 len )
+int zgbUartTx( u8 *pBuf, u16 len )
 {
-	enQueueV( _stUartPackZgb.pTxQV, pBuf, len );
+	
+	dprintfBuf("ztx:", pBuf, len, 1 );
+	
+	return enQueueV( _stUartPackZgb.pTxQV, pBuf, len );
 }
 
 
@@ -245,8 +242,8 @@ static void _zgbUartTxFinish( void )
 
 void zgbUartInit( void )
 {
-	#define ZGB_TX_GAP_MS     (4)
-	#define ZGB_RX_GAP_MS     (4)
+	#define ZGB_TX_GAP_MS     (10)
+	#define ZGB_RX_GAP_MS     (10)
 	#define ZGB_TIMER_GAP_MS  (2)
 
 	UART_PACK_PARA stPara;
@@ -285,7 +282,60 @@ void zgbUartInit( void )
 static void _zgbUartRxCB( u8 *str,  u8 len )
 {
 	dprintfBuf("zrx:", str, len, 1 );
+
+	
+	// ---------- 透传态 --------------------
+	if( devStateIsUartPass() )
+	{
+		if( debugPassIsZigbee() )
+		{
+			debugUartTxPass(str, len);// 透传
+		}
+		
+		return;
+	}
+	
+	// ---------- 正常态 --------------------
+	// 第 1 层数据流
+	if( zcmdRx(str, len ) == TRUE ) 
+	{
+		//modUartDebugTx0("zuart zcmd rx ok");
+		return;
+	}
+
+
+
+	#include "sn_rx.h"
+	snRx( str, len );
 }
+
+
+
+
+u8 zgbUartTxPoll( void ) // >50 ms
+{
+	#include "sn_n2s.h"
+
+	if( devStateIsUartPass() )
+		return TRUE;
+
+
+	//---- zigbee cmd ---------------
+	if( zcmdTxCB() )
+		return TRUE;
+
+	//--- rf out --------------------
+	return n2sCB();	// fenghuiwait 时间可能被 zcmdTxCB() 截获
+	
+	
+}
+
+
+
+
+
+
+
 
 
 

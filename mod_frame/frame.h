@@ -27,6 +27,9 @@
 
 #include "f_txt_frame_dpara_zgb.h"
 
+#include "f_txt_frame_dpara_ctrl.h"
+
+#include "f_txt_frame_dpara_485.h"
 
 #include "f_txt_frame_data.h"
 

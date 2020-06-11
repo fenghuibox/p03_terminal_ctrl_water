@@ -86,81 +86,11 @@ u32 cfgWorkSecDef( void )
 }
 
 
-//======dev open sec =====================================
-u32 cfgOpenSecGet( void ) //
-{
-    return _stAppConfig.open_sec;
-}
-
-
-u32 cfgOpenSecSet( u32 sec )
-{
-    if( _stAppConfig.open_sec == sec )
-        return sec;
-
-    _cfgModify = 1;
-
-    return _stAppConfig.open_sec = sec;
-}
-
-u32 cfgOpenSecDef( void )
-{
-    return cfgOpenSecSet( CONFIG_DEF_OPEN_SEC );
-}
-
-
-//======dev close sec =====================================
-u32 cfgCloseSecGet( void ) //
-{
-    return _stAppConfig.close_sec;
-}
-
-
-u32 cfgCloseSecSet( u32 sec )
-{
-    if( _stAppConfig.close_sec == sec )
-        return sec;
-
-    _cfgModify = 1;
-
-    return _stAppConfig.close_sec = sec;
-}
-
-u32 cfgCloseSecDef( void )
-{
-    return cfgCloseSecSet( CONFIG_DEF_CLOSE_SEC );
-}
 
 
 
 
-//======dev work state =====================================
-u8 cfgWorkStateIsNormal( void )
-{
-	return ( _stAppConfig.work_state == DEV_WORK_STATE_NORMAL)? 1:0;
-}
 
-
-u8 cfgWorkStateGet( void ) //
-{
-    return _stAppConfig.work_state;
-}
-
-
-u8 cfgWorkStateSet( u8 s )
-{
-    if( _stAppConfig.work_state == s )
-        return s;
-
-    _cfgModify = 1;
-
-    return _stAppConfig.work_state = s;
-}
-
-u32 cfgWorkStateDef( void )
-{
-    return cfgWorkStateSet( CONFIG_DEF_WORK_STATE );
-}
 
 
 

@@ -143,14 +143,7 @@ extern u8 txtFrameCheckIsOk( u8 *pFrame );
 extern u8 txtFrameOnErrIsToRsp( u8 *pFrame, u8 len );
 
 
-/* ********************* 内容帧是不是透传  ****************************  
------------------------------------------------------------------------
-	通信端标志 如果 是 1, 则是 节点与网关通信, 不是透传
------------------------------------------------------------------------
-	通信端标志 如果 是 0, 则是 节点与服务器通信, 是透传
------------------------------------------------------------------------
-*/
-extern u8 txtFrameIsPass( u8 *pFrame, u8 len );
+
 
 //extern u8 txtFrameIsEnc( u8 *pFrame, u8 len );
 
@@ -187,7 +180,7 @@ D9		    包		n		暂约定 n < 230。
 D10		帧结束		1		值：0x88。
 ----------------------------------------------------------------------------------*/
 // in : dpack is OK
-extern u8 txtFrameCreateG2S( EN_TXT_FRAME_ACTION action, u8 sid, ST_FRAME  *pFrame );
+extern u8 txtFrameCreateN2S( EN_TXT_FRAME_ACTION action, u8 sid, ST_FRAME  *pFrame );
 
 
 

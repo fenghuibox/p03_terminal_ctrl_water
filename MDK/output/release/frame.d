@@ -4,6 +4,7 @@
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\time.h \
   ../mcu/common\board_stkhc32l17x.h ../mcu/common\interrupts_hc32l17x.h \
   ../driver/inc\ddl.h ../mcu/common\base_types.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
@@ -26,4 +27,6 @@
   ../com\com_mac.h ../mod_frame/f_response_frame.h \
   ../mod_frame/f_txt_frame_data.h ../mod_frame/f_txt_frame_dpara_base.h \
   ../mod_cfg\cfg_base.h ../mod_frame/f_txt_frame_dpara_zgb.h \
-  ../mod_frame/f_txt_frame.h
+  ../mod_zgb\zgb_cmd.h ../mod_zgb/zgb_mac.h \
+  ../mod_frame/f_txt_frame_dpara_ctrl.h \
+  ../mod_frame/f_txt_frame_dpara_485.h ../mod_frame/f_txt_frame.h

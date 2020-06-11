@@ -35,22 +35,22 @@ void modInit( void )
 	
 	zgbInit();
 	
+	ctrlInit(); // ctrl
+
+	ledInit();
+	
+	snInit();	   // 3 通信通道
+
+	frameInit();
+
 	
 #else
 
 
-
-	sgInit();	   // 3 通信通道
-
-	ctrlInit(); // ctrl
-
 	m485Init();
 
-	g4Init();
 
-	frameInit();
 
-	ipadInit();
 
 
 #endif

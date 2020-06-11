@@ -9,7 +9,7 @@
  *|-------------------------------------------------------------*/
  
 
-#if 0
+#if 1
 
 #ifndef __F_TXT_FRAME_DPARA_ZGB_H
 #define __F_TXT_FRAME_DPARA_ZGB_H
@@ -92,7 +92,7 @@ extern u8 para_zigbee_child_info_exe( ST_FRAME *pstFrame );
 //---------------- zigbee work state ---------------------------------------
 extern u8 paraZigbeeWorkStateGet( void );
 
-extern u8 para_zigbee_work_state_exe( ST_FRAME *pstFrame );
+extern u8 para_zigbee_state_exe( ST_FRAME *pstFrame );
 
 
 

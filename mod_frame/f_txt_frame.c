@@ -18,7 +18,7 @@
 #include "f_txt_frame.h"
 
 
-//#include "zgb_mac.h"
+#include "zgb_mac.h"
 
 
 
@@ -182,12 +182,13 @@ u8 txtFrameCheckIsOk( u8 *pFrame )
 
 
 
-#if 0 // fenghuiw
+#if 1 // fenghuiw
 
 
 //解帧出错时，是否回复
 u8 txtFrameOnErrIsToRsp( u8 *pFrame, u8 len )
 {
+/*
 	ST_TXT_FRAME *pTxtFrame;
 	
 	if( txtFrameLenIsOk( len ) == FALSE )
@@ -212,34 +213,10 @@ u8 txtFrameOnErrIsToRsp( u8 *pFrame, u8 len )
 		return TRUE;
 
 	return FALSE;
-}
-
-
-
-/* ********************* 内容帧是不是透传  ****************************  
-	通信端标志 如果 是 1, 则是 节点与网关通信, 不是透传
------------------------------------------------------------------------
-	通信端标志 如果 是 0, 则是 节点与服务器通信, 是透传
------------------------------------------------------------------------
 */
-u8 txtFrameIsPass( u8 *pFrame, u8 len  )
-{
-	if( txtFrameLenIsOk( len ) == FALSE )
-		return FALSE;
 
-	if( txtFrameHeadIsOk( *pFrame ) == FALSE )
-		return FALSE;
-
-	if( txtFrameLenIsOk( pFrame[TXT_FRAME_OFFSET_LEN] ) == FALSE )
-		return FALSE;
-
-	if( txtFrameVerIsOk( pFrame[TXT_FRAME_OFFSET_VER] ) == FALSE )
-		return FALSE;
-
-	if( pFrame[TXT_FRAME_OFFSET_VER] & TXT_FRAME_VER_COMM_TERMINAL_BIT )
-		return FALSE;
-
-	return TRUE;
+	return FALSE;
+	
 }
 
 
@@ -334,7 +311,7 @@ EN_FRAME_UNPACK txtFrameUnpack( u8 *pFrame, u8 len, u8 isNode )
 	if( FRAME_UNPACK_OK != rst )
 		return rst;
 
-	if( macIsOk( pFrame + TXT_FRAME_OFFSET_TARGET_ID, isNode ) == FALSE )
+	if( macIsOk( pFrame + TXT_FRAME_OFFSET_TARGET_ID ) == FALSE )
 		return FRAME_UNPACK_NG_ID;
 	
 	return FRAME_UNPACK_OK;
@@ -364,7 +341,7 @@ D9		    包		n		暂约定 n < 230。
 D10		帧结束		1		值：0x88。
 ----------------------------------------------------------------------------------*/
 // in : dpack is OK
-u8 txtFrameCreateG2S( EN_TXT_FRAME_ACTION action, u8 sid, ST_FRAME  *pFrame )
+u8 txtFrameCreateN2S( EN_TXT_FRAME_ACTION action, u8 sid, ST_FRAME  *pFrame )
 {
 	pFrame->head = TXT_FRAME_START;
 	pFrame->pBuf[ pFrame->pBuf[DPACK_OFFSET_LEN] ] = TXT_FRAME_END;
@@ -373,7 +350,7 @@ u8 txtFrameCreateG2S( EN_TXT_FRAME_ACTION action, u8 sid, ST_FRAME  *pFrame )
 	pFrame->action = action;
 	//pFrame->check
 
-	macGatewayGet( pFrame->pMac );
+	macMyGet( pFrame->pMac );
 	
 	pFrame->sid    = sid;
 	pFrame->packType = TXT_FRAME_PACK_TYPE_DATA;

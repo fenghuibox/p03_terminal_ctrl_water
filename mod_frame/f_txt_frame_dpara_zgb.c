@@ -1,5 +1,5 @@
 
-#if 0
+#if 1
 
 /*--------------------------------------------------------------|
  *| company | 湖南华中苗木云科技有限公司                        |
@@ -66,7 +66,7 @@ u8 para_zigbee_auto_net_exe( ST_FRAME *pstFrame )
 {
 	if( pstFrame->action == TXT_FRAME_ACTION_GET )
 	{		
-		gstG2S.zigbee_auto_net = 1;
+		gstN2S.zigbee_auto_net = 1;
 		gB1.txtFrameExeOKhaveRspReport = 1;
 
 		return TRUE;
@@ -75,134 +75,8 @@ u8 para_zigbee_auto_net_exe( ST_FRAME *pstFrame )
 	{
 		zcmdAutoNet( pstFrame->pBuf[DPACK_OFFSET_PARA] );
 		
-		//gstG2S.zigbee_auto_net = 1;
+		//gstN2S.zigbee_auto_net = 1;
 		//gB1.txtFrameExeOKhaveRspReport = 1;
-
-		return TRUE;
-	}
-	
-	return FALSE;
-}
-
-
-
-//---------------- zigbee allow join  ---------------------------------------
-
-void paraZigbeeAllowJoinSet( u8 *pPara )
-{
-	#include "zgb_io.h"
-
-	u16 workSec;
-	
-	workSec = byteMergeto16( pPara[0], pPara[1] );
-
-	#if 0
-
-
-	zcmdAllowJoin( workSec );
-
-	#else
-
-	zigbeeAllowJoinSet( workSec );
-
-	modIoZgbJoin( workSec );
-
-	#endif
-}
-
-void paraZigbeeAllowJoinGet( u8 *pPara )
-{
-	u16 val;
-
-	val = zigbeeAllowJoinGet();
-
-	u16splitToByteHL( val, pPara );
-}
-
-
-u8 para_zigbee_allow_join_exe( ST_FRAME *pstFrame )
-{
-	if( pstFrame->action == TXT_FRAME_ACTION_GET )
-	{		
-		//gstG2S.zigbee_allow_join = 1;
-		//gB1.txtFrameExeOKhaveRspReport = 1;
-
-		return FALSE;
-	}
-	else if( pstFrame->action == TXT_FRAME_ACTION_SET )
-	{
-		paraZigbeeAllowJoinSet(  pstFrame->pBuf + DPACK_OFFSET_PARA  );
-		
-		//gstG2S.zigbee_allow_join = 1;
-		//gB1.txtFrameExeOKhaveRspReport = 1;
-
-		return TRUE;
-	}
-	
-	return FALSE;
-}
-
-
-
-//---------------- zigbee del by mac---------------------------------------
-
-u8 para_zigbee_del_by_mac_addr_exe( ST_FRAME *pstFrame )
-{
-	
-
-	u8 *pMac;
-	
-	if( pstFrame->action == TXT_FRAME_ACTION_SET )
-	{
-		pMac = pstFrame->pBuf + DPACK_OFFSET_PARA;
-		
-		if( modNodeMacIsNode( pMac ) == FALSE )
-			return FALSE;
-		
-		if( zcmdDelByMac( pMac ) == FALSE )
-			return FALSE;
-		
-		modNodeDelByMac(  pMac );
-		
-		//gstG2S.zigbee_child_info = 1;     // fenghuiwait_1
-		//gB1.txtFrameExeOKhaveRspReport = 1;
-
-		return TRUE;
-	}
-	
-	
-	return FALSE;
-}
-
-
-
-//---------------- zigbee child info ---------------------------------------
-
-
-/*
-------pNodeBuf----------------------------------
-         nodeCnt  startId   getCnt  pNodeMac
-------------------------------------------------
-  len:    1byte    1byte    1byte   8byte * n 
-------------------------------------------------
-  value:  1- n     1- n     0- n
-------------------------------------------------
-返回值: 总的字节数
-*/
-u8 paraZigbeeChildInfoGet( u8 *pPara ) // 
-{
-	return modNodeGet( pPara );
-}
-
-
-u8 para_zigbee_child_info_exe( ST_FRAME *pstFrame )
-{
-	if( pstFrame->action == TXT_FRAME_ACTION_GET )
-	{
-		modNodeStartIdSet( pstFrame->pBuf[ DPACK_OFFSET_PARA ] );
-		
-		gstG2S.zigbee_child_info = 1;
-		gB1.txtFrameExeOKhaveRspReport = 1;
 
 		return TRUE;
 	}
@@ -227,13 +101,13 @@ u8 paraZigbeeWorkStateGet( void )
 }
 
 
-u8 para_zigbee_work_state_exe( ST_FRAME *pstFrame )
+u8 para_zigbee_state_exe( ST_FRAME *pstFrame )
 {
 	if( pstFrame->action == TXT_FRAME_ACTION_GET )
 	{
 		zcmdWorkStateGet();
 		
-		gstG2S.zigbee_work_state = 1;
+		gstN2S.zigbee_state = 1;
 		gB1.txtFrameExeOKhaveRspReport = 1;
 
 		return TRUE;
@@ -262,7 +136,7 @@ u8 para_zigbee_info_exe( ST_FRAME *pstFrame )
 	{
 		zcmdDevInfoGet();
 		
-		gstG2S.zigbee_info = 1;
+		gstN2S.zigbee_info = 1;
 		gB1.txtFrameExeOKhaveRspReport = 1;
 
 		return TRUE;
@@ -271,7 +145,7 @@ u8 para_zigbee_info_exe( ST_FRAME *pstFrame )
 	{
 		zcmdDevInfoSet( (ST_ZIGBEE_DEV_INFO_RF *) (pstFrame->pBuf + DPACK_OFFSET_PARA ) );
 		
-		//gstG2S.zigbee_info = 1;
+		//gstN2S.zigbee_info = 1;
 		//gB1.txtFrameExeOKhaveRspReport = 1;
 
 		return TRUE;

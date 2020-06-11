@@ -24,8 +24,6 @@ void driSoftReset( void )
 
 void driInit( void )
 {
-
-
 	driClkInit();
 
 	driFlashEepInit();
@@ -41,6 +39,13 @@ void driInit( void )
 
 	driAdcInit();
 
+	driIoChInit();
+	
+	driIoCtrlInit();
+
+	driIoLedInit();
+	
+	driRtcInit();
 
 	
 

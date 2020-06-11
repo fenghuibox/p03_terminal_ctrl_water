@@ -72,9 +72,23 @@ extern u8 para_reboot_exe( ST_FRAME *pstFrame );
 
 
 
+// ------------- sleep sec  -----------------------------------------
+void paraSleepSecSet( u8 *pPara );
+
+
+void paraSleepSecGet( u8 *pPara );
+
+
+u8 para_sleep_sec_exe( ST_FRAME *pstFrame );
 
 
 
+// ------------- work sec  -----------------------------------------
+void paraWorkSecSet( u8 *pPara );
+
+void paraWorkSecGet( u8 *pPara );
+
+u8 para_work_sec_exe( ST_FRAME *pstFrame );
 
 
 
@@ -124,25 +138,6 @@ extern u8 para_heartbeat_exe( ST_FRAME *pstFrame );
 extern void paraBatteryGet( u8 *pPara );
 
 extern u8 para_battery_exe( ST_FRAME *pstFrame );
-
-
-
-
-
-
-
-// ------------- work state -----------------------------------------
-
-extern int paraWorkStateSet( u8 *pPara  );
-
-
-
-
-
-extern EN_DEV_WORK_STATE paraWorkStateGet( void );
-
-extern u8 para_work_state_exe( ST_FRAME *pstFrame );
-
 
 
 

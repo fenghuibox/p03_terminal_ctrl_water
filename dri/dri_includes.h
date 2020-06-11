@@ -20,8 +20,12 @@
 #include "dri_uart_debug.h"
 #include "dri_uart_zgb.h"
 #include "dri_io_zgb.h"
+#include "dri_io_ch.h"
+#include "dri_io_ctrl.h"
+#include "dri_io_led.h"
 
 #include "dri_adc.h"
+#include "dri_rtc.h"
 
 
 
