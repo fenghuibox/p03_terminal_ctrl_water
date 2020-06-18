@@ -574,6 +574,8 @@ static int _n2s_ctrl_pack( u8 isRedo )
 
 }
 
+
+
 //----------------zigbee------------------------------------------------------------
 
 
@@ -747,6 +749,49 @@ static int _n2s_uart485(  u8 isRedo )
 
 
 
+
+//-----主动拉取服务器上的信息-----------------------------
+
+static int _n2s_ctrl_pack_get( u8 isRedo )
+{
+	u8 pVal[2];
+	//int len;
+	
+	if( gstN2S.ctrl_pack_get == 0 )
+		return FALSE;
+	
+	if( isRedo )
+	{
+		_snN2sTx( (u8 *)&_stRfTxFrame, _stRfTxFrame.len );
+		return TRUE;
+	}
+
+	//len = paraCtrlPackGet( _stRfTxFrame.pBuf + DPACK_OFFSET_PARA );
+
+	
+	paraBatteryGet( pVal );
+	
+	dpackCreate( DPACK_PORT_ID_SELF, 0, DPACK_PARA_ID_BATTERY, pVal, 2, _stRfTxFrame.pBuf);
+	
+	//dpackCreate2( DPACK_PORT_ID_SELF, 0, DPACK_PARA_ID_CTRL_PACK,  0 );
+
+	_autoReportSid++;
+	txtFrameCreateN2S( TXT_FRAME_ACTION_GET, _autoReportSid, &_stRfTxFrame);
+
+	_n2sTx( (u8 *)&_stRfTxFrame, &_stRfTxFrame.len );
+	
+	txtFrameExeStateOnEvent( TXT_FRAME_EXE_EVENT_RSP_REPORT ); // fenghuiw  TXT_FRAME_EXE_EVENT_RSP_REPORT ?
+	
+	return TRUE;
+
+}
+
+
+
+
+
+
+
 typedef  int ( *FunN2sCB)(  u8 isRedo );
 
 const FunN2sCB _n2sArr[]={
@@ -777,6 +822,9 @@ const FunN2sCB _n2sArr[]={
 	_n2s_zigbee_state,// 22
 	_n2s_zigbee_info,// 23
 	_n2s_uart485,// 24
+
+	//-----主动拉取服务器上的信息-----------------------------
+	_n2s_ctrl_pack_get,
 
 
 };
@@ -849,6 +897,8 @@ static void _rsp_heartbeat( void )
 static void _rsp_battery( void )
 {
 	gstN2S.battery = 0;
+
+	//gB1.battTxFinish = 1;
 }
 
 static void _rsp_ctrl_mode( void )
@@ -913,6 +963,15 @@ static void _rsp_uart485( void )
 }
 
 
+
+//-----主动拉取服务器上的信息-----------------------------
+
+static void _rsp_ctrl_pack_get( void )
+{
+	gstN2S.ctrl_pack_get = 0;
+}
+
+
 //=================================================
 //=================================================
 
@@ -953,6 +1012,8 @@ const FunRspCB _rspArr[]={
 	_rsp_zigbee_state,// 22
 	_rsp_zigbee_info,// 23
 	_rsp_uart485,// 24
+
+	_rsp_ctrl_pack_get,
 
 
 };

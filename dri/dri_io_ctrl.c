@@ -231,5 +231,24 @@ void driIoCtrlInit( void )
 }
 
 
+//----------sleep and wakeup---------------------------------------------------------
+
+void driIoCtrlToSleep( void )
+{
+	// 1:  set io = in_down
+	// 2: close clk	
+}
+
+void driIoCtrlOnWakeup( void )
+{
+	                  // 1: open clk
+	
+	driIoCtrlInit(); // 2: io = init
+
+	
+}
+
+
+
 
 

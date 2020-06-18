@@ -31,5 +31,18 @@ extern void driIoLedInit( void );
 
 
 
+
+
+
+
+//----------sleep and wakeup---------------------------------------------------------
+
+void driIoLedToSleep( void );
+
+
+void driIoLedOnWakeup( void );
+
+
+
 #endif
 

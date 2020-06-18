@@ -366,6 +366,8 @@ int paraCtrlPackGet( u8 *pPara )
 
 u8 para_ctrl_pack_exe( ST_FRAME *pstFrame )
 {	
+	#include "sn_n2s.h"
+	
 	if( pstFrame->action == TXT_FRAME_ACTION_GET )
 	{
 		/*
@@ -378,13 +380,21 @@ u8 para_ctrl_pack_exe( ST_FRAME *pstFrame )
 
 		return FALSE;
 	}
-	else if( pstFrame->action == TXT_FRAME_ACTION_SET || pstFrame->action == TXT_FRAME_ACTION_REPORT_ACK_GET )
+	else if( pstFrame->action == TXT_FRAME_ACTION_SET  )
 	{
 		paraCtrlPackSet( pstFrame->pBuf + DPACK_OFFSET_PARA );
 		
 		//gstN2S.ctrl_pack = 1;
 
 		//gB1.txtFrameExeOKhaveRspReport = 1;
+
+		return TRUE;
+	}
+	else if(  pstFrame->action == TXT_FRAME_ACTION_REPORT_ACK_GET )
+	{
+		paraCtrlPackSet( pstFrame->pBuf + DPACK_OFFSET_PARA );
+		
+		snN2sOnRsp();
 
 		return TRUE;
 	}

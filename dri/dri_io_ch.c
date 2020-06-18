@@ -66,4 +66,21 @@ void driIoChInit( void )
 
 
 
+//----------sleep and wakeup---------------------------------------------------------
+
+
+
+void driIoChToSleep( void )
+{
+	// 1:  set io = in_down
+	// 2: close clk	
+}
+
+void driIoChOnWakeup( void )
+{
+	                  // 1: open clk
+	
+	_ioChInit(); // 2: io = out
+}
+
 

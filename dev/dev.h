@@ -29,6 +29,7 @@
 
 
 
+//extern void devSleepPoll( void ); // 50ms / times
 
 
 extern void devInit( void );

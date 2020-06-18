@@ -24,6 +24,8 @@
 static void _zigbeeSleepCB( void )
 {
 	driZgbSleepH();
+
+	gB1.zgbSleepFinish = 1;
 }
 
 
@@ -68,6 +70,8 @@ static void _ioZgbResetInit( void )
 static void _zigbeeWakeCB( void )
 {
 	driZgbWakeupH();
+
+	gB1.zgbWakeupFinish = 1;
 }
 
 
@@ -76,6 +80,9 @@ static void _zigbeeWakeCB( void )
 
 void modIoZgbWakeup( void )
 {
+	gB1.zgbWakeupTx = 1;
+	gB1.zgbWakeupFinish = 0;
+	
 	driZgbWakeupL();
 	timerStart(DRI_ZIGBEE_TO_WAKEUP_KEEP_L_MS/TIMER_UNIT_MS,  10,  _zigbeeWakeCB );
 }
@@ -160,5 +167,11 @@ void zgbIoInit( void )
 	_ioZgbDetectInit();
 	
 }
+
+
+
+
+
+
 
 

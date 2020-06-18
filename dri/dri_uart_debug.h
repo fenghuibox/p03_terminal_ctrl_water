@@ -17,6 +17,12 @@ extern void driUartDebugInit( irqCB funIrqCB  );
 
 
 
+//----------sleep and wakeup---------------------------------------------------------
+
+void driUartDbgToSleep( void );
+
+
+void driUartDbgOnWakeup( void );
 
 
 

@@ -153,6 +153,22 @@ void driUartDebugInit( irqCB funIrqCB )
 
 
 
+//----------sleep and wakeup---------------------------------------------------------
+
+void driUartDbgToSleep( void )
+{
+    EnableNvic(        DBG_UART_IRQ_ID, DBG_UART_IRQ_LEVEL, FALSE );  // 1: 关 中断
+                                                                      // 2: io = in_down  
+	                                                                  // 3: close clk	
+}
+
+void driUartDbgOnWakeup( void )
+{
+	                                                                  // 1: open clk
+	_dbgUartPortCfg();                                                // 2: io = init                                                                 
+	EnableNvic(		 DBG_UART_IRQ_ID, DBG_UART_IRQ_LEVEL, TRUE );     // 3: 开 中断
+}
+
 
 
 

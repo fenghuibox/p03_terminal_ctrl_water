@@ -45,7 +45,7 @@ static EN_SN_CH _ch;
 
 
 
-u8 sgChIsZgb( void )
+u8 snChIsZgb( void )
 {
 	if( _ch == SN_CH_ZGB )
 		return TRUE;
@@ -53,7 +53,7 @@ u8 sgChIsZgb( void )
 	return FALSE;
 }
 
-u8 sgChIs485( void )
+u8 snChIs485( void )
 {
 	if( _ch == SN_CH_485 )
 		return TRUE;

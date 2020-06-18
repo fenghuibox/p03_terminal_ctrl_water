@@ -17,10 +17,11 @@
 
 
 
+#define DEV_SLEEP_POLL_GAP_MS (20)
 
 
 
-
+void devSleep( void );
 
 
 

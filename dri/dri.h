@@ -13,7 +13,10 @@ extern void driSoftReset( void );
 extern void driInit( void );
 
 
+//----------sleep and wakeup---------------------------------------------------------
 
+void driToSleep( void );
+void driOnWakeup( void );
 
 
 

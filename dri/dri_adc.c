@@ -187,3 +187,64 @@ void driAdcFunSet( FunAdcCB  fun )
 }
 
 
+
+
+
+
+
+//----------sleep and wakeup---------------------------------------------------------
+
+
+//-----adc en----------------------------
+static void adcEnToSleep( void )
+{
+	// 1:  set io = in_down
+	// 2: close clk
+}
+
+
+static void adcEnOnWakeup( void )
+{
+	// 1: open clk
+	
+	_driAdcEnInit(); // 2: io = out
+	
+	
+}
+
+//-----adc ----------------------------
+static void _adcToSleep( void )
+{
+	driAdcStop();     // 1: stop adc
+	Bgr_BgrDisable(); // 2: disable bgr
+	                  // 3:  set io = in_down
+	                  // 4: close clk
+}
+
+
+static void _adcOnWakeup( void )
+{
+	// 1: open clk
+	_AdcPortInit();  // 2: io = adc_in
+	Bgr_BgrEnable(); // 3: enable bgr
+	driAdcStart();   // 4: start adc
+}
+
+
+//-----dri adc ----------------------------
+void driAdcToSleep( void )
+{
+	adcEnToSleep();
+	_adcToSleep();
+}
+
+
+void driAdcOnWakeup( void )
+{
+	adcEnOnWakeup();
+	_adcOnWakeup();
+}
+
+
+
+

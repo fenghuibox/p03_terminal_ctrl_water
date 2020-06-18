@@ -66,6 +66,7 @@ extern u32 str2float( u8  *str );
 //BCD码转十进制函数，输入BCD，返回十进制
 extern u8 BCD2decimal( u8 bcd );
 
+u8 u8ToBCD( u8 Data); // 00 -- 99
 
 #endif
 

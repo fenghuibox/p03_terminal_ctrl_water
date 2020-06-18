@@ -13,7 +13,7 @@
 #include "com_includes.h"
 
 #include "dri_adc.h"
-
+#include "dev_vbatt.h"
 #include "dbg_uart.h"
 #include "timer.h"
 
@@ -40,7 +40,7 @@ u32 devVbattValGet( void )
 
 
 
-
+#define _3V_ADC  (2715)
 
 
 static void _adcValIn( u32 val )
@@ -57,6 +57,9 @@ static void _adcValIn( u32 val )
 		_adcVal = ( _adcArr[0] + _adcArr[1] ) / 2;
 
 		//dprintf( "\r\nvbat=%d",_adcVal );
+
+		if( _adcVal  < _BATT_3D4_ADC )
+			gB1.battIsLow = 1;
 		
 	}
 	

@@ -94,11 +94,11 @@ u8 n2sIsHave( void ) // 有数据项要发送
 }
 
 
-static void _n2sOnRsp( void );
+
 
 static void _n2sClearCur( void ) // 清除当前发送的数据项
 {
-	_n2sOnRsp();
+	snN2sOnRsp();
 	_n2sCurId = N2S_SEND_CID_NULL;
 }
 
@@ -181,6 +181,10 @@ static EN_N2S_SEND_CMD_ID _n2sGetId( void ) // 得到 要发送数据项的ID
 	if( gstN2S.uart485 )
 		return N2S_SEND_CID_UART485;
 
+	
+	//-----主动拉取服务器上的信息-----------------------------
+	if( gstN2S.ctrl_pack_get )
+		return N2S_SEND_CID_CTRL_PACK_GET;
 
 	//----------------------------------------
 
@@ -191,6 +195,17 @@ static EN_N2S_SEND_CMD_ID _n2sGetId( void ) // 得到 要发送数据项的ID
 void n2sHeartbeat( void )
 {
 	gstN2S.heartbeat = 1;
+}
+
+void n2sBattRpt( void )
+{
+	gstN2S.battery = 1;
+}
+
+
+void n2sCtrlPackGet( void )
+{
+	gstN2S.ctrl_pack_get = 1;
 }
 
 
@@ -207,12 +222,31 @@ static int _n2s( u8 isRedo )
 }
 
 
-static void _n2sOnRsp( void )
+void snN2sOnRsp( void )
 {
+	#include "dev_state.h"
+	
 	if( _n2sCurId ==  N2S_SEND_CID_NULL )
 		return;
 
+
+	if( _n2sCurId == N2S_SEND_CID_CTRL_PACK_GET )
+	{
+		gB1.ctrlPackFinish = 1; // 
+	}
+	/*
+	else if( _n2sCurId == N2S_SEND_CID_BATTERY )
+	{
+		gB1.battTxFinish = 1;
+	}*/
+
 	_rspArr[ (u8)_n2sCurId ]();
+	
+
+	if( devStateIsReadCtrlInfo() )
+	{
+		devOnEvent( DEV_EVENT_READ_CTRL_INFO_END, NULL );
+	}
 }
 
 
@@ -237,7 +271,7 @@ u8 n2sCB( void ) //
 
 			modMasterStateSet( MASTER_STATE_NG );
 			
-			dprintf("redo clear" );
+			dprintf("c" ); // redo clear
 		}
 		else// 重发
 		{

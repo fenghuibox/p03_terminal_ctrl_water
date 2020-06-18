@@ -38,6 +38,9 @@
 #include "dev_state.h"
 
 
+//#define ZGB_UART_PRINT 
+
+
 #define ZGB_Q_LEN  (256)
 #define ZGB_QV_LEN (1024)
 
@@ -193,7 +196,7 @@ static void _zgbUartPollCB( void )
 
 
 
-u8 zgbUartIsIdle( void )
+static u8 _zgbUartIsIdle( void )
 {
 	if( _stUartPackZgb.b.txFinish == TRUE )
 	{
@@ -217,8 +220,9 @@ u8 zgbUartIsIdle( void )
 
 int zgbUartTx( u8 *pBuf, u16 len )
 {
-	
-	dprintfBuf("ztx:", pBuf, len, 1 );
+	#ifdef ZGB_UART_PRINT
+		dprintfBuf("ztx:", pBuf, len, 1 );
+	#endif
 	
 	return enQueueV( _stUartPackZgb.pTxQV, pBuf, len );
 }
@@ -281,7 +285,9 @@ void zgbUartInit( void )
 
 static void _zgbUartRxCB( u8 *str,  u8 len )
 {
-	dprintfBuf("zrx:", str, len, 1 );
+	#ifdef ZGB_UART_PRINT
+		dprintfBuf("zrx:", str, len, 1 );
+	#endif
 
 	
 	// ---------- Í¸´«Ì¬ --------------------
@@ -319,6 +325,9 @@ u8 zgbUartTxPoll( void ) // >50 ms
 	if( devStateIsUartPass() )
 		return TRUE;
 
+	if( gB1.zgbWakeupFinish == 0 )
+		return FALSE;
+
 
 	//---- zigbee cmd ---------------
 	if( zcmdTxCB() )
@@ -334,7 +343,41 @@ u8 zgbUartTxPoll( void ) // >50 ms
 
 
 
+u8 zgbUartIsIdle( void )
+{
 
+#if 1
+
+	if( _zgbUartIsIdle() == FALSE )
+		return FALSE;
+
+	if( queueIsEmpty( _stUartPackZgb.pTxQ ) == FALSE )
+		return FALSE;
+	
+	if( queueIsEmpty( _stUartPackZgb.pRxQ ) == FALSE )
+		return FALSE;
+
+	return TRUE;
+	
+#else
+
+	if( IsEmptyQueueV( _stUartPackZgb.pTxQV ) == FALSE )
+		return FALSE;
+
+	if( queueIsEmpty( _stUartPackZgb.pTxQ ) == FALSE )
+		return FALSE;
+
+	if( IsEmptyQueueV( _stUartPackZgb.pRxQV ) == FALSE )
+		return FALSE;
+
+	if( queueIsEmpty( _stUartPackZgb.pRxQ ) == FALSE )
+		return FALSE;
+
+	return TRUE;
+	
+#endif
+	
+}
 
 
 

@@ -247,6 +247,17 @@ void _snRxTimerCB( void )
 
 
 
+u8 snIsIdle( void )
+{
+	if( snRxQueueIsEmpty() == FALSE )
+		return FALSE;
+
+	return TRUE;
+
+}
+
+
+
 void snRxInit( void )
 {
 	_index = 0;

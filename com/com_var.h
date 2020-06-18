@@ -17,24 +17,33 @@
 
 typedef struct
 {
-	u8 led:1;           // 
-	//u8 txtFrameExeIsWaitReport:1;    // 执行完帧后，正在等待应答的报告
+	u8 led:1;          // toggle led
+	
+	u8 sleep:1;        // 1: 可以进入休眠     0: 不可以
+	
+	u8 ctrlPackTx:1;     // 1:发送了ctrl_pack_get包     0: 没有
+	u8 ctrlPackFinish:1; // 1:ctrl_pack_get包处理完成   0:没有完成
+	
+	u8 zgbSleepTx:1;    // 1:执行了 modIoZgbSleep   0: 没有
+	u8 zgbSleepFinish:1;// 1:执行了完成             0: 没有
+
+	u8 zgbWakeupTx:1;    // 1:执行了 modIoZgbWakeup  0: 没有
+	u8 zgbWakeupFinish:1;// 1:执行了完成             0: 没有	
+	
 	u8 txtFrameExeOKhaveRspReport:1; // 执行完帧后，需要等待应答的报告
-	//u8 txtFrameExeIsRspReport:1;     // 执行完帧后， 应答了报告
-	//u8 para_communication_state:1; 
-	//u8 para_zigbee_auto_net:1; 
-	//u8 para_zigbee_work_state:2; // not save to eep |  reboot read
 
 	
-	u8 g4UartTxIsIdle:1; 
-	u8 ipadUartTxIsIdle:1; // 
-	u8 zgbUartTxIsIdle:1; // 
-	u8 m485UartTxIsIdle:1; // 
-	u8 dbgUartTxIsIdle:1; // 
+	//u8 battTx:1;       // 1:发送了电量包    0: 没有
+	//u8 battTxFinish:1; // 1:执行了完成      0: 没有
+	
+	
+	u8 battIsLow:1; // 
+	
+	u8 isDebug:1; // 
+	u8 isPowerOn:1; // 
 
 	
 	//u8 adcHaveVal:1; // 
-	u8 vbattIsLow:1; // 
 
 	u8 inited; // 初始化是否完成了  0:没有完成  1:完成
 

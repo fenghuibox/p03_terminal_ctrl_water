@@ -92,6 +92,9 @@ void driRtcInit( void );
 
 
 	
+void driRtcSetAlarm( u32 sec );
+
+void driRtcGetAlarm( void );
 
 
 #endif

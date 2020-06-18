@@ -22,7 +22,7 @@ extern u8 zgbUartTxPoll( void ); // >50 ms
 
 
 //extern u8 modUartZigbeeIsIdle( void );
-extern u8 zgbUartIsIdle( void );
+//extern u8 zgbUartIsIdle( void );
 
 
 //extern void modUartZigbeeTx( u8 *str,  u8 len );
@@ -33,6 +33,7 @@ extern int zgbUartTx( u8 *str,  u16 len );
 
 extern void zgbUartInit( void );
 
+extern u8 zgbUartIsIdle( void );
 
 
 #ifdef TEST_MOD_ZGB_UART

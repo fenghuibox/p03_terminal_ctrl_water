@@ -519,3 +519,31 @@ void Rtc_Init(stc_rtc_initstruct_t* Rtc_InitStruct)
 
 
 
+
+void mySetAlarmSec( uint8_t sec )
+{
+	stc_rtc_time_t stDT;
+
+	uint8_t alarmSec;
+	
+	Rtc_ReadDateTime( &stDT );
+
+	alarmSec = BCD2DEC( stDT.u8Second ) ;
+
+	alarmSec = (alarmSec + sec) % 60;
+
+	alarmSec = DEC2BCD(  alarmSec );
+	
+    Rtc_AlmEnCmd(FALSE);      //闹钟禁止以后再设置闹钟时间
+
+    M0P_RTC->ALMSEC  = alarmSec & 0x7f;
+    M0P_RTC->ALMMIN  = 0x7f;
+    M0P_RTC->ALMHOUR = 0x3f;
+    M0P_RTC->ALMWEEK = 0x3f;
+    Rtc_AlmEnCmd(TRUE);      //闹钟许可
+
+    return;
+	
+}
+
+

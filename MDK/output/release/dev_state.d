@@ -24,4 +24,7 @@
   ../com/com_delay.h ../com/com_memory.h ../com/com_var.h \
   ../com/com_sqList.h ../com/com_queue.h ../com/com_queue_val_len.h \
   ../com/com_mac.h ../mod_timer\timer.h ../dri\dri_timer.h \
-  ../mod_dbg\dbg_uart.h ../dev/dev_state.h ../mod_cfg\cfg_base.h
+  ../mod_dbg\dbg_uart.h ../dev/dev_state.h ../mod_cfg\cfg_base.h \
+  ../mod_zgb\zgb_cmd.h ../mod_zgb/zgb_mac.h ../mod_sn\sn_master_state.h \
+  ../mod_sn\sn_n2s.h ../mod_zgb\zgb_uart.h ../mod_zgb\zgb_state.h \
+  ../mod_sn\sn_ch.h

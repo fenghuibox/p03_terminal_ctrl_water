@@ -212,6 +212,9 @@ typedef  int ( *FunN2sTxCB)( u8 *pBuf, u16 len );
 
 
 
+#define RTC_ARL_USED_PERIOD
+
+
 
 
 //====== 模块 测试开关 (一般情况下，只开启一个 )======================

@@ -37,7 +37,7 @@ void ctrlOpen( void );
 void ctrlClose( void );
 
 
-u8 ctrlIsOk( void );
+u8 ctrlIsIdle( void );
 
 
 

@@ -20,6 +20,13 @@ extern void driUartZgbInit( irqCB funIrqCB  );
 
 
 
+//----------sleep and wakeup---------------------------------------------------------
+
+void driUartZgbToSleep( void );
+
+
+void driUartZgbOnWakeup( void );
+
 
 
 #endif

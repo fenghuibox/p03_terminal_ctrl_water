@@ -27,20 +27,27 @@
 
 
 
-#define DEV_POLL_GAP_MS  (50)
+#define DEV_POLL_GAP_MS            (50)
 
-#define IDLE_POLL_CNT        DEV_WAIT_SEC_IDLE * (1000 / DEV_POLL_GAP_MS )
-#define WORK_POLL_CNT        DEV_WAIT_SEC_WORK * (1000 / DEV_POLL_GAP_MS )
-#define UART_PASS_POLL_CNT   DEV_WAIT_SEC_WORK * (1000 / DEV_POLL_GAP_MS )
+#define IDLE_POLL_CNT              DEV_WAIT_SEC_IDLE * (1000 / DEV_POLL_GAP_MS )
+
+#define POWER_ON_POLL_CNT          DEV_WAIT_SEC_POWER_ON * (1000 / DEV_POLL_GAP_MS )
+
+#define READ_CTRL_INFO_POLL_CNT    DEV_WAIT_SEC_READ_CTRL_INFO * (1000 / DEV_POLL_GAP_MS )
+
+//#define DEBUG_POLL_CNT             DEV_WAIT_SEC_DEBUG * (1000 / DEV_POLL_GAP_MS )
+
+
+#define UART_PASS_POLL_CNT         DEV_WAIT_SEC_UART_PASS * (1000 / DEV_POLL_GAP_MS )
 
 
 
-#define ZIGBEE_ERR_POLL_CNT      DEV_WAIT_SEC_ERR_HINT * (1000 / DEV_POLL_GAP_MS ) // 当前状态下等待的时间
-#define ZIGBEE_ERR_POLL_GAP      (1000/DEV_POLL_GAP_MS) // 每1.0秒检查一下状态
+#define ZIGBEE_ERR_POLL_CNT       DEV_WAIT_SEC_ERR_HINT * (1000 / DEV_POLL_GAP_MS ) // 当前状态下等待的时间
+#define ZIGBEE_ERR_POLL_GAP       (1000/DEV_POLL_GAP_MS) // 每1.0秒检查一下状态
 
 
-#define MASTER_ERR_POLL_CNT    DEV_WAIT_SEC_ERR_HINT * (1000 / DEV_POLL_GAP_MS ) // 当前状态下等待的时间
-#define MASTER_ERR_POLL_GAP   (2000/DEV_POLL_GAP_MS)// 每2秒检查一下状态
+#define MASTER_ERR_POLL_CNT      DEV_WAIT_SEC_ERR_HINT * (1000 / DEV_POLL_GAP_MS ) // 当前状态下等待的时间
+#define MASTER_ERR_POLL_GAP      (2000/DEV_POLL_GAP_MS)// 每2秒检查一下状态
 
 //=====================================================
 static EN_DEV_STATE _devS;
@@ -84,15 +91,17 @@ EN_DEV_STATE devStateGet( void )
 }
 
 
-u8 devStateIsIdle( void )
+//================================================
+u8 devStateIsDbg( void )
 {
-	return _devS == DEV_STATE_IDLE ? 1 : 0;
+	return _devS == DEV_STATE_DBG? 1 : 0;
 }
 
 
-u8 devStateIsWork( void )
+//================================================
+u8 devStateIsReadCtrlInfo( void )
 {
-	return _devS == DEV_STATE_WORK ? 1 : 0;
+	return _devS == DEV_STATE_READ_CTRL_INFO? 1 : 0;
 }
 
 
@@ -127,108 +136,61 @@ u8 devStateIsMasterErr( void )
 //====== poll ==============================================
 
 
-static u8 devHaveWork( void )
-{
-	
-	#if 0//fenghuiw
-	
-	#include "sg_ch.h"
-	#include "zgb_uart.h"
-	#include "g4_uart.h"
-	#include "ipad_uart.h"
-	
-	if( modUartZigbeeIsIdle() == FALSE )
-		return TRUE;
 
-	
-	if(  sgChIsIpad() )
+static void _devReadCtrlInfoPoll( void )
+{	
+	if( _pollCnt )
 	{
-		if( ipadUartIsIdle() == FALSE )
-			return TRUE;
+		_pollCnt--;
+		return;
 	}
 	else
 	{
-		if( modUart4gIsIdle() == FALSE )
-			return TRUE;
+		_devStateSet( DEV_STATE_SLEEP ); 
 	}
 	
-	return FALSE;
-	
-	#else
-	
-	return FALSE;
-	#endif
+	return;
+		
 }
 
 
-static void _sToIdle( void ); // dev state to idle
-
-static void _devIdlePoll( void )
-{
-	//if( _devS != DEV_STATE_IDLE )
-	//	return;
-
-
-	// work state is normal
-	if( devHaveWork() == TRUE  )
+static void _devDebugPoll( void )
+{	
+	if( _pollCnt )
 	{
-		_devStateSet( DEV_STATE_WORK );
+		_pollCnt--;
 		return;
 	}
+	else
+	{
+		devOnEvent( DEV_EVENT_DBG_END, NULL );  // 
+	}
+	
+	return;
+		
+}
 
+static void _devUartPassPoll( void )
+{
 	if( _pollCnt )
 	{
 		_pollCnt--;
 	}
 	else
 	{
-		#if 0 // fenghuiw
-		// 空闲时间到
-		// to sleep/ close / idle ? fenghuiwait
-
-		_sToIdle();
-
-		#include "sg_g2s.h"
-
-		n2sHeartbeat();
-		#endif
+		// 时间到
+		devOnEvent( DEV_EVENT_UARTPASS_TIMEOUT , NULL );
 	}
-		
 }
-
-static void _devWorkPoll( void )
-{	
-	if( devHaveWork() == FALSE )
-	{
-		if( _pollCnt )
-		{
-			_pollCnt--;
-			return;
-		}
-		else
-		{
-			// 工作 到 空闲 的过度时间 到
-			// to sleep fenghuiwait
-			_devStateSet( DEV_STATE_IDLE );
-		}
-		
-		return;
-	}
-		
-}
-
-
 
 
 static void _devZigbeeErrPoll( void )
 {
-#if 1
-	//#include "zgb_cmd.h"
-
+	#include "zgb_cmd.h"
 	
-	if( (_pollCnt % ZIGBEE_ERR_POLL_GAP) == 0 )
+	if( ( _pollCnt % ZIGBEE_ERR_POLL_GAP) == 0 )
 	{
-		//zcmdWorkStateGet(); fenhuiw
+		zcmdWorkStateGet(); // fenhuiw
 	}
 
 
@@ -239,10 +201,8 @@ static void _devZigbeeErrPoll( void )
 	else
 	{
 		// 网络错误态时间到
-		_sToZigbeeErr();
+		devOnEvent( DEV_EVENT_ERR_TIMEOUT , NULL );
 	}
-
-#endif
 }
 
 
@@ -252,15 +212,12 @@ static void _devZigbeeErrPoll( void )
 
 static void _devMasterErrPoll( void )
 {
-#if 1
-	//#include "sg_master_state.h"
+	#include "sn_master_state.h"
 
-	
 	if( (_pollCnt % MASTER_ERR_POLL_GAP) == 0 )
 	{
-		//modMasterStatePoll(); fenghuiw
+		modMasterStatePoll(); //fenghuiw
 	}
-
 
 	if( _pollCnt )
 	{
@@ -269,23 +226,26 @@ static void _devMasterErrPoll( void )
 	else
 	{
 		// 主机错误态时间到
-		_sToMasterErr();
+		devOnEvent( DEV_EVENT_ERR_TIMEOUT , NULL );
 	}
-#endif	
+
+
 }
+
+
+
 
 
 
 static void _devTimerPollCB( void ) // dev state to init
 {
-	
-	if ( _devS == DEV_STATE_WORK  )
+	if ( _devS == DEV_STATE_READ_CTRL_INFO  )
 	{
-		_devWorkPoll();
+		_devReadCtrlInfoPoll();
 	}
-	else if( _devS == DEV_STATE_IDLE  )
+	else if ( _devS == DEV_STATE_DBG)
 	{
-		_devIdlePoll();
+		_devDebugPoll();
 	}
 	else if ( _devS == DEV_STATE_ERR_HINT_ZIGBEE )
 	{
@@ -295,6 +255,11 @@ static void _devTimerPollCB( void ) // dev state to init
 	{
 		_devMasterErrPoll();
 	}	
+	else if ( _devS == DEV_STATE_UART_PASS )
+	{
+		_devUartPassPoll();
+	}	
+	
 
 
 	
@@ -307,59 +272,91 @@ static void _sToInit( void ) // dev state to init
 {
 	_devS      = DEV_STATE_INIT;
 
-	timerStart( DEV_POLL_GAP_MS/TIMER_UNIT_MS, TIMER_REPEAT_FOREVER, _devTimerPollCB);
+	timerStart( DEV_POLL_GAP_MS/TIMER_UNIT_MS, TIMER_REPEAT_FOREVER, _devTimerPollCB );
 }
 
 
 
 
+//====================================================
+static void _sToPowerOn( void )
+{
+	_pollCnt =  POWER_ON_POLL_CNT;
+}
 
 
 //====================================================
-static void _sToIdle( void ) // dev state to idle
+static void _sToSleep( void )
 {	
-#if 0
-	#define CFG_IDLE_SEC_MAX  (0xFFFFFFFF)
+	gB1.sleep = 1;
+}
 
-	//motorIdle();
-	u32 sec;
+//====================================================
 
-	sec = cfgWorkSecGet();
-
-	if( sec == 0 )
+static void _txCtrlPack( void )
+{
+		#include "sn_n2s.h"
+	
+	//------send ctrl_pack_get---
+	if( gB1.ctrlPackTx == 0 )
 	{
-		_pollCnt = 2;
+		gB1.ctrlPackTx = 1;
+		gB1.ctrlPackFinish = 0;
+		
+		n2sCtrlPackGet();
+		return;
 	}
-	else if( sec ==  CFG_IDLE_SEC_MAX )
+}
+
+
+static void _sToReadCtrlInfo( void )
+{
+	#include "zgb_state.h"
+	
+	gB1.isDebug = 0;
+		
+	if( modZgbStateIsOk() )
 	{
-		_pollCnt =	IDLE_POLL_CNT;		
+		_txCtrlPack();
+		_pollCnt =  READ_CTRL_INFO_POLL_CNT;
 	}
 	else
 	{
-		_pollCnt =  sec * (1000 / DEV_POLL_GAP_MS );
+		_pollCnt =  0;
+		gB1.ctrlPackFinish = 1;
 	}
-#else
-
-	_pollCnt =	IDLE_POLL_CNT;// fenghuiw
-
-
-#endif
-
-	
 }
-
-
-
 
 
 //====================================================
-static void _sToWork( void )
-{
-	//motorWork();
+static void _sToDebug( void )
+{	
+	u32 debugSec;
 
-	_pollCnt =  WORK_POLL_CNT;
+	debugSec = cfgWorkSecGet();
+
+	
+	//dprintf( "gB1.isPowerOn=%d", gB1.isPowerOn);
+	
+	if( gB1.isPowerOn )
+	{
+		gB1.isPowerOn = 0;
+
+		if( debugSec < DEV_WAIT_SEC_POWER_ON )
+			debugSec = DEV_WAIT_SEC_POWER_ON;
+	}
+
+
+	if( debugSec < DEV_WAIT_SEC_DEBUG_MIN )
+		debugSec = DEV_WAIT_SEC_DEBUG_MIN;
+
+	
+	_pollCnt = debugSec * (1000 / DEV_POLL_GAP_MS );
+
+	//dprintf( "debugSec=%d, _pollCnt=%d", debugSec, _pollCnt );
 	
 }
+
 
 
 //====================================================
@@ -370,15 +367,18 @@ static void _sToZigbeeUartPassDebug( void )
 
 //====================================================
 static void _sToZigbeeErr( void )
-{
-	_pollCnt =  ZIGBEE_ERR_POLL_CNT;
+{ 
+	// 错误时不重新记时
+	//_pollCnt =  ZIGBEE_ERR_POLL_CNT;
+	
 }
 
 
 //====================================================
 static void _sToMasterErr( void )
 {
-	_pollCnt =  MASTER_ERR_POLL_CNT;
+	// 错误时不重新记时
+	//_pollCnt =  MASTER_ERR_POLL_CNT;
 }
 
 //====================================================
@@ -391,26 +391,27 @@ static void _devStateSet( EN_DEV_STATE s )
 
 	if( _devS == s ) // newwait
 	{
-		if( s == DEV_STATE_IDLE )
-		{
-			_sToIdle();
-		}
 		return;
 	}
 
 
 	switch( s )
 	{
-	case DEV_STATE_WORK:
-		_sToWork();
+	case DEV_STATE_READ_CTRL_INFO:
+		_sToReadCtrlInfo();
+		break;	
+
+	case DEV_STATE_DBG:
+		_sToDebug();
 		break;
+
+	case DEV_STATE_SLEEP:
+		_sToSleep();
+		break;
+
 
 	case DEV_STATE_INIT:
 		_sToInit();
-		break;
-		
-	case DEV_STATE_IDLE:
-		_sToIdle();
 		break;
 
 	case DEV_STATE_UART_PASS:
@@ -449,31 +450,52 @@ static void _devStateSet( EN_DEV_STATE s )
 
 static void _devOnEvent( EN_DEV_EVENT e, void *data)
 {	
+	#include "sn_ch.h"
+	
 	switch( _devS )
 	{
-	case DEV_STATE_WORK:
+	case DEV_STATE_DBG:	
+		if( DEV_EVENT_DBG_END == e )
+		{
+			_devStateSet( DEV_STATE_READ_CTRL_INFO );
+		}
+		break;
+			
+	case DEV_STATE_READ_CTRL_INFO:	
+		if( DEV_EVENT_READ_CTRL_INFO_END == e )
+		{
+			if( snChIs485() || gB1.isDebug ) // 485时不休眠 ,转为DEBUG态
+			{
+				_devStateSet( DEV_STATE_DBG );
+			}
+			else
+			{
+				_devStateSet( DEV_STATE_SLEEP );
+			}
+		}
 		break;
 
+	case DEV_STATE_SLEEP:	
+		if( DEV_EVENT_SLEEP_END == e )
+		{
+			_devStateSet( DEV_STATE_READ_CTRL_INFO );
+		}
+		break;
+
+	case DEV_STATE_UART_PASS:	
+		if( DEV_EVENT_UARTPASS_TIMEOUT == e )
+		{
+			_devStateSet( DEV_STATE_READ_CTRL_INFO );
+		}
+		break;		
 		
-	case DEV_STATE_IDLE:
-		if( DEV_EVENT_WORK_START == e )
-		{
-			_devStateSet( DEV_STATE_WORK );
-		}
-		else if ( DEV_EVENT_IDLE_END == e )
-		{
-			_devStateSet( DEV_STATE_IDLE ); // fenghuiwait
-		}
-		break;
-
 		
 	case DEV_STATE_INIT:	
 		if( DEV_EVENT_INIT_END == e )
 		{
-			_devStateSet( DEV_STATE_IDLE );
+			_devStateSet( DEV_STATE_DBG );
 		}
 		break;
-
 
 	case DEV_STATE_NOT_DEF:	
 		if( DEV_EVENT_INIT_START == e )
@@ -503,7 +525,7 @@ static void _onErrToOk( u32 errBit )
 	
 	if( _devErrBit == 0 )
 	{
-		_devStateSet(  DEV_STATE_IDLE );
+		_devStateSet(  DEV_STATE_READ_CTRL_INFO );
 		return;
 	}
 	else
@@ -557,6 +579,9 @@ static void _onErr( EN_DEV_STATE s, u32 errBit)
 	valBitSet1( &_devErrBit, errBit);
 
 	if( devStateIsUartPass() )
+		return;
+	
+	if( devStateIsDbg() == FALSE ) // 只有 DEBUG 时才响应
 		return;
 	
 	
@@ -651,18 +676,21 @@ void devOnEvent( EN_DEV_EVENT e, void *data)
 		}
 		else
 		{
-			_devStateSet( DEV_STATE_IDLE );
+			_devStateSet( DEV_STATE_READ_CTRL_INFO );
 		}
 	}
 	
-
-
 
 	if( _devS > DEV_STATE_ERR ) // 当前状态是ERR态
 	{
 		if(  e == DEV_EVENT_CMD_REBOOT )
 		{
 			// _reboot();
+		}
+		else if (  e == DEV_EVENT_ERR_TIMEOUT  )
+		{
+			gB1.ctrlPackFinish = 1;
+			_devStateSet( DEV_STATE_SLEEP );
 		}
 
 		return;

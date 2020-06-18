@@ -201,17 +201,40 @@ int zcmdTxCB( void )
 
 void zgbCmdInit( void )
 {
-	_zcmdParaClear();
-	_zcmdTxClear();
 
-	 _Lqi = 0;
-	 
-	 memset( &_stZdevInfo, 0, sizeof(ST_ZIGBEE_DEV_INFO) );
-	 
-	zcmdDevInfoGet();
-	zcmdWorkStateGet();
+	#if 1
+		_zcmdParaClear();
+		_zcmdTxClear();
 
-	zcmdAutoNet( 1 ); // 开启自组网功能
+		 _Lqi = 0;
+		 
+		 memset( &_stZdevInfo, 0, sizeof(ST_ZIGBEE_DEV_INFO) );
+		 
+		zcmdDevInfoGet();
+		zcmdWorkStateGet();
+
+		zcmdAutoNet( 1 ); // 开启自组网功能
+	#endif
+
+
+
+
+
+	#if 0 // fenghuitest
+		_zcmdParaClear();
+		_zcmdTxClear();
+
+		 _Lqi = 0;
+		 
+		 memset( &_stZdevInfo, 0, sizeof(ST_ZIGBEE_DEV_INFO) );
+		 
+		//zcmdDevInfoGet();
+		//zcmdWorkStateGet();
+
+		//zcmdAutoNet( 1 ); // 开启自组网功能
+
+	#endif
+	
 }
 
 

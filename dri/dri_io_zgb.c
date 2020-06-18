@@ -251,4 +251,21 @@ void driIoZgbInit( void )
 
 
 
+//----------sleep and wakeup---------------------------------------------------------
+
+void driIoZgbToSleep( void )
+{
+	// 1:  set io = in_down
+	// 2: close clk	
+}
+
+void driIoZgbOnWakeup( void )
+{
+	                  // 1: open clk
+	
+	driIoZgbInit(); // 2: io = init
+
+	
+}
+
 

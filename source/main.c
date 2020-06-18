@@ -21,7 +21,12 @@
 
 static void _test( void )
 {
-	//_testAes();
+	#ifdef RTC_ARL_USED_PERIOD
+
+	#else
+		//driRtcSetAlarm(5);
+		//driRtcGetAlarm();
+	#endif
 	
 	#ifdef TEST_COM_DELAY
 		testDelay();
@@ -79,6 +84,7 @@ static void _test( void )
 int main(void)
 {  
 	gB1.inited = 0;
+	gB1.isPowerOn = 1;
 
 	driInit();
 
@@ -86,7 +92,16 @@ int main(void)
 
 	devInit();
 
-	
+	modIoZgbWakeup(); // last 
+
+    
+    ///< ===============================================
+    ///< ============ 警告，警告，警告！！！=============
+    ///< ===============================================
+    ///< 本样例程序会进入深度休眠模式，因此以下两行代码起防护作用（防止进入深度
+    ///< 休眠后芯片调试功能不能再次使用），
+    ///< 在使用本样例时，禁止在没有唤醒机制的情况下删除以下两行代码。
+    delay1ms(2000);
 	
 
 	dprintf("\r\np03_terminal_ctrl_water V0.1_20200613 fenghui\r\n");
@@ -94,6 +109,8 @@ int main(void)
 	gB1.inited = 1;
 	
 	_test();
+
+	
 	
 	while(1)
     {
@@ -102,6 +119,11 @@ int main(void)
 		#ifdef USE_IWDG
 			iwdgRefresh();
 		#endif
+
+		if( gB1.sleep )
+		{
+			devSleep();
+		}
     }
 	
 

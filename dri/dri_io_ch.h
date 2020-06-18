@@ -26,6 +26,12 @@ extern u8 driIoChRead( void );
 
 extern void driIoChInit( void );
 
+//----------sleep and wakeup---------------------------------------------------------
+
+void driIoChToSleep( void );
+
+
+void driIoChOnWakeup( void );
 
 
 #endif

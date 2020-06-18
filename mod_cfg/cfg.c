@@ -189,6 +189,14 @@ void configInit( void )
 
 
 
+u8 cfgIsIdle( void )
+{
+	if( _cfgModify == 0 )
+		return TRUE;
+
+	return FALSE;
+}
+
 
 
 

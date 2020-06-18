@@ -31,5 +31,16 @@ void driAdcInit( void );
 void driAdcFunSet( FunAdcCB  fun );
 
 
+
+
+
+
+//----------sleep and wakeup---------------------------------------------------------
+void driAdcToSleep( void );
+
+void driAdcOnWakeup( void );
+
+
+
 #endif
 

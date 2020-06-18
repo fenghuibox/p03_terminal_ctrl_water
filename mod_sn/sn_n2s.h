@@ -9,8 +9,8 @@
  *|-------------------------------------------------------------*/
  
 
-#ifndef __SG_N2S_H
-#define __SG_N2S_H
+#ifndef __SN_N2S_H
+#define __SN_N2S_H
 
  // sn: Server and node communication    服务器和节点通信
 // n2s: node to server                   节点发送给服务器
@@ -22,12 +22,16 @@
 
 
 #define N2S_POLL_GAP_MS                           (40)     // n2sCB 函数执行的间隔时间
-#define N2S_REDO_CNT                               (3)     // 重发次数
+#define N2S_REDO_CNT                               (1)     // 重发次数
 #define N2S_REDO_GAP_MS                         (2800)     // 重发间隔毫秒
 #define N2S_REDO_GAP_CNT        ( N2S_REDO_GAP_MS / N2S_POLL_GAP_MS )   // 重发间隔毫秒对应的次数
 
 
 extern u8 snN2sIsRspCurTxCmdSid( u8 sid );
+
+
+extern void snN2sOnRsp( void );
+
 
 
 extern void snN2sPoll( void ); // 40ms
@@ -51,6 +55,12 @@ extern int snOnRx( u8 *pFrame, u8 len ); // Receive message to execute
 
 
 extern void n2sHeartbeat( void );
+
+extern void n2sBattRpt( void );
+
+
+extern void n2sCtrlPackGet( void );
+
 
 extern u8 n2sCB( void ); //  node send to server
 

@@ -20,7 +20,7 @@
 
 #include "dev.h"
 
-//#include "zgb_state.h"
+#include "zgb_state.h"
 #include "cfg.h"
 #include "sn.h"
 //#include "led.h"
@@ -40,12 +40,10 @@
 static void _10msCB( void )
 {
 #if 1
-	#define _10_MS_CNT_MAX  (49) // 10 * 50 = 500ms
+	#define _10_MS_CNT_MAX  (99) // 10 * 99 = 1000ms
 	
 	static u8 _10msCnt = _10_MS_CNT_MAX; 
 
-
-	
 
 	if( _10msCnt != 0 )
 	{
@@ -56,15 +54,29 @@ static void _10msCB( void )
 		_10msCnt = _10_MS_CNT_MAX;
 	}
 
+	if( (_10msCnt & 1 ) == 0 )// 20ms
+	{
+		//devSleepPoll();
+	}
+
+
+
 	if( (_10msCnt & 3 ) == 0 )// 40ms
 	{
 		ctrlStatePoll();
 		snPoll(); 
 	}
 
-	if( (_10msCnt % 5) == 0 ) // 50ms
+	if( devStateIsReadCtrlInfo() )
 	{
 		zgbUartTxPoll();
+	}
+	else
+	{
+		if( (_10msCnt % 5) == 0 ) // 50ms
+		{
+			zgbUartTxPoll();
+		}
 	}
 
 	if( (_10msCnt & 7 ) == 0 )// 80ms
@@ -81,11 +93,11 @@ static void _10msCB( void )
 	//--------- 1 sec -------------------
 	if( _10msCnt == 0 )
 	{
-	
+		
 	}
 	else if( _10msCnt == 3 )
 	{
-		//modZgbStatePoll();
+		modZgbStatePoll();
 	}
 	else if( _10msCnt == 6 )
 	{
@@ -101,7 +113,7 @@ static void _10msCB( void )
 	}	
 	else if( _10msCnt == 15 )
 	{
-
+		
 	}	
 
 
@@ -165,7 +177,7 @@ static void _devStartCB( void )
 	#include "f_frame_comm.h"
 	
 	//gstN2S.reboot = 1; 
-	gstN2S.heartbeat = 1; 
+	gstN2S.heartbeat = 1;  // fenghuiw
 #endif
 
 }

@@ -61,6 +61,7 @@ extern void configInit( void );
 extern void configUpdate( void );
 
 
+extern u8 cfgIsIdle( void );
 
 
 

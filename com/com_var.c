@@ -16,7 +16,7 @@
 
 
 
-ST_BOOL gB1;
+ST_BOOL gB1 = {0};
 
 
 

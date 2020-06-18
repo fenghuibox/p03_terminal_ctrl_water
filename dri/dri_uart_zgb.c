@@ -143,4 +143,24 @@ void driUartZgbInit( irqCB funIrqCB )
 
 
 
+//----------sleep and wakeup---------------------------------------------------------
+
+void driUartZgbToSleep( void )
+{
+    EnableNvic(        ZGB_UART_IRQ_ID, ZGB_UART_IRQ_LEVEL, FALSE );  // 1: 关 中断
+                                                                      // 2: io = in_down  
+	                                                                  // 3: close clk	
+}
+
+void driUartZgbOnWakeup( void )
+{
+	                                                                  // 1: open clk
+	_zgbUartPortCfg();                                                // 2: io = init                                                                 
+	EnableNvic(		ZGB_UART_IRQ_ID, ZGB_UART_IRQ_LEVEL, TRUE );     // 3: 开 中断
+}
+
+
+
+
+
 

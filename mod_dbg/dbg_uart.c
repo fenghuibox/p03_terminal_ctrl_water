@@ -232,6 +232,7 @@ void dbgUartInit( void )
 
 void dprintf(const char *pFormat, ...)
 {
+#if 1
 	#define PRINT_LEN_MAX  (DBG_Q_LEN)
 	
 	char pBuf[PRINT_LEN_MAX] = {0};
@@ -265,6 +266,7 @@ void dprintf(const char *pFormat, ...)
 	}
 	
 	va_end (args);
+	#endif
 
 }
 
@@ -274,6 +276,7 @@ void dprintf(const char *pFormat, ...)
 
 void dprintfBuf( char *pStr, u8 *pBuf, u32 len, u8 print0D0A )
 {
+#if 1
 	u32 i;
 	
 	if(pStr)
@@ -288,6 +291,7 @@ void dprintfBuf( char *pStr, u8 *pBuf, u32 len, u8 print0D0A )
 
 	if( print0D0A )
 		dprintf("\r\n");
+	#endif
 }
 
 

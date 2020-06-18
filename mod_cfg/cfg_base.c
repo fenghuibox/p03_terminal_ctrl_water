@@ -43,7 +43,11 @@ u32 cfgCfgVerDef( void )
 //======dev sleep sec =====================================
 u32 cfgSleepSecGet( void ) //
 {
-    return _stAppConfig.sleep_sec;
+	#if 1
+		return 10;// fenghuitest
+	#else
+    	return _stAppConfig.sleep_sec; 
+	#endif
 }
 
 
@@ -66,7 +70,13 @@ u32 cfgSleepSecDef( void )
 //======dev work sec =====================================
 u32 cfgWorkSecGet( void ) //
 {
-    return _stAppConfig.work_sec;
+	#if 1
+		return 0;// fenghuitest
+	#else
+    	return _stAppConfig.work_sec;
+	#endif
+
+    
 }
 
 

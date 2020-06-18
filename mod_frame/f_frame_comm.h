@@ -69,7 +69,7 @@ typedef struct
 	u8 check;
 	u8 pMac[MAC_ADDR_LEN];  // mac
 	u8 sid;      // 会话ID
-	EN_RSP_FRAME_VAL val;
+	u8 val;
 	u8 tail;
 }ST_RSP_FRAME; 
 
@@ -115,6 +115,11 @@ typedef struct // 位置不能变
 	u8 zigbee_state:1;	 //  22 zigbee_查询状态
 	u8 zigbee_info:1;	//	23 zigbee_配置信息
 	u8 uart485:1;	//	24 485总线
+
+	//-----主动拉取服务器上的信息-----------------------------
+	
+	u8 ctrl_pack_get:1;   //  25 控制信息包
+	
 
 
 
@@ -164,6 +169,11 @@ typedef enum
 	N2S_SEND_CID_ZIGBEE_STATE,	// 22
 	N2S_SEND_CID_ZIGBEE_INFO,	// 23
 	N2S_SEND_CID_UART485,	// 24
+
+	//-----主动拉取服务器上的信息-----------------------------
+	
+	N2S_SEND_CID_CTRL_PACK_GET,  //  25 控制信息包
+	
 
 
 	

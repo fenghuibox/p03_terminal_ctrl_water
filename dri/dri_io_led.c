@@ -16,7 +16,7 @@
 
 
 #define LED_1_PORT  ( GpioPortA )
-#define LED_1_PIN   ( GpioPin4 )
+#define LED_1_PIN   ( GpioPin2 )
 #define LED_1_AF    ( GpioAf0 )
 
 
@@ -96,6 +96,22 @@ void driIoLedInit( void )
 	
 }
 
+//----------sleep and wakeup---------------------------------------------------------
+
+void driIoLedToSleep( void )
+{
+	// 1:  set io = in_down
+	// 2: close clk	
+}
+
+void driIoLedOnWakeup( void )
+{
+	                  // 1: open clk
+	
+	_ioLed1Init(); // 2: io = init
+
+	
+}
 
 
 

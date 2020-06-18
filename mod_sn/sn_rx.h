@@ -21,6 +21,11 @@
 extern int snRx( u8 *pBuf, u8 len );
 
 
+
+extern u8 snIsIdle( void );
+
+
+
 extern void snRxInit( void );
 
 

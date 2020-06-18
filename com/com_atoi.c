@@ -195,6 +195,7 @@ u32 str2float( u8  *str )
 
 
 
+
 //BCD码转十进制函数，输入BCD，返回十进制
 u8 BCD2decimal( u8 bcd )
 {
@@ -206,5 +207,17 @@ u8 BCD2decimal( u8 bcd )
 	
 	return Decimal ;
 }
+
+
+// DEC2BCD
+u8 u8ToBCD( u8 Data) // 00 -- 99 
+{     
+	if ( Data >= 99 )
+       return 0x99;   
+
+
+   return ( Data / 10 * 0x10 + Data % 10 );
+}
+
 
 

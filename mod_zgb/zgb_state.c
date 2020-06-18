@@ -29,7 +29,7 @@ static EN_ZIGBEE_WORK_STATE _zigbeeState;
 
 u8 modZgbStateIsOk( void )
 {
-	if( _zigbeeState == ZIGBEE_WORK_STATE_IDLE || _zigbeeState == ZIGBEE_WORK_STATE_ALLOW_JOIN )
+	if( _zigbeeState == ZIGBEE_WORK_STATE_JOIN_ED )
 	{
 		return TRUE;
 	}
@@ -50,14 +50,20 @@ static void _modZigbeeStateSet( EN_ZIGBEE_WORK_STATE s )
 	dprintf( "\r\nZS%d-%d", _zigbeeState,s );
 
 
-	if( s == ZIGBEE_WORK_STATE_IDLE || s == ZIGBEE_WORK_STATE_ALLOW_JOIN )
+	if( s == ZIGBEE_WORK_STATE_JOIN_ED )
 	{
-		devOnEvent( DEV_EVENT_ZIGBEE_STATE_TO_OK, NULL );
-		zcmdDevInfoGet();
+		if( devStateIsZigbeeErr()  )
+		{
+			devOnEvent( DEV_EVENT_ZIGBEE_STATE_TO_OK, NULL );
+			zcmdDevInfoGet();
+		}
 	}
 	else
 	{
-		devOnEvent( DEV_EVENT_ERR_HINT_ZIGBEE_STATE_NG, NULL );
+		if( devStateIsZigbeeErr() == FALSE )
+		{
+			devOnEvent( DEV_EVENT_ERR_HINT_ZIGBEE_STATE_NG, NULL );
+		}
 	}
 
 	_zigbeeState = s;
@@ -75,6 +81,10 @@ EN_ZIGBEE_WORK_STATE modZigbeeStateGet( void )
 void modZgbStatePoll( void )
 {
 	EN_ZIGBEE_WORK_STATE s;
+
+	if( devStateIsDbg() == FALSE ) // 只有 DEBUG 时才响应
+		return;
+
 
 	if( zigbeeWorkStateGet( &s ) == FALSE )
 	{

@@ -30,4 +30,5 @@
   ../mod_ctrl\ctrl_mode.h ../mod_ctrl\ctrl_cmd_ctrl.h \
   ../mod_ctrl\ctrl_cmd_ctrl_open_sec.h ../mod_ctrl\ctrl_period_ctrl.h \
   ../mod_frame/f_txt_frame_dpara_base.h ../mod_cfg\cfg_base.h \
-  ../mod_ctrl\ctrl.h ../dri\dri_rtc.h ../com\com_time.h
+  ../mod_ctrl\ctrl.h ../dri\dri_rtc.h ../com\com_time.h \
+  ../mod_sn\sn_n2s.h ../mod_zgb\zgb_uart.h

@@ -44,6 +44,12 @@ extern void driCtrlFinish( void );
 
 extern void driIoCtrlInit( void );
 
+//----------sleep and wakeup---------------------------------------------------------
+
+void driIoCtrlToSleep( void );
+
+
+void driIoCtrlOnWakeup( void );
 
 
 #endif

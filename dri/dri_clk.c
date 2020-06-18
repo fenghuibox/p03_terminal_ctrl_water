@@ -120,7 +120,7 @@ static void _clkCtrl( boolean_t onOrOff ) // true: on  false :off
 
 
 
-void driClkWakeup( void )// Ë¯Ãß»½ÐÑ
+void driClkOnWakeup( void )// Ë¯Ãß»½ÐÑ
 {
 	 _clkCtrl( TRUE );
 }

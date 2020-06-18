@@ -22,11 +22,15 @@
 
 
 
+#define DEV_WAIT_SEC_DEBUG_MIN         ( 20 * 1 )       // 调试最小的秒数
 
+#define DEV_WAIT_SEC_POWER_ON          ( 30 * 1 )       // 上电工作3分钟
+
+#define DEV_WAIT_SEC_READ_CTRL_INFO           (3)       // 工作 到 空闲 的过度时间
+#define DEV_WAIT_SEC_UART_PASS         ( 60 * 5 )       // 
 
 
 #define DEV_WAIT_SEC_IDLE      (10 * 5 ) // 空闲等待时间
-#define DEV_WAIT_SEC_WORK      (5)       // 工作 到 空闲 的过度时间
 #define DEV_WAIT_SEC_CFG       (60 * 10)  // 配置等待时间
 
 #define DEV_WAIT_SEC_WARNING   (10)      // 警告指示时间
@@ -55,20 +59,14 @@ typedef enum
 {
 	DEV_STATE_NOT_DEF = 0,
 
-	DEV_STATE_INIT, // 1
-	DEV_STATE_IDLE, // 2
-	DEV_STATE_WORK, // 3
-	
-	DEV_STATE_UART_PASS,    // debug uart 透传态
-	
-	DEV_STATE_SLEEP,  
+	DEV_STATE_INIT,            // 1	
+	DEV_STATE_DBG,             // 2 调试态
+	DEV_STATE_READ_CTRL_INFO,  // 3 读取控制信息态
+	DEV_STATE_SLEEP,           // 4 休眠态
+	DEV_STATE_UART_PASS,       // 5 debug uart 透传态
 
 	//-------------------------------
 	DEV_STATE_WARNING = 50,
-
-	DEV_STATE_WARNING_PTL, 	 // 
-	DEV_STATE_WARNING_CFG, 	 // 
-	DEV_STATE_WARNING_PORT,	 // 
 
 	//-------------------------------
 	DEV_STATE_ERR = 80,
@@ -92,15 +90,12 @@ typedef enum
 		
 	DEV_EVENT_INIT_START, // 1
 	DEV_EVENT_INIT_END,   // 2
+	
+	DEV_EVENT_DBG_START, // 
+	DEV_EVENT_DBG_END,   // 
 
-	
-	DEV_EVENT_IDLE_START, //
-	DEV_EVENT_IDLE_END,   //
-
-	
-	DEV_EVENT_WORK_START, // 
-	DEV_EVENT_WORK_END,   // 
-	
+	DEV_EVENT_READ_CTRL_INFO_START, // 
+	DEV_EVENT_READ_CTRL_INFO_END,   // 
 
 	DEV_EVENT_UART_PASS_START, // 
 	DEV_EVENT_UART_PASS_END,   // 
@@ -109,17 +104,17 @@ typedef enum
 	DEV_EVENT_SLEEP_START, // 
 	DEV_EVENT_SLEEP_END,   // 
 
-	DEV_EVENT_NET_OK, // 
-	DEV_EVENT_NET_NG,  // 
 
 	DEV_EVENT_CMD_REBOOT,
-
+	DEV_EVENT_ERR_TIMEOUT,
+	DEV_EVENT_DBG_TIMEOUT,
+	DEV_EVENT_UARTPASS_TIMEOUT,
 
    //-----------------------------------
 	DEV_EVENT_WARNING = 51,
-	DEV_EVENT_WARNING_PTL_ERR,
-	DEV_EVENT_WARNING_CFG_ERR,
-	DEV_EVENT_WARNING_PORT_ERR,
+	//DEV_EVENT_WARNING_PTL_ERR,
+	//DEV_EVENT_WARNING_CFG_ERR,
+	//DEV_EVENT_WARNING_PORT_ERR,
 
 	//-------------------------------------------
 	DEV_EVENT_ERR = 70,
@@ -152,9 +147,8 @@ extern u8 devErrIsHaveMaster( void );
 
 extern EN_DEV_STATE devStateGet( void );
 
-
-extern u8 devStateIsIdle( void );
-extern u8 devStateIsWork( void );
+extern u8 devStateIsDbg( void );
+extern u8 devStateIsReadCtrlInfo( void );
 extern u8 devStateIsUartPass( void );
 
 extern u8 devStateIsNg( void );

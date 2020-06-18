@@ -17,7 +17,7 @@
 
 //---------sleep----------------------------------------------------------
 
-#define DRI_ZIGBEE_TO_SLEEP_KEEP_L_MS (20) // 休眠引脚，低电平有效，保持 10ms 以上低电平进入 休眠模式
+#define DRI_ZIGBEE_TO_SLEEP_KEEP_L_MS (14)//20) // 休眠引脚，低电平有效，保持 10ms 以上低电平进入 休眠模式
 
 extern void driZgbSleepH( void );
 
@@ -39,7 +39,7 @@ extern void driZgbResetL( void );
 
 
 //---------wakeup----------------------------------------------------------
-#define DRI_ZIGBEE_TO_WAKEUP_KEEP_L_MS (20)
+#define DRI_ZIGBEE_TO_WAKEUP_KEEP_L_MS (14)//20)
 
 extern void driZgbWakeupH( void );
 
@@ -68,6 +68,20 @@ extern u8 driZgbAckGet( void );
 
 
 extern void driIoZgbInit( void );
+
+
+
+
+//----------sleep and wakeup---------------------------------------------------------
+
+void driIoZgbToSleep( void );
+
+
+void driIoZgbOnWakeup( void );
+
+
+
+
 
 
 

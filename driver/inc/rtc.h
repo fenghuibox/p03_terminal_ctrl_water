@@ -240,6 +240,11 @@ extern void Rtc_GetAlarmTime(stc_rtc_alarmtime_t* pstcAlarmTime);
 extern en_result_t Rtc_SetAlarmTime(stc_rtc_alarmtime_t* pstcAlarmTime);
 //≥ı ºªØRTC
 extern void Rtc_Init(stc_rtc_initstruct_t* Rtc_InitStruct);
+
+
+
+extern void mySetAlarmSec( uint8_t sec );
+
 #endif /* __RTC_H__ */
 /******************************************************************************
  * EOF (not truncated)

@@ -8,7 +8,7 @@
 
 
 
-void driClkWakeup( void );// Ë¯Ãß»½ÐÑ
+void driClkOnWakeup( void );// Ë¯Ãß»½ÐÑ
 
 
 void driClkToSleep( void ); // ½øÈëË¯Ãß

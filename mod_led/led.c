@@ -54,14 +54,13 @@ static void _normalShow( EN_DEV_STATE s )
 	
 	switch( s )
 	{
-	case DEV_STATE_IDLE:
+	case DEV_STATE_DBG:
 		if( (_ledCnt % _IDLE_GAP_CNT) == 0)
 			driLed1Toggle();
 		break;
 
-	case DEV_STATE_WORK:
-		if( (_ledCnt % _WORK_GAP_CNT) == 0)
-			driLed1Toggle();
+	case DEV_STATE_READ_CTRL_INFO:
+		driLed1Close();
 		break;
 
 	case DEV_STATE_UART_PASS:

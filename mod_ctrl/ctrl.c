@@ -214,8 +214,11 @@ void ctrlOpenSecPoll( void ) // 200 ms
 
 
 
-u8 ctrlIsOk( void )
+u8 ctrlIsIdle( void )
 {
+	if( _stCtrl.ing || _stCtrl.exe )
+		return FALSE;
+	
 	if(  _stCtrl.state == cfgCtrlStateGet() )
 		return TRUE;
 

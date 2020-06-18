@@ -35,6 +35,13 @@ void driTimerLoopIrqCB( void );
 
 
 
+//----------sleep and wakeup---------------------------------------------------------
+
+void driTimerToSleep( void );
+
+
+void driTimerOnWakeup( void );
+
 
 #endif
 

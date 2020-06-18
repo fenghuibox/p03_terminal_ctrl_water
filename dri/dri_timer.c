@@ -86,7 +86,7 @@ void driTimerStart( FunTimeIrqCB funIrq )
 
 void driTimerStop( void )
 {
-    Bt_M0_Run( TIM0 );
+    Bt_M0_Stop( TIM0 );
 }
 
 
@@ -170,6 +170,25 @@ void driTimerInit(void)
 
 
 
+
+
+//----------sleep and wakeup---------------------------------------------------------
+
+void driTimerToSleep( void )
+{
+	 Bt_M0_Stop( TIM0 );                      // 1:  stop timer
+	 EnableNvic(TIM0_IRQn, IrqLevel3, FALSE); // 2: close irq	
+	                                          // 3: close clk	
+}
+
+void driTimerOnWakeup( void )
+{
+	                                          // 1: open clk
+	 EnableNvic(TIM0_IRQn, IrqLevel3, TRUE); // 2: open irq	 
+	Bt_M0_Run( TIM0 );                        // 3: start timer
+
+	
+}
 
 
 

@@ -189,11 +189,6 @@ typedef struct
 
 
 /*
-主机返回的状态值
--------------------------
-00 主机空闲
-01 主机正在检测网络
-02 主机允许从机加入网络
 -------------------------
 从机返回的状态值
 -------------------------
@@ -201,11 +196,12 @@ typedef struct
 01 从机已加入网络
 02 从机已退出网络
 */
+
 typedef enum
 {
-	ZIGBEE_WORK_STATE_IDLE = 0,
-	ZIGBEE_WORK_STATE_CHECK  = 1,
-	ZIGBEE_WORK_STATE_ALLOW_JOIN = 2,
+	ZIGBEE_WORK_STATE_JOIN_ING = 0,
+	ZIGBEE_WORK_STATE_JOIN_ED  = 1,
+	ZIGBEE_WORK_STATE_JOIN_NOT = 2,
 	ZIGBEE_WORK_STATE_NOT_DEF  = 3,
 }EN_ZIGBEE_WORK_STATE;
 
