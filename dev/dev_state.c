@@ -25,9 +25,14 @@
 #include "dev_state.h"
 #include "cfg_base.h"
 
+#include "sn_n2s.h"
+
+
 
 
 #define DEV_POLL_GAP_MS            (50)
+
+#define HEARTBEAT_POLL_CNT          DEV_WAIT_SEC_HEARTBEAT * (1000 / DEV_POLL_GAP_MS )
 
 #define IDLE_POLL_CNT              DEV_WAIT_SEC_IDLE * (1000 / DEV_POLL_GAP_MS )
 
@@ -56,6 +61,7 @@ static u32 _devErrBit;
 
 static u32 _pollCnt;
 
+static u32 _dbgHeartbeatCnt;
 
 //====================================================
 static void _devStateSet( EN_DEV_STATE s );
@@ -63,6 +69,13 @@ static void _devStateSet( EN_DEV_STATE s );
 static void _sToZigbeeErr( void );
 static void _sToMasterErr( void );
 
+
+
+
+void devHeartbeatUpdate( void )
+{
+	_dbgHeartbeatCnt = HEARTBEAT_POLL_CNT;
+}
 
 //====================================================
 u8 devErrIsHaveZigbee( void )
@@ -146,7 +159,7 @@ static void _devReadCtrlInfoPoll( void )
 	}
 	else
 	{
-		_devStateSet( DEV_STATE_SLEEP ); 
+		//_devStateSet( DEV_STATE_SLEEP ); 
 	}
 	
 	return;
@@ -154,8 +167,23 @@ static void _devReadCtrlInfoPoll( void )
 }
 
 
+
+
+
 static void _devDebugPoll( void )
 {	
+	if( _dbgHeartbeatCnt )
+	{
+		_dbgHeartbeatCnt--;
+	}
+	else
+	{
+		//n2sHeartbeat();
+		n2sCtrlPackGet();
+		devHeartbeatUpdate();
+	}
+	
+		
 	if( _pollCnt )
 	{
 		_pollCnt--;
@@ -288,15 +316,20 @@ static void _sToPowerOn( void )
 //====================================================
 static void _sToSleep( void )
 {	
+	#include "dev_sleep.h"
+	
 	gB1.sleep = 1;
+
+	//dprintf("toSleep");
+	//n2sPrint();
+
+	devSleepSecSet( cfgSleepSecGet() );
 }
 
 //====================================================
 
 static void _txCtrlPack( void )
-{
-		#include "sn_n2s.h"
-	
+{	
 	//------send ctrl_pack_get---
 	if( gB1.ctrlPackTx == 0 )
 	{

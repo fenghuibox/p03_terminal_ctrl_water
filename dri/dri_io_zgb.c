@@ -15,8 +15,8 @@
 
 
 
-#define ZGB_RESET_PORT  ( GpioPortA )
-#define ZGB_RESET_PIN   ( GpioPin11 )
+#define ZGB_RESET_PORT  ( GpioPortC )
+#define ZGB_RESET_PIN   ( GpioPin12 )
 #define ZGB_RESET_AF    ( GpioAf0 )
 
 
@@ -25,8 +25,8 @@
 #define ZGB_DETECT_AF    ( GpioAf0 )
 
 
-#define ZGB_ACK_PORT  ( GpioPortA )
-#define ZGB_ACK_PIN   ( GpioPin15 )
+#define ZGB_ACK_PORT  ( GpioPortD )
+#define ZGB_ACK_PIN   ( GpioPin2 )
 #define ZGB_ACK_AF    ( GpioAf0 )
 
 
@@ -263,7 +263,7 @@ void driIoZgbOnWakeup( void )
 {
 	                  // 1: open clk
 	
-	driIoZgbInit(); // 2: io = init
+	driIoZgbInit();   // 2: io = init
 
 	
 }

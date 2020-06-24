@@ -19,14 +19,16 @@
 #include "timer.h"
 #include "ctrl.h"
 
-
+#include "dbg_uart.h"
 
 
 typedef struct
 {
-	u8 state:1;
-	u8 ing:1;
-	u8 exe:1;
+	u8 state:1;// 水阀当前的状态
+	
+	u8 ing:1;  // 当前正在控制中 
+	
+	u8 exe:1;  // 是否要执行控制
 	
 	u8 init:1;
 	u8 b2:1;
@@ -59,6 +61,8 @@ void ctrlOpenStartSecUpdate( void )
 	
 	ctrlOpenStartSec = driRtcGetDateTimeSec();
 
+	dprintf(" open start sec=%d ", ctrlOpenStartSec );
+
 	cfgCtrlOpenStartSet( ctrlOpenStartSec );
 
 }
@@ -69,6 +73,8 @@ void ctrlOpenStartSecUpdate( void )
 
 static void _ctrlFinishTimerCB( void )
 {	
+	#if 1
+	
 	driCtrl12VenL();
 	
 	driCtrl12VswitchL();
@@ -82,6 +88,7 @@ static void _ctrlFinishTimerCB( void )
 
 		if( _stCtrl.state )
 		{
+			dprintf(" opensecUpdate ");
 			ctrlOpenStartSecUpdate();
 		}
 	}
@@ -92,19 +99,39 @@ static void _ctrlFinishTimerCB( void )
 
 	
 	_stCtrl.ing = 0;
+
+	
+	dprintf(" ctrlFinish ");
+
+	#else
+
+	dprintf(" ctrlFinish ");
+	
+	#endif
 }
 
 
 static void _ctrlTimerCB( void )
 {
 	if( _stCtrl.state )
+	{
+		dprintf(" driCtrlOpen ");
 		driCtrlOpen();
+	}
 	else
+	{
+		dprintf(" driCtrlClose ");
 		driCtrlClose();
+	}
 
 	cfgCtrlStateSet( _stCtrl.state );
 	
 	timerStart( 150/TIMER_UNIT_MS, 1, _ctrlFinishTimerCB );
+
+	//timerStartSec( 1, 1, _ctrlFinishTimerCB );
+
+
+	
 }
 
 
@@ -112,8 +139,12 @@ static void _ctrlTimerCB( void )
 
 static void _enTimerCB( void )
 {
+	dprintf(" 12VenH ");
+
 	driCtrl12VenH();
-	timerStart( 200/TIMER_UNIT_MS, 1, _ctrlTimerCB );
+	//timerStart( 200/TIMER_UNIT_MS, 1, _ctrlTimerCB );
+	timerStartSec( 1, 1, _ctrlTimerCB );
+	
 }
 
 
@@ -121,10 +152,16 @@ static void _enTimerCB( void )
 
 static void _ctrl( void )
 {
+	
+	dprintf(" 12VswitchH ");
+
 	_stCtrl.ing = 1;
 	
 	driCtrl12VswitchH();
-	timerStart( 2, 1, _enTimerCB );
+	timerStart( 100/TIMER_UNIT_MS, 1, _enTimerCB ); // 6M以上
+
+
+	
 }
 
 
@@ -149,6 +186,8 @@ void ctrlClose( void )
 
 void ctrlStatePoll( void ) // 50 ms
 {
+	//return; // fenghuiw
+	
 	if( _stCtrl.ing )
 		return;
 
@@ -179,8 +218,16 @@ void ctrlStatePoll( void ) // 50 ms
 
 void ctrlOpenSecPoll( void ) // 200 ms
 {
+
 	u32 ctrlOpenStartSec;
 	u32 curSec;
+	
+	//return; // fenghuiw
+
+
+	if( _stCtrl.ing || _stCtrl.exe )
+		return;
+
 	
 	if( cfgCtrlStateGet() == 0 ) 
 		return;// 当前是 关 的状态
@@ -196,9 +243,11 @@ void ctrlOpenSecPoll( void ) // 200 ms
 		return; // 开的时长不够
 	}
 
+	dprintf(" close: cursec=%d startsec=%d opensec=%d", curSec, ctrlOpenStartSec, cfgCtrlOpenSecGet() );
 
 	// 开的时长够了
 	ctrlClose();
+	gB1.ctrlOpenTimeoutClose = 1;
 
 	// 马上更新
 	ctrlStatePoll();
@@ -242,11 +291,13 @@ void ctrlInit( void )
 	_stCtrl.ing = 0;
 	
 	
-
+	#if 0 // fenghuiw
 	if( cfgCtrlStateGet() )
 		ctrlOpen();
 	else
 		ctrlClose();
+
+	#endif
 		
 }
 

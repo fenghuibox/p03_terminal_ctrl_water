@@ -32,4 +32,4 @@
   ../mod_frame/f_txt_frame_dpara_ctrl.h \
   ../mod_frame/f_txt_frame_dpara_485.h ../mod_frame/f_txt_frame.h \
   ../mod_sn/sn_rx.h ../mod_sn/sn_n2s.h ../mod_zgb\zgb_uart.h \
-  ../mod_sn/sn_rx_queue.h
+  ../mod_sn/sn_rx_queue.h ../dev\dev_state.h

@@ -21,19 +21,19 @@ u8 cfgAesSwitchGet( void ) //
 	return 1;
 }
 
-u8 cfgAesSwitchSet( u8 s )
+void cfgAesSwitchSet( u8 s )
 {
     if( _stAppConfig.aes_switch == s )
-        return s;
+        return;
 
+    _stAppConfig.aes_switch = s;
+	
     _cfgModify = 1;
-
-    return _stAppConfig.aes_switch = s;
 }
 
-u32 cfgAesSwitchDef( void )
+void cfgAesSwitchDef( void )
 {
-    return cfgAesSwitchSet( CONFIG_DEF_AES_SWITCH );
+    cfgAesSwitchSet( CONFIG_DEF_AES_SWITCH );
 }
 
 
@@ -56,9 +56,11 @@ void cfgAesKeySet(u8 *pAesKey)
     if (memcmp(pAesKey, _stAppConfig.aes_key, EEP_LEN_CFG_AES_KEY) == 0)
         return;
 
+    memcpy(_stAppConfig.aes_key, pAesKey, EEP_LEN_CFG_AES_KEY);
+	
     _cfgModify = 1;
 
-    memcpy(_stAppConfig.aes_key, pAesKey, EEP_LEN_CFG_AES_KEY);
+	
 }
 
 void cfgAesKeyDef( void )

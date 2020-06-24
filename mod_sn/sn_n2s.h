@@ -26,6 +26,7 @@
 #define N2S_REDO_GAP_MS                         (2800)     // 重发间隔毫秒
 #define N2S_REDO_GAP_CNT        ( N2S_REDO_GAP_MS / N2S_POLL_GAP_MS )   // 重发间隔毫秒对应的次数
 
+extern u8 snN2sCurIdIsCtrlPackGet( void );
 
 extern u8 snN2sIsRspCurTxCmdSid( u8 sid );
 
@@ -69,6 +70,7 @@ extern void snN2sInit( void );
 
 
 
+extern void n2sPrint( void );
 
 
 

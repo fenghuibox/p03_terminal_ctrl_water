@@ -80,7 +80,7 @@ typedef enum
 
 
 
-
+#define DRI_RTC_SLEEP_SEC_GAP (5)
 
 
 u8 driRtcGetDateTime( ST_DATE_TIME *pstDT);

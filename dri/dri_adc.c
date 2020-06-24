@@ -227,7 +227,7 @@ static void _adcOnWakeup( void )
 	// 1: open clk
 	_AdcPortInit();  // 2: io = adc_in
 	Bgr_BgrEnable(); // 3: enable bgr
-	driAdcStart();   // 4: start adc
+	//driAdcStart();   // 4: start adc
 }
 
 

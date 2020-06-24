@@ -21,6 +21,9 @@
 
 
 
+void devSleepSecSet( u32 sec );
+
+
 void devSleep( void );
 
 

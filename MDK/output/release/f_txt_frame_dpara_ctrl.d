@@ -27,8 +27,9 @@
   ../com/com_mac.h ../dri\dri.h ../mod_timer\timer.h ../dri\dri_timer.h \
   ../mod_frame/f_txt_frame_dpara_ctrl.h ../mod_frame/f_frame_comm.h \
   ../com\com_mac.h ../mod_frame/f_txt_frame_data.h ../mod_cfg\cfg_ctrl.h \
-  ../mod_ctrl\ctrl_mode.h ../mod_ctrl\ctrl_cmd_ctrl.h \
-  ../mod_ctrl\ctrl_cmd_ctrl_open_sec.h ../mod_ctrl\ctrl_period_ctrl.h \
-  ../mod_frame/f_txt_frame_dpara_base.h ../mod_cfg\cfg_base.h \
-  ../mod_ctrl\ctrl.h ../dri\dri_rtc.h ../com\com_time.h \
-  ../mod_sn\sn_n2s.h ../mod_zgb\zgb_uart.h
+  ../mod_dbg\dbg_uart.h ../mod_ctrl\ctrl_mode.h \
+  ../mod_ctrl\ctrl_cmd_ctrl.h ../mod_ctrl\ctrl_cmd_ctrl_open_sec.h \
+  ../mod_ctrl\ctrl_period_ctrl.h ../mod_frame/f_txt_frame_dpara_base.h \
+  ../mod_cfg\cfg_base.h ../mod_ctrl\ctrl.h ../dri\dri_rtc.h \
+  ../com\com_time.h ../mod_sn\sn_n2s.h ../mod_zgb\zgb_uart.h \
+  ../dev\dev_state.h

@@ -23,7 +23,7 @@
 
 
 
-
+#include "dbg_uart.h"
 
 
 
@@ -266,32 +266,47 @@ u8 para_period_ctrl_exe( ST_FRAME *pstFrame )
 #include "ctrl.h"
 #include "dri_rtc.h"
 
+/*
+SERVER->NODE
+report
+正常/调试    1Byte |  0:正常  1：调试
+休眠时间     4Byte |  单位：秒
+命令控制     1Byte |  0:关  1：开
+开启时长     4Byte |  单位：秒
+是否重启记时 1Byte |  0:否  1：重启记时
+*/
 
-#define CTRL_PACK_OFFSET_WORK1          (0)
-#define CTRL_PACK_OFFSET_WORK2          (1)
-#define CTRL_PACK_OFFSET_WORK3          (2)
-#define CTRL_PACK_OFFSET_WORK4          (3)
-#define CTRL_PACK_OFFSET_SLEEP1         (4)
-#define CTRL_PACK_OFFSET_SLEEP2         (5)
-#define CTRL_PACK_OFFSET_SLEEP3         (6)
-#define CTRL_PACK_OFFSET_SLEEP4         (7)
-#define CTRL_PACK_OFFSET_CMD_CTRL       (8)
-#define CTRL_PACK_OFFSET_OPEN_SEC1      (9)
-#define CTRL_PACK_OFFSET_OPEN_SEC2      (10)
-#define CTRL_PACK_OFFSET_OPEN_SEC3      (11)
-#define CTRL_PACK_OFFSET_OPEN_SEC4      (12)
-#define CTRL_PACK_OFFSET_RESTART        (13)
 
+#define CTRL_PACK_OFFSET_DEBUG          (0)
+#define CTRL_PACK_OFFSET_SLEEP1         (1)
+#define CTRL_PACK_OFFSET_SLEEP2         (2)
+#define CTRL_PACK_OFFSET_SLEEP3         (3)
+#define CTRL_PACK_OFFSET_SLEEP4         (4)
+#define CTRL_PACK_OFFSET_CMD_CTRL       (5)
+#define CTRL_PACK_OFFSET_OPEN_SEC1      (6)
+#define CTRL_PACK_OFFSET_OPEN_SEC2      (7)
+#define CTRL_PACK_OFFSET_OPEN_SEC3      (8)
+#define CTRL_PACK_OFFSET_OPEN_SEC4      (9)
+#define CTRL_PACK_OFFSET_RESTART        (10)
+
+
+
+static void _debugSet( u8 isDebug )
+{
+	if( isDebug  == 0 )
+		gB1.isDebug = 0;
+	else
+		gB1.isDebug = 1;
+}
 
 void paraCtrlPackSet( u8 *pPara )
 {
-//  | 设备单次工作时间 | 设备单次休眠时间 | 命令控制 | 开启时长 | 是否重启记时 | 
-
 	u8 reStart;
 	u32 openSec;
-	
 
-	paraWorkSecSet( pPara );
+	_debugSet( pPara[CTRL_PACK_OFFSET_DEBUG] );
+	
+	
 	paraSleepSecSet( pPara + CTRL_PACK_OFFSET_SLEEP1 );
 
 
@@ -324,49 +339,80 @@ void paraCtrlPackSet( u8 *pPara )
 
 int paraCtrlPackGet( u8 *pPara )
 {
-	//	| 设备单次工作时间 | 设备单次休眠时间 | 命令控制 | 开启时长 | 是否重启记时 | 
-    //                                          当前状态                  0
-    //                                             0       开启时长       0
-    //                                             1      还剩下时长      0
+	#if 0
+		u32 curSec, startSec, openSec, rst;
+		
+		
+		paraBatteryGet( pPara );
+		paraWorkSecGet( pPara + CTRL_PACK_OFFSET_SLEEP1 );
 
-	u32 curSec, startSec, openSec, rst;
-	
-	
-	paraWorkSecGet( pPara );
-	paraWorkSecGet( pPara + CTRL_PACK_OFFSET_SLEEP1 );
+		if( ctrlStateGet() == 0 )
+		{
+			pPara[CTRL_PACK_OFFSET_CMD_CTRL] = 0;
+			paraCtrlOpenSecGet( pPara + CTRL_PACK_OFFSET_OPEN_SEC1 );
+		}
+		else
+		{
+			pPara[CTRL_PACK_OFFSET_CMD_CTRL] = 1;
 
-	if( ctrlStateGet() == 0 )
+			curSec = driRtcGetDateTimeSec();
+
+			startSec = cfgCtrlOpenStartGet();
+
+			openSec = cfgCtrlOpenSecGet();
+
+			rst = openSec - ( curSec - startSec );
+
+			u32splitToByte( rst, pPara + CTRL_PACK_OFFSET_OPEN_SEC1 );
+		}
+
+		pPara[CTRL_PACK_OFFSET_RESTART] = 0;
+
+		return CTRL_PACK_OFFSET_RESTART + 1;
+	
+	#endif
+
+	return 0;
+}
+
+int paraCtrlPackToServerGet( u8 *pPara )
+{
+	/*
+	NODE->SERVER
+	get 
+	电量	  2Byte  |	
+	水阀状态  1Byte  |	0:关  1：开*/
+
+	paraBatteryGet( pPara );
+
+
+	if( gB1.ctrlOpenTimeoutClose == 0 )
 	{
-		pPara[CTRL_PACK_OFFSET_CMD_CTRL] = 0;
-		paraCtrlOpenSecGet( pPara + CTRL_PACK_OFFSET_OPEN_SEC1 );
+		pPara[2] = 0xFF;
 	}
 	else
 	{
-		pPara[CTRL_PACK_OFFSET_CMD_CTRL] = 1;
-
-		curSec = driRtcGetDateTimeSec();
-
-		startSec = cfgCtrlOpenStartGet();
-
-		openSec = cfgCtrlOpenSecGet();
-
-		rst = openSec - ( curSec - startSec );
-
-		u32splitToByte( rst, pPara + CTRL_PACK_OFFSET_OPEN_SEC1 );
+		#if 0 // fenghuiw
+			pPara[2] = 0;
+		#else
+			if( paraCmdCtrlGet() ) 
+				pPara[2] = 1;
+			else
+				pPara[2] = 0;
+		#endif
 	}
 
-	pPara[CTRL_PACK_OFFSET_RESTART] = 0;
-
-	return CTRL_PACK_OFFSET_RESTART + 1;
-	
-
+	return 3;
 }
+
+
 
 
 
 u8 para_ctrl_pack_exe( ST_FRAME *pstFrame )
 {	
 	#include "sn_n2s.h"
+	#include "dev_state.h"
 	
 	if( pstFrame->action == TXT_FRAME_ACTION_GET )
 	{
@@ -383,6 +429,13 @@ u8 para_ctrl_pack_exe( ST_FRAME *pstFrame )
 	else if( pstFrame->action == TXT_FRAME_ACTION_SET  )
 	{
 		paraCtrlPackSet( pstFrame->pBuf + DPACK_OFFSET_PARA );
+
+		gB1.ctrlOpenTimeoutClose = 0;
+
+		if( pstFrame->pBuf[DPACK_OFFSET_PARA] == 0 )
+		{
+			devOnEvent( DEV_EVENT_DBG_END, NULL );
+		}
 		
 		//gstN2S.ctrl_pack = 1;
 
@@ -392,9 +445,16 @@ u8 para_ctrl_pack_exe( ST_FRAME *pstFrame )
 	}
 	else if(  pstFrame->action == TXT_FRAME_ACTION_REPORT_ACK_GET )
 	{
-		paraCtrlPackSet( pstFrame->pBuf + DPACK_OFFSET_PARA );
+		//dprintf("rx_rpt");
+		//n2sPrint();
+		gB1.ctrlOpenTimeoutClose = 0;
 		
-		snN2sOnRsp();
+		paraCtrlPackSet( pstFrame->pBuf + DPACK_OFFSET_PARA );
+
+
+		//gB1.ctrlPackFinish = 1; // fenghuiw
+		
+		//snN2sOnRsp();
 
 		return TRUE;
 	}
@@ -402,6 +462,26 @@ u8 para_ctrl_pack_exe( ST_FRAME *pstFrame )
 	
 	return FALSE;
 }
+
+
+
+/*
+void paraCtrlPackRptExe( ST_FRAME *pstFrame )
+{
+	dprintf("rx_rpt");
+	n2sPrint();
+	gB1.ctrlOpenTimeoutClose = 0;
+	
+	paraCtrlPackSet( pstFrame->pBuf + DPACK_OFFSET_PARA );
+	
+	
+	//gB1.ctrlPackFinish = 1; // fenghuiw
+	
+	snN2sOnRsp();
+	
+	return TRUE;
+}
+*/
 
 
 

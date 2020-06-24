@@ -25,7 +25,7 @@
 
 
 
-#define _ADC_VAL_CNT  (2)
+#define _ADC_VAL_CNT  (1)
 
 static u32 _adcArr[_ADC_VAL_CNT];
 static u32 _adcVal;
@@ -53,14 +53,31 @@ static void _adcValIn( u32 val )
 	{
 		_adcIndex = 0;
 
-		//_adcVal = ( _adcArr[0] + _adcArr[1] + _adcArr[2] ) / 3;
-		_adcVal = ( _adcArr[0] + _adcArr[1] ) / 2;
+		if( _ADC_VAL_CNT == 1 )
+		{
+			_adcVal = _adcArr[0];
+		}
+		else if( _ADC_VAL_CNT == 2 )
+		{
+			_adcVal = ( _adcArr[0] + _adcArr[1] ) / 2;
+		}
+		else if( _ADC_VAL_CNT == 3 )
+		{
+			_adcVal = ( _adcArr[0] + _adcArr[1] + _adcArr[2] ) / 3;
+		}
 
 		//dprintf( "\r\nvbat=%d",_adcVal );
 
 		if( _adcVal  < _BATT_3D4_ADC )
+		{
 			gB1.battIsLow = 1;
-		
+		}
+
+		gB1.battReadFinish = 1;
+	}
+	else
+	{
+		devBattStart();
 	}
 	
 }
@@ -75,7 +92,7 @@ static void _adcStartCB( void )
 
 
 
-static void _battStart( void )
+void devBattStart( void )
 {
 	driAdcEnOpen();
 	timerStart( 6/TIMER_UNIT_MS,  1,  _adcStartCB );
@@ -84,7 +101,7 @@ static void _battStart( void )
 
 static void _vbattCB( void )
 {
-	_battStart();
+	devBattStart();
 }
 
 
@@ -92,9 +109,12 @@ void devVbattInit( void )
 {
 	#include "timer.h"
 
+	_adcIndex = 0;
+
 	driAdcFunSet( _adcValIn );
 
-	timerStart( VBATT_SCAN_GAP_MS/TIMER_UNIT_MS,  TIMER_REPEAT_FOREVER,  _vbattCB );
+	timerStart( VBATT_SCAN_GAP_MS/TIMER_UNIT_MS,  1,  _vbattCB );
+	//timerStart( VBATT_SCAN_GAP_MS/TIMER_UNIT_MS,  TIMER_REPEAT_FOREVER,  _vbattCB );
 }
 
 

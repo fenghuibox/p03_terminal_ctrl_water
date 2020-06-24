@@ -17,14 +17,19 @@
 #include "com_includes.h"
 
 
-#define CONFIG_DEF_CTRL_STATE                 (0)
-
-
+#define CONFIG_DEF_CTRL_STATE                   (0)
 
 #define CONFIG_DEF_CTRL_MODE                    (0)  // 0：命令控制模式  1：周期控制模式
 
 
-#define CONFIG_DEF_CMD_CTRL_OPEN_SEC           (60*5L)
+
+#ifdef DEV_DEBUG_ING
+	#define CONFIG_CTRL_OPEN_SEC_MIN         (  5 * 1 )       // 开水阀保持的时长 最小值
+	#define CONFIG_DEF_CMD_CTRL_OPEN_SEC     ( 30 * 1L)
+#else
+	#define CONFIG_CTRL_OPEN_SEC_MIN         ( 10 * 1 )       // fenghuiw 开水阀保持的时长 最小值
+	#define CONFIG_DEF_CMD_CTRL_OPEN_SEC     ( 60 *10L)
+#endif
 
 #define CONFIG_DEF_PERIOD_CTRL_OPEN_MINUTE      (1)
 #define CONFIG_DEF_PERIOD_CTRL_CLOSE_MINUTE    (60)

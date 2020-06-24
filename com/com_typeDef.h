@@ -215,6 +215,7 @@ typedef  int ( *FunN2sTxCB)( u8 *pBuf, u16 len );
 #define RTC_ARL_USED_PERIOD
 
 
+//#define DEV_DEBUG_ING
 
 
 //====== 模块 测试开关 (一般情况下，只开启一个 )======================
@@ -245,6 +246,7 @@ typedef  int ( *FunN2sTxCB)( u8 *pBuf, u16 len );
 //#define  TEST_COM_TIME
 
 
+//#define  TEST_MOD_CTRL
 
 
 

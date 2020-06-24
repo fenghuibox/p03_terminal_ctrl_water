@@ -13,6 +13,7 @@
 
 #include "cfg_com.h"
 
+#include "dbg_uart.h"
 
 
 
@@ -24,18 +25,19 @@ u32 cfgCfgVerGet( void ) //
 }
 
 
-u32 cfgCfgVerSet( u32 cfgVer )
+void cfgCfgVerSet( u32 cfgVer )
 {
     if( _stAppConfig.cfg_ver == cfgVer )
-        return cfgVer;
+        return;
 
+	_stAppConfig.cfg_ver = cfgVer;
     _cfgModify = 1;
-    return _stAppConfig.cfg_ver = cfgVer;
+
 }
 
-u32 cfgCfgVerDef( void )
+void cfgCfgVerDef( void )
 {
-    return cfgCfgVerSet( CONFIG_DEF_CFG_VER );
+    cfgCfgVerSet( CONFIG_DEF_CFG_VER );
 }
 
 
@@ -43,35 +45,38 @@ u32 cfgCfgVerDef( void )
 //======dev sleep sec =====================================
 u32 cfgSleepSecGet( void ) //
 {
-	#if 1
-		return 10;// fenghuitest
+	#ifdef DEV_DEBUG_ING
+		return 10;
 	#else
     	return _stAppConfig.sleep_sec; 
 	#endif
 }
 
 
-u32 cfgSleepSecSet( u32 sec )
+void cfgSleepSecSet( u32 sec )
 {
     if( _stAppConfig.sleep_sec == sec )
-        return sec;
+        return;
 
-    _cfgModify = 1;
+	dprintf("WriteSleepSec %d", sec);
 
-    return _stAppConfig.sleep_sec = sec;
+    _stAppConfig.sleep_sec = sec;
+
+	_cfgModify = 1;
+	
 }
 
-u32 cfgSleepSecDef( void )
+void cfgSleepSecDef( void )
 {
-    return cfgSleepSecSet( CONFIG_DEF_SLEEP_SEC );
+    cfgSleepSecSet( CONFIG_DEF_SLEEP_SEC );
 }
 
 
 //======dev work sec =====================================
 u32 cfgWorkSecGet( void ) //
 {
-	#if 1
-		return 0;// fenghuitest
+	#ifdef DEV_DEBUG_ING
+		return 60*60;
 	#else
     	return _stAppConfig.work_sec;
 	#endif
@@ -80,19 +85,23 @@ u32 cfgWorkSecGet( void ) //
 }
 
 
-u32 cfgWorkSecSet( u32 sec )
+void cfgWorkSecSet( u32 sec )
 {
     if( _stAppConfig.work_sec == sec )
-        return sec;
+        return;
 
+    _stAppConfig.work_sec = sec;
+
+	
+	dprintf("WriteWorkSec %d", sec);
+	
     _cfgModify = 1;
-
-    return _stAppConfig.work_sec = sec;
+	
 }
 
-u32 cfgWorkSecDef( void )
+void cfgWorkSecDef( void )
 {
-    return cfgWorkSecSet( CONFIG_DEF_WORK_SEC );
+    cfgWorkSecSet( CONFIG_DEF_WORK_SEC );
 }
 
 

@@ -55,3 +55,39 @@ void ctrlCmdCtrlInit( void )
 
 
 
+
+#ifdef TEST_MOD_CTRL
+
+#include "dbg_uart.h"
+
+static void _timerCB( void )
+{
+	static u16 _cnt=0;
+	
+	if( (_cnt++ & 1) == 0 )
+	{
+		dprintf(" \r\n %d start ctrl close", _cnt/2 + 1);
+		
+		ctrlCmdCtrlClose();
+	}
+	else
+	{
+		dprintf(" \r\n %d start ctrl open", _cnt/2 + 1);
+		ctrlCmdCtrlOpen();
+	}
+}
+
+
+
+
+void testCtrlCmdCtrl( void )
+{
+
+	timerStartSec( 10, TIMER_REPEAT_FOREVER, _timerCB );
+
+}
+
+#endif
+
+
+

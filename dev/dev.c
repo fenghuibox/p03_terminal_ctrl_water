@@ -19,7 +19,7 @@
 
 
 #include "dev.h"
-
+#include "sn_master_state.h"
 #include "zgb_state.h"
 #include "cfg.h"
 #include "sn.h"
@@ -81,7 +81,7 @@ static void _10msCB( void )
 
 	if( (_10msCnt & 7 ) == 0 )// 80ms
 	{
-		configUpdate();
+		//configUpdate(); // fenghuiw
 	}
 
 	if( (_10msCnt & 15 ) == 0  )// 160 ms
@@ -176,13 +176,19 @@ static void _devStartCB( void )
 	// 启动时要发送的数据帧
 	#include "f_frame_comm.h"
 	
-	//gstN2S.reboot = 1; 
-	gstN2S.heartbeat = 1;  // fenghuiw
+	gstN2S.reboot = 1; 
+	// gstN2S.heartbeat = 1;  // fenghuiw
 #endif
 
 }
 
 
+static void _writeFlashCB( void )
+{
+	configUpdate(); // test
+
+
+}
 
 
 
@@ -199,6 +205,8 @@ void devInit( void )
 
 	
 	timerStartSec(1, 1, _devStartCB );
+	
+	timerStartSec(10, TIMER_REPEAT_FOREVER, _writeFlashCB );
 
 
 	#ifdef USE_IWDG

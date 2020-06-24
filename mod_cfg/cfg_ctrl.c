@@ -12,6 +12,7 @@
 #include "cfg_ctrl.h"
 
 #include "cfg_com.h"
+#include "dbg_uart.h"
 
 
 //====== ctrl state  =====================================
@@ -30,6 +31,9 @@ void cfgCtrlStateSet( u32 ctrlState )
         return;
 
    _stAppConfig.ctrl_state = ctrlState;
+
+   
+   dprintf("WriteCtrlState %d", ctrlState);
    
    _cfgModify = 1;
    
@@ -58,6 +62,9 @@ void cfgCtrlModeSet( u32 ctrlMode )
         return;
 
    _stAppConfig.ctrl_mode = ctrlMode;
+
+   
+   dprintf("WriteCtrlMode %d", ctrlMode);
    
    _cfgModify = 1;
    
@@ -75,14 +82,32 @@ void cfgCtrlModeDef( void )
 //====== ctrl open sec  =====================================
 u32 cfgCtrlOpenSecGet( void ) //
 {
-    return _stAppConfig.cmd_ctrl_open_sec;
+	#ifdef DEV_DEBUG_ING
+		return 15;
+	#else
+	
+		if( _stAppConfig.cmd_ctrl_open_sec < CONFIG_CTRL_OPEN_SEC_MIN )
+		{
+			_stAppConfig.cmd_ctrl_open_sec = CONFIG_CTRL_OPEN_SEC_MIN;
+		}
+		
+		return _stAppConfig.cmd_ctrl_open_sec;
+		
+	#endif
 }
 
 
 void cfgCtrlOpenSecSet( u32 ctrlOpenSec )
 {
+	if( ctrlOpenSec < CONFIG_CTRL_OPEN_SEC_MIN )
+	{
+		ctrlOpenSec = CONFIG_CTRL_OPEN_SEC_MIN;
+	}
+
     if( _stAppConfig.cmd_ctrl_open_sec == ctrlOpenSec )
         return;
+
+	dprintf("WriteOpenSec %d", ctrlOpenSec );
 
    _stAppConfig.cmd_ctrl_open_sec = ctrlOpenSec;
    
@@ -107,7 +132,11 @@ void cfgCtrlOpenStartSet( u32 ctrlOpenStartSec )
     if( _stAppConfig.cmd_ctrl_start_sec == ctrlOpenStartSec )
         return;
 
+	
+
    _stAppConfig.cmd_ctrl_start_sec = ctrlOpenStartSec;
+   
+   dprintf("WriteOpenStart %d", ctrlOpenStartSec);
    
    _cfgModify = 1;
    

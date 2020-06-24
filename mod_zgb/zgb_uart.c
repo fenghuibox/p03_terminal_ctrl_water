@@ -38,7 +38,7 @@
 #include "dev_state.h"
 
 
-//#define ZGB_UART_PRINT 
+#define ZGB_UART_PRINT 
 
 
 #define ZGB_Q_LEN  (256)
@@ -51,7 +51,7 @@ static UART_PACK  _stUartPackZgb;
 
 //==========================================================================
 
-static void _txData( void )
+static void _zgbTxData( void )
 {
 	QUEUE_ElemType  elem;
 	
@@ -141,7 +141,7 @@ static void _zgbUartPollCB( void )
 					{
 						queueEn( _stUartPackZgb.pTxQ, *pTempU8 );
 					}
-					_txData();
+					_zgbTxData();
 				}
 			}
 		}

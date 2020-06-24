@@ -167,7 +167,11 @@ static void _driToSleep(void)
 
 
 
-
+void driContinueSleep( void )
+{
+	///< 进入低功耗模式——深度休眠（使能唤醒后退出中断自动休眠特性）
+    Lpm_GotoDeepSleep( FALSE );
+}
 
 void driToSleep( void )
 {	

@@ -34,9 +34,9 @@
 //====== aes switch  =====================================
 extern u8 cfgAesSwitchGet( void ); //
 
-extern u8 cfgAesSwitchSet( u8 s );
+extern void cfgAesSwitchSet( u8 s );
 
-extern u32 cfgAesSwitchDef( void );
+extern void cfgAesSwitchDef( void );
 
 
 

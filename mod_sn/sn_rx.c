@@ -127,6 +127,13 @@ static int _snRx( u8 *pBuf, u8 len )
 		
 		if( rspFrameLenIsOk( pFrame[RSP_FRAME_OFFSET_LEN]) == FALSE) // 不是应答帧
 		{
+			if( snN2sCurIdIsCtrlPackGet() && pFrame[TXT_FRAME_OFFSET_ACTION] == TXT_FRAME_ACTION_REPORT_ACK_GET )
+			{
+				n2sTxCmdOnRxOkRsp(); // note1 :  收到 ctrl_pack_get 的 报告 模拟接收到ACK
+			}
+
+			//paraCtrlPackRptExe( pFrame );
+
 			snRxQueueEn( pFrame, frameLen );
 		}
 		else// 是应答帧
@@ -143,7 +150,7 @@ static int _snRx( u8 *pBuf, u8 len )
 				}
 				else
 				{
-					// 是网关当前命令的ACK
+					// 是节点当前命令的ACK
 					n2sTxCmdOnRxOkRsp();
 				}
 			}
@@ -242,6 +249,9 @@ void _snRxTimerCB( void )
 	snRxQueueDe(_pFrame, &_len );
 
 	snOnRx( _pFrame, _len );
+
+	#include "dev_state.h"
+	devHeartbeatUpdate();
 	
 }
 

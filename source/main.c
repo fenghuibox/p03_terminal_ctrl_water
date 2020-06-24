@@ -19,6 +19,8 @@
 
 
 
+
+
 static void _test( void )
 {
 	#ifdef RTC_ARL_USED_PERIOD
@@ -75,6 +77,12 @@ static void _test( void )
 	#ifdef TEST_CTRL_OUT
 		testCtrlOut();
 	#endif		
+
+
+	
+	#ifdef TEST_MOD_CTRL
+		testCtrlCmdCtrl( );
+	#endif
 }
 
 

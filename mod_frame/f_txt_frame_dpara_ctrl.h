@@ -93,6 +93,7 @@ void paraCtrlPackSet( u8 *pPara );
 
 
 int paraCtrlPackGet( u8 *pPara );
+int paraCtrlPackToServerGet( u8 *pPara );
 
 
 u8 para_ctrl_pack_exe( ST_FRAME *pstFrame );
@@ -100,6 +101,7 @@ u8 para_ctrl_pack_exe( ST_FRAME *pstFrame );
 
 
 
+//void paraCtrlPackRptExe( ST_FRAME *pstFrame );
 
 
 

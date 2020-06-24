@@ -46,6 +46,7 @@
 
 
 
+extern void devBattStart( void );
 
 extern u32 devVbattValGet( void );
 

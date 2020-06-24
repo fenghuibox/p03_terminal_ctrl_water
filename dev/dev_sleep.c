@@ -16,6 +16,7 @@
 
 #include "dev_state.h"
 #include "dev_sleep.h"
+#include "dev_vbatt.h"
 
 #include "dbg_uart.h"
 #include "zgb_io.h"
@@ -29,16 +30,43 @@
 
 
 
+static u32 _devSleepSec;
 
 
 
 
+
+void devSleepSecSet( u32 sec )
+{
+	_devSleepSec = sec;
+}
+
+
+static void _sleepSecDecGap( void )
+{
+	if( _devSleepSec > DRI_RTC_SLEEP_SEC_GAP )
+	{
+		_devSleepSec -= DRI_RTC_SLEEP_SEC_GAP;
+	}
+	else
+	{
+		_devSleepSec = 0;
+	}
+}
 
 static void _toSleep( void )
 {
 	// --- to sleep ------
-	
+
 	driToSleep();
+	_sleepSecDecGap();
+	
+	
+	while( _devSleepSec != 0 )
+	{
+		driContinueSleep();
+		_sleepSecDecGap();
+	}
 
 
 	// --- wakeup ----------	
@@ -52,8 +80,12 @@ static void _toSleep( void )
 
 	modIoZgbWakeup();
 
+	devBattStart();
+	ctrlOpenSecPoll();
+
 	
 	dprintf("w"); // wakeup
+	//n2sPrint();
 	
 	devOnEvent( DEV_EVENT_SLEEP_END, NULL );
 	
@@ -183,6 +215,8 @@ void devSleepPoll( void ) // 20ms / times
 void devSleepInit( void )
 {
 	//_workSecCnt = 0;
+
+	
 	
 }
 

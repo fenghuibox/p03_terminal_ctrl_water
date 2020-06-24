@@ -50,6 +50,16 @@ static EN_N2S_SEND_CMD_ID _n2sCurId      = N2S_SEND_CID_NULL ; // 当前发送的ID
 
 
 
+
+u8 snN2sCurIdIsCtrlPackGet( void )
+{
+	if( _n2sCurId == N2S_SEND_CID_CTRL_PACK_GET )
+		return TRUE;
+
+	return FALSE;
+}
+
+
 u8 snN2sIsRspCurTxCmdSid( u8 sid )
 {
 	if( _stRfTxFrame.sid == sid )
@@ -100,6 +110,8 @@ static void _n2sClearCur( void ) // 清除当前发送的数据项
 {
 	snN2sOnRsp();
 	_n2sCurId = N2S_SEND_CID_NULL;
+
+	//dprintf("\r\n--_n2sCurId=0--" );
 }
 
 
@@ -213,12 +225,28 @@ void n2sCtrlPackGet( void )
 
 
 
+void n2sPrint( void )
+{
+	dprintf("\r\n_n2sCurId=%d", _n2sCurId );
+
+}
+
 static int _n2s( u8 isRedo )
 {
-	if( _n2sCurId ==  N2S_SEND_CID_NULL )
+	u32 temp;
+
+	temp = _n2sCurId;
+
+	//dprintf("_n2s");
+
+	//n2sPrint();
+
+	
+	if( temp ==  N2S_SEND_CID_NULL )
 		return FALSE;
 
-	return _n2sArr[ (u8)_n2sCurId ]( isRedo );
+
+	return _n2sArr[ temp ]( isRedo );
 }
 
 
@@ -240,7 +268,7 @@ void snN2sOnRsp( void )
 		gB1.battTxFinish = 1;
 	}*/
 
-	_rspArr[ (u8)_n2sCurId ]();
+	_rspArr[ _n2sCurId ]();
 	
 
 	if( devStateIsReadCtrlInfo() )
@@ -265,7 +293,8 @@ u8 n2sCB( void ) //
 		
 		comU8Dec( &_n2sReDoCnt );
 		
-		if( _n2sReDoCnt == 0 && _n2sCurId != N2S_SEND_CID_REBOOT )// 重发次数用完了
+		//if( _n2sReDoCnt == 0 && _n2sCurId != N2S_SEND_CID_REBOOT )// 重发次数用完了
+		if( _n2sReDoCnt == 0 )// 重发次数用完了
 		{
 			_n2sClearCur(); 
 
@@ -370,13 +399,21 @@ int _txtFrameExe( u8 *pFrame, u8 len )
 	
 	if( dpackExe( &_stExeFrame ) == TRUE )
 	{
-		_txtFrameExeToRsp( RSP_FRAME_VAL_ACK, _stExeFrame.sid);	
+		if(_stExeFrame.action == TXT_FRAME_ACTION_REPORT_ACK_GET  )
+		{
+			rst = TRUE;
+			txtFrameExeStateOnEvent( TXT_FRAME_EXE_EVENT_EXE_OK ); // note2 : 收到 ctrl_pack_get 的 报告，执行完成后，不回复ACK
+		}
+		else
+		{
+			_txtFrameExeToRsp( RSP_FRAME_VAL_ACK, _stExeFrame.sid);	
 
-		rst = TRUE;
+			rst = TRUE;
 
-		txtFrameExeStateOnEvent( TXT_FRAME_EXE_EVENT_EXE_OK );
+			txtFrameExeStateOnEvent( TXT_FRAME_EXE_EVENT_EXE_OK );
 
-		//dprintf("_dpack exe ok_");
+			//dprintf("_dpack exe ok_");
+		}
 	}
 	else
 	{

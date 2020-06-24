@@ -24,11 +24,17 @@ typedef struct
 	u8 ctrlPackTx:1;     // 1:发送了ctrl_pack_get包     0: 没有
 	u8 ctrlPackFinish:1; // 1:ctrl_pack_get包处理完成   0:没有完成
 	
+	u8 ctrlOpenTimeoutClose:1;      // 程序因开的时长到了而关闭水阀
+	
 	u8 zgbSleepTx:1;    // 1:执行了 modIoZgbSleep   0: 没有
 	u8 zgbSleepFinish:1;// 1:执行了完成             0: 没有
 
 	u8 zgbWakeupTx:1;    // 1:执行了 modIoZgbWakeup  0: 没有
 	u8 zgbWakeupFinish:1;// 1:执行了完成             0: 没有	
+
+	u8 battRead:1;          // 1:执行了读取电压     0: 没有	
+	u8 battReadFinish:1;    // 1:执行了完成         0: 没有	
+	
 	
 	u8 txtFrameExeOKhaveRspReport:1; // 执行完帧后，需要等待应答的报告
 
@@ -43,7 +49,6 @@ typedef struct
 	u8 isPowerOn:1; // 
 
 	
-	//u8 adcHaveVal:1; // 
 
 	u8 inited; // 初始化是否完成了  0:没有完成  1:完成
 

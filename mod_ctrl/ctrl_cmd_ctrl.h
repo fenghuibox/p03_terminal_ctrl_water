@@ -32,5 +32,22 @@ extern u8 ctrlCmdCtrlStateIsOpen( void );
 
 extern  void ctrlCmdCtrlInit( void );
 
+
+
+
+
+
+
+#ifdef TEST_MOD_CTRL
+
+
+extern void testCtrlCmdCtrl( void );
+
+
+#endif
+
+
+
+
 #endif
 

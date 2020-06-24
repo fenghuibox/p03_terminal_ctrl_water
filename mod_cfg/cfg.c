@@ -144,7 +144,7 @@ static void _cfgSet( void )
 
 
 	if(gB1.inited == 1)
-    	dprintf("var write flash,pageId=%d cnt=%d",  cfgPageIdGet(), _stAppConfig.write_cnt); 
+    	dprintf("wflash,PId=%d cnt=%d",  cfgPageIdGet(), _stAppConfig.write_cnt); 
 	
 
     driFlashEepWrite( cfgPageIdGet(), 0, pTemp, sizeof(ST_CONFIG)/4 + 1 );
@@ -207,6 +207,8 @@ u8 cfgIsIdle( void )
 #include "timer.h"
 #include "dbg_uart.h"
 
+
+#if 0
 static void _testConfigTimerCB( void )
 {
 	//GPIOB->ODR ^= GPIO_PIN_5;
@@ -222,20 +224,70 @@ void testConfig( void )
 	configUpdate();
 	configLoad();
  
-	if( ver == cfgCfgVerGet() )
+	if( ver == _stAppConfig.cfg_ver )
 	{
 		//timerStartSec( 1, TIMER_REPEAT_FOREVER, _testConfigTimerCB ); // OK
-		dprintf( "\r\n write flash ok" );
+		dprintf( "\r\n write flash ok\r\n" );
 	}
 	else
 	{
 		//timerStart( 200/TIMER_UNIT_MS, TIMER_REPEAT_FOREVER, _testConfigTimerCB ); // NG
-		dprintf( "\r\n write flash ng" );
+		dprintf( "\r\n write flash ng\r\n" );
 	}
 
 	
 	
 }
+
+#endif
+
+
+#if 1
+
+static u32 _ver = 1;
+
+
+static void _testConfigTimerCB( void )
+{
+	dprintfBuf( "@", (u8 *)&_stAppConfig, sizeof(ST_CONFIG), 0 );
+}
+
+
+
+void testConfig( void )
+{
+	dprintfBuf( "*", (u8 *)&_stAppConfig, sizeof(ST_CONFIG), 0 );
+
+
+   // _stAppConfig.flash_is_new = CONFIG_DEF_FLASH_IS_NEW;
+
+    _stAppConfig.cfg_ver   = 3;
+	
+    _stAppConfig.sleep_sec = 5;
+    _stAppConfig.work_sec  = 30;
+	
+    _stAppConfig.ctrl_mode = 1;
+    _stAppConfig.cmd_ctrl_open_sec = 15;
+
+	
+    _stAppConfig.period_ctrl_open_minute  = 25;
+    _stAppConfig.period_ctrl_close_minute = 35;
+
+
+    _stAppConfig.aes_switch = 1;
+    memset( _stAppConfig.aes_key, 0, EEP_LEN_CFG_AES_KEY );
+
+	_cfgModify = 1;
+
+
+	timerStartSec( 4,  2,  _testConfigTimerCB );
+
+	
+	
+}
+
+#endif
+
 
 
 

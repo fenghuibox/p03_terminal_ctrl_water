@@ -335,11 +335,13 @@ typedef struct
 	u8 head;     // 
 	u8 len;
 	u8 ver;
-	EN_TXT_FRAME_ACTION action;
+	//EN_TXT_FRAME_ACTION action;
+	u8 action;
 	u8 check;
 	u8 pMac[MAC_ADDR_LEN];  // mac
 	u8 sid;      // 会话ID
-	EN_TXT_FRAME_PACK_TYPE packType;
+	//EN_TXT_FRAME_PACK_TYPE packType;
+	u8 packType;
 	u8 *pPack;   // 数据包
 	u8 tail;
 }ST_TXT_FRAME; 
@@ -347,7 +349,7 @@ typedef struct
 
 
 //===================================================================================
-//==============frame.h==========================================================
+//==============  frame.h  ==========================================================
 //===================================================================================
 /*
 内容帧格式（版本号：0）			

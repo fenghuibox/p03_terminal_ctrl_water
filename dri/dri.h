@@ -15,6 +15,8 @@ extern void driInit( void );
 
 //----------sleep and wakeup---------------------------------------------------------
 
+void driContinueSleep( void );
+
 void driToSleep( void );
 void driOnWakeup( void );
 

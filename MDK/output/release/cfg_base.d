@@ -24,4 +24,5 @@
   ../com/com_buf.h ../com/com_str.h ../com/com_atoi.h ../com/com_bit.h \
   ../com/com_delay.h ../com/com_memory.h ../com/com_var.h \
   ../com/com_sqList.h ../com/com_queue.h ../com/com_queue_val_len.h \
-  ../com/com_mac.h ../mod_cfg/cfg_com.h ../mod_cfg/cfg_aes.h
+  ../com/com_mac.h ../mod_cfg/cfg_com.h ../mod_cfg/cfg_aes.h \
+  ../mod_dbg\dbg_uart.h

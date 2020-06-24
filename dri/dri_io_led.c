@@ -16,7 +16,7 @@
 
 
 #define LED_1_PORT  ( GpioPortA )
-#define LED_1_PIN   ( GpioPin2 )
+#define LED_1_PIN   ( GpioPin4 )
 #define LED_1_AF    ( GpioAf0 )
 
 

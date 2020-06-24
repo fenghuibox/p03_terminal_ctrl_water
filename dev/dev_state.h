@@ -19,12 +19,22 @@
 #include "com_includes.h"
 
 
+#ifdef DEV_DEBUG_ING
 
-
-
+#define DEV_WAIT_SEC_HEARTBEAT         (  5 * 1 )       // 调试状态下 空闲时发送心跳间隔时间 秒
 #define DEV_WAIT_SEC_DEBUG_MIN         ( 20 * 1 )       // 调试最小的秒数
-
 #define DEV_WAIT_SEC_POWER_ON          ( 30 * 1 )       // 上电工作3分钟
+
+#else
+
+#define DEV_WAIT_SEC_HEARTBEAT         ( 10 * 1 )       // 调试状态下 空闲时发送心跳间隔时间 秒
+#define DEV_WAIT_SEC_DEBUG_MIN         ( 30 * 1 )       // 调试最小的秒数
+#define DEV_WAIT_SEC_POWER_ON          ( 60 * 3 )       // 上电工作3分钟
+#endif
+
+
+
+
 
 #define DEV_WAIT_SEC_READ_CTRL_INFO           (3)       // 工作 到 空闲 的过度时间
 #define DEV_WAIT_SEC_UART_PASS         ( 60 * 5 )       // 
@@ -109,7 +119,7 @@ typedef enum
 	DEV_EVENT_ERR_TIMEOUT,
 	DEV_EVENT_DBG_TIMEOUT,
 	DEV_EVENT_UARTPASS_TIMEOUT,
-
+	
    //-----------------------------------
 	DEV_EVENT_WARNING = 51,
 	//DEV_EVENT_WARNING_PTL_ERR,
@@ -141,6 +151,10 @@ typedef enum
 	DEV_EVENT_MASTER_STATE_TO_OK,
 
 }EN_DEV_EVENT;
+
+
+extern void devHeartbeatUpdate( void );
+
 
 extern u8 devErrIsHaveZigbee( void );
 extern u8 devErrIsHaveMaster( void );

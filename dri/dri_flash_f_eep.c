@@ -64,6 +64,17 @@ void driFlashEepReadPage( u32 pageId, u32 *pOutBuf )
 static int _driFlashEepWritePage( u32 pageId, u32 *pInBuf )
 {
 #if 1
+    u32 pFlash;
+    
+    pFlash = FLASH_PAGE_SIZE * pageId;
+
+
+    ///< FLASH目标扇区擦除
+    while( Ok != Flash_SectorErase(pFlash) )
+    {
+        ;
+    }
+
 
 	if( Flash_WritePage( pageId, pInBuf ) == Ok )
 		return TRUE;
@@ -78,9 +89,9 @@ static int _driFlashEepWritePage( u32 pageId, u32 *pInBuf )
 
     pBuf = pInBuf;
 
-    for( i = _FLASH_TEMP_BUF_U32_CNT; i != 0; i--, pFlash++ )
+    for( i = _FLASH_TEMP_BUF_U32_CNT; i != 0; i--, pFlash++, pBuf++ )
     {
-        if ( Flash_WriteWord( (U32)pFlash, *pBuf++) == Ok )
+        if ( Flash_WriteWord( (U32)pFlash, *pBuf) == Ok )
         {
 
         }
@@ -131,6 +142,8 @@ static int _driFlashEepWrite( u32 pageId, u32 index, u32 *pBuf, u32 len )
 // len    : 32位数的个数
 int driFlashEepWrite( u32 pageId, u32 index, u32 *pBuf, u32 len )
 {
+	#include "dbg_uart.h"
+
     int i;
 
     for( i = 4; i != 0; i-- )
@@ -138,6 +151,9 @@ int driFlashEepWrite( u32 pageId, u32 index, u32 *pBuf, u32 len )
         if( _driFlashEepWrite(pageId, index, pBuf, len) != FALSE )
             return TRUE;
     }
+
+	if(gB1.inited == 1)
+		dprintf("\r\nflash write ERR");
 
     return FALSE;
 }

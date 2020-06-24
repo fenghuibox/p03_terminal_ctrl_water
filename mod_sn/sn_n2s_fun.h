@@ -754,8 +754,7 @@ static int _n2s_uart485(  u8 isRedo )
 
 static int _n2s_ctrl_pack_get( u8 isRedo )
 {
-	u8 pVal[2];
-	//int len;
+	int len;
 	
 	if( gstN2S.ctrl_pack_get == 0 )
 		return FALSE;
@@ -766,21 +765,16 @@ static int _n2s_ctrl_pack_get( u8 isRedo )
 		return TRUE;
 	}
 
-	//len = paraCtrlPackGet( _stRfTxFrame.pBuf + DPACK_OFFSET_PARA );
-
+	len = paraCtrlPackToServerGet( _stRfTxFrame.pBuf + DPACK_OFFSET_PARA );
 	
-	paraBatteryGet( pVal );
+	dpackCreate2( DPACK_PORT_ID_SELF, 0, DPACK_PARA_ID_CTRL_PACK,  len );
 	
-	dpackCreate( DPACK_PORT_ID_SELF, 0, DPACK_PARA_ID_BATTERY, pVal, 2, _stRfTxFrame.pBuf);
-	
-	//dpackCreate2( DPACK_PORT_ID_SELF, 0, DPACK_PARA_ID_CTRL_PACK,  0 );
-
 	_autoReportSid++;
-	txtFrameCreateN2S( TXT_FRAME_ACTION_GET, _autoReportSid, &_stRfTxFrame);
+	txtFrameCreateN2S( TXT_FRAME_ACTION_GET, _autoReportSid, &_stRfTxFrame );
 
 	_n2sTx( (u8 *)&_stRfTxFrame, &_stRfTxFrame.len );
 	
-	txtFrameExeStateOnEvent( TXT_FRAME_EXE_EVENT_RSP_REPORT ); // fenghuiw  TXT_FRAME_EXE_EVENT_RSP_REPORT ?
+	txtFrameExeStateOnEvent( TXT_FRAME_EXE_EVENT_RSP_REPORT );// fenghuiw  TXT_FRAME_EXE_EVENT_RSP_REPORT ?
 	
 	return TRUE;
 

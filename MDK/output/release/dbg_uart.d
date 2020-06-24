@@ -25,4 +25,5 @@
   ../com/com_sqList.h ../com/com_queue.h ../com/com_queue_val_len.h \
   ../com/com_mac.h ../dri\dri_uart_debug.h ../mod_timer\timer.h \
   ../dri\dri_timer.h ../uart_pack\uart_pack.h ../mod_dbg/dbg_uart.h \
-  ../mod_dbg/dbg_cmd.h
+  ../mod_dbg/dbg_cmd_uart_pass.h ../mod_zgb\zgb_uart.h \
+  ../dev\dev_state.h ../mod_dbg/dbg_cmd.h

@@ -16,9 +16,10 @@
 #include "uart_pack.h"
 
 #include "dbg_uart.h"
+#include "dbg_cmd_uart_pass.h"
 
-//#include "zgb_uart.h"
-//#include "dev_state.h"
+#include "zgb_uart.h"
+#include "dev_state.h"
 
 
 #define DBG_Q_LEN  (128)
@@ -244,10 +245,10 @@ void dprintf(const char *pFormat, ...)
 
 
 	//- start ----- 透传时不打印任何信息 ----------------------
-	#if 0// fenghuiw
+
 	if( devStateIsUartPass() ) 
 		return;
-	#endif
+
 	//-- end ---------------------------------------------------
 
 
@@ -311,7 +312,7 @@ static void _dbgUartRxCB( u8 *str,  u8 len )
 	
 	//dprintf( (const char *)str );
 	
-	#if 0 // fenghuiw //-----------------------------------
+	#if 1 // fenghuiw //-----------------------------------
 		if( debugCmd( str, len ) == TRUE )
 			return;
 		
@@ -319,9 +320,8 @@ static void _dbgUartRxCB( u8 *str,  u8 len )
 		{
 			if( debugPassIsZigbee() )
 			{
-				dbgUartTx(str, len); // 透传
+				zgbUartTx(str, len); // 透传
 			}
-
 		}
 		else
 		{
@@ -331,6 +331,8 @@ static void _dbgUartRxCB( u8 *str,  u8 len )
 
 	#else//-----------------------------------
 
+		// test
+	
 		if( debugCmd( str, len ) == TRUE )
 			return;
 		
