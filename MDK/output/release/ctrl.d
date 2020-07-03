@@ -27,4 +27,5 @@
   ../com\com_time.h ../mod_cfg\cfg_ctrl.h ../mod_timer\timer.h \
   ../dri\dri_timer.h ../mod_ctrl/ctrl.h ../mod_ctrl/ctrl_mode.h \
   ../mod_ctrl/ctrl_cmd_ctrl.h ../mod_ctrl/ctrl_cmd_ctrl_open_sec.h \
-  ../mod_ctrl/ctrl_period_ctrl.h ../mod_dbg\dbg_uart.h
+  ../mod_ctrl/ctrl_period_ctrl.h ../mod_dbg\dbg_uart.h \
+  ../dev\dev_state.h

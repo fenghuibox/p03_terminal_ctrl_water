@@ -31,6 +31,7 @@ extern void dbgUartInit( void );
 extern void debugUartTxPass( u8 *str,  u8 len );
 
 
+extern u8 dbgUartIsIdle( void );
 
 
 #ifdef TEST_MOD_DBG_UART

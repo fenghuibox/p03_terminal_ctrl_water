@@ -196,7 +196,7 @@ static void _rtcDateTimeInit( void )
 
 	#ifdef RTC_ARL_USED_PERIOD	
     	RtcInitStruct.rtcPrdsel.rtcPrdsel = RtcPrdx;         // 周期中断类型PRDX
-    	RtcInitStruct.rtcPrdsel.rtcPrdx   = RTC_PRDX_5_S;    // 6S 产生周期中断
+    	RtcInitStruct.rtcPrdsel.rtcPrdx   = RTC_PRDX_5_S;    // RTC_PRDX_5_S 产生周期中断
 	#else
     	RtcInitStruct.rtcPrdsel.rtcPrdsel = RtcPrds;         //周期中断类型PRDS
     	RtcInitStruct.rtcPrdsel.rtcPrds   = RtcNone;           //不产生周期中断

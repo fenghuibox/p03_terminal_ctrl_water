@@ -208,7 +208,7 @@ static void _ioZgbDetectInit(void)
 
 u8 driZgbAckGet( void )
 {
-	if( Gpio_ReadOutputIO(ZGB_ACK_PORT, ZGB_ACK_PIN) == 0 )
+	if( Gpio_GetInputIO(ZGB_ACK_PORT, ZGB_ACK_PIN) == 0 )
 		return 0;
 
 	return 1;

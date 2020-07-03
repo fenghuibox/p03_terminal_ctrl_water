@@ -39,9 +39,9 @@ typedef enum
 
 static EN_SN_CH _ch; 
 
-#define SN_CH_STATE_ZGB    (0)
-#define SN_CH_STATE_485    (1)
-#define SN_CH_STATE_DEF   (SN_CH_STATE_485)
+#define SN_CH_STATE_ZGB    (1)
+#define SN_CH_STATE_485    (0)
+#define SN_CH_STATE_DEF    (SN_CH_STATE_ZGB)
 
 
 
@@ -75,12 +75,15 @@ static void _chSet( u8 ch )
 	{
 		snN2sTxCBset( zgbUartTx );
 		_ch = SN_CH_ZGB;
+		dprintf("ch=zgb");
 	}
 	else
 	{
 		//snN2sTxCBset( m485UartTx );
 		_ch = SN_CH_485;
+		dprintf("ch=485");
 	}
+
 }
 
 

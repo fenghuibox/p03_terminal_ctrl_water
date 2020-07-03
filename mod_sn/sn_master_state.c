@@ -28,8 +28,12 @@ static EN_MASTER_STATE _masterState;
 
 void modMasterStateSet( EN_MASTER_STATE s )
 {
-	if( devStateIsDbg() == FALSE ) // 只有 DEBUG 时才响应
-		return;
+	if( devStateIsNormal() )
+	{
+		if( devStateIsDbg() == FALSE ) // 只有 DEBUG 时才响应
+			return;
+	}
+
 
 	if( _masterState == s )
 		return;
@@ -64,9 +68,12 @@ void modMasterStatePoll( void ) //
 {	
 	#include "f_frame_comm.h"
 
-	
-	if( devStateIsDbg() == FALSE ) // 只有 DEBUG 时才响应
-		return;
+
+	if( devStateIsNormal() )
+	{
+		if( devStateIsDbg() == FALSE ) // 只有 DEBUG 时才响应
+			return;
+	}
 
 	if( devStateIsMasterErr() )
 	{

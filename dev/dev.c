@@ -34,7 +34,7 @@
 
 
 
-
+#define FLASH_WRITE_GAP_SEC  ( 60 * 10 )
 
 
 static void _10msCB( void )
@@ -43,6 +43,7 @@ static void _10msCB( void )
 	#define _10_MS_CNT_MAX  (99) // 10 * 99 = 1000ms
 	
 	static u8 _10msCnt = _10_MS_CNT_MAX; 
+	static u16 _cfgWriteSecCnt = FLASH_WRITE_GAP_SEC;
 
 
 	if( _10msCnt != 0 )
@@ -81,7 +82,7 @@ static void _10msCB( void )
 
 	if( (_10msCnt & 7 ) == 0 )// 80ms
 	{
-		//configUpdate(); // fenghuiw
+		//configUpdate(); 
 	}
 
 	if( (_10msCnt & 15 ) == 0  )// 160 ms
@@ -93,7 +94,7 @@ static void _10msCB( void )
 	//--------- 1 sec -------------------
 	if( _10msCnt == 0 )
 	{
-		
+
 	}
 	else if( _10msCnt == 3 )
 	{
@@ -109,7 +110,15 @@ static void _10msCB( void )
 	}
 	else if( _10msCnt == 12 )
 	{
-		//configUpdate();
+		if( _cfgWriteSecCnt )
+		{
+			_cfgWriteSecCnt--;
+		}
+		else
+		{
+			_cfgWriteSecCnt = FLASH_WRITE_GAP_SEC;
+			configUpdate();
+		}
 	}	
 	else if( _10msCnt == 15 )
 	{
@@ -172,12 +181,12 @@ static void _10msCB( void )
 
 static void _devStartCB( void )
 {
-#if 1// fenghuiw
+#if 1
 	// 启动时要发送的数据帧
 	#include "f_frame_comm.h"
 	
 	gstN2S.reboot = 1; 
-	// gstN2S.heartbeat = 1;  // fenghuiw
+	// gstN2S.heartbeat = 1; 
 #endif
 
 }
@@ -206,7 +215,7 @@ void devInit( void )
 	
 	timerStartSec(1, 1, _devStartCB );
 	
-	timerStartSec(10, TIMER_REPEAT_FOREVER, _writeFlashCB );
+	//timerStartSec(10, TIMER_REPEAT_FOREVER, _writeFlashCB );
 
 
 	#ifdef USE_IWDG

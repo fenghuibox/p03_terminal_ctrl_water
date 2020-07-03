@@ -20,7 +20,6 @@
 void zgbInit( void )
 {
 
-
 #if 1 // fenghuiw
 	zgbIoInit();
 	

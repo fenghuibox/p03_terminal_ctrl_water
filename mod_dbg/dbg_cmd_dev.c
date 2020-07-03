@@ -10,15 +10,16 @@
  
 
 
-#if 0
+#if 1
+
 #include "com_includes.h"
-#include "mod_timer_tick.h"
+#include "timer.h"
 
 
-#include "mod_uart_debug.h"
+#include "dbg_uart.h"
 
 #include "dev_state.h"
-
+#include "cfg.h"
 
 
 //=================================================
@@ -29,22 +30,36 @@ const char strCmdDevHead[] =      "dev";
 
 
 
-const char strCmdDevOnceWorkSecGet[]  = "onceworksecget";
+const char strCmdDevCtrlInfoGet[]  = "infoget";
 
-
-const char strCmdDevOnceWorkSecSet[]     =  "onceworksecset";
-
-
+#define CMD_DEV_CTRL_INFO_GET_LEN  (7)
 
 
 
+/*
 
+正常/调试    1Byte |  0:正常  1：调试
+休眠时间     4Byte |  单位：秒
+命令控制     1Byte |  0:关  1：开
+开启时长     4Byte |  单位：秒
+是否重启记时 1Byte |  0:否  1：重启记时
+
+*/
 
 // str =
 u8 debugCmdDev( u8 *str,  u8 len )
 {
+
+	if( len == CMD_DEV_CTRL_INFO_GET_LEN )
+	{
+		if( memcmp( ( const char *)str, strCmdDevCtrlInfoGet, CMD_DEV_CTRL_INFO_GET_LEN ) == 0 )
+		{
+			dprintf("d/n=%d w=%d s=%d o=%d", gB1.isDebug, cfgWorkSecGet(), cfgSleepSecGet(), cfgCtrlOpenSecGet() );
+			return TRUE;
+		}
+	}
 	
-		
+
 
 
 	return FALSE;

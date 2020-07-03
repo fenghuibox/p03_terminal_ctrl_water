@@ -48,7 +48,7 @@ u32 cfgSleepSecGet( void ) //
 	#ifdef DEV_DEBUG_ING
 		return 10;
 	#else
-    	return _stAppConfig.sleep_sec; 
+	   return _stAppConfig.sleep_sec; 
 	#endif
 }
 
@@ -58,7 +58,7 @@ void cfgSleepSecSet( u32 sec )
     if( _stAppConfig.sleep_sec == sec )
         return;
 
-	dprintf("WriteSleepSec %d", sec);
+	dprintf("cfgSleepSec=%d", sec);
 
     _stAppConfig.sleep_sec = sec;
 

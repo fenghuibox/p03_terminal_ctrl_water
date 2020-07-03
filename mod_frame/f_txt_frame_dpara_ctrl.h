@@ -87,6 +87,9 @@ u8 para_period_ctrl_exe( ST_FRAME *pstFrame );
 
 // ------------- ctrl pack  -----------------------------------------
 
+void ctrlPackClear( void );
+
+u8 ctrlPackRxIsDbg( void );
 
 
 void paraCtrlPackSet( u8 *pPara );

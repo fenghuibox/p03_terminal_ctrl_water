@@ -28,9 +28,9 @@
   ../dri/dri_uart_zgb.h ../dri/dri_io_zgb.h ../dri/dri_io_ch.h \
   ../dri/dri_io_ctrl.h ../dri/dri_io_led.h ../dri/dri_adc.h \
   ../dri/dri_rtc.h ../com\com_time.h ../dri/dri.h ../dev/dev_state.h \
-  ../dev/dev_sleep.h ../dev/dev_vbatt.h ../mod_dbg\dbg_uart.h \
-  ../mod_zgb\zgb_io.h ../mod_sn\sn_ch.h ../mod_ctrl\ctrl.h \
-  ../mod_ctrl/ctrl_mode.h ../mod_ctrl/ctrl_cmd_ctrl.h \
+  ../dev/dev_sleep.h ../dev/dev_vbatt.h ../dev/dev_iwdg.h \
+  ../mod_dbg\dbg_uart.h ../mod_zgb\zgb_io.h ../mod_sn\sn_ch.h \
+  ../mod_ctrl\ctrl.h ../mod_ctrl/ctrl_mode.h ../mod_ctrl/ctrl_cmd_ctrl.h \
   ../mod_ctrl/ctrl_cmd_ctrl_open_sec.h ../mod_ctrl/ctrl_period_ctrl.h \
   ../mod_cfg\cfg.h ../mod_cfg/cfg_page_id.h ../mod_cfg/cfg_base.h \
   ../mod_cfg/cfg_aes.h ../mod_cfg/cfg_ctrl.h ../mod_zgb\zgb_uart.h \

@@ -88,17 +88,22 @@ static void _SystemClkInit_PLL48M_byXTH(void)
 
 static void _clkCtrl( boolean_t onOrOff ) // true: on  false :off
 {
-	Sysctrl_SetPeripheralGate(SysctrlPeripheralGpio,onOrOff);
+	if( onOrOff == TRUE )
+		Sysctrl_SetPeripheralGate(SysctrlPeripheralGpio,onOrOff);
 
 	Sysctrl_SetPeripheralGate(SysctrlPeripheralBaseTim,onOrOff);
 	
 	Sysctrl_SetPeripheralGate(SysctrlPeripheralUart0,onOrOff);
 	Sysctrl_SetPeripheralGate(SysctrlPeripheralUart1,onOrOff);
 
+	Sysctrl_SetPeripheralGate(SysctrlPeripheralLpUart0,onOrOff);
+	
+
 	Sysctrl_SetPeripheralGate(SysctrlPeripheralFlash,onOrOff);
 
 	#ifdef USE_IWDG
-		Sysctrl_SetPeripheralGate(SysctrlPeripheralWdt,onOrOff);
+		if( onOrOff == TRUE )
+			Sysctrl_SetPeripheralGate(SysctrlPeripheralWdt,onOrOff);
 	#endif
 
 	

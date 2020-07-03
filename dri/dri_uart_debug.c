@@ -159,7 +159,26 @@ void driUartDbgToSleep( void )
 {
     EnableNvic(        DBG_UART_IRQ_ID, DBG_UART_IRQ_LEVEL, FALSE );  // 1: 关 中断
                                                                       // 2: io = in_down  
-	                                                                  // 3: close clk	
+	                                                                  // 3: close clk
+
+	LPUart_DisableIrq( DBG_UART_HANDLE, LPUartRxIrq ); 	 ///<使能接收中断
+	LPUart_DisableIrq(  DBG_UART_HANDLE, LPUartTxIrq );	   ///<使能发送中断
+
+	/*
+    LPUartRenFunc    = 4u,    ///<0-TX; ///<1-非mode0模式代表RX&TX ,mode0模式代表RX;       
+    LPUartDmaRxFunc  = 16u,   ///<DMA接收功能   
+    LPUartDmaTxFunc  = 17u,   ///<DMA发送功能
+    LPUartRtsFunc    = 18u,   ///<硬件流RTS功能
+    LPUartCtsFunc    = 19u,   ///<硬件流CTS功能
+    LPUartHdFunc     = 22u,   ///<单线半双工功能    
+
+	*/
+	//LPUart_DisableFunc( DBG_UART_HANDLE, LPUartRenFunc );
+
+
+    Gpio_SetAfMode( DBG_TX_PORT, DBG_TX_PIN, GpioAf0 ); //
+    Gpio_SetAfMode( DBG_TX_PORT, DBG_RX_PIN, GpioAf0 ); //
+
 }
 
 void driUartDbgOnWakeup( void )
@@ -167,6 +186,26 @@ void driUartDbgOnWakeup( void )
 	                                                                  // 1: open clk
 	_dbgUartPortCfg();                                                // 2: io = init                                                                 
 	EnableNvic(		 DBG_UART_IRQ_ID, DBG_UART_IRQ_LEVEL, TRUE );     // 3: 开 中断
+
+    ///<LPUART 中断使能
+    LPUart_ClrStatus(  DBG_UART_HANDLE, LPUartRC );          ///<清接收中断请求
+    LPUart_ClrStatus(  DBG_UART_HANDLE, LPUartTC );          ///<清发送中断请求
+	
+
+	LPUart_EnableIrq( DBG_UART_HANDLE, LPUartRxIrq ); 	 ///<使能接收中断
+	LPUart_EnableIrq(  DBG_UART_HANDLE, LPUartTxIrq );	   ///<使能发送中断
+
+
+	/*
+	LPUartDmaRxFunc  = 16u,   ///<DMA接收功能	
+	LPUartDmaTxFunc  = 17u,   ///<DMA发送功能
+	LPUartRtsFunc	 = 18u,   ///<硬件流RTS功能
+	LPUartCtsFunc	 = 19u,   ///<硬件流CTS功能
+	LPUartHdFunc	 = 22u,   ///<单线半双工功能	
+	*/
+	//LPUart_EnableFunc( DBG_UART_HANDLE, LPUartRenFunc );
+
+	
 }
 
 

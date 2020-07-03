@@ -182,7 +182,6 @@ u8 txtFrameCheckIsOk( u8 *pFrame )
 
 
 
-#if 1 // fenghuiw
 
 
 //解帧出错时，是否回复
@@ -383,7 +382,5 @@ u8 txtFrameCreateG2N( EN_TXT_FRAME_ACTION action, u8 sid, ST_FRAME  *pFrame )
 	return TRUE;
 }
 
-
-#endif
 
 

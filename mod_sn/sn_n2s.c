@@ -49,7 +49,7 @@ static u8 _n2sReDoGapCnt = N2S_REDO_GAP_CNT ;  //
 static EN_N2S_SEND_CMD_ID _n2sCurId      = N2S_SEND_CID_NULL ; // 当前发送的ID
 
 
-
+u8 gN2sServerNgCnt = N2S_SERVER_NG_CNT;
 
 u8 snN2sCurIdIsCtrlPackGet( void )
 {
@@ -233,7 +233,11 @@ void n2sPrint( void )
 
 static int _n2s( u8 isRedo )
 {
+	
+
 	u32 temp;
+
+	
 
 	temp = _n2sCurId;
 
@@ -244,7 +248,6 @@ static int _n2s( u8 isRedo )
 	
 	if( temp ==  N2S_SEND_CID_NULL )
 		return FALSE;
-
 
 	return _n2sArr[ temp ]( isRedo );
 }
@@ -278,10 +281,15 @@ void snN2sOnRsp( void )
 }
 
 
+#include "ctrl.h" // 
+#include "f_txt_frame_dpara_ctrl.h"
 
 
 u8 n2sCB( void ) //
 {
+	if( ctrlIsIdle() == FALSE ) // fenghuiw
+		return FALSE;
+		
 	if( snN2sIsIng() ) // 正在发送中
 	{
 		if( _n2sReDoGapCnt != 0 ) 
@@ -299,6 +307,13 @@ u8 n2sCB( void ) //
 			_n2sClearCur(); 
 
 			modMasterStateSet( MASTER_STATE_NG );
+
+			if( gN2sServerNgCnt )
+			{
+				gN2sServerNgCnt--;
+			}
+
+			ctrlPackClear();
 			
 			dprintf("c" ); // redo clear
 		}
@@ -552,6 +567,8 @@ void snN2sInit( void )
 	_n2sReDoGapCnt = N2S_REDO_GAP_CNT ;  //
 
 	_funN2sTxCB = NULL;
+
+	gN2sServerNgCnt = N2S_SERVER_NG_CNT;
 
 }
 

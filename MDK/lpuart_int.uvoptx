@@ -118,7 +118,6 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>聂}</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -158,6 +157,26 @@
           <WinNumber>1</WinNumber>
           <ItemText>gstN2S</ItemText>
         </Ww>
+        <Ww>
+          <count>1</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>len,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>str</ItemText>
+        </Ww>
+        <Ww>
+          <count>3</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>strCmdDevCtrlInfoGet</ItemText>
+        </Ww>
+        <Ww>
+          <count>4</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>CMD_DEV_CTRL_INFO_GET_LEN</ItemText>
+        </Ww>
       </WatchWindow1>
       <WatchWindow2>
         <Ww>
@@ -179,6 +198,16 @@
           <count>3</count>
           <WinNumber>2</WinNumber>
           <ItemText>_n2sCurId</ItemText>
+        </Ww>
+        <Ww>
+          <count>4</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>chState</ItemText>
+        </Ww>
+        <Ww>
+          <count>5</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>_ch</ItemText>
         </Ww>
       </WatchWindow2>
       <MemoryWindow1>
@@ -962,7 +991,7 @@
 
   <Group>
     <GroupName>mod_dbg</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

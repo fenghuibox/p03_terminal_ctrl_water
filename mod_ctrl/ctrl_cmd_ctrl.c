@@ -83,7 +83,7 @@ static void _timerCB( void )
 void testCtrlCmdCtrl( void )
 {
 
-	timerStartSec( 10, TIMER_REPEAT_FOREVER, _timerCB );
+	timerStartSec( 3, TIMER_REPEAT_FOREVER, _timerCB );
 
 }
 

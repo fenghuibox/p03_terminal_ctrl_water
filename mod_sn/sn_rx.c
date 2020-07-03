@@ -61,7 +61,7 @@ static u16 _paserFrame( void )
 
 	if( headNgLen != 0 ) // Ç°×ºÓÐÎó
 	{
-		dprintfBuf("snrx _paserFrame head NG: ", _pBuf + _start, headNgLen, 1 );
+		dprintfBuf("snrxNG:", _pBuf + _start, headNgLen, 1 );
 
 		_start       = start;
 		_unPaserLen -= headNgLen;

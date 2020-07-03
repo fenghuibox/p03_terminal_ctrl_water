@@ -289,23 +289,47 @@ report
 #define CTRL_PACK_OFFSET_OPEN_SEC4      (9)
 #define CTRL_PACK_OFFSET_RESTART        (10)
 
+#define CTRL_PACK_PARA_LEN              (11)
 
+
+static u8 _rxPara[ CTRL_PACK_PARA_LEN + 1 ];
+
+static u8 _paraCtrlTimerId = TIMER_ID_ERROR;
+
+
+void ctrlPackClear( void )
+{
+	_rxPara[CTRL_PACK_OFFSET_DEBUG] = 0;
+}
+
+u8 ctrlPackRxIsDbg( void )
+{
+	if( _rxPara[CTRL_PACK_OFFSET_DEBUG] == 0 )
+		return FALSE;
+
+	return TRUE;
+}
 
 static void _debugSet( u8 isDebug )
 {
+	if( gB1.isDebug ==  isDebug )
+		return;
+
+	
 	if( isDebug  == 0 )
 		gB1.isDebug = 0;
 	else
 		gB1.isDebug = 1;
+
+	dprintf("isDbg=%d", gB1.isDebug );
 }
 
-void paraCtrlPackSet( u8 *pPara )
+static void _ctrlPackSet( u8 *pPara )
 {
 	u8 reStart;
 	u32 openSec;
 
 	_debugSet( pPara[CTRL_PACK_OFFSET_DEBUG] );
-	
 	
 	paraSleepSecSet( pPara + CTRL_PACK_OFFSET_SLEEP1 );
 
@@ -333,6 +357,35 @@ void paraCtrlPackSet( u8 *pPara )
 		ctrlOpenStartSecUpdate();
 	}
 
+	
+}
+
+
+
+static void _paraCtrlTimerCB( void )
+{
+	if( ctrlIsIdle() )
+	{
+		_paraCtrlTimerId = TIMER_ID_ERROR;
+		_ctrlPackSet( _rxPara );
+	}
+	else
+	{
+		_paraCtrlTimerId = timerStart( 2/TIMER_UNIT_MS, 1, _paraCtrlTimerCB );
+	}
+}
+
+
+
+
+void paraCtrlPackSet( u8 *pPara )
+{
+	memcpy( _rxPara, pPara, CTRL_PACK_PARA_LEN );
+
+	if( _paraCtrlTimerId == TIMER_ID_ERROR )
+	{
+		_paraCtrlTimerCB();
+	}
 	
 }
 
@@ -404,6 +457,12 @@ int paraCtrlPackToServerGet( u8 *pPara )
 
 	return 3;
 }
+
+
+
+
+
+
 
 
 

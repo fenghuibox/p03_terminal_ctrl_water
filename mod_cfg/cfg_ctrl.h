@@ -27,8 +27,8 @@
 	#define CONFIG_CTRL_OPEN_SEC_MIN         (  5 * 1 )       // 开水阀保持的时长 最小值
 	#define CONFIG_DEF_CMD_CTRL_OPEN_SEC     ( 30 * 1L)
 #else
-	#define CONFIG_CTRL_OPEN_SEC_MIN         ( 10 * 1 )       // fenghuiw 开水阀保持的时长 最小值
-	#define CONFIG_DEF_CMD_CTRL_OPEN_SEC     ( 60 *10L)
+	#define CONFIG_CTRL_OPEN_SEC_MIN         ( 60 * 1 )     // 开水阀保持的时长 最小值 fenghuiw 
+	#define CONFIG_DEF_CMD_CTRL_OPEN_SEC     ( 60 * 3L)     // 开水阀保持的时长 默认值
 #endif
 
 #define CONFIG_DEF_PERIOD_CTRL_OPEN_MINUTE      (1)

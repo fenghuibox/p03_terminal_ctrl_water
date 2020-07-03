@@ -199,7 +199,7 @@ typedef  int ( *FunN2sTxCB)( u8 *pBuf, u16 len );
 
 //========= 选用 模块 开关 =============================
 
-#if 0
+#if 1 // fenghuiw
 	#define USE_IWDG
 #endif
 

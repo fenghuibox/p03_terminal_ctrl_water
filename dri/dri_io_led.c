@@ -102,6 +102,9 @@ void driIoLedToSleep( void )
 {
 	// 1:  set io = in_down
 	// 2: close clk	
+
+	driLed1Close();
+	
 }
 
 void driIoLedOnWakeup( void )

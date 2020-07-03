@@ -34,6 +34,12 @@ typedef struct
 
 	u8 battRead:1;          // 1:执行了读取电压     0: 没有	
 	u8 battReadFinish:1;    // 1:执行了完成         0: 没有	
+
+	
+	u8 openTimeoutCloseStart:1;    // 开水阀时长到时，开始 执行关水阀
+	u8 openTimeoutCloseStateTx:1;  // 开水阀时长到时，执行了关水阀 ,状态发给服务器
+	
+	u8 openTimeoutCloseEnd:1;  // 开水阀时长到时，执行关水阀 完成
 	
 	
 	u8 txtFrameExeOKhaveRspReport:1; // 执行完帧后，需要等待应答的报告

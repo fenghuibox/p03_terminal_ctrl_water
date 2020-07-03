@@ -33,9 +33,16 @@ static  u8 _adcIndex;
 
 
 
-u32 devVbattValGet( void )
+u32 devVbattValGet( void ) // real val = ret / 10000
 {
-	return _adcVal;
+	// =4.5*(I5+10)/4096
+	
+	//return _adcVal;
+	
+	//return (_adcVal + 10) * 11/10000;
+	return _adcVal * 11 + 110;
+
+	
 }
 
 
@@ -68,7 +75,7 @@ static void _adcValIn( u32 val )
 
 		//dprintf( "\r\nvbat=%d",_adcVal );
 
-		if( _adcVal  < _BATT_3D4_ADC )
+		if( _adcVal  < _BATT_3D55_ADC )
 		{
 			gB1.battIsLow = 1;
 		}

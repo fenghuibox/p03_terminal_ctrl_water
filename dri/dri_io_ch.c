@@ -29,7 +29,7 @@
 
 u8 driIoChRead( void )
 {
-	if( Gpio_ReadOutputIO(CH_IO_PORT, CH_IO_PIN) == 0 )
+	if( Gpio_GetInputIO(CH_IO_PORT, CH_IO_PIN) == 0 )
 		return 0;
 
 	return 1;

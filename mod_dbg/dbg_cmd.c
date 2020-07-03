@@ -31,7 +31,7 @@ const char strDebugCmdHead[] =   "fh@";
 #define DEBUG_UART_PASS_LEN    ( DEBUG_CMD_HEAD_LEN + DEBUG_UART_PASS_HEAD_LEN )
 #define DEBUG_AES_CMD_LEN      ( DEBUG_CMD_HEAD_LEN + DEBUG_AES_HEAD_LEN )
 #define DEBUG_MAC_CMD_LEN      ( DEBUG_CMD_HEAD_LEN + DEBUG_MAC_HEAD_LEN )
-
+#define DEBUG_DEV_CMD_LEN      ( DEBUG_CMD_HEAD_LEN + DEBUG_DEV_HEAD_LEN )
 
 
 
@@ -68,6 +68,11 @@ u8 debugCmd( u8 *str,  u8 len ) // fh@uartpass4g1
 			return TRUE;
 	}
 	
+	if( memcmp( str + DEBUG_CMD_HEAD_LEN, strCmdDevHead, DEBUG_DEV_HEAD_LEN) == 0 ) // dev cmd
+	{
+		if( debugCmdDev(str + DEBUG_DEV_CMD_LEN, len - DEBUG_DEV_CMD_LEN ) == TRUE )
+			return TRUE;
+	}
 
 	return FALSE;
 

@@ -17,6 +17,7 @@
 #include "dev_state.h"
 #include "dev_sleep.h"
 #include "dev_vbatt.h"
+#include "dev_iwdg.h"
 
 #include "dbg_uart.h"
 #include "zgb_io.h"
@@ -38,6 +39,8 @@ static u32 _devSleepSec;
 
 void devSleepSecSet( u32 sec )
 {
+	//dprintf( "sleepSec=%d", sec );
+	
 	_devSleepSec = sec;
 }
 
@@ -64,6 +67,13 @@ static void _toSleep( void )
 	
 	while( _devSleepSec != 0 )
 	{
+		#ifdef USE_IWDG
+			iwdgRefresh();
+		#endif
+		
+		if( ctrlOpenSecIsTimeout() != FALSE )
+			break;
+		
 		driContinueSleep();
 		_sleepSecDecGap();
 	}
@@ -100,14 +110,22 @@ void devSleep( void )
 		//dprintf("\r\nctrl is busy");
 		return;
 	}
+
+	#if 0 // fenghuiw
+		if( cfgIsIdle() == FALSE )  
+		{
+			//dprintf("\r\ncfg is busy");
+			return;
+		}
+	#endif
 	
-	if( cfgIsIdle() == FALSE )
+	if( zgbUartIsIdle() == FALSE )
 	{
-		//dprintf("\r\ncfg is busy");
+		//dprintf("\r\nzgbUart is busy");
 		return;
 	}
 	
-	if( zgbUartIsIdle() == FALSE )
+	if( dbgUartIsIdle() == FALSE )
 	{
 		//dprintf("\r\nzgbUart is busy");
 		return;

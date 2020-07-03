@@ -20,7 +20,7 @@
 static void _wdtInit(void)
 {
     ///< WDT ³õÊ¼»¯
-    Wdt_Init( WdtResetEn, WdtT820ms );
+    Wdt_Init( WdtResetEn, WdtT13s1 );
 }
 
 

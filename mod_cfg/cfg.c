@@ -159,6 +159,7 @@ static void _cfgSet( void )
 
 void configUpdate( void )
 {
+	
     if( _cfgModify == 0 )
         return;
 

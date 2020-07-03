@@ -219,11 +219,15 @@ static void _adcToSleep( void )
 	Bgr_BgrDisable(); // 2: disable bgr
 	                  // 3:  set io = in_down
 	                  // 4: close clk
+
+	Adc_Disable();
 }
 
 
 static void _adcOnWakeup( void )
 {
+	Adc_Enable();
+	
 	// 1: open clk
 	_AdcPortInit();  // 2: io = adc_in
 	Bgr_BgrEnable(); // 3: enable bgr

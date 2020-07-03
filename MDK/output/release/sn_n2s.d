@@ -35,4 +35,7 @@
   ../mod_frame/f_txt_frame_dpara_485.h ../mod_frame/f_txt_frame.h \
   ../mod_sn/sn_n2s.h ../mod_zgb\zgb_uart.h ../mod_sn/sn_n2s_state.h \
   ../mod_sn/sn_rx_unpack.h ../mod_sn/sn_master_state.h \
-  ../mod_sn/sn_n2s_fun.h ../dev\dev_state.h
+  ../mod_sn/sn_n2s_fun.h ../dev\dev_state.h ../mod_ctrl\ctrl.h \
+  ../mod_ctrl/ctrl_mode.h ../mod_ctrl/ctrl_cmd_ctrl.h \
+  ../mod_ctrl/ctrl_cmd_ctrl_open_sec.h ../mod_ctrl/ctrl_period_ctrl.h \
+  ../mod_frame\f_txt_frame_dpara_ctrl.h

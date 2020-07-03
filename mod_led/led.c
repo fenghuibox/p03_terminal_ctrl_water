@@ -68,7 +68,7 @@ static void _normalShow( EN_DEV_STATE s )
 		break;	
 
 	default:
-		driLed1Toggle();
+		driLed1Close();
 		
 	}
 }

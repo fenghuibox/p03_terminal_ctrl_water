@@ -25,27 +25,28 @@
 
 
 
-u8 ctrlStateGet( void );
+extern u8 ctrlStateGet( void );
 
 
-void ctrlOpenStartSecUpdate( void );
+extern void ctrlOpenStartSecUpdate( void );
 
 
-void ctrlOpen( void );
+extern void ctrlOpen( void );
 
 
-void ctrlClose( void );
+extern void ctrlClose( void );
 
 
-u8 ctrlIsIdle( void );
+extern u8 ctrlIsIdle( void );
 
 
 
 
-void ctrlStatePoll( void ); // 50 ms
+extern void ctrlStatePoll( void ); // 50 ms
 
-void ctrlOpenSecPoll( void ); // 200 ms
+extern void ctrlOpenSecPoll( void ); // 200 ms
 
+extern u8 ctrlOpenSecIsTimeout( void );
 
 
 extern void ctrlInit( void );

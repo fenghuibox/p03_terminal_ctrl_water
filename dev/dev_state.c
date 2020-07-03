@@ -26,6 +26,8 @@
 #include "cfg_base.h"
 
 #include "sn_n2s.h"
+#include "sn_ch.h"
+#include "f_txt_frame_dpara_ctrl.h"
 
 
 
@@ -68,6 +70,7 @@ static void _devStateSet( EN_DEV_STATE s );
 //====================================================
 static void _sToZigbeeErr( void );
 static void _sToMasterErr( void );
+static void _onReadCtrlInfoEnd( void );
 
 
 
@@ -105,6 +108,12 @@ EN_DEV_STATE devStateGet( void )
 
 
 //================================================
+u8 devStateIsNormal( void )
+{
+	return _devS < DEV_STATE_ERR ? 1 : 0;
+}
+
+
 u8 devStateIsDbg( void )
 {
 	return _devS == DEV_STATE_DBG? 1 : 0;
@@ -146,6 +155,19 @@ u8 devStateIsMasterErr( void )
 }
 
 
+
+//====== poll ==============================================
+
+static u8 _isLeaveDbg( void )
+{
+	if( snChIs485() || gB1.isDebug || ctrlPackRxIsDbg() ) // 485时不休眠 ,转为DEBUG态
+		return FALSE;
+
+	return TRUE;
+}
+
+
+
 //====== poll ==============================================
 
 
@@ -159,7 +181,10 @@ static void _devReadCtrlInfoPoll( void )
 	}
 	else
 	{
-		//_devStateSet( DEV_STATE_SLEEP ); 
+		dprintf( "readCtrlInfoEnd" );
+		//_devStateSet( DEV_STATE_SLEEP );  //  使用指令超时处理
+
+		//_onReadCtrlInfoEnd();
 	}
 	
 	return;
@@ -191,7 +216,8 @@ static void _devDebugPoll( void )
 	}
 	else
 	{
-		devOnEvent( DEV_EVENT_DBG_END, NULL );  // 
+		if( _isLeaveDbg() == TRUE )
+			devOnEvent( DEV_EVENT_DBG_END, NULL );  // 
 	}
 	
 	return;
@@ -317,13 +343,26 @@ static void _sToPowerOn( void )
 static void _sToSleep( void )
 {	
 	#include "dev_sleep.h"
+	#include "sn_n2s.h"
+
+	U32 sleepSec;
 	
 	gB1.sleep = 1;
 
 	//dprintf("toSleep");
 	//n2sPrint();
 
-	devSleepSecSet( cfgSleepSecGet() );
+	sleepSec = cfgSleepSecGet();
+
+	//dprintf( "sleepSec=%d", sleepSec );
+
+	if( gN2sServerNgCnt == 0 )
+	{
+		if( sleepSec < N2S_SERVER_NG_SLEEP_SEC )
+			sleepSec = N2S_SERVER_NG_SLEEP_SEC;
+	}
+
+	devSleepSecSet( sleepSec );
 }
 
 //====================================================
@@ -339,6 +378,10 @@ static void _txCtrlPack( void )
 		n2sCtrlPackGet();
 		return;
 	}
+	else
+	{
+		dprintf("gB1.ctrlPackTx=1 err");
+	}
 }
 
 
@@ -347,16 +390,22 @@ static void _sToReadCtrlInfo( void )
 	#include "zgb_state.h"
 	
 	gB1.isDebug = 0;
+
+	gB1.ctrlPackTx = gB1.ctrlPackFinish = 0; // fenghuiw
 		
 	if( modZgbStateIsOk() )
 	{
 		_txCtrlPack();
 		_pollCnt =  READ_CTRL_INFO_POLL_CNT;
+
+		//dprintf("_sToReadCtrlInfo ok");
 	}
 	else
 	{
 		_pollCnt =  0;
 		gB1.ctrlPackFinish = 1;
+
+		//dprintf("_sToReadCtrlInfo ng");
 	}
 }
 
@@ -383,10 +432,12 @@ static void _sToDebug( void )
 	if( debugSec < DEV_WAIT_SEC_DEBUG_MIN )
 		debugSec = DEV_WAIT_SEC_DEBUG_MIN;
 
+
+	debugSec = 30; // fenghuiw
 	
 	_pollCnt = debugSec * (1000 / DEV_POLL_GAP_MS );
 
-	//dprintf( "debugSec=%d, _pollCnt=%d", debugSec, _pollCnt );
+	dprintf( "debugSec=%d", debugSec );
 	
 }
 
@@ -479,17 +530,41 @@ static void _devStateSet( EN_DEV_STATE s )
 
 //=====================================================
 
+/*
+static void _printSleepSec( void )
+{
+	dprintf( "sleepSec=%d", cfgSleepSecGet() );
+}
+*/
+
+
+static void _onReadCtrlInfoEnd( void )
+{
+	//gB1.ctrlPackTx = gB1.ctrlPackFinish = 0; // 打开后会影响到休眠
+	
+	if( snChIs485() || gB1.isDebug || ctrlPackRxIsDbg() ) // 485时不休眠 ,转为DEBUG态
+	{
+		_devStateSet( DEV_STATE_DBG );
+	}
+	else
+	{
+		_devStateSet( DEV_STATE_SLEEP );
+	}
+}
 
 
 static void _devOnEvent( EN_DEV_EVENT e, void *data)
 {	
-	#include "sn_ch.h"
 	
 	switch( _devS )
 	{
 	case DEV_STATE_DBG:	
 		if( DEV_EVENT_DBG_END == e )
 		{
+			//dprintf( "sleepSec=%d", cfgSleepSecGet() );
+			//dprintf( "debugEnd");
+
+			
 			_devStateSet( DEV_STATE_READ_CTRL_INFO );
 		}
 		break;
@@ -497,14 +572,7 @@ static void _devOnEvent( EN_DEV_EVENT e, void *data)
 	case DEV_STATE_READ_CTRL_INFO:	
 		if( DEV_EVENT_READ_CTRL_INFO_END == e )
 		{
-			if( snChIs485() || gB1.isDebug ) // 485时不休眠 ,转为DEBUG态
-			{
-				_devStateSet( DEV_STATE_DBG );
-			}
-			else
-			{
-				_devStateSet( DEV_STATE_SLEEP );
-			}
+			_onReadCtrlInfoEnd();
 		}
 		break;
 
@@ -518,7 +586,7 @@ static void _devOnEvent( EN_DEV_EVENT e, void *data)
 	case DEV_STATE_UART_PASS:	
 		if( DEV_EVENT_UARTPASS_TIMEOUT == e )
 		{
-			_devStateSet( DEV_STATE_READ_CTRL_INFO );
+			_devStateSet( DEV_STATE_DBG );
 		}
 		break;		
 		
@@ -558,7 +626,7 @@ static void _onErrToOk( u32 errBit )
 	
 	if( _devErrBit == 0 )
 	{
-		_devStateSet(  DEV_STATE_READ_CTRL_INFO );
+		_devStateSet(  DEV_STATE_DBG );
 		return;
 	}
 	else
@@ -709,7 +777,7 @@ void devOnEvent( EN_DEV_EVENT e, void *data)
 		}
 		else
 		{
-			_devStateSet( DEV_STATE_READ_CTRL_INFO );
+			_devStateSet( DEV_STATE_DBG );
 		}
 	}
 	

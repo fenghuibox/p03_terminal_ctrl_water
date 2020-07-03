@@ -27,9 +27,11 @@
 
 #else
 
-#define DEV_WAIT_SEC_HEARTBEAT         ( 10 * 1 )       // 调试状态下 空闲时发送心跳间隔时间 秒
+#define DEV_WAIT_SEC_HEARTBEAT         (  5 * 1 )       // 调试状态下 空闲时发送心跳间隔时间 秒
 #define DEV_WAIT_SEC_DEBUG_MIN         ( 30 * 1 )       // 调试最小的秒数
 #define DEV_WAIT_SEC_POWER_ON          ( 60 * 3 )       // 上电工作3分钟
+
+
 #endif
 
 
@@ -44,7 +46,7 @@
 #define DEV_WAIT_SEC_CFG       (60 * 10)  // 配置等待时间
 
 #define DEV_WAIT_SEC_WARNING   (10)      // 警告指示时间
-#define DEV_WAIT_SEC_ERR_HINT  (60 * 10) // 
+#define DEV_WAIT_SEC_ERR_HINT  (10) // 
 #define DEV_WAIT_SEC_REBOOT    (5)       // 重启指示时间
 
 
@@ -160,6 +162,9 @@ extern u8 devErrIsHaveZigbee( void );
 extern u8 devErrIsHaveMaster( void );
 
 extern EN_DEV_STATE devStateGet( void );
+
+
+extern u8 devStateIsNormal( void );
 
 extern u8 devStateIsDbg( void );
 extern u8 devStateIsReadCtrlInfo( void );

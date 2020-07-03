@@ -37,6 +37,7 @@
 #include "zgb_uart.h"
 #include "dev_state.h"
 
+#include "sn_n2s.h"
 
 #define ZGB_UART_PRINT 
 
@@ -223,6 +224,7 @@ int zgbUartTx( u8 *pBuf, u16 len )
 	#ifdef ZGB_UART_PRINT
 		dprintfBuf("ztx:", pBuf, len, 1 );
 	#endif
+
 	
 	return enQueueV( _stUartPackZgb.pTxQV, pBuf, len );
 }
@@ -289,6 +291,11 @@ static void _zgbUartRxCB( u8 *str,  u8 len )
 		dprintfBuf("zrx:", str, len, 1 );
 	#endif
 
+	if( len > 7 )
+	{
+		gN2sServerNgCnt = N2S_SERVER_NG_CNT;
+	}
+
 	
 	// ---------- 透传态 --------------------
 	if( devStateIsUartPass() )
@@ -320,8 +327,6 @@ static void _zgbUartRxCB( u8 *str,  u8 len )
 
 u8 zgbUartTxPoll( void ) // >50 ms
 {
-	#include "sn_n2s.h"
-
 	if( devStateIsUartPass() )
 		return TRUE;
 
@@ -335,8 +340,6 @@ u8 zgbUartTxPoll( void ) // >50 ms
 
 	//--- rf out --------------------
 	return n2sCB();	// fenghuiwait 时间可能被 zcmdTxCB() 截获
-	
-	
 }
 
 

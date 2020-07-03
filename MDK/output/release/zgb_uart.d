@@ -30,4 +30,4 @@
   ../mod_dbg/dbg_cmd_dev.h ../dev\dev_state.h ../mod_zgb/zgb_cmd.h \
   ../mod_zgb/zgb_mac.h ../mod_frame\f_txt_frame.h \
   ../mod_frame/f_frame_comm.h ../com\com_mac.h \
-  ../mod_frame/f_txt_frame_data.h ../mod_sn\sn_rx.h ../mod_sn\sn_n2s.h
+  ../mod_frame/f_txt_frame_data.h ../mod_sn\sn_n2s.h ../mod_sn\sn_rx.h

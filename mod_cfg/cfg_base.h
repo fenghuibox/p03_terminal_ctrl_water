@@ -22,11 +22,11 @@
 
 
 
+ 
+#define CONFIG_DEF_CFG_VER         (0)
 
-#define CONFIG_DEF_CFG_VER      (0)
-
-#define CONFIG_DEF_SLEEP_SEC    (10)
-#define CONFIG_DEF_WORK_SEC    (300) // 调试时间  单位：秒     5分钟
+#define CONFIG_DEF_SLEEP_SEC      (10)
+#define CONFIG_DEF_WORK_SEC     (60*3) // 调试时间  单位：秒     5分钟
 
 
 

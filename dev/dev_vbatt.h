@@ -27,6 +27,7 @@
 #define _BATT_3D8_ADC   (3439) // 常态工作
 #define _BATT_3D7_ADC   (3349) // 常态工作
 #define _BATT_3D6_ADC   (3259) // 常态工作
+#define _BATT_3D55_ADC   (3210) // calc---
 #define _BATT_3D5_ADC   (3166)
 #define _BATT_3D4_ADC   (3076) // 电量低警告
 #define _BATT_3D3_ADC   (2986)

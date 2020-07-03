@@ -176,6 +176,28 @@ static void _dbgUartPollCB( void )
 
 
 
+
+static u8 _dbgUartIsIdle( void )
+{
+	if( _stUartPackDbg.b.txFinish == TRUE )
+	{
+		if( IsEmptyQueueV( _stUartPackDbg.pTxQV )  )
+		{
+			if( _stUartPackDbg.b.rxFinish == TRUE  )
+			{
+				if( IsEmptyQueueV( _stUartPackDbg.pRxQV )  )
+					return TRUE;
+			}
+
+			//return TRUE;
+		}
+	}
+
+	return FALSE;
+}
+
+
+
 void dbgUartTx( u8 *pBuf, u32 len )
 {
 	enQueueV( _stUartPackDbg.pTxQV, pBuf, len );
@@ -305,6 +327,44 @@ void debugUartTxPass( u8 *str,  u8 len )
 
 
 
+u8 dbgUartIsIdle( void )
+{
+
+#if 1
+
+	if( _dbgUartIsIdle() == FALSE )
+		return FALSE;
+
+	if( queueIsEmpty( _stUartPackDbg.pTxQ ) == FALSE )
+		return FALSE;
+	
+	if( queueIsEmpty( _stUartPackDbg.pRxQ ) == FALSE )
+		return FALSE;
+
+	return TRUE;
+	
+#else
+
+	if( IsEmptyQueueV( _stUartPackZgb.pTxQV ) == FALSE )
+		return FALSE;
+
+	if( queueIsEmpty( _stUartPackZgb.pTxQ ) == FALSE )
+		return FALSE;
+
+	if( IsEmptyQueueV( _stUartPackZgb.pRxQV ) == FALSE )
+		return FALSE;
+
+	if( queueIsEmpty( _stUartPackZgb.pRxQ ) == FALSE )
+		return FALSE;
+
+	return TRUE;
+	
+#endif
+	
+}
+
+
+
 static void _dbgUartRxCB( u8 *str,  u8 len )
 {
 	
@@ -312,7 +372,7 @@ static void _dbgUartRxCB( u8 *str,  u8 len )
 	
 	//dprintf( (const char *)str );
 	
-	#if 1 // fenghuiw //-----------------------------------
+	#if 1 //-----------------------------------
 		if( debugCmd( str, len ) == TRUE )
 			return;
 		
@@ -325,8 +385,8 @@ static void _dbgUartRxCB( u8 *str,  u8 len )
 		}
 		else
 		{
-			dprintf("debugRx unkown Str:%s\r\n", str);
-			dprintfBuf("debugRx unkown Hex:", str, len, 1);
+			//dprintf("debugRx unkown Str:%s\r\n", str);
+			//dprintfBuf("debugRx unkown Hex:", str, len, 1);
 		}
 
 	#else//-----------------------------------

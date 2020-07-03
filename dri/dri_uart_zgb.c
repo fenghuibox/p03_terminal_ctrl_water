@@ -150,6 +150,26 @@ void driUartZgbToSleep( void )
     EnableNvic(        ZGB_UART_IRQ_ID, ZGB_UART_IRQ_LEVEL, FALSE );  // 1: 关 中断
                                                                       // 2: io = in_down  
 	                                                                  // 3: close clk	
+
+
+
+	Gpio_SetAfMode( ZGB_TX_PORT,ZGB_TX_PIN, GpioAf0 ); 
+	Gpio_SetAfMode( ZGB_RX_PORT,ZGB_RX_PIN, GpioAf0 ); 
+
+
+	/*
+    UartRenFunc    = 4u,    ///<0-TX; ///<1-非mode0模式代表RX&TX ,mode0模式代表RX;       
+    UartDmaRxFunc  = 16u,   ///<DMA接收功能   
+    UartDmaTxFunc  = 17u,   ///<DMA发送功能
+    UartRtsFunc    = 18u,   ///<硬件流RTS功能
+    UartCtsFunc    = 19u,   ///<硬件流CTS功能
+    UartHdFunc     = 22u,   ///<单线半双工功能    
+
+	*/
+	//Uart_DisableFunc( ZGB_UART_HANDLE, UartRenFunc );
+
+	Uart_DisableIrq(ZGB_UART_HANDLE,UartRxIrq);			   ///<使能串口接收中断
+	Uart_DisableIrq(ZGB_UART_HANDLE,UartTxIrq);			   ///<使能串口接收中断    
 }
 
 void driUartZgbOnWakeup( void )
@@ -157,6 +177,24 @@ void driUartZgbOnWakeup( void )
 	                                                                  // 1: open clk
 	_zgbUartPortCfg();                                                // 2: io = init                                                                 
 	EnableNvic(		ZGB_UART_IRQ_ID, ZGB_UART_IRQ_LEVEL, TRUE );     // 3: 开 中断
+
+	/*
+	UartRenFunc    = 4u,	///<0-TX; ///<1-非mode0模式代表RX&TX ,mode0模式代表RX;		 
+	UartDmaRxFunc  = 16u,	///<DMA接收功能   
+	UartDmaTxFunc  = 17u,	///<DMA发送功能
+	UartRtsFunc    = 18u,	///<硬件流RTS功能
+	UartCtsFunc    = 19u,	///<硬件流CTS功能
+	UartHdFunc	   = 22u,	///<单线半双工功能	  
+
+	*/
+	//Uart_EnableFunc( ZGB_UART_HANDLE, UartRenFunc );
+
+	Uart_ClrStatus(ZGB_UART_HANDLE,UartRC);                ///<清接收请求
+    Uart_ClrStatus(ZGB_UART_HANDLE,UartTC);                ///<清接收请求
+	
+    Uart_EnableIrq(ZGB_UART_HANDLE,UartRxIrq);             ///<使能串口接收中断
+    Uart_EnableIrq(ZGB_UART_HANDLE,UartTxIrq);             ///<使能串口接收中断    
+	
 }
 
 

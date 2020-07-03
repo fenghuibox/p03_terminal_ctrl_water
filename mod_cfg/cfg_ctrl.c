@@ -33,7 +33,7 @@ void cfgCtrlStateSet( u32 ctrlState )
    _stAppConfig.ctrl_state = ctrlState;
 
    
-   dprintf("WriteCtrlState %d", ctrlState);
+   dprintf("cfgCtrlS %d", ctrlState);
    
    _cfgModify = 1;
    
@@ -64,7 +64,7 @@ void cfgCtrlModeSet( u32 ctrlMode )
    _stAppConfig.ctrl_mode = ctrlMode;
 
    
-   dprintf("WriteCtrlMode %d", ctrlMode);
+   dprintf("cfgCtrlMode %d", ctrlMode);
    
    _cfgModify = 1;
    
@@ -107,7 +107,7 @@ void cfgCtrlOpenSecSet( u32 ctrlOpenSec )
     if( _stAppConfig.cmd_ctrl_open_sec == ctrlOpenSec )
         return;
 
-	dprintf("WriteOpenSec %d", ctrlOpenSec );
+	//dprintf("cfgOpenSec %d", ctrlOpenSec );
 
    _stAppConfig.cmd_ctrl_open_sec = ctrlOpenSec;
    
@@ -136,7 +136,7 @@ void cfgCtrlOpenStartSet( u32 ctrlOpenStartSec )
 
    _stAppConfig.cmd_ctrl_start_sec = ctrlOpenStartSec;
    
-   dprintf("WriteOpenStart %d", ctrlOpenStartSec);
+   //dprintf("cfgOpenStart %d", ctrlOpenStartSec);
    
    _cfgModify = 1;
    

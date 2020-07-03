@@ -82,8 +82,14 @@ void modZgbStatePoll( void )
 {
 	EN_ZIGBEE_WORK_STATE s;
 
-	if( devStateIsDbg() == FALSE ) // 只有 DEBUG 时才响应
-		return;
+	
+
+
+	if( devStateIsNormal() )
+	{
+		if( devStateIsDbg() == FALSE ) // 只有 DEBUG 时才响应
+			return;
+	}
 
 
 	if( zigbeeWorkStateGet( &s ) == FALSE )
