@@ -45,47 +45,11 @@ extern u8 paraZigbeeAutoNetGet( void );
 extern u8 para_zigbee_auto_net_exe( ST_FRAME *pstFrame );
 
 
+//---------------- LQI ---------------------------------------
 
-//---------------- zigbee allow join  ---------------------------------------
+extern u8 paraZigbeeLqiGet( void );
 
-extern void paraZigbeeAllowJoinGet( u8 *pPara );
-
-
-extern u8 para_zigbee_allow_join_exe( ST_FRAME *pstFrame );
-
-
-
-//---------------- zigbee del by mac---------------------------------------
-
-extern u8 para_zigbee_del_by_mac_addr_exe( ST_FRAME *pstFrame );
-
-
-
-
-
-//---------------- zigbee child info ---------------------------------------
-
-/*
-------pNodeBuf----------------------------------
-         nodeCnt  startId   getCnt  pNodeMac
-------------------------------------------------
-  len:    1byte    1byte    1byte   8byte * n 
-------------------------------------------------
-  value:  1- n     1- n     0- n
-------------------------------------------------
-返回值: 总的字节数
-*/
-extern u8 paraZigbeeChildInfoGet( u8 *pPara ); // 
-
-
-extern u8 para_zigbee_child_info_exe( ST_FRAME *pstFrame );
-
-
-
-
-
-
-
+extern u8 para_zigbee_lqi_exe( ST_FRAME *pstFrame );
 
 
 

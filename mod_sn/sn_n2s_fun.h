@@ -626,6 +626,38 @@ static int _n2s_zigbee_auto_net(  u8 isRedo )
 
 
 
+static int _n2s_zigbee_lqi(  u8 isRedo )
+{	
+	u8  val;
+
+	if( gstN2S.zigbee_auto_net == 0 )
+		return FALSE;
+	
+	if( isRedo )
+	{
+		_snN2sTx( (u8 *)&_stRfTxFrame, _stRfTxFrame.len );
+		return TRUE;
+	}
+
+	val = paraZigbeeLqiGet();  
+	
+	dpackCreate( DPACK_PORT_ID_SELF, 0, DPACK_PARA_ID_ZIGBEE_LQI, &val, 1, _stRfTxFrame.pBuf);
+	
+	txtFrameCreateN2S( TXT_FRAME_ACTION_REPORT_ACK_GET, _stExeFrame.sid, &_stRfTxFrame);
+
+	_n2sTx( (u8 *)&_stRfTxFrame, &_stRfTxFrame.len );
+
+	
+	txtFrameExeStateOnEvent( TXT_FRAME_EXE_EVENT_RSP_REPORT );
+	_autoReportSid	 = _stExeFrame.sid;
+	
+	return TRUE;
+}
+
+
+
+
+
 
 
 static int _n2s_zigbee_state(  u8 isRedo )
@@ -813,9 +845,11 @@ const FunN2sCB _n2sArr[]={
 	_n2s_zigbee_to_reset,// 19
 	_n2s_zigbee_to_def,// 20
 	_n2s_zigbee_auto_net,// 21
-	_n2s_zigbee_state,// 22
-	_n2s_zigbee_info,// 23
-	_n2s_uart485,// 24
+	_n2s_zigbee_lqi,// 22
+	_n2s_zigbee_state,// 23
+	_n2s_zigbee_info,// 24
+	_n2s_uart485,// 25
+
 
 	//-----主动拉取服务器上的信息-----------------------------
 	_n2s_ctrl_pack_get,
@@ -938,6 +972,10 @@ static void _rsp_zigbee_auto_net( void )
 	gstN2S.zigbee_auto_net = 0;
 }
 
+static void _rsp_zigbee_lqi( void )
+{
+	gstN2S.zigbee_lqi = 0;
+}
 
 static void _rsp_zigbee_state( void )
 {
@@ -1003,9 +1041,11 @@ const FunRspCB _rspArr[]={
 	_rsp_zigbee_to_reset,// 19
 	_rsp_zigbee_to_def,// 20
 	_rsp_zigbee_auto_net,// 21
-	_rsp_zigbee_state,// 22
-	_rsp_zigbee_info,// 23
-	_rsp_uart485,// 24
+	_rsp_zigbee_lqi,// 22
+	_rsp_zigbee_state,// 23
+	_rsp_zigbee_info,// 24
+	_rsp_uart485,// 25
+
 
 	_rsp_ctrl_pack_get,
 

@@ -54,6 +54,8 @@ u8 para_zigbee_to_def_exe( ST_FRAME *pstFrame )
 
 
 
+
+
 //---------------- auto net ---------------------------------------
 
 u8 paraZigbeeAutoNetGet( void )
@@ -77,6 +79,30 @@ u8 para_zigbee_auto_net_exe( ST_FRAME *pstFrame )
 		
 		//gstN2S.zigbee_auto_net = 1;
 		//gB1.txtFrameExeOKhaveRspReport = 1;
+
+		return TRUE;
+	}
+	
+	return FALSE;
+}
+
+
+
+//---------------- LQI ---------------------------------------
+
+u8 paraZigbeeLqiGet( void )
+{
+	return zigbeeLqiGet();
+}
+
+u8 para_zigbee_lqi_exe( ST_FRAME *pstFrame )
+{
+	if( pstFrame->action == TXT_FRAME_ACTION_GET )
+	{
+		zcmdLqiGet();
+		
+		gstN2S.zigbee_lqi = 1;
+		gB1.txtFrameExeOKhaveRspReport = 1;
 
 		return TRUE;
 	}

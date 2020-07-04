@@ -104,7 +104,7 @@ static void _ctrlFinishTimerCB( void )
 	//dprintf(" exe=%d", _stCtrl.exe);
 
 	
-	dprintf("CtrlF");
+	dprintf("CF");
 
 	#else
 
@@ -156,7 +156,7 @@ static void _enTimerCB( void )
 static void _ctrl( void )
 {
 	
-	dprintf("12Vs");
+	dprintf("CS");
 
 	_stCtrl.ing = 1;
 	

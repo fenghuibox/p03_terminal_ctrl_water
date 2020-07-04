@@ -33,7 +33,7 @@ void cfgCtrlStateSet( u32 ctrlState )
    _stAppConfig.ctrl_state = ctrlState;
 
    
-   dprintf("cfgCtrlS %d", ctrlState);
+   dprintf("cfgCS=%d", ctrlState);
    
    _cfgModify = 1;
    

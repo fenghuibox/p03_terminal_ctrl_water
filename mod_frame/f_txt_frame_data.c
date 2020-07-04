@@ -44,13 +44,15 @@ const u16 paraIdArr[] = {
 	DPACK_PARA_ID_ZIGBEE_TO_RESET,
 	DPACK_PARA_ID_ZIGBEE_TO_DEF,
 	DPACK_PARA_ID_ZIGBEE_AUTO_NET,
+	DPACK_PARA_ID_ZIGBEE_LQI,
 	DPACK_PARA_ID_ZIGBEE_STATE,
 	DPACK_PARA_ID_ZIGBEE_INFO,
 	DPACK_PARA_ID_UART485,
 
+
 };
 
-#define DPACK_PARA_ID_CNT  (22)// 总数
+#define DPACK_PARA_ID_CNT  (23)// 总数
 
 
 
@@ -296,9 +298,11 @@ const FunDPackParaExeCB _dpackParaExeArr[] = {
 	para_zigbee_to_reset_exe,
 	para_zigbee_to_def_exe,
 	para_zigbee_auto_net_exe,
+	para_zigbee_lqi_exe,
 	para_zigbee_state_exe,
 	para_zigbee_info_exe,
 	para_uart485_exe,
+
 
 };
 

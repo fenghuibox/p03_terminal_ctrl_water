@@ -112,9 +112,11 @@ typedef struct // 位置不能变
 	u8 zigbee_to_reset:1;	//	19 zigbee_复位
 	u8 zigbee_to_def:1;   //  20 zigbee_恢复出厂
 	u8 zigbee_auto_net:1;	//	21 zigbee_自组网功能
-	u8 zigbee_state:1;	 //  22 zigbee_查询状态
-	u8 zigbee_info:1;	//	23 zigbee_配置信息
-	u8 uart485:1;	//	24 485总线
+	u8 zigbee_lqi:1;   //  22 zigbee_信号强度
+	u8 zigbee_state:1;	 //  23 zigbee_查询状态
+	u8 zigbee_info:1;	//	24 zigbee_配置信息
+	u8 uart485:1;	//	25 485总线
+
 
 	//-----主动拉取服务器上的信息-----------------------------
 	
@@ -166,9 +168,10 @@ typedef enum
 	N2S_SEND_CID_ZIGBEE_TO_RESET,	// 19
 	N2S_SEND_CID_ZIGBEE_TO_DEF, // 20
 	N2S_SEND_CID_ZIGBEE_AUTO_NET,	// 21
-	N2S_SEND_CID_ZIGBEE_STATE,	// 22
-	N2S_SEND_CID_ZIGBEE_INFO,	// 23
-	N2S_SEND_CID_UART485,	// 24
+	N2S_SEND_CID_ZIGBEE_LQI,	// 22
+	N2S_SEND_CID_ZIGBEE_STATE,	// 23
+	N2S_SEND_CID_ZIGBEE_INFO,	// 24
+	N2S_SEND_CID_UART485,	// 25
 
 	//-----主动拉取服务器上的信息-----------------------------
 	
@@ -235,7 +238,7 @@ typedef enum
 {
 	DPACK_PARA_ID_CONFIG_VER = 1,  //  配置版本号	由于更换传感器等原因而需要修改配置，此配置的版本号，当服务器检查到版本不对时，会将用户的配置更新到设备上。
 	DPACK_PARA_ID_DEF = 2,	//	恢复出厂设置   
-	DPACK_PARA_ID_AES_SWITCH = 3,  //  加密开关   设备发送的数据是否进行加密
+	DPACK_PARA_ID_AES_SWITCH = 3,  //  加密开关   1：发送的数据加密 0：不加密
 	DPACK_PARA_ID_AES_KEY = 4,	//	加密密钥   加密密钥
 	DPACK_PARA_ID_REBOOT = 5,  //  设备启动   set:设备启动	report:设备启动时主动报告此信息
 	DPACK_PARA_ID_SLEEP_SEC = 18,  //  设备单次休眠时间   无符号数，单位秒，默认值10， 0:不休眠, 最大值：68399（24小时-1）
@@ -245,16 +248,18 @@ typedef enum
 	DPACK_PARA_ID_HEARTBEAT = 22,  //  设备的心跳	只自动报告
 	DPACK_PARA_ID_BATTERY = 23,  //  设备的电量   0～100：电量百分比
 	DPACK_PARA_ID_CTRL_MODE = 38,  //  控制模式    0：命令控制模式	1：周期控制模式
-	DPACK_PARA_ID_CMD_CTRL = 39,  //  命令控制	 1：开启  0：关闭
+	DPACK_PARA_ID_CMD_CTRL = 39,  //  命令延时控制	 1：开启  0：关闭
 	DPACK_PARA_ID_OPEN_SEC = 40,  //  开启时长	 开水阀时间,要求是休眠时间的倍数(单位:秒)
 	DPACK_PARA_ID_PERIOD_CTRL = 41,  //  周期控制	前4字节：开水阀时间,后4字节：关水阀时间(单位:分钟)(0:0, 0:n 常关, n:0 常开 )
-	DPACK_PARA_ID_CTRL_PACK = 42,  //  控制信息包	设备单次工作时间4Byte|设备单次休眠时间4Byte|命令控制1Byte|开启时长4Byte|是否重启记时1Byte
+	DPACK_PARA_ID_CTRL_PACK = 42,  //  控制信息包	设备单次工作时间|设备单次休眠时间|命令控制|开启时长
 	DPACK_PARA_ID_ZIGBEE_TO_RESET = 151,  //  zigbee_复位	zigbee 复位
 	DPACK_PARA_ID_ZIGBEE_TO_DEF = 152,	//	zigbee_恢复出厂   zigbee 恢复出厂设置
 	DPACK_PARA_ID_ZIGBEE_AUTO_NET = 153,  //  zigbee_自组网功能   1：开启  0：关闭
+	DPACK_PARA_ID_ZIGBEE_LQI = 158,  //  zigbee_信号强度   无符号数  值越大，信号越好
 	DPACK_PARA_ID_ZIGBEE_STATE = 160,  //  zigbee_查询状态	 0：正在加入网络 1：已加入网络	2：已退出网络
 	DPACK_PARA_ID_ZIGBEE_INFO = 161,  //  zigbee_配置信息	out: DEV_INFO | in: PowerLevel+RetryNum+TranTimeout
 	DPACK_PARA_ID_UART485 = 220,  //  485总线	485总线通信
+
 
 }EN_DPACK_PARA_ID; // 
 
