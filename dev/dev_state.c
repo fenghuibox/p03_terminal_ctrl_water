@@ -472,7 +472,7 @@ static void _sToMasterErr( void )
 
 static void _devStateSet( EN_DEV_STATE s )
 {	
-	dprintf( "\r\nDS%d-%d", _devS,s );
+	dprintf( "\n%dD%d", _devS,s );
 
 	if( _devS == s ) // newwait
 	{

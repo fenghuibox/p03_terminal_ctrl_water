@@ -94,7 +94,7 @@ static void _toSleep( void )
 	ctrlOpenSecPoll();
 
 	
-	dprintf("w"); // wakeup
+	//dprintf("w"); // wakeup
 	//n2sPrint();
 	
 	devOnEvent( DEV_EVENT_SLEEP_END, NULL );

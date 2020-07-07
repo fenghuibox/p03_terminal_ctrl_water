@@ -321,7 +321,7 @@ static void _debugSet( u8 isDebug )
 	else
 		gB1.isDebug = 1;
 
-	dprintf("isDbg=%d", gB1.isDebug );
+	dprintf("Dbg=%d", gB1.isDebug );
 }
 
 static void _ctrlPackSet( u8 *pPara )
@@ -353,6 +353,8 @@ static void _ctrlPackSet( u8 *pPara )
 		
 		if( pPara[CTRL_PACK_OFFSET_RESTART] == 0 )
 			return;
+
+		dprintf("\nopenSecRestart");
 
 		ctrlOpenStartSecUpdate();
 	}

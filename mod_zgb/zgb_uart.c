@@ -222,7 +222,12 @@ static u8 _zgbUartIsIdle( void )
 int zgbUartTx( u8 *pBuf, u16 len )
 {
 	#ifdef ZGB_UART_PRINT
-		dprintfBuf("ztx:", pBuf, len, 1 );
+		//dprintfBuf("ztx:", pBuf, len, 1 );
+		//dprintf("zt%d", len);
+
+		if( len > 23 )
+			dprintfBuf("\nzt", pBuf + 20, len - 21, 1 );
+		
 	#endif
 
 	
@@ -288,7 +293,35 @@ void zgbUartInit( void )
 static void _zgbUartRxCB( u8 *str,  u8 len )
 {
 	#ifdef ZGB_UART_PRINT
-		dprintfBuf("zrx:", str, len, 1 );
+		//dprintfBuf("zr", str, len, 1 );
+		//dprintf("zr%d", len);
+
+	u8 pTemp[12];
+	u32 val1, val2;
+
+	if( len > 31  )
+	{
+		/*
+		正常/调试	 1Byte |  0:正常  1：调试
+		休眠时间	 4Byte |  单位：秒	(5的倍数)  (5 -- 600)
+		命令控制	 1Byte |  0:关	1：开
+		开启时长	 4Byte |  单位：秒	(最小60，偏差 5 )
+		是否重启记时 1Byte |  0:否	1：重启记时
+		*/
+		memcpy(pTemp, str + 20, 11 );
+
+		
+		memcpy(&val1, pTemp + 1, 4 );
+		memcpy(&val2, pTemp + 6, 4 );
+		
+		u32Image( (u8 *)&val1 );
+		u32Image( (u8 *)&val2 );
+		
+		dprintf("%ds%dc%do%dr%d", pTemp[0], val1, pTemp[5], val2, pTemp[10] );
+		
+		//dprintfBuf("\nzr", str+20, len-21, 1 );
+	}
+	
 	#endif
 
 	if( len > 7 )

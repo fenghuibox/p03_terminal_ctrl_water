@@ -27,12 +27,14 @@
 
 
 #define CONFIG_MAX_SLEEP_SEC      (60*10) // 最大的休眠时间 10分钟
-#define CONFIG_MIN_SLEEP_SEC      (5)     // 最大的休眠时间 5 秒
+#define CONFIG_MIN_SLEEP_SEC      (5)     // 最小的休眠时间 5 秒
 #define CONFIG_DEF_SLEEP_SEC      (10)    // 默认的休眠时间 10 秒
 
 
 
-#define CONFIG_DEF_WORK_SEC     (60*3) // 调试时间  单位：秒     5分钟
+#define CONFIG_MAX_WORK_SEC     (60*30) // 最大的 调试时间  单位：秒     30分钟
+#define CONFIG_MIN_WORK_SEC     (60*1)  // 最小的 调试时间  单位：秒     1分钟
+#define CONFIG_DEF_WORK_SEC     (60*5) //  默认的 调试时间  单位：秒     5分钟
 
 
 

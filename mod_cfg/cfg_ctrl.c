@@ -33,7 +33,7 @@ void cfgCtrlStateSet( u32 ctrlState )
    _stAppConfig.ctrl_state = ctrlState;
 
    
-   dprintf("cfgCS=%d", ctrlState);
+   //dprintf("cfgCS=%d", ctrlState);
    
    _cfgModify = 1;
    
@@ -107,7 +107,7 @@ void cfgCtrlOpenSecSet( u32 ctrlOpenSec )
     if( _stAppConfig.cmd_ctrl_open_sec == ctrlOpenSec )
         return;
 
-	//dprintf("cfgOpenSec %d", ctrlOpenSec );
+	dprintf("cfgOSec=%d", ctrlOpenSec );
 
    _stAppConfig.cmd_ctrl_open_sec = ctrlOpenSec;
    

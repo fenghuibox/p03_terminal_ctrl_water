@@ -65,8 +65,8 @@ u32 cfgSleepSecGet( void ) //
 
 void cfgSleepSecSet( u32 sec )
 {
-    if( _stAppConfig.sleep_sec == sec )
-        return;
+	if( _stAppConfig.sleep_sec == sec )
+		return;
 
 	if( sec < CONFIG_MIN_SLEEP_SEC )
 	{
@@ -76,9 +76,11 @@ void cfgSleepSecSet( u32 sec )
 	{
 		sec = CONFIG_MAX_SLEEP_SEC;
 	}
-		
 
-	dprintf("cfgSleepSec=%d", sec);
+	if( _stAppConfig.sleep_sec == sec )
+		return;
+
+	dprintf("cfgSSec=%d", sec);
 
     _stAppConfig.sleep_sec = sec;
 
@@ -98,6 +100,16 @@ u32 cfgWorkSecGet( void ) //
 	#ifdef DEV_DEBUG_ING
 		return 60*60;
 	#else
+
+		if( _stAppConfig.work_sec < CONFIG_MIN_WORK_SEC )
+		{
+			_stAppConfig.work_sec = CONFIG_MIN_WORK_SEC;
+		}
+		else if ( _stAppConfig.work_sec > CONFIG_MAX_WORK_SEC )
+		{
+			_stAppConfig.work_sec = CONFIG_MAX_WORK_SEC;
+		}
+		
     	return _stAppConfig.work_sec;
 	#endif
 
@@ -110,10 +122,23 @@ void cfgWorkSecSet( u32 sec )
     if( _stAppConfig.work_sec == sec )
         return;
 
+
+	if( sec < CONFIG_MIN_WORK_SEC )
+	{
+		sec = CONFIG_MIN_WORK_SEC;
+	}
+	else if ( sec > CONFIG_MAX_WORK_SEC )
+	{
+		sec = CONFIG_MAX_WORK_SEC;
+	}
+
+    if( _stAppConfig.work_sec == sec )
+        return;
+
     _stAppConfig.work_sec = sec;
 
 	
-	dprintf("WriteWorkSec %d", sec);
+	dprintf("cfgWSec=%d", sec);
 	
     _cfgModify = 1;
 	
