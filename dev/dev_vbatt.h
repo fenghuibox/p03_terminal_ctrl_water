@@ -58,5 +58,7 @@ extern void devVbattInit( void );
 //extern  void modVbattCB( void );
 
 
+extern void devVbattPoll( void ); // 100 ms
+
 #endif
 

@@ -20,8 +20,8 @@
 
 #include "zgb_uart.h"
 
-#define N2S_SERVER_NG_SLEEP_SEC        (60)  // 
-#define N2S_SERVER_NG_CNT              (3)   // 服务器连续没有应答次数计数
+#define N2S_SERVER_NG_SLEEP_SEC        (120)  // 服务器无应答时的最小休眠秒数
+#define N2S_SERVER_NG_CNT              (3)    // 服务器连续没有应答次数计数
 
 extern u8 gN2sServerNgCnt;
 
@@ -31,7 +31,7 @@ extern u8 gN2sServerNgCnt;
 #define N2S_REDO_CNT                               (1)     // 重发次数
 
 //#define N2S_REDO_GAP_MS                         (2800)     // 重发间隔毫秒
-#define N2S_REDO_GAP_MS                           (2400)     // 重发间隔毫秒
+#define N2S_REDO_GAP_MS                           (3000)     // 重发间隔毫秒
 
 #define N2S_REDO_GAP_CNT        ( N2S_REDO_GAP_MS / N2S_POLL_GAP_MS )   // 重发间隔毫秒对应的次数
 

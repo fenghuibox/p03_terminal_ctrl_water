@@ -21,15 +21,15 @@
 
 #ifdef DEV_DEBUG_ING
 
-#define DEV_WAIT_SEC_HEARTBEAT         (  5 * 1 )       // 调试状态下 空闲时发送心跳间隔时间 秒
+#define DEV_WAIT_SEC_HEARTBEAT         (  8 * 1 )       // 调试状态下 空闲时发送心跳间隔时间 秒
 #define DEV_WAIT_SEC_DEBUG_MIN         ( 20 * 1 )       // 调试最小的秒数
 #define DEV_WAIT_SEC_POWER_ON          ( 30 * 1 )       // 上电工作3分钟
 
 #else
 
-#define DEV_WAIT_SEC_HEARTBEAT         (  5 * 1 )       // 调试状态下 空闲时发送心跳间隔时间 秒
-#define DEV_WAIT_SEC_DEBUG_MIN         ( 30 * 1 )       // 调试最小的秒数
-#define DEV_WAIT_SEC_POWER_ON          ( 60 * 3 )       // 上电工作3分钟
+#define DEV_WAIT_SEC_HEARTBEAT         (  8 * 1 )       // 调试状态下 空闲时发送心跳间隔时间 秒
+#define DEV_WAIT_SEC_DEBUG_MIN         ( 60 * 1 )       // 调试最小的秒数
+#define DEV_WAIT_SEC_POWER_ON          ( 60 * 5 )       // 上电工作3分钟
 
 
 #endif

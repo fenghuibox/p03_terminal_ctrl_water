@@ -630,7 +630,7 @@ static int _n2s_zigbee_lqi(  u8 isRedo )
 {	
 	u8  val;
 
-	if( gstN2S.zigbee_auto_net == 0 )
+	if( gstN2S.zigbee_lqi == 0 )
 		return FALSE;
 	
 	if( isRedo )

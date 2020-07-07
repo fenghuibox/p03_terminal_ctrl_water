@@ -74,7 +74,7 @@ static void _10msCB( void )
 	}
 	else
 	{
-		if( (_10msCnt % 5) == 0 ) // 50ms
+		if( (_10msCnt % 6) == 0 ) // 50ms
 		{
 			zgbUartTxPoll();
 		}
@@ -122,7 +122,10 @@ static void _10msCB( void )
 	}	
 	else if( _10msCnt == 15 )
 	{
-		
+		if( devStateIsDbg() == TRUE )
+		{
+			devVbattPoll();
+		}
 	}	
 
 

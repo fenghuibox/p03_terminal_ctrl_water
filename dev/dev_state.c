@@ -427,13 +427,14 @@ static void _sToDebug( void )
 		if( debugSec < DEV_WAIT_SEC_POWER_ON )
 			debugSec = DEV_WAIT_SEC_POWER_ON;
 	}
+	else
+	{
+		if( debugSec < DEV_WAIT_SEC_DEBUG_MIN )
+			debugSec = DEV_WAIT_SEC_DEBUG_MIN;
+	}
 
 
-	if( debugSec < DEV_WAIT_SEC_DEBUG_MIN )
-		debugSec = DEV_WAIT_SEC_DEBUG_MIN;
-
-
-	debugSec = 30; // fenghuiw
+	//debugSec = 30; // fenghuiw
 	
 	_pollCnt = debugSec * (1000 / DEV_POLL_GAP_MS );
 

@@ -91,10 +91,13 @@ static void _test( void )
 
 int main(void)
 {  
+	
 	gB1.inited = 0;
 	gB1.isPowerOn = 1;
 
 	driInit();
+
+    delay1ms(500);
 
 	modInit();
 
@@ -103,16 +106,15 @@ int main(void)
 	modIoZgbWakeup(); // last 
 
     
-    ///< ===============================================
+	///< ===============================================
     ///< ============ 警告，警告，警告！！！=============
     ///< ===============================================
     ///< 本样例程序会进入深度休眠模式，因此以下两行代码起防护作用（防止进入深度
     ///< 休眠后芯片调试功能不能再次使用），
     ///< 在使用本样例时，禁止在没有唤醒机制的情况下删除以下两行代码。
-    delay1ms(3000);
+    delay1ms(1000);
 	
-
-	dprintf("\r\np03_terminal_ctrl_water V0.1_20200613 fenghui\r\n");
+	dprintf("\r\np03_terminal_ctrl_water V0.1_20200706 fenghui\r\n");
 
 	gB1.inited = 1;
 	

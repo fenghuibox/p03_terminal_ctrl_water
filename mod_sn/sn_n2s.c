@@ -183,6 +183,9 @@ static EN_N2S_SEND_CMD_ID _n2sGetId( void ) // 得到 要发送数据项的ID
 
 	if( gstN2S.zigbee_auto_net)
 		return N2S_SEND_CID_ZIGBEE_AUTO_NET;
+	
+	if( gstN2S.zigbee_lqi)
+		return N2S_SEND_CID_ZIGBEE_LQI;
 
 	if( gstN2S.zigbee_state)
 		return N2S_SEND_CID_ZIGBEE_STATE;	

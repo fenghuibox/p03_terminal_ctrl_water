@@ -193,16 +193,14 @@ void ctrlStatePoll( void ) // 50 ms
 		return;
 
 
-	if( _stCtrl.exe == 0 )
-		return;
-
-
 	if( _stCtrl.init )
 	{
 		_stCtrl.init = 0;
-		_ctrl();
+		//_ctrl();
+		_stCtrl.exe  = 1;
 		return;
 	}
+
 
 
 	if( _stCtrl.state == cfgCtrlStateGet() )
@@ -210,6 +208,10 @@ void ctrlStatePoll( void ) // 50 ms
 		_stCtrl.exe   = 0;
 		 _stCtrl.ing  = 0;
 		return;
+	}
+	else
+	{
+		_stCtrl.exe  = 1;
 	}
 
 	_ctrl();
@@ -322,6 +324,8 @@ void ctrlInit( void )
 
 	_stCtrl.ing = 0;
 	
+
+	
 	
 	#if 0 // fenghuiw
 	if( cfgCtrlStateGet() )
@@ -330,6 +334,9 @@ void ctrlInit( void )
 		ctrlClose();
 
 	#endif
+
+	
+	_stCtrl.state =  cfgCtrlStateGet();
 		
 }
 

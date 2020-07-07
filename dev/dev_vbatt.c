@@ -14,6 +14,7 @@
 
 #include "dri_adc.h"
 #include "dev_vbatt.h"
+#include "dev_state.h"
 #include "dbg_uart.h"
 #include "timer.h"
 
@@ -33,6 +34,8 @@ static  u8 _adcIndex;
 
 
 
+
+
 u32 devVbattValGet( void ) // real val = ret / 10000
 {
 	// =4.5*(I5+10)/4096
@@ -40,6 +43,9 @@ u32 devVbattValGet( void ) // real val = ret / 10000
 	//return _adcVal;
 	
 	//return (_adcVal + 10) * 11/10000;
+
+
+	
 	return _adcVal * 11 + 110;
 
 	
@@ -53,6 +59,7 @@ u32 devVbattValGet( void ) // real val = ret / 10000
 static void _adcValIn( u32 val )
 {
 	driAdcEnClose();
+
 	
 	_adcArr[_adcIndex++] = val;
 	
@@ -112,6 +119,16 @@ static void _vbattCB( void )
 }
 
 
+
+void devVbattPoll( void ) // >100 ms
+{
+	//if( devStateIsDbg() == FALSE )
+	//	return;
+	
+	devBattStart();
+}
+
+
 void devVbattInit( void )
 {
 	#include "timer.h"
@@ -121,7 +138,7 @@ void devVbattInit( void )
 	driAdcFunSet( _adcValIn );
 
 	timerStart( VBATT_SCAN_GAP_MS/TIMER_UNIT_MS,  1,  _vbattCB );
-	//timerStart( VBATT_SCAN_GAP_MS/TIMER_UNIT_MS,  TIMER_REPEAT_FOREVER,  _vbattCB );
+	//timerStart( VBATT_SCAN_GAP_MS/TIMER_UNIT_MS,  TIMER_REPEAT_FOREVER,  _vbattCB ); // debug state used
 }
 
 

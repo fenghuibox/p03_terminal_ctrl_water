@@ -31,7 +31,7 @@ typedef struct
 
 //--------------------------------------------------
 
-#define TIMER_CNT_MAX  20//28 // ptl_exe max used 20
+#define TIMER_CNT_MAX  32 // ptl_exe max used 20
 
 //--------------------------------------------------
 

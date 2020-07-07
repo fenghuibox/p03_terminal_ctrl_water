@@ -48,6 +48,16 @@ u32 cfgSleepSecGet( void ) //
 	#ifdef DEV_DEBUG_ING
 		return 10;
 	#else
+
+		if( _stAppConfig.sleep_sec < CONFIG_MIN_SLEEP_SEC )
+		{
+			_stAppConfig.sleep_sec = CONFIG_MIN_SLEEP_SEC;
+		}
+		else if ( _stAppConfig.sleep_sec > CONFIG_MAX_SLEEP_SEC )
+		{
+			_stAppConfig.sleep_sec = CONFIG_MAX_SLEEP_SEC;
+		}
+	
 	   return _stAppConfig.sleep_sec; 
 	#endif
 }
@@ -57,6 +67,16 @@ void cfgSleepSecSet( u32 sec )
 {
     if( _stAppConfig.sleep_sec == sec )
         return;
+
+	if( sec < CONFIG_MIN_SLEEP_SEC )
+	{
+		sec = CONFIG_MIN_SLEEP_SEC;
+	}
+	else if ( sec > CONFIG_MAX_SLEEP_SEC )
+	{
+		sec = CONFIG_MAX_SLEEP_SEC;
+	}
+		
 
 	dprintf("cfgSleepSec=%d", sec);
 
