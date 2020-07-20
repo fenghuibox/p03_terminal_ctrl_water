@@ -21,7 +21,7 @@
 #include "zgb_uart.h"
 
 #define N2S_SERVER_NG_SLEEP_SEC        (120)  // 服务器无应答时的最小休眠秒数
-#define N2S_SERVER_NG_CNT              (3)    // 服务器连续没有应答次数计数
+#define N2S_SERVER_NG_CNT              (6)    // 服务器连续没有应答次数计数
 
 extern u8 gN2sServerNgCnt;
 
