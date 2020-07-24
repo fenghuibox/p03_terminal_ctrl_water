@@ -53,10 +53,14 @@ typedef struct
 	
 	u8 isDebug:1; // 
 	u8 isPowerOn:1; // 
+	//u8 toDebugNoReTiming:1; // 设置为调试模式时 不重新计时
 
 	
 
 	u8 inited; // 初始化是否完成了  0:没有完成  1:完成
+
+
+	
 
 }ST_BOOL;
 

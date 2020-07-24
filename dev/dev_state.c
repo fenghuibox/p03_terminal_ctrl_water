@@ -29,6 +29,7 @@
 #include "sn_ch.h"
 #include "f_txt_frame_dpara_ctrl.h"
 
+#include "zgb_state.h"
 
 
 
@@ -185,6 +186,15 @@ static void _devReadCtrlInfoPoll( void )
 		//_devStateSet( DEV_STATE_SLEEP );  //  使用指令超时处理
 
 		//_onReadCtrlInfoEnd();
+
+		if( modZgbStateIsOk() == FALSE ) // 没有加入Z网络时,没有发送获取指令,要直接入网
+		{
+			_devStateSet( DEV_STATE_SLEEP );  
+		}
+		else
+		{
+			//  有加入Z网络时,有发送获取指令, 使用指令超时处理
+		}
 	}
 	
 	return;
@@ -387,7 +397,7 @@ static void _txCtrlPack( void )
 
 static void _sToReadCtrlInfo( void )
 {
-	#include "zgb_state.h"
+	
 	
 	gB1.isDebug = 0;
 
@@ -415,6 +425,7 @@ static void _sToDebug( void )
 {	
 	u32 debugSec;
 
+
 	debugSec = cfgWorkSecGet();
 
 	
@@ -429,6 +440,11 @@ static void _sToDebug( void )
 	}
 	else
 	{
+		if( devStateIsNg() )
+		{
+			return; // 不是第一次，且 从错误进入时， 不重新计时
+		}
+		
 		if( debugSec < DEV_WAIT_SEC_DEBUG_MIN )
 			debugSec = DEV_WAIT_SEC_DEBUG_MIN;
 	}
