@@ -25,6 +25,8 @@
 void snPoll( void ) // 50ms
 {
 	snN2sPoll();
+
+	snChPoll();
 }
 
 

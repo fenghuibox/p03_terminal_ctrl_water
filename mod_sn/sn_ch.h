@@ -27,5 +27,8 @@ extern u8 snChIs485( void );
 
 extern void snChInit( void );
 
+extern void snChPoll( void ); // 100MS
+
+
 #endif
 

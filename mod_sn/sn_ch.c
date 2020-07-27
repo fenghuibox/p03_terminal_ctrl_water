@@ -16,6 +16,9 @@
 
 #include "dbg_uart.h"
 
+#include "dev_state.h"
+
+
  // 服务器和节点通信通道
  // Server and node communication channel
 
@@ -93,6 +96,8 @@ static void _chSet( u8 ch )
 
 void snChInit( void )
 {
+
+	#if 0
 	#define _CHECK_CH_CNT  (3)
 
 	int i, k;
@@ -141,6 +146,12 @@ void snChInit( void )
 	//== 4 DEF =============
 	_chSet( SN_CH_STATE_DEF );
 
+	#else
+
+	_chSet( SN_CH_STATE_ZGB);
+
+	#endif
+
 }
 
 
@@ -158,6 +169,38 @@ void snChInit( void )
 }
 
 #endif
+
+
+
+
+void snChPoll( void ) // 100MS
+{
+	u8 chState;
+	static u8 _is485cnt = 4;
+
+	if( devStateIsDbg() == 0 )
+		return;
+	
+	
+	chState = driIoChRead();
+
+	if( chState == SN_CH_STATE_485 )
+	{
+		if( _is485cnt )
+		{
+			_is485cnt--;
+		}
+		else
+		{
+			devDebugCntToEnd();				
+		}
+	}
+	else
+	{
+		_is485cnt = 4;
+	}
+}
+
 
 
 

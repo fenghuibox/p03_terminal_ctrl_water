@@ -203,7 +203,10 @@ static void _devReadCtrlInfoPoll( void )
 
 
 
-
+void devDebugCntToEnd( void )
+{
+	_pollCnt = 0;
+}
 
 static void _devDebugPoll( void )
 {	

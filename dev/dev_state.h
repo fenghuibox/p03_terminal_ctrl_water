@@ -187,6 +187,7 @@ extern void devStateInit( void );
 
 
 
+extern void devDebugCntToEnd( void );
 
 
 

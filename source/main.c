@@ -114,7 +114,7 @@ int main(void)
     ///< 在使用本样例时，禁止在没有唤醒机制的情况下删除以下两行代码。
     delay1ms(1000);
 	
-	dprintf("\r\np03_terminal_ctrl_water V0.3_20200722 fenghui\r\n");
+	dprintf("\r\np03_terminal_ctrl_water V0.4_20200727 fenghui\r\n");
 
 	gB1.inited = 1;
 	
