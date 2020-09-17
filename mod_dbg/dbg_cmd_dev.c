@@ -35,6 +35,10 @@ const char strCmdDevCtrlInfoGet[]  = "infoget";
 #define CMD_DEV_CTRL_INFO_GET_LEN  (7)
 
 
+const char strCmdDevVer[]  = "ver";
+
+#define CMD_DEV_VER_LEN  (3)
+
 
 /*
 
@@ -45,6 +49,22 @@ const char strCmdDevCtrlInfoGet[]  = "infoget";
 是否重启记时 1Byte |  0:否  1：重启记时
 
 */
+
+
+
+
+static u8 _rspVer( void )
+{
+	// paraVerGet()
+
+	dprintf( "zl@17E" );
+
+	return TRUE;
+
+	
+}
+
+
 
 // str =
 u8 debugCmdDev( u8 *str,  u8 len )
@@ -58,7 +78,15 @@ u8 debugCmdDev( u8 *str,  u8 len )
 			return TRUE;
 		}
 	}
-	
+	else if( len == 3 )
+	{
+		if( memcmp( ( const char *)str, strCmdDevVer, CMD_DEV_VER_LEN ) == 0 )
+		{
+			return _rspVer();
+			//return TRUE;
+		}
+	}
+
 
 
 
